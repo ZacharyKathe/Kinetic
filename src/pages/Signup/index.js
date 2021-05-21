@@ -40,7 +40,7 @@ const Signup = () => {
           </button>
         </Container>
         <Container className="mt-4">
-          <h3>Hello {username} </h3>
+          <h3>WAZZUP {username} </h3>
           <p>I probably shouldn't tell you this, but your password is {password}!</p>
         </Container>
       </form>
