@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
+import Bounce from 'react-reveal/Bounce'
+import Zoom from 'react-reveal/Zoom'
+import LightSpeed from 'react-reveal/LightSpeed'
 
 const Signup = () => {
   const [username,setusername] = useState("")
@@ -19,9 +22,9 @@ const Signup = () => {
 
   return (
     <div>
-      <div className="mt-4">
-        <h2>Sign Up</h2>
-      </div>
+       <LightSpeed><h2>Log in</h2></LightSpeed>
+       <br/>
+      <Zoom>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
@@ -39,11 +42,39 @@ const Signup = () => {
             Submit
           </button>
         </Container>
-        <Container className="mt-4">
-          <h3>WAZZUP {username} </h3>
-          <p>I probably shouldn't tell you this, but your password is {password}!</p>
+      </form>
+      </Zoom>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      
+        <div className="mt-4">
+        <LightSpeed> <h2>Sign Up</h2></LightSpeed>
+      </div>
+      
+      <br/>
+      <Zoom>
+      <form onSubmit={handleSubmit}>
+        <Container className="mt-3 px-5">
+          <Row className="form-group">
+            <Col size="12">
+              <input className="form-control" type="text" placeholder="Username" name="username" value={username} onChange={event=>setusername(event.target.value)} />
+            </Col>
+          </Row>
+          <Row className="form-group">
+            <Col size="12">
+              <input className="form-control"  type="password"  placeholder="Password"  name="password" value={password} onChange={event=>setpassword(event.target.value)}
+              />
+            </Col>
+          </Row>
+          <button className="btn btn-success" type="submit">
+            Submit
+          </button>
         </Container>
       </form>
+      </Zoom>
+
     </div>
   );
 };
