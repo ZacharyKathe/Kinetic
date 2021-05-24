@@ -21,9 +21,8 @@ const Signup = () => {
   
 
   return (
-    <div>
+    <div className='logInScreen'>
        <LightSpeed><h2>Log in</h2></LightSpeed>
-       <br/>
       <Zoom>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
