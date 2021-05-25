@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import Container from "../../components/Container";
-import Col from "../../components/Col";
-import Row from "../../components/Row";
+import Container from "../components/Container";
+import Col from "../components/Col";
+import Row from "../components/Row";
 import Jump from 'react-reveal/Jump'
 
 import Rotate from 'react-reveal/Rotate'
