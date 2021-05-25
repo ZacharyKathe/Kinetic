@@ -8,6 +8,10 @@
     height: 100vh;
     background-size: cover;
     background-position: bottom;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -31,13 +35,17 @@
 }
 
 @media screen and (max-width: 992px) {
-    
+    .logIn{
+        padding-top: 70px;
+    }
   }
 
   /* Large smartphones - navbar changes color */
   
   @media screen and (max-width: 768px) {
-   
+    .logIn{
+        padding-top: 70px;
+    }
   }
   
   /* Small smartphones - image placeholders change color */
