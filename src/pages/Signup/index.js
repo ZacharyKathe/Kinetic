@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
-import Bounce from 'react-reveal/Bounce'
-import Zoom from 'react-reveal/Zoom'
-import LightSpeed from 'react-reveal/LightSpeed'
+import Jump from 'react-reveal/Jump'
+
+import Rotate from 'react-reveal/Rotate'
 
 const Signup = () => {
   const [username,setusername] = useState("")
@@ -22,10 +22,10 @@ const Signup = () => {
 
   return (
     <div className='logInScreen'>
-       <LightSpeed><h2>Log in</h2></LightSpeed>
-      <Zoom>
+      <Jump> <h2 className='logIn'>Log in</h2> </Jump>
+      <Rotate>
       <form onSubmit={handleSubmit}>
-        <Container className="mt-3 px-5">
+        <Container className="signInForm">
           <Row className="form-group">
             <Col size="12">
               <input className="form-control" type="text" placeholder="Username" name="username" value={username} onChange={event=>setusername(event.target.value)} />
@@ -38,22 +38,22 @@ const Signup = () => {
             </Col>
           </Row>
           <button className="btn btn-success" type="submit">
-            Submit
+            Log in
           </button>
         </Container>
       </form>
-      </Zoom>
+      </Rotate>
       <br/>
       <br/>
       <br/>
       <br/>
       
         <div className="mt-4">
-        <LightSpeed> <h2>Sign Up</h2></LightSpeed>
+        <Jump> <h2>Sign Up</h2> </Jump>
       </div>
       
       <br/>
-      <Zoom>
+      <Rotate>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
@@ -68,11 +68,11 @@ const Signup = () => {
             </Col>
           </Row>
           <button className="btn btn-success" type="submit">
-            Submit
+            Sign up
           </button>
         </Container>
       </form>
-      </Zoom>
+      </Rotate>
 
     </div>
   );
