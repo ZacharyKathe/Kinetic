@@ -4,19 +4,36 @@
 }
 
 .logInScreen{
-    background-image: url("/src/images/loginPhoto.PNG");
+    background-image: url("/src/images/Group\ 1555.svg");
     height: 100vh;
-    background-size: cover;
-    background-position: bottom;
+    background-size: contain;
+    background-position: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background-repeat: no-repeat;
+}
+
+.NewUserScreen{
+    background-image: url("/src/images/Group\ 1555.svg");
+    height: 100vh;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
+.NewUser{
+    text-decoration: none;
 }
 
 
 .logIn{
-    padding-top: 150px;
+    padding-top: 5px;
 }
 
 .form-group{
@@ -25,18 +42,22 @@
 
 .form-control{
     height: 35px;
+    border-radius: 4px;
+    border-color: rgb(248, 246, 246);
+    background: content-box;
 }
 
 .btn-success{
     height: 35px;
     width: 150px;
-    background-color: rgb(160, 4, 4);
+    background-color: #5dabfc;
     color: white;
+    border-radius: 4px;
 }
 
 @media screen and (max-width: 992px) {
     .logIn{
-        padding-top: 70px;
+        padding-top: 8px;
     }
   }
 
@@ -44,7 +65,7 @@
   
   @media screen and (max-width: 768px) {
     .logIn{
-        padding-top: 70px;
+        padding-top: 8px;
     }
   }
   
@@ -52,6 +73,6 @@
   
   @media screen and (max-width: 576px) {
     .logIn{
-        padding-top: 70px;
+        padding-top: 8px;
     }
   }
