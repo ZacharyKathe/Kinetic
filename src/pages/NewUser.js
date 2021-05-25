@@ -6,7 +6,7 @@ import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate'
 
-const Signup = () => {
+const NewUser = () => {
   const [username,setusername] = useState("")
   const [password,setpassword] = useState("")
   const handleSubmit = e => {
@@ -16,20 +16,22 @@ const Signup = () => {
     setpassword("");
   };
 
-  const location = useLocation();
+  
   
   
 
   return (
-    <div className='logInScreen'>
-      <Link to="/NewUser" className={location.pathname === "/NewUser" ? "nav-link active" : "nav-link NewUser"}>
-          New User
-        </Link>
+    <div className='NewUserScreen'>
       
+      
+        <div className="mt-4">
+        <Jump> <h2>Sign Up</h2> </Jump>
+      </div>
+      
+      <br/>
       <Rotate>
-      <Jump> <h2 className='logIn'>Log in</h2> </Jump>
       <form onSubmit={handleSubmit}>
-        <Container className="signInForm">
+        <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
               <input className="form-control" type="text" placeholder="Username" name="username" value={username} onChange={event=>setusername(event.target.value)} />
@@ -42,15 +44,14 @@ const Signup = () => {
             </Col>
           </Row>
           <button className="btn btn-success" type="submit">
-            Log in
+            Sign up
           </button>
         </Container>
       </form>
       </Rotate>
-      
 
     </div>
   );
 };
 
-export default Signup;
+export default NewUser;
