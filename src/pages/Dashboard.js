@@ -1,4 +1,5 @@
 import React from "react";
+import Goal from "../components/Goal";
 
 function Dashboard() {
   return (
@@ -14,6 +15,7 @@ function Dashboard() {
         consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
+      <Goal />
     </div>
   );
 }
