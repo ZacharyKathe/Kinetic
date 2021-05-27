@@ -4,7 +4,7 @@
 }
 
 .logInScreen{
-    background-image: url("/src/images/Group\ 1555.svg");
+    background-color: white;
     height: 100vh;
     background-size: contain;
     background-position: center;
@@ -16,7 +16,7 @@
 }
 
 .NewUserScreen{
-    background-image: url("/src/images/Group\ 1555.svg");
+    background-color: white;
     height: 100vh;
     background-size: contain;
     background-position: center;
