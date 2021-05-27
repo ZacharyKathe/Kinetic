@@ -60,39 +60,39 @@ const Signup = () => {
 
   return (
     <div className='NewUserScreen'>
-        <Rotate>
+      <Rotate>
         <div>
             <img src={logo} alt="kinetic logo"/>
         </div>
       </Rotate>
+      <div>
+        <p className="logo-text">kinetik</p>
+      </div>
 
-        <div><p className="logo-text">kinetik</p></div>
-        
-        <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link NewUser"}>
+      <div>
+        <Link id="login-inactive" to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link NewUser"}>
           Log in
         </Link>
-      
-      
-      <div className="mt-4">
-        <Jump> <h2>Sign Up</h2> </Jump>
       </div>
-      
-      <br/>
+        <div id="signup-active">
+          <p>Sign up</p>
+        </div>
+
       <form onSubmit={handleSignupFormSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder="Username" name="username" value={signupFormState.username} onChange={e=>setSignupFormState({...signupFormState, username: e.target.value})} />
+              <input className="form-control" type="text" placeholder=" Username" name="username" value={signupFormState.username} onChange={e=>setSignupFormState({...signupFormState, username: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder="Email" name="email" value={signupFormState.email} onChange={e=>setSignupFormState({...signupFormState, email: e.target.value})} />
+              <input className="form-control" type="text" placeholder=" Email" name="email" value={signupFormState.email} onChange={e=>setSignupFormState({...signupFormState, email: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control"  type="password"  placeholder="Password"  name="password" value={signupFormState.password} onChange={e=>setSignupFormState({...signupFormState, password: e.target.value})}
+              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={signupFormState.password} onChange={e=>setSignupFormState({...signupFormState, password: e.target.value})}
               />
             </Col>
           </Row>

@@ -90,23 +90,30 @@ const Login = () => {
         </div>
       </Rotate>
       
-      <div><p className="logo-text">kinetik</p></div>
+      <div>
+        <p className="logo-text">kinetik</p>
+      </div>
 
-      <Link to="/NewUser" className={location.pathname === "/NewUser" ? "nav-link active" : "nav-link NewUser"}>
-          New User
-        </Link>
-      
-      <Jump> <h2 className='logIn'>Log in</h2> </Jump>
+      <div>
+          <Link id="signup-inactive" to="/NewUser" className={location.pathname === "/NewUser" ? "nav-link active" : "nav-link NewUser"}>
+            Sign up
+          </Link>
+      </div>
+
+        <div id="login-active">
+          <p>Log in</p>
+        </div>
+
       <form onSubmit={handleFormSubmit}>
         <Container className="signInForm">
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder="Email" name="email" value={formState.email} onChange={event=>setFormState({ ...formState, email: event.target.value})} />
+              <input className="form-control" type="text" placeholder=" Email" name="email" value={formState.email} onChange={event=>setFormState({ ...formState, email: event.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control"  type="password"  placeholder="Password"  name="password" value={formState.password} onChange={event=>setFormState({ ...formState, password: event.target.value})}
+              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={formState.password} onChange={event=>setFormState({ ...formState, password: event.target.value})}
               />
             </Col>
           </Row>
