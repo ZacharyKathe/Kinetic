@@ -4,8 +4,9 @@ import Col from "../components/Col";
 import Row from "../components/Row";
 import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
-import API from '../utils/API'
-import Rotate from 'react-reveal/Rotate'
+import API from '../utils/API';
+import Rotate from 'react-reveal/Rotate';
+import logo from "../images/kinetic-logo.png";
 
 const Login = () => {
 
@@ -83,11 +84,18 @@ const Login = () => {
 
   return (
     <div className='logInScreen'>
+      <Rotate>
+        <div>
+            <img src={logo} alt="kinetic logo"/>
+        </div>
+      </Rotate>
+      
+      <div><p className="logo-text">kinetik</p></div>
+
       <Link to="/NewUser" className={location.pathname === "/NewUser" ? "nav-link active" : "nav-link NewUser"}>
           New User
         </Link>
       
-      <Rotate>
       <Jump> <h2 className='logIn'>Log in</h2> </Jump>
       <form onSubmit={handleFormSubmit}>
         <Container className="signInForm">
@@ -107,7 +115,6 @@ const Login = () => {
           </button>
         </Container>
       </form>
-      </Rotate>
       
 
     </div>
