@@ -8,6 +8,7 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import AddGoalBtn from "../components/AddGoalBtn";
 import AddGroupBtn from "../components/AddGroupBtn";
+import SaveGoalBtn from "../components/SaveGoalBtn";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
