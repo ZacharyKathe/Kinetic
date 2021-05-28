@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Goal from "../components/Goal";
 import API from "../utils/API";
+import NavTop from "../components/NavTop";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -28,6 +29,7 @@ function Dashboard(props) {
 
   return (
     <div>
+      <NavTop header="Goals" />
       <h1>Dashboard Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
