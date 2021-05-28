@@ -1,34 +1,67 @@
 *{
     padding: 0px;
     margin: 0px;
+    font-family: 'canada-type-gibson';
 }
 
 .logInScreen{
-    background-image: url("/src/images/Group\ 1555.svg");
+    background-color: white;
     height: 100vh;
     background-size: contain;
     background-position: center;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     background-repeat: no-repeat;
+    margin-top: 75px;
 }
 
 .NewUserScreen{
-    background-image: url("/src/images/Group\ 1555.svg");
+    background-color:white;
     height: 100vh;
     background-size: contain;
     background-position: center;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     background-repeat: no-repeat;
+    margin-top: 75px;
+}
+
+.logo-text {
+    font-family:'canada-type-gibson';
+    font-size: 45px;
+    font-weight: 600;
+    color: #60c3ff;
+    margin-bottom: 50px;
 }
 
 .NewUser{
     text-decoration: none;
+}
+
+#signup-inactive {
+    color: #bcc5d3;
+}
+
+#login-inactive {
+    color: #bcc5d3;
+}
+
+#login-active {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #4c5264;
+}
+
+#signup-active {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #4c5264;
 }
 
 
@@ -45,19 +78,25 @@
     border-radius: 4px;
     border-color: rgb(248, 246, 246);
     background: content-box;
+    width: 200px;
+}
+
+::placeholder {
+    color: #bcc5d3;
 }
 
 .btn-success{
     height: 35px;
-    width: 150px;
-    background-color: #5dabfc;
+    width: 200px;
+    background-color: #5887f9;
     color: white;
     border-radius: 4px;
+    border-color: #5887f9;
 }
 
 @media screen and (max-width: 992px) {
     .logIn{
-        padding-top: 8px;
+        padding-top: 0px;
     }
   }
 
@@ -65,7 +104,7 @@
   
   @media screen and (max-width: 768px) {
     .logIn{
-        padding-top: 8px;
+        padding-top: 0px;
     }
   }
   
@@ -73,6 +112,6 @@
   
   @media screen and (max-width: 576px) {
     .logIn{
-        padding-top: 8px;
+        padding-top: 0px;
     }
   }
