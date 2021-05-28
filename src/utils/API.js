@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import axios from "axios";
-
-// Exports to the frontside functions with axios server requests
-export default {
-  // Sends request with user data to user API
-  saveUser: function(userData) {
-    return axios.post("/api/users", userData);
-  },
-
-};
-=======
 const axios = require('axios');
 
 const URL_PREFIX = 'http://localhost:3002';
@@ -50,4 +38,3 @@ const API = {
 }
 
 export default API;
->>>>>>> 5ca82f3c8296d6e82802ad3d058058254f37bdf1

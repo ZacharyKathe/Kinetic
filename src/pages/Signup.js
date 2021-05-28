@@ -1,62 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate';
-import API from "../utils/API";
+
 import logo from "../images/kinetic-logo.png";
 
 
-const Signup = () => {
-  const [signupFormState,setSignupFormState] = useState({
-    email:"",
-    password:"",
-    username:""
-  });
-  
-  const [userState,setUserState] = useState({
-    token:"",
-    user:{}
-  })
-  
-  const location = useLocation();
-
-  // When user signs up:
-  const handleSignupFormSubmit = e=>{
-    e.preventDefault();
-    console.log(signupFormState);
-    API.signup(signupFormState).then(res=>{
-      localStorage.setItem("token",res.data.token)
-      setUserState({
-        ...userState,
-        token:res.data.token,
-        user:{
-          email:res.data.user.email,
-          username:res.data.user.username,
-          id:res.data.user.id
-        }
-      })
-    }).catch(err=>{
-      console.log("error occured")
-      console.log(err);
-      localStorage.removeItem("token");
-      setUserState({
-        token:"",
-        user:{}
-      })
-    })
-    setSignupFormState({
-      username:"",
-      email:"",
-      password:""
-    })
-  }
-
-  
-  
-  
+const Signup = (props) => {
+  const location = useLocation(); 
 
   return (
     <div className='NewUserScreen'>
@@ -78,21 +32,21 @@ const Signup = () => {
           <p>Sign up</p>
         </div>
 
-      <form onSubmit={handleSignupFormSubmit}>
+      <form onSubmit={props.handleSignupFormSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder=" Username" name="username" value={signupFormState.username} onChange={e=>setSignupFormState({...signupFormState, username: e.target.value})} />
+              <input className="form-control" type="text" placeholder=" Username" name="username" value={props.signupFormState.username} onChange={e=>props.setSignupFormState({...props.signupFormState, username: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder=" Email" name="email" value={signupFormState.email} onChange={e=>setSignupFormState({...signupFormState, email: e.target.value})} />
+              <input className="form-control" type="text" placeholder=" Email" name="email" value={props.signupFormState.email} onChange={e=>props.setSignupFormState({...props.signupFormState, email: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={signupFormState.password} onChange={e=>setSignupFormState({...signupFormState, password: e.target.value})}
+              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={props.signupFormState.password} onChange={e=>props.setSignupFormState({...props.signupFormState, password: e.target.value})}
               />
             </Col>
           </Row>
