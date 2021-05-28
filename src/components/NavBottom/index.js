@@ -1,16 +1,14 @@
 import React from "react";
-import backBtn from "../../images/back.png";
-import exit from "../../images/exit.png";
 import "./style.css";
 
-function NavTop(props) {
+function NavBottom(props) {
     return (
-        <div className="top-nav">
-           <img src={backBtn} alt="back button" />
-           <p className="header-text">{props.header}</p>
-           <img src={exit} alt="log out button" />
+        <div className="bottom-nav">
+           <img src={props.homeBtn} alt="home button" />
+           <img src={props.groupsBtn} alt="groups button" />
+           <img src={props.calendarBtn} alt="calendar button" />
         </div>
     )
 }
 
-export default NavTop;
+export default NavBottom;

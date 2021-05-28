@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Goal from "../components/Goal";
 import API from "../utils/API";
 import NavTop from "../components/NavTop";
+import NavBottom from "../components/NavBottom";
+import homeActive from "../images/home-active.png";
+import groups from "../images/groups.png";
+import calendar from "../images/calendar.png";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -42,6 +46,7 @@ function Dashboard(props) {
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
       <Goal />
+      <NavBottom homeBtn={homeActive} groupsBtn={groups} calendarBtn={calendar} />
     </div>
   );
 }
