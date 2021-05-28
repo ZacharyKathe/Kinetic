@@ -2,13 +2,13 @@ import React from "react";
 import "./style.css";
 import saveBtn from "../../images/save-btn.png";
 
-function SaveGoalBtn (props) {
+function SaveGroupBtn (props) {
     return (
-        <div className="save-goal-btn">
+        <div className="save-group-btn">
            <img src={saveBtn} alt="save button" />
-           <p id="save-goal-text"> SAVE GOAL</p>
+           <p id="save-group-text"> SAVE GROUP</p>
         </div>
     )
 }
 
-export default SaveGoalBtn;
+export default SaveGroupBtn;

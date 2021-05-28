@@ -9,6 +9,7 @@ import calendar from "../images/calendar.png";
 import AddGoalBtn from "../components/AddGoalBtn";
 import AddGroupBtn from "../components/AddGroupBtn";
 import SaveGoalBtn from "../components/SaveGoalBtn";
+import SaveGroupBtn from "../components/SaveGroupBtn";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -49,7 +50,7 @@ function Dashboard(props) {
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
       <Goal />
-      <AddGoalBtn />
+      <SaveGroupBtn />
       <NavBottom homeBtn={homeActive} groupsBtn={groups} calendarBtn={calendar} />
     </div>
   );
