@@ -16,7 +16,7 @@ const API = {
     return axios.post(`${URL_PREFIX}/signup`, userData)
   },
 
-  getProfile: function (token) {
+  getDashboard: function (token) {
     return axios.get(`${URL_PREFIX}/dashboard`, {
       headers: {
         authorization: `Bearer ${token}`
