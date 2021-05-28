@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Goal from "../components/Goal";
-import API from "../utils/API";
+//import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
@@ -9,28 +10,22 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 
 function Dashboard(props) {
-  const [user, setUser] = useState(
-    {
-      username: '',
-      email: '',
-      id: 0,
-    });
+  const history = useHistory();
 
-  const [userGoals, setUserGoals] = useState(
-    {
-      goals: [],
+  const [userGoals, setUserGoals] = useState([]);
+
+
+  console.log(props.user.goals);
+  const allGoals = props.user.goals || [];
+  useEffect(() => {
+    if (!props.user.email) {
+      history.push('/')
     }
-  )
+    if (allGoals.length > 0) {
+    setUserGoals(allGoals);
+    }
 
-
-    useEffect(() => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user);
-      
-      /* API.getUser(user.id).then(res=>{
-        console.log(res.data);
-        }, []);*/
-      });
+  }, []);
 
   return (
     <div>
