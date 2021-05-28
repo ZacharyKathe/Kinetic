@@ -6,6 +6,7 @@ import NavBottom from "../components/NavBottom";
 import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
+import AddGoalBtn from "../components/AddGoalBtn";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -46,6 +47,7 @@ function Dashboard(props) {
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
       <Goal />
+      <AddGoalBtn />
       <NavBottom homeBtn={homeActive} groupsBtn={groups} calendarBtn={calendar} />
     </div>
   );
