@@ -15,17 +15,9 @@ const Login = ({token}) => {
     password: ""
   })
 
-<<<<<<< HEAD
-  const [userState,setUserState] = useState({
-    token:"",
-    user:{
-      
-    }
-=======
   const [userState, setUserState] = useState({
     token: "",
     user: {}
->>>>>>> 07fb105a7d513aca8f9848702b74bc63c38303a2
   })
 
   useEffect(() => {
