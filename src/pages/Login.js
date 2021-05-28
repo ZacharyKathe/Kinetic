@@ -1,14 +1,23 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import Jump from 'react-reveal/Jump';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate';
 import logo from "../images/kinetic-logo.png";
 
 const Login = (props) => {
   const location = useLocation();
+  const history = useHistory();
+
+
+  useEffect(() => {
+    if (props.user.email) {
+      history.push('/dashboard');
+    }
+  }
+  )
 
   return (
     <div className='logInScreen'>
