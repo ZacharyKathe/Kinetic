@@ -7,7 +7,7 @@ function Dashboard(props) {
     {
       username: '',
       email: '',
-      id: 0,
+      id: "",
     });
 
   const [userGoals, setUserGoals] = useState(

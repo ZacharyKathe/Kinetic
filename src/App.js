@@ -19,7 +19,7 @@ function App() {
   const [signupFormState,setSignupFormState] = useState({
     email:"",
     password:"",
-    name:""
+    username:""
   })
 
   const [userState,setUserState] = useState({
@@ -30,14 +30,14 @@ function App() {
   useEffect(()=>{
     const token = localStorage.getItem("token")
     if(token){
-      API.getProfile(token).then(res=>{
+      API.getDashboard(token).then(res=>{
         console.log(res.data);
         setUserState({
           token:token,
           user:{
             email:res.data.email,
             id:res.data.id,
-            name:res.data.name
+            username:res.data.username
           }
         })
       }).catch(err=>{
@@ -63,7 +63,7 @@ function App() {
         token:res.data.token,
         user:{
           email:res.data.user.email,
-          name:res.data.user.name,
+          username:res.data.user.username,
           id:res.data.user.id
         }
       })
@@ -92,7 +92,7 @@ function App() {
         token:res.data.token,
         user:{
           email:res.data.user.email,
-          name:res.data.user.name,
+          username:res.data.user.username,
           id:res.data.user.id
         }
       })
