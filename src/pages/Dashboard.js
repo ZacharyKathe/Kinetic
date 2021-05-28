@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import Goal from "../components/Goal";
 import API from "../utils/API";
 import NavTop from "../components/NavTop";
+import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
 import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
-import AddGoalBtn from "../components/AddGoalBtn";
-import AddGroupBtn from "../components/AddGroupBtn";
-import SaveGoalBtn from "../components/SaveGoalBtn";
-import SaveGroupBtn from "../components/SaveGroupBtn";
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -37,7 +34,6 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop header="Goals" />
       <h1>Dashboard Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
@@ -50,8 +46,6 @@ function Dashboard(props) {
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
       <Goal />
-      <SaveGroupBtn />
-      <NavBottom homeBtn={homeActive} groupsBtn={groups} calendarBtn={calendar} />
     </div>
   );
 }
