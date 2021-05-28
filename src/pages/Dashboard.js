@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Goal from "../components/Goal";
+import API from "../utils/API";
 
-function Dashboard() {
+function Dashboard(props) {
+  const [user, setUser] = useState(
+    {
+      username: '',
+      email: '',
+      id: 0,
+    });
+
+  const [userGoals, setUserGoals] = useState(
+    {
+      goals: [],
+    }
+  )
+
+
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      console.log(user);
+      
+      API.getUser(user.id).then(res=>{
+        console.log(res.data);
+        }, []);
+      });
+
   return (
     <div>
       <h1>Dashboard Page</h1>
@@ -14,6 +39,7 @@ function Dashboard() {
         consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
+      <Goal />
     </div>
   );
 }
