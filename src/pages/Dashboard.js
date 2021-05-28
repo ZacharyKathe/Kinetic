@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Goal from "../components/Goal";
-// import API from "../utils/API";
+//import API from "../utils/API";
+import NavTop from "../components/NavTop";
+import AddGoalBtn from "../components/AddGoalBtn";
+import NavBottom from "../components/NavBottom";
+import homeActive from "../images/home-active.png";
+import groups from "../images/groups.png";
+import calendar from "../images/calendar.png";
 
 function Dashboard(props) {
   const history = useHistory();
