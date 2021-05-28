@@ -6,12 +6,17 @@ const API = {
 
   login: function (userData) {
     return axios.post(`${URL_PREFIX}/login`, userData)
+    // .then((res) => {
+    //   if(res.data.success) {
+    //     document.window.location.href = '/dashboard'
+    //   }
+    // })
   },
   signup: function (userData) {
     return axios.post(`${URL_PREFIX}/signup`, userData)
   },
 
-  getDashboard: function (token) {
+  getProfile: function (token) {
     return axios.get(`${URL_PREFIX}/dashboard`, {
       headers: {
         authorization: `Bearer ${token}`
@@ -19,12 +24,8 @@ const API = {
     })
   },
   // working on this
-  getProfile: function (token) {
-    return axios.get(`${URL_PREFIX}/api/users/`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
+  getUser: function (id) {
+    return axios.get(`${URL_PREFIX}/api/users/${id}`)
   },
   
   getAllGoals: function () {
