@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
@@ -8,79 +8,80 @@ import API from '../utils/API';
 import Rotate from 'react-reveal/Rotate';
 import logo from "../images/kinetic-logo.png";
 
-const Login = () => {
+const Login = ({token}) => {
 
-  const [formState,setFormState] = useState({
-    email:"",
-    password:""
+  const [formState, setFormState] = useState({
+    email: "",
+    password: ""
   })
 
-  const [userState,setUserState] = useState({
-    token:"",
-    user:{
-    }
+  const [userState, setUserState] = useState({
+    token: "",
+    user: {}
   })
 
-  useEffect(()=>{
-    const token = localStorage.getItem("token")
-    if(token){
-      API.getDashboard(token).then(res=>{
+  useEffect(() => {
+    if (token) {
+      API.getProfile(token).then(res => {
         console.log(res.data);
         setUserState({
-          token:token,
-          user:{
-            email:res.data.email,
-            id:res.data.id,
-            username:res.data.username
+          token: token,
+          user: {
+            email: res.data.email,
+            id: res.data.id,
+            username: res.data.username
           }
         })
-      }).catch(err=>{
+        console.log(userState);
+      }).catch(err => {
         console.log("no logged in user", err)
         setUserState({
-          token:"",
-          user:{}
+          token: "",
+          user: {}
         })
       })
     } else {
       console.log("no token provided")
     }
-    
-  },[])
+
+  }, [])
 
   // When user tries to login:
-  const handleFormSubmit = e =>{
+  const handleFormSubmit = e => {
     e.preventDefault();
-    API.login(formState).then(res=>{
+    API.login(formState).then(res => {
       console.log(res.data);
-      localStorage.setItem("token",res.data.token)
+      localStorage.setItem("token", res.data.token)
       setUserState({
         ...userState,
-        token:res.data.token,
-        user:{
-          email:res.data.user.email,
-          name:res.data.user.name,
-          id:res.data.user.id
+        token: res.data.token,
+        user: {
+          email: res.data.user.email,
+          username: res.data.user.username,
+          id: res.data.user.id
         }
       })
-      API.getDashboard(userState.token);
-    }).catch(err=>{
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+      // localStorage.setItem('user', JSON.stringify(userState.user.username))
+
+    }).catch(err => {
       console.log("error occured")
       console.log(err);
       localStorage.removeItem("token");
       setUserState({
-        token:"",
-        user:{}
+        token: "",
+        user: {}
       })
     })
     setFormState({
-      email:"",
-      password:""
+      email: "",
+      password: ""
     })
   }
 
   const location = useLocation();
-  
-  
+
+
 
   return (
     <div className='logInScreen'>
@@ -117,9 +118,11 @@ const Login = () => {
               />
             </Col>
           </Row>
+          {/* {<Link to="/dashboard"} */}
           <button className="btn btn-success" type="submit">
             Log in
           </button>
+          {/* </Link> */}
         </Container>
       </form>
       
