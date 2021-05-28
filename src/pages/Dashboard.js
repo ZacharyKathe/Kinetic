@@ -21,9 +21,9 @@ function Dashboard(props) {
       const user = JSON.parse(localStorage.getItem('user'));
       console.log(user);
       
-      API.getUser(user.id).then(res=>{
+      /* API.getUser(user.id).then(res=>{
         console.log(res.data);
-        }, []);
+        }, []);*/
       });
 
   return (
