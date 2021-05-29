@@ -184,6 +184,10 @@
     flex-direction: column;
 }
 
+.placeholder {
+    color: #bcc5d3;
+}
+
 
 @media screen and (max-width: 992px) {
     .logIn{

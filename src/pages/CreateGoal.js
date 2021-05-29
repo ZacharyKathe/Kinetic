@@ -10,6 +10,8 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import "../index.css";
 
+
+// repurposed from login, needs update for create goal
 const CreateGoal = () => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
@@ -37,7 +39,7 @@ const CreateGoal = () => {
                 placeholder=" Enter a name for your goal..."
                 name="goal_name"
                 // value={goal_name}
-                onChange={(event) => setusername(event.target.value)}
+                //onChange={(event) => setusername(event.target.value)}
               />
             </Col>
           </Row>
@@ -50,34 +52,50 @@ const CreateGoal = () => {
                 placeholder=" Describe your goal..."
                 name="goal_description"
                 // value={goal_description}
-                onChange={(event) => setpassword(event.target.value)}
+                // onChange={(event) => setpassword(event.target.value)}
               />
             </Col>
           </Row>
           <Row className="create-goal-row">
             <Col size="12">
-              <p className="create-goal-label">Goal type</p>
-              <input
+              <p className="create-goal-label">Goal Category</p>
+              <select
                 className="create-goal-input"
                 type="text"
-                placeholder=" Choose a goal type..."
-                name="goal_type"
+                placeholder=" Choose a goal category..."
+                name="goal_category"
                 // value={goal_description}
-                onChange={(event) => setpassword(event.target.value)}
-              />
+                // onChange={(event) => setpassword(event.target.value)}
+              >
+                <option value="" disabled selected hidden> </option>
+                <option value="Diet">Diet</option>
+                <option value="Education">Education</option>
+                <option value="Exercise">Exercise</option>
+                <option value="Financial">Financial</option>
+                <option value="Habit">Habit</option>
+                <option value="Health">Health</option>
+                <option value="Relationship">Relationship</option>
+                <option value="Work">Work</option>
+              </select>  
             </Col>
           </Row>
           <Row className="create-goal-row">
             <Col size="12">
               <p className="create-goal-label">Goal frequency</p>
-              <input
+              <select
                 className="create-goal-input"
                 type="text"
                 placeholder=" Choose a goal frequency..."
                 name="goal_frequency"
                 // value={goal_description}
-                onChange={(event) => setpassword(event.target.value)}
-              />
+                // onChange={(event) => setpassword(event.target.value)}
+              >
+                <option value="" disabled selected hidden> </option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+              </select>
             </Col>
           </Row>
           <Row className="create-goal-row">
@@ -89,34 +107,31 @@ const CreateGoal = () => {
                 placeholder=" Choose a target number for your goal..."
                 name="goal_target"
                 // value={goal_target}
-                onChange={(event) => setpassword(event.target.value)}
+                // onChange={(event) => setpassword(event.target.value)}
               />
             </Col>
           </Row>
           <Row className="create-goal-row">
             <Col size="12">
               <p className="create-goal-label">Number type</p>
-              <input
+              <select
                 className="create-goal-input"
                 type="text"
                 placeholder=" What type of number is your target..."
-                name="goal_type"
+                name="number_type"
                 // value={number_type}
-                onChange={(event) => setpassword(event.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="create-goal-row">
-            <Col size="12">
-              <p className="create-goal-label">Duration</p>
-              <input
-                className="create-goal-input"
-                type="text"
-                placeholder=" How long will you pursue this goal..."
-                name="goal_type"
-                // value={number_type}
-                onChange={(event) => setpassword(event.target.value)}
-              />
+                // onChange={(event) => setpassword(event.target.value)}
+              >
+                <option value="" disabled selected hidden> </option>
+                <option value="Event">Event</option>
+                <option value="Hours">Hours</option>
+                <option value="Kilograms">Kilograms</option>
+                <option value="Liters">Liters</option>
+                <option value="Miles">Miles</option>
+                <option value="Minutes">Minutes</option>
+                <option value="Kilometers">Kilometers</option>
+                <option value="Pounds">Pounds</option>
+              </select>
             </Col>
           </Row>
           <div className="goal-dates">
@@ -128,9 +143,9 @@ const CreateGoal = () => {
                 className="create-goal-input"
                 type="text"
                 placeholder=" mm/dd/yyyy"
-                name="goal_type"
-                // value={number_type}
-                onChange={(event) => setpassword(event.target.value)}
+                name="goal_start"
+                // value={goal_start}
+                // onChange={(event) => setpassword(event.target.value)}
               />
             </div>
             <div className="actual-dates">
@@ -141,9 +156,9 @@ const CreateGoal = () => {
                 className="create-goal-input"
                 type="text"
                 placeholder=" mm/dd/yyyy"
-                name="goal_type"
-                // value={number_type}
-                onChange={(event) => setpassword(event.target.value)}
+                name="goal_finish"
+                // value={goal_finish}
+                // onChange={(event) => setpassword(event.target.value)}
               />
             </div>
           </div>
