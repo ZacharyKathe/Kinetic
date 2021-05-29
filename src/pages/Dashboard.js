@@ -5,10 +5,10 @@ import Goal from "../components/Goal";
 import NavTop from "../components/NavTop";
 // import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
-// import addBtn from "../../images/add-btn.png";
 import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
+import DashboardCard from '../components/DashboardCard'
 
 
 
@@ -16,25 +16,26 @@ function Dashboard(props) {
   const history = useHistory();
 
   const [userGoals, setUserGoals] = useState([]);
-
+  
   const [selectedTab, setSelectedTab] = useState('Home')
 
 
+  console.log(props.user.goals);
+  
   const allGoals = props.user.goals || [];
+    useEffect(() => {
+      if (!props.user.email) {
+        history.push('/')
+      }
+      if(allGoals){
+        setUserGoals(allGoals)
+      }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
-
-
-  useEffect(() => {
-    if (!props.user.email) {
-      history.push('/')
-    }
-    if (allGoals.length > 0) {
-      setUserGoals(allGoals);
-    }
-    console.log(userGoals);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      
+      
+   
 
   // This function checks the selectedTab state and renders the correct component accordingly
   const renderSelectedTab = () => {
@@ -59,16 +60,22 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop />
-      <h1>Dashboard Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-
-      {/* Whichever tab is clicked, this function renders the component: */}
+      <NavTop header="Goals" />
       {renderSelectedTab()}
-
-      <NavBottom
+      <div className='goalCards'>
+      {allGoals.map(item => (
+        <DashboardCard
+        goal_name = {item.goal_name}
+        goal_category = {item.goal_category}
+        goal_description = {item.goal_description}
+        goal_frequency = {item.goal_frequency}
+        goal_finish = {item.goal_finish}
+        />
+      ))}
+      </div>
+      
+      <AddGoalBtn />
+      <NavBottom 
         setSelectedTab={setSelectedTab}
         homeBtn={homeActive}
         groupsBtn={groups}
