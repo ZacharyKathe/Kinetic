@@ -161,7 +161,6 @@ function App() {
       <Route exact path="/groups">
         <Group user={userState.user} token={userState.token} />
       </Route>
-      {/* <Route exact path="/groupgoals" component={GroupGoals} /> */}
       <NavTabs />
     </Router>
   );
