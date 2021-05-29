@@ -14,7 +14,6 @@ import "../index.css";
 const CreateGoal = () => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-  const goal_category = "brooks";
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
@@ -32,35 +31,40 @@ const CreateGoal = () => {
         <form onSubmit={handleSubmit}>
           <Row className="create-goal-row">
             <Col size="12">
+              <p className="create-goal-label">Goal name</p>
               <input
-                className="form-control"
+                className="create-goal-input"
                 type="text"
-                placeholder="goal_category"
+                placeholder="Enter a name for your goal..."
                 name="goal_category"
-                value={goal_category}
+                // value={goal_category}
                 onChange={(event) => setusername(event.target.value)}
               />
             </Col>
           </Row>
           <Row className="create-goal-row">
             <Col size="12">
+              <p className="create-goal-label">Description</p>
               <input
-                className="form-control"
+                className="create-goal-input"
                 type="password"
-                placeholder="Password"
+                placeholder="Describe your goal..."
                 name="password"
-                value={password}
+                // value={password}
                 onChange={(event) => setpassword(event.target.value)}
               />
             </Col>
           </Row>
-          <SaveGoalBtn />
+          
         </form>
-        <NavBottom
-          homeBtn={homeActive}
-          groupsBtn={groups}
-          calendarBtn={calendar}
-        />
+        <div className="nav-btm-fixed">
+          <SaveGoalBtn />
+          <NavBottom
+              homeBtn={homeActive}
+              groupsBtn={groups}
+              calendarBtn={calendar}
+            />
+        </div>
       </Container>
     </div>
   );
