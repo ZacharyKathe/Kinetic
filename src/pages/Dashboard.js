@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Goal from "../components/Goal";
 import API from "../utils/API";
+import DashboardCard from '../components/DashboardCard'
 
 function Dashboard(props) {
   const [user, setUser] = useState(
@@ -10,34 +11,33 @@ function Dashboard(props) {
       id: "",
     });
 
-  const [userGoals, setUserGoals] = useState(
-    {
-      goals: [],
-    }
-  )
+  const [userGoals, setUserGoals] = useState([]);
 
-
+  console.log(props.user.goals);
+  
+  const allGoals = props.user.goals
     useEffect(() => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user);
-      
-      API.getUser(user.id).then(res=>{
-        console.log(res.data.Goals);
-        setUserGoals({
-          goals: res.data.Goals,
-          
-        })
+      if(allGoals){
+        setUserGoals(allGoals)
+      }
         }, []);
 
-  
-      });
+      
+      
+    
 
   return (
     <div>
       <h1>Dashboard Page</h1>
-      <p>
-        
-      </p>
+      <div>
+      {allGoals.map(item => (
+        <DashboardCard
+        goal_category = {item.goal_category}
+        goal_description = {item.goal_description}
+        goal_frequency = {item.goal_frequency}
+        />
+      ))}
+      </div>
       <Goal />
     </div>
   );

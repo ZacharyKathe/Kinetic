@@ -37,7 +37,8 @@ function App() {
           user:{
             email:res.data.email,
             id:res.data.id,
-            username:res.data.username
+            username:res.data.username,
+            goals:res.data.Goals
           }
         })
       }).catch(err=>{
