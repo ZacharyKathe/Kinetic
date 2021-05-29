@@ -1,7 +1,18 @@
 import React from "react";
+import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
+import {confirmable } from 'react-confirm';
 
 function DashboardCard(props) {
     
+  const history = useHistory();
+
+  const removeThisGoal = () => {
+    if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
+      API.deleteGoal(props.id, props.token).then(res => history.go(0))
+    } else return;
+  }
+
   return (
     <div className="card">
       <div className="content">
@@ -20,7 +31,7 @@ function DashboardCard(props) {
               <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
               <p className='endDate'><strong>End date:</strong> {props.goal_finish}</p>
               </div>
-      <span onClick={() => props.removeGoal(props.id)} className="remove">
+      <span onClick={() => removeThisGoal()} className="remove">
         𝘅
       </span>
     </div>

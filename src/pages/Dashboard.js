@@ -23,9 +23,9 @@ function Dashboard(props) {
 
   const [userGroups, setUserGroups] = useState([]);
 
-  const [selectedTab, setSelectedTab] = useState('Home')
+  const [selectedTab, setSelectedTab] = useState('My Goals')
 
-  // console.log(props.user);
+  // console.log(props.token);
 
   const allGoals = props.user.goals || [];
   const allGroups = props.user.groups || [];
@@ -45,9 +45,12 @@ function Dashboard(props) {
   }, []);
 
   // removing goals
-  // removeGoal = id =>{
-  //   const goalDelete = props.user.filter(goal => goal.id !== id)
-  //   setUserGoals({goalDelete})
+  // useEffect(() =>
+  //   API.deleteGoal(id)
+
+  // )
+  // const removeGoal = id =>{
+  //   console.log(id);
   // }
 
 
@@ -55,13 +58,11 @@ function Dashboard(props) {
   // This function checks the selectedTab state and renders the correct component accordingly
   const renderSelectedTab = () => {
 
-    // console.log(selectedTab);
-
     switch (selectedTab) {
-      case "Home":
+      case "My Goals":
         return (
           <>
-          <h1 className='blueBack'>Goals</h1>
+          {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
               {allGoals.map(item => (
                 <DashboardCard
@@ -72,13 +73,15 @@ function Dashboard(props) {
                   goal_frequency={item.goal_frequency}
                   goal_finish={item.goal_finish}
                   goal_start={item.goal_start}
+                  id={item.id}
                   key={item.id}
+                  token={props.token}
                 />
               ))}
             </div>
           </>
         )
-      case "Groups":
+      case "My Groups":
         return (
           <>
             <div className='groupList'>
@@ -107,9 +110,9 @@ function Dashboard(props) {
 
   const renderSelectedBtn = () => {
     switch (selectedTab) {
-      case "Home":
+      case "My Goals":
         return (<AddGoalBtn />);
-      case "Groups":
+      case "My Groups":
         return (<AddGroupBtn />);
       case "Calendar":
         return ("Calendar button here?");
@@ -127,8 +130,8 @@ function Dashboard(props) {
       {renderSelectedBtn()}
         <NavBottom
           setSelectedTab={setSelectedTab}
-          homeBtn={selectedTab === "Home" ? homeActive : home}
-          groupsBtn={selectedTab === "Groups" ? groupsActive : groups}
+          homeBtn={selectedTab === "My Goals" ? homeActive : home}
+          groupsBtn={selectedTab === "My Groups" ? groupsActive : groups}
           calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
         />
       </div>
