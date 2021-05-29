@@ -1,6 +1,6 @@
 import API from "./utils/API";
 import React, { useState, useEffect } from "react";
-import NavTabs from './components/NavTabs';
+// import NavTabs from './components/NavTabs';
 import Group from './pages/Group';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from "./pages/Login";
@@ -39,6 +39,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {
@@ -69,6 +70,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {
@@ -108,6 +110,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {

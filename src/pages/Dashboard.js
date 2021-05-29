@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Goal from "../components/Goal";
+// import Goal from "../components/Goal";
 //import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
+import AddGroupBtn from "../components/AddGroupBtn";
 import NavBottom from "../components/NavBottom";
 import homeActive from "../images/home-active.png";
+import home from "../images/home.png";
+import groupsActive from "../images/groups-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
+import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
-
+import GroupCard from "../components/GroupCard";
 
 
 function Dashboard(props) {
@@ -17,18 +21,25 @@ function Dashboard(props) {
 
   const [userGoals, setUserGoals] = useState([]);
 
+  const [userGroups, setUserGroups] = useState([]);
+
   const [selectedTab, setSelectedTab] = useState('Home')
 
-
-  console.log(props.user.goals);
+  // console.log(props.user);
 
   const allGoals = props.user.goals || [];
+  const allGroups = props.user.groups || [];
+
   useEffect(() => {
+    // Checks if user is logged in, and sends them to login if not
     if (!props.user.email) {
       history.push('/')
     }
     if (allGoals) {
       setUserGoals(allGoals)
+    }
+    if (allGroups) {
+      setUserGroups(allGroups)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,30 +50,41 @@ function Dashboard(props) {
 
   // This function checks the selectedTab state and renders the correct component accordingly
   const renderSelectedTab = () => {
-    let result = null;
 
-    console.log(selectedTab);
+    // console.log(selectedTab);
 
     switch (selectedTab) {
       case "Home":
         return (
-          <div className='goalCards'>
-            {allGoals.map(item => (
-              <DashboardCard
-                goal_name={item.goal_name}
-                goal_category={item.goal_category}
-                goal_description={item.goal_description}
-                goal_frequency={item.goal_frequency}
-                goal_finish={item.goal_finish}
-              />
-            ))}
-          </div>
+          <>
+            <div className='goalCards'>
+              {allGoals.map(item => (
+                <DashboardCard
+                  goal_name={item.goal_name}
+                  goal_category={item.goal_category}
+                  goal_description={item.goal_description}
+                  goal_frequency={item.goal_frequency}
+                  goal_finish={item.goal_finish}
+                  key={item.id}
+                />
+              ))}
+            </div>
+          </>
         )
       case "Groups":
         return (
-          <div className='groupList'>
-            <h2>Put group list component here</h2>
-          </div>
+          <>
+            <div className='groupList'>
+              {allGroups.map(item => (
+                <GroupCard
+                  name={item.name}
+                  users={item.Users}
+                  key={item.id}
+                  id={item.id}
+                />
+              ))}
+            </div>
+          </>
         )
       case "Calendar":
         return (
@@ -70,9 +92,22 @@ function Dashboard(props) {
             <h2>Put calendar component here</h2>
           </div>
         )
+      default: return (
+        <h3>We have encountered an error...</h3>
+      )
     }
+  }
 
-    return result;
+  const renderSelectedBtn = () => {
+    switch (selectedTab) {
+      case "Home":
+        return (<AddGoalBtn />);
+      case "Groups":
+        return (<AddGroupBtn />);
+      case "Calendar":
+        return ("Calendar button here?");
+      default: return ("");
+    }
   }
 
   return (
@@ -81,14 +116,15 @@ function Dashboard(props) {
 
       {/* Dashboard renders here based off what tab you are in */}
       {renderSelectedTab()}
-
-      <AddGoalBtn />
-      <NavBottom
-        setSelectedTab={setSelectedTab}
-        homeBtn={homeActive}
-        groupsBtn={groups}
-        calendarBtn={calendar}
-      />
+      <div className="nav-btm-fixed">
+      {renderSelectedBtn()}
+        <NavBottom
+          setSelectedTab={setSelectedTab}
+          homeBtn={selectedTab === "Home" ? homeActive : home}
+          groupsBtn={selectedTab === "Groups" ? groupsActive : groups}
+          calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
+        />
+      </div>
     </div>
   );
 }
