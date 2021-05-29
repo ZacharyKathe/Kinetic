@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .add-group-btn {
     display: flex;
     flex-direction: row;
