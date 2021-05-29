@@ -1,56 +1,73 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Container from "../components/Container";
-import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
-import Rotate from 'react-reveal/Rotate';
-
+import Col from "../components/Col";
+import Row from "../components/Row";
+import NavTop from "../components/NavTop";
+import NavBottom from "../components/NavBottom";
+import SaveGoalBtn from "../components/SaveGoalBtn";
+import homeActive from "../images/home-active.png";
+import groups from "../images/groups.png";
+import calendar from "../images/calendar.png";
+import "../index.css";
 
 const CreateGoal = () => {
-    const [username,setusername] = useState("")
-    const [password,setpassword] = useState("")
-    const handleSubmit = e => {
-      e.preventDefault();
-      console.log(username, password)
-      setusername("");
-      setpassword("");
-    };
-  
-    const location = useLocation();
-    
-    
-  
-    return (
-      <div className='logInScreen'>
-        <Link to="/Dashboard" className={location.pathname === "/Dashboard" ? "nav-link active" : "nav-link NewUser"}>
-            Dashboard
-          </Link>
-        
-        <Rotate>
-        <Jump> <h2 className='logIn'>Log in</h2> </Jump>
-        <form onSubmit={handleSubmit}>
-          <Container className="signInForm">
-            <Row className="form-group">
-              <Col size="12">
-                <input className="form-control" type="text" placeholder="goal_category" name="goal_category" value={goal_category} onChange={event=>setusername(event.target.value)} />
-              </Col>
-            </Row>
-            <Row className="form-group">
-              <Col size="12">
-                <input className="form-control"  type="password"  placeholder="Password"  name="password" value={password} onChange={event=>setpassword(event.target.value)}
-                />
-              </Col>
-            </Row>
-            <button className="btn btn-success" type="submit">
-              Log in
-            </button>
-          </Container>
-        </form>
-        </Rotate>
-        
-  
-      </div>
-    );
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const goal_category = "brooks";
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username, password);
+    setusername("");
+    setpassword("");
   };
-  
-  export default CreateGoal;
-  
+
+  const location = useLocation();
+
+  return (
+    <div className="create-goal">
+      <NavTop header="Create Goal" />
+
+      <Container className="create-goal-form">
+        <form onSubmit={handleSubmit}>
+          <Row className="create-goal-row">
+            <Col size="12">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="goal_category"
+                name="goal_category"
+                value={goal_category}
+                onChange={(event) => setusername(event.target.value)}
+              />
+            </Col>
+          </Row>
+          <Row className="create-goal-row">
+            <Col size="12">
+              <input
+                className="form-control"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={(event) => setpassword(event.target.value)}
+              />
+            </Col>
+          </Row>
+          <SaveGoalBtn />
+        </form>
+        <NavBottom
+          homeBtn={homeActive}
+          groupsBtn={groups}
+          calendarBtn={calendar}
+        />
+      </Container>
+    </div>
+  );
+};
+
+export default CreateGoal;
+
+/* <Link to="/Dashboard" className={location.pathname === "/Dashboard" ? "nav-link active" : "nav-link NewUser"}>
+  Dashboard
+</Link> */

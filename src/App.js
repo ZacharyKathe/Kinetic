@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from './pages/Signup'
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import CreateGoal from "./pages/CreateGoal";
 const token = localStorage.getItem('token');
 
 function App() {
@@ -161,7 +162,10 @@ function App() {
       <Route exact path="/groups">
         <Group user={userState.user} token={userState.token} />
       </Route>
-      <NavTabs />
+      <Route exact path="/creategoal">
+        <CreateGoal user={userState.usre} token={userState.token} />
+      </Route>
+      {/* <NavTabs /> */}
     </Router>
   );
 }

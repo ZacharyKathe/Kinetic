@@ -150,6 +150,10 @@
     color: white;
 }
 
+.create-goal-row {
+    height: 100px;
+}
+
 
 @media screen and (max-width: 992px) {
     .logIn{
