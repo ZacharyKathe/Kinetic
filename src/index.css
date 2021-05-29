@@ -150,28 +150,40 @@
     color: white;
 }
 
-.create-goal-form {
-
-}
-
 .create-goal-row {
-    display: flex;
     height: 60px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
     margin-top: 10px;
 }
 
 .create-goal-input {
     height: 35px;
-    width: 300px;
+    width: 100%;
     border-radius: 4px;
     border: 1px solid #bcc5d3;
-    padding-left: 10px;
 }
 
 .create-goal-label {
     color: #5574f7;
     font-size: 18px;
+}
+
+.goal-dates {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 60px;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.actual-dates {
+    display: flex;
+    flex-direction: column;
 }
 
 
