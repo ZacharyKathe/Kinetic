@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Goal from "../components/Goal";
-import API from "../utils/API";
+//import API from "../utils/API";
+import NavTop from "../components/NavTop";
+import AddGoalBtn from "../components/AddGoalBtn";
+import NavBottom from "../components/NavBottom";
+// import addBtn from "../../images/add-btn.png";
+import homeActive from "../images/home-active.png";
+import groups from "../images/groups.png";
+import calendar from "../images/calendar.png";
+
 import DashboardCard from '../components/DashboardCard'
 
 function Dashboard(props) {
-  const [user, setUser] = useState(
-    {
-      username: '',
-      email: '',
-      id: "",
-    });
+  const history = useHistory();
 
   const [userGoals, setUserGoals] = useState([]);
 
@@ -28,6 +32,7 @@ function Dashboard(props) {
 
   return (
     <div>
+      <NavTop />
       <h1>Dashboard Page</h1>
       <div>
       {allGoals.map(item => (
@@ -39,8 +44,28 @@ function Dashboard(props) {
       ))}
       </div>
       <Goal />
+      <AddGoalBtn />
+      <NavBottom 
+        homeBtn={homeActive}
+        groupsBtn={groups}
+        calendarBtn={calendar}
+        />
     </div>
   );
 }
 
 export default Dashboard;
+
+
+// const allGoals = props.user.goals || [];
+//   useEffect(() => {
+//     if (!props.user.email) {
+//       history.push('/')
+//     }
+//     if (allGoals.length > 0) {
+//     setUserGoals(allGoals);
+//   }
+//   console.log(userGoals);
+  
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
