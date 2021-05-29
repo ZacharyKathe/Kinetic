@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import Jump from 'react-reveal/Jump';
+// import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate';
 

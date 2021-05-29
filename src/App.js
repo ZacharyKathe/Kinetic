@@ -71,7 +71,7 @@ function App() {
           }
         })
       }).catch(err => {
-        console.log("no logged in user")
+        console.log("no logged in user", err)
         localStorage.removeItem("token");
         setUserState({
           token: "",

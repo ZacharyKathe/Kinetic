@@ -5,6 +5,7 @@ import Goal from "../components/Goal";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
+// import addBtn from "../../images/add-btn.png";
 import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
@@ -15,7 +16,6 @@ function Dashboard(props) {
   const [userGoals, setUserGoals] = useState([]);
 
 
-  console.log(props.user.goals);
   const allGoals = props.user.goals || [];
   useEffect(() => {
     if (!props.user.email) {
@@ -23,12 +23,15 @@ function Dashboard(props) {
     }
     if (allGoals.length > 0) {
     setUserGoals(allGoals);
-    }
-
+  }
+  console.log(userGoals);
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
+      <NavTop />
       <h1>Dashboard Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
@@ -41,6 +44,12 @@ function Dashboard(props) {
         malesuada fames ac ante ipsum primis in faucibus.
       </p>
       <Goal />
+      <AddGoalBtn />
+      <NavBottom 
+        homeBtn={homeActive}
+        groupsBtn={groups}
+        calendarBtn={calendar}
+        />
     </div>
   );
 }
