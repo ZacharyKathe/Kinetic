@@ -5,11 +5,9 @@ import Goal from "../components/Goal";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
-// import addBtn from "../../images/add-btn.png";
 import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
-
 import DashboardCard from '../components/DashboardCard'
 
 function Dashboard(props) {
@@ -32,8 +30,7 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop />
-      <h1 className='blueBack'>Goals</h1>
+      <NavTop header="Goals" />
       <div className='goalCards'>
       {allGoals.map(item => (
         <DashboardCard

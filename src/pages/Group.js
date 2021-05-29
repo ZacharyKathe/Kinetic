@@ -1,6 +1,7 @@
 import React from "react";
 
-function Group() {
+function Group(props) {
+
   return (
     <div>
       <h1>Group Page</h1>
