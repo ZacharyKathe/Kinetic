@@ -25,7 +25,7 @@ function Dashboard(props) {
 
   const [selectedTab, setSelectedTab] = useState('Home')
 
-  // console.log(props.user);
+  // console.log(props.token);
 
   const allGoals = props.user.goals || [];
   const allGroups = props.user.groups || [];
@@ -45,17 +45,18 @@ function Dashboard(props) {
   }, []);
 
   // removing goals
-  // removeGoal = id =>{
-  //   const goalDelete = props.user.filter(goal => goal.id !== id)
-  //   setUserGoals({goalDelete})
+  // useEffect(() =>
+  //   API.deleteGoal(id)
+
+  // )
+  // const removeGoal = id =>{
+  //   console.log(id);
   // }
 
 
 
   // This function checks the selectedTab state and renders the correct component accordingly
   const renderSelectedTab = () => {
-
-    // console.log(selectedTab);
 
     switch (selectedTab) {
       case "Home":
@@ -72,7 +73,10 @@ function Dashboard(props) {
                   goal_frequency={item.goal_frequency}
                   goal_finish={item.goal_finish}
                   goal_start={item.goal_start}
+                  // useEffect={useEffect()}
+                  id={item.id}
                   key={item.id}
+                  token={props.token}
                 />
               ))}
             </div>
