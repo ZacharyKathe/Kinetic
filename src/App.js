@@ -161,8 +161,8 @@ function App() {
       <Route exact path="/dashboard">
         <Dashboard user={userState.user} token={userState.token} />
       </Route>
-      <Route exact path="/groups">
-        <Group user={userState.user} token={userState.token} />
+      <Route path="/group/:id">
+        <Group user={userState.user} token={userState.token}/>
       </Route>
       {/* <NavTabs /> */}
     </Router>
