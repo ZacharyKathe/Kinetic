@@ -38,6 +38,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {
@@ -68,6 +69,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {
@@ -107,6 +109,7 @@ function App() {
             id: res.data.id,
             username: res.data.username,
             goals: res.data.Goals,
+            groups: res.data.Groups,
           }
         })
       }).catch(err => {
@@ -161,7 +164,7 @@ function App() {
       <Route exact path="/groups">
         <Group user={userState.user} token={userState.token} />
       </Route>
-      <NavTabs />
+      {/* <NavTabs /> */}
     </Router>
   );
 }

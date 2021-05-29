@@ -1,9 +1,7 @@
 .bottom-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 64px;
-    padding-left: 24px;
-    padding-right: 24px;
     border-top: 2px solid #e2e8ed;
 }

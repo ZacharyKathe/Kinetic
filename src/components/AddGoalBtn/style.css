@@ -1,4 +1,4 @@
-.add-goal-btn {
+.add-group-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -9,7 +9,7 @@
     font-weight: 600;
 }
 
-#add-goal-text {
+#add-group-text {
     padding-left: 5px;
     padding-top: 2px;
 }
