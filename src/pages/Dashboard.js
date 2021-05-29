@@ -7,11 +7,13 @@ import AddGoalBtn from "../components/AddGoalBtn";
 import AddGroupBtn from "../components/AddGroupBtn";
 import NavBottom from "../components/NavBottom";
 import homeActive from "../images/home-active.png";
+import home from "../images/home.png";
+import groupsActive from "../images/groups-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
+import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
 import GroupCard from "../components/GroupCard";
-
 
 
 function Dashboard(props) {
@@ -23,8 +25,7 @@ function Dashboard(props) {
 
   const [selectedTab, setSelectedTab] = useState('Home')
 
-
-  console.log(props.user);
+  // console.log(props.user);
 
   const allGoals = props.user.goals || [];
   const allGroups = props.user.groups || [];
@@ -119,9 +120,9 @@ function Dashboard(props) {
       {renderSelectedBtn()}
         <NavBottom
           setSelectedTab={setSelectedTab}
-          homeBtn={homeActive}
-          groupsBtn={groups}
-          calendarBtn={calendar}
+          homeBtn={selectedTab === "Home" ? homeActive : home}
+          groupsBtn={selectedTab === "Groups" ? groupsActive : groups}
+          calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
         />
       </div>
     </div>
