@@ -33,17 +33,19 @@ function Dashboard(props) {
   return (
     <div>
       <NavTop />
-      <h1>Dashboard Page</h1>
-      <div>
+      <h1 className='blueBack'>Goals</h1>
+      <div className='goalCards'>
       {allGoals.map(item => (
         <DashboardCard
+        goal_name = {item.goal_name}
         goal_category = {item.goal_category}
         goal_description = {item.goal_description}
         goal_frequency = {item.goal_frequency}
+        goal_finish = {item.goal_finish}
         />
       ))}
       </div>
-      <Goal />
+      
       <AddGoalBtn />
       <NavBottom 
         homeBtn={homeActive}
