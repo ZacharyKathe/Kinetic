@@ -44,7 +44,11 @@ function Dashboard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
+  // removing goals
+  // removeGoal = id =>{
+  //   const goalDelete = props.user.filter(goal => goal.id !== id)
+  //   setUserGoals({goalDelete})
+  // }
 
 
 
@@ -57,14 +61,17 @@ function Dashboard(props) {
       case "Home":
         return (
           <>
+          <h1 className='blueBack'>Goals</h1>
             <div className='goalCards'>
               {allGoals.map(item => (
                 <DashboardCard
+                  
                   goal_name={item.goal_name}
                   goal_category={item.goal_category}
                   goal_description={item.goal_description}
                   goal_frequency={item.goal_frequency}
                   goal_finish={item.goal_finish}
+                  goal_start={item.goal_start}
                   key={item.id}
                 />
               ))}
