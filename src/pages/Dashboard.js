@@ -23,7 +23,7 @@ function Dashboard(props) {
 
   const [userGroups, setUserGroups] = useState([]);
 
-  const [selectedTab, setSelectedTab] = useState('Home')
+  const [selectedTab, setSelectedTab] = useState('My Goals')
 
   // console.log(props.token);
 
@@ -59,10 +59,10 @@ function Dashboard(props) {
   const renderSelectedTab = () => {
 
     switch (selectedTab) {
-      case "Home":
+      case "My Goals":
         return (
           <>
-          <h1 className='blueBack'>Goals</h1>
+          {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
               {allGoals.map(item => (
                 <DashboardCard
@@ -73,7 +73,6 @@ function Dashboard(props) {
                   goal_frequency={item.goal_frequency}
                   goal_finish={item.goal_finish}
                   goal_start={item.goal_start}
-                  // useEffect={useEffect()}
                   id={item.id}
                   key={item.id}
                   token={props.token}
@@ -82,7 +81,7 @@ function Dashboard(props) {
             </div>
           </>
         )
-      case "Groups":
+      case "My Groups":
         return (
           <>
             <div className='groupList'>
@@ -111,9 +110,9 @@ function Dashboard(props) {
 
   const renderSelectedBtn = () => {
     switch (selectedTab) {
-      case "Home":
+      case "My Goals":
         return (<AddGoalBtn />);
-      case "Groups":
+      case "My Groups":
         return (<AddGroupBtn />);
       case "Calendar":
         return ("Calendar button here?");
@@ -131,8 +130,8 @@ function Dashboard(props) {
       {renderSelectedBtn()}
         <NavBottom
           setSelectedTab={setSelectedTab}
-          homeBtn={selectedTab === "Home" ? homeActive : home}
-          groupsBtn={selectedTab === "Groups" ? groupsActive : groups}
+          homeBtn={selectedTab === "My Goals" ? homeActive : home}
+          groupsBtn={selectedTab === "My Groups" ? groupsActive : groups}
           calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
         />
       </div>

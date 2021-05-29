@@ -100,8 +100,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    
-    
+    padding-top: 4.1rem;
+    margin-bottom: 7.5rem;
 }
 
 .card{
