@@ -105,10 +105,11 @@
 }
 
 .card{
-    border: solid rgb(172, 170, 170) 2px;
-    border-radius: 4px;
     background-color: white;
     display: flex;
+    width: 300px;
+    padding: 0px;
+    margin: 0px;
     
 }
 .goalheading{
@@ -124,9 +125,8 @@
     
 }
 .remove{
-    background-color: red;
-    color: white;
-    margin-left: 20px;
+    background-color: rgb(250, 245, 245);
+    color: rgb(10, 10, 10);
     width: 20px;
     height: 20px;
     display: flex;
@@ -135,18 +135,23 @@
     
 }
 
+.progressBar{
+    border-radius: 5px;
+    border: solid rgb(172, 170, 170) 2px;
+    margin-bottom: 3px;
+}
 
 .contentRight{
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .blueBack{
     color: #5574F7;
 }
+
 
 .create-goal-row {
     height: 60px;
@@ -187,6 +192,8 @@
 .placeholder {
     color: #bcc5d3;
 }
+
+
 
 
 @media screen and (max-width: 992px) {
