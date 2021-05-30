@@ -37,6 +37,13 @@ const API = {
   getOneGroup: function (id) {
     return axios.get(`${URL_PREFIX}/api/groups/${id}`);
   },
+  deleteGoal: function (id, token) {
+    return axios.delete(`${URL_PREFIX}/api/goals/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+  }
   
 }
 
