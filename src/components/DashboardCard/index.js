@@ -1,6 +1,10 @@
 import React from "react";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
+import {confirmable } from 'react-confirm';
+import {ProgressBar} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 function DashboardCard(props) {
     
@@ -12,28 +16,29 @@ function DashboardCard(props) {
     } else return;
   }
 
+  const percent = 70
+
   return (
+    <div className='progressBar'>
     <div className="card">
       <div className="content">
       <h3 className='goalheading'>{props.goal_category}</h3>
           <p className='goalInfo'>
             <strong>Type</strong>: {props.goal_name}
           </p>
-          <p className='goalInfo'>
-            <strong>Description</strong>: {props.goal_description}
-          </p>
-          <p className='goalInfo'>
-            <strong>Start</strong>: {props.goal_start}
-          </p>
       </div>
+      
       <div className='contentRight'>
-              <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
-              <p className='endDate'><strong>End date:</strong> {props.goal_finish}</p>
-              </div>
+        <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
+      </div>
       <span onClick={() => removeThisGoal()} className="remove">
-        𝘅
+        ...
       </span>
+      
     </div>
+    <ProgressBar now={percent} label={`${percent}% compleated`} />
+    </div>
+    
   );
 }
 
