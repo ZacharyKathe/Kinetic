@@ -11,6 +11,8 @@ import CreateGoal from "./pages/CreateGoal";
 const token = localStorage.getItem('token');
 
 function App() {
+  
+  // const location = useLocation();
 
   const [formState, setFormState] = useState({
     email: "",
@@ -112,9 +114,9 @@ function App() {
             goals: res.data.Goals,
             groups: res.data.Groups,
           }
-        })
+        });
       }).catch(err => {
-        console.log("no logged in user")
+        console.log(err);
         localStorage.removeItem("token");
         setUserState({
           token: "",
@@ -131,7 +133,7 @@ function App() {
       })
     })
     setSignupFormState({
-      name: "",
+      username: "",
       email: "",
       password: ""
     })
