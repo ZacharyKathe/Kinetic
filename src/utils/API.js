@@ -14,6 +14,7 @@ const API = {
   },
   signup: async function (userData) {
     const newUser = await axios.post(`${URL_PREFIX}/signup`, userData);
+    
       return newUser.then((res) => {
         window.location.href = '/dashboard';
       })
