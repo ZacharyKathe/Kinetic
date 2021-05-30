@@ -1,7 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import {confirmable } from 'react-confirm';
 
 function DashboardCard(props) {
     

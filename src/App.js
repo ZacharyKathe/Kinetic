@@ -31,7 +31,7 @@ function App() {
     const token = localStorage.getItem("token")
     if (token) {
       API.getDashboard(token).then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setUserState({
           token: token,
           user: {
@@ -154,7 +154,7 @@ function App() {
       <Route exact path="/newuser">
         <Signup
           user={userState.user}
-          handleFormSubmit={handleSignupFormSubmit}
+          handleSignupFormSubmit={handleSignupFormSubmit}
           signupFormState={signupFormState}
           setSignupFormState={setSignupFormState}
         />
@@ -166,7 +166,7 @@ function App() {
         <Group user={userState.user} token={userState.token}/>
       </Route>
       <Route exact path="/creategoal">
-        <CreateGoal user={userState.usre} token={userState.token} />
+        <CreateGoal user={userState.user} token={userState.token} />
       </Route>
       {/* <NavTabs /> */}
     </Router>
