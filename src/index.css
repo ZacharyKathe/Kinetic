@@ -111,6 +111,11 @@
     display: flex;
     
 }
+
+.create-goal-form {
+    padding-top: 4.1rem;
+}
+
 .goalheading{
     padding-bottom: 20px;
     padding-top: 5px;
