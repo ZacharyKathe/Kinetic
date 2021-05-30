@@ -7,6 +7,8 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate';
 import logo from "../images/kinetic-logo.png";
 
+
+
 const Login = (props) => {
   const location = useLocation();
   const history = useHistory();

@@ -16,6 +16,9 @@ import DashboardCard from '../components/DashboardCard'
 import GroupCard from "../components/GroupCard";
 
 
+
+
+
 function Dashboard(props) {
   const history = useHistory();
 
@@ -63,15 +66,14 @@ function Dashboard(props) {
           <>
           {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
+              
               {allGoals.map(item => (
                 <DashboardCard
                   
                   goal_name={item.goal_name}
                   goal_category={item.goal_category}
-                  goal_description={item.goal_description}
                   goal_frequency={item.goal_frequency}
                   goal_finish={item.goal_finish}
-                  goal_start={item.goal_start}
                   id={item.id}
                   key={item.id}
                   token={props.token}
