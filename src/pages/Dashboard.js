@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import Goal from "../components/Goal";
+//import Goal from "../components/Goal";
 //import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
@@ -30,7 +30,7 @@ function Dashboard(props) {
 
   // console.log(props.token);
 
-  const allGoals = props.user.goals || [];
+  let allGoals = props.user.goals || [];
   const allGroups = props.user.groups || [];
 
   useEffect(() => {
@@ -38,23 +38,22 @@ function Dashboard(props) {
     if (!props.user.email) {
       history.push('/')
     }
+    // gathers data from props and sets them as local state
     if (allGoals) {
-      setUserGoals(allGoals)
+      // TRYING TO GET PAGE TO RENDER NEW GOAL AFTER GOAL CREATION
+      // API.getUser(props.user.id)
+      //   .then((user) => {
+      //     console.log(user.data);
+          setUserGoals(props.user.goals)
+        // })
+
+
     }
     if (allGroups) {
-      setUserGroups(allGroups)
+      setUserGroups(props.user.groups)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // removing goals
-  // useEffect(() =>
-  //   API.deleteGoal(id)
-
-  // )
-  // const removeGoal = id =>{
-  //   console.log(id);
-  // }
 
 
 

@@ -43,6 +43,14 @@ const API = {
         authorization: `Bearer ${token}`
       }
     });
+  },
+  createGoal: function (newGoalData, mytoken) {
+    console.log(mytoken);
+    return axios.post(`${URL_PREFIX}/api/goals/`, newGoalData, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    });
   }
   
 }
