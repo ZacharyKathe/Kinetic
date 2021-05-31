@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
 
 function DashboardCard(props) {
-
   // const history = useHistory();
 
   // useEffect(() =>)
