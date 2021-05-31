@@ -10,7 +10,6 @@ import SaveGoalBtn from "../components/SaveGoalBtn";
 // import calendar from "../images/calendar.png";
 import API from "../utils/API"
 import "../index.css";
-import { MongooseDocument } from "mongoose";
 
 const moment = require("moment");
 
@@ -189,7 +188,7 @@ const CreateGoal = (props) => {
           
         <div className="nav-btm-fixed">
           <SaveGoalBtn 
-          handleSubmit={handleSubmit}
+          // handleSubmit={handleSubmit}
           />
           {/* <NavBottom
               homeBtn={homeActive}

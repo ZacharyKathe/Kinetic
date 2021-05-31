@@ -12,8 +12,12 @@ const API = {
     //   }
     // })
   },
-  signup: function (userData) {
-    return axios.post(`${URL_PREFIX}/signup`, userData)
+  signup: async function (userData) {
+    const newUser = await axios.post(`${URL_PREFIX}/signup`, userData);
+    
+      return newUser.then((res) => {
+        window.location.href = '/dashboard';
+      })
   },
 
   getDashboard: function (token) {
