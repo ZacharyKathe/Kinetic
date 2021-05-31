@@ -33,6 +33,7 @@ function App() {
     const token = localStorage.getItem("token")
     if (token) {
       API.getDashboard(token).then(res => {
+        // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
         // console.log(res.data);
         setUserState({
           token: token,

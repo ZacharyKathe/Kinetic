@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import API from "../../utils/API";
 // import { useHistory } from "react-router-dom";
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
 
@@ -9,11 +9,30 @@ function DashboardCard(props) {
 
   // const history = useHistory();
 
+  // useEffect(() =>)
+
+  const markComplete = () => {
+    if (props.goal_target === props.goal_progress) {
+      return (
+        <Alert key="success" variant="success" id="success-alert">
+          Way to go! 
+          <a className="complete-link" onClick={() => alert('this will change the boolean and take it off goal list.')}>MARK COMPLETE</a>
+        </Alert>
+      )
+    } else return (
+      <Alert key="warning" variant="warning" id="success-alert">
+        Keep up the good work! 
+    </Alert>
+    )
+  }
+
+
+
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
-  console.log("goal target:", props.goal_target);
-  console.log("current progress:", props.goal_progress);
-  console.log(pctComplete);
+  // console.log("goal target:", props.goal_target);
+  // console.log("current progress:", props.goal_progress);
+  // console.log(pctComplete);
 
   return (
     <div className='containerZK'>
@@ -32,6 +51,7 @@ function DashboardCard(props) {
             goal_frequency={props.goal_frequency}
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
+            markComplete={markComplete}
           />
         </div>
 
@@ -43,7 +63,8 @@ function DashboardCard(props) {
         </div>
 
       </div>
-      <ProgressBar now={pctComplete} label={props.value_type === "Event" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+      {markComplete()}
+      <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
 
   );
