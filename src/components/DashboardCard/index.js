@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import {ProgressBar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
 function DashboardCard(props) {
     
   const history = useHistory();
