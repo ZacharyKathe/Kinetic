@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
@@ -13,13 +13,6 @@ export default function Dropdown(props) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   
-  // const editGoal = () => {
-  // } 
-  // useEffect(() => {
-  //   if (props.goal_target === props.goal_progress) {
-  //     props.markComplete();
-  //   }
-  // })
 
   const removeThisGoal = () => {
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
