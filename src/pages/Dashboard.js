@@ -71,10 +71,12 @@ function Dashboard(props) {
                 <DashboardCard
                   
                   goal_name={item.goal_name}
+                  goal_description={item.goal_description}
                   goal_category={item.goal_category}
                   goal_frequency={item.goal_frequency}
                   goal_target={item.goal_target}
                   goal_progress={item.goal_progress}
+                  goal_start={item.goal_start}
                   goal_finish={item.goal_finish}
                   value_type={item.value_type}
                   id={item.id}
