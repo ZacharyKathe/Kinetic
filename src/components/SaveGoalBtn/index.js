@@ -4,12 +4,14 @@ import saveBtn from "../../images/save-btn.png";
 
 function SaveGoalBtn(props) {
 
+
     return (
 
-        <div className="save-goal-btn" onClick={() => props.handleSubmit()}>
+        
+        <button className="save-goal-btn" type="submit">
             <img src={saveBtn} alt="save button" />
             <p id="save-goal-text"> SAVE GOAL</p>
-        </div>
+        </button>
     )
 }
 

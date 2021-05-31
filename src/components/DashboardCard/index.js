@@ -1,7 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import {confirmable } from 'react-confirm';
 import {ProgressBar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -16,15 +15,19 @@ function DashboardCard(props) {
     } else return;
   }
 
-  const percent = 70
+  const percent = ((props.goal_progress / props.goal_target) * 100)
+  const pctComplete = percent.toFixed(2) 
+  console.log("goal target:", props.goal_target);
+  console.log("current progress:", props.goal_progress);
+  console.log(pctComplete);
 
   return (
     <div className='progressBar'>
     <div className="card">
       <div className="content">
-      <h3 className='goalheading'>{props.goal_category}</h3>
+      <h3 className='goalheading'>{props.goal_name}</h3>
           <p className='goalInfo'>
-            <strong>Type</strong>: {props.goal_name}
+            <strong>Type</strong>: {props.goal_category}
           </p>
       </div>
       
@@ -36,7 +39,7 @@ function DashboardCard(props) {
       </span>
       
     </div>
-    <ProgressBar now={percent} label={`${percent}% compleated`} />
+    <ProgressBar now={pctComplete} label={props.value_type === "Event" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
     
   );

@@ -7,6 +7,7 @@
     height: 64px;
     border-bottom: 2px solid #e2e8ed;
     background-color: white;
+    z-index: 1;
 }
 
 .header-text {

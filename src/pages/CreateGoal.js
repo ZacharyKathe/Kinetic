@@ -188,7 +188,7 @@ const CreateGoal = (props) => {
           
         <div className="nav-btm-fixed">
           <SaveGoalBtn 
-          handleSubmit={handleSubmit}
+          // handleSubmit={handleSubmit}
           />
           {/* <NavBottom
               homeBtn={homeActive}

@@ -4,6 +4,9 @@
     font-family: 'canada-type-gibson';
 }
 
+p {
+    margin-bottom: 0 !important;
+}
 .logInScreen{
     background-color: white;
     height: 100vh;
