@@ -19,24 +19,24 @@ function DashboardCard(props) {
   const percent = 70
 
   return (
-    <div className='progressBar'>
-    <div className="card">
-      <div className="content">
-      <h3 className='goalheading'>{props.goal_category}</h3>
-          <p className='goalInfo'>
+    <div className='containerZK'>
+      <div className="card">
+        <div className="content">
+          <h3 className='goalheading'>{props.goal_category}</h3>
+          <span onClick={() => removeThisGoal()} className="remove">
+         ▪▪▪
+        </span>
+        </div>
+      
+        <div className='contentRight'>
+        <p className='goalInfo'>
             <strong>Type</strong>: {props.goal_name}
           </p>
+          <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p> 
+       </div>
+        
       </div>
-      
-      <div className='contentRight'>
-        <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
-      </div>
-      <span onClick={() => removeThisGoal()} className="remove">
-        ...
-      </span>
-      
-    </div>
-    <ProgressBar now={percent} label={`${percent}% compleated`} />
+      <ProgressBar now={percent} label={`${percent}% compleated`} />
     </div>
     
   );
