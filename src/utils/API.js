@@ -55,8 +55,15 @@ const API = {
         authorization: `Bearer ${mytoken}`
       }
     });
+  },
+  editGoal: function (id, editGoalData, mytoken) {
+    return axios.put( `${URL_PREFIX}/api/goals/${id}`, editGoalData, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
   }
-  
+
 }
 
 export default API;

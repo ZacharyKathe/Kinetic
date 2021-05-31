@@ -25,7 +25,7 @@ const CreateGoal = (props) => {
     goal_target: "",
     value_type: "",
     goal_start: moment().format("YYYY-MM-DD"),
-    
+    goal_finish: moment().format("YYYY-MM-DD")
   });
   
   const handleSubmit = (e) => {
@@ -36,6 +36,7 @@ const CreateGoal = (props) => {
       .then(res => {
         // history.push('/dashboard')
         history.goBack();
+        setTimeout(window.location.reload.bind(window.location), 300);
       })
       .catch(err => {
         // console.log(props.token);

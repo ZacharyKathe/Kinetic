@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
+import EditGoal from '../EditGoal/index';
 import "./style.css"
 
 
@@ -10,10 +11,9 @@ import "./style.css"
 export default function Dropdown(props) {
 
   const history = useHistory();
-
+  const [show, setShow] = useState(false);
   
   const editGoal = () => {
-    alert("this will link to an edit page")
   }
   
 
@@ -37,9 +37,22 @@ export default function Dropdown(props) {
           placement="left"
           overlay={
             <Popover id='popover-positioned-left'>
-              <span onClick={() => editGoal()} className="remove">
+              {/* <span onClick={() => editGoal()} className="remove">
                 Edit
-              </span>
+              </span> */}
+              <EditGoal 
+                goal_id={props.goalID}
+                token={props.token}
+                goal_name={props.goal_name}
+                goal_category={props.goal_category}
+                goal_description={props.goal_description}
+                goal_frequency={props.goal_frequency}
+                goal_target={props.goal_target}
+                goal_progress={props.goal_progress}
+                value_type={props.value_type}
+                goal_start={props.goal_start}
+                goal_finish={props.goal_finish}
+              />
               <span onClick={() => completeGoal()} className="remove">
                 Complete
               </span>

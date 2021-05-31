@@ -24,6 +24,14 @@ function DashboardCard(props) {
           <Dropdown
             goalID={props.id}
             token={props.token}
+            goal_name={props.goal_name}
+            goal_description={props.goal_description}
+            goal_target={props.goal_target}
+            goal_progress={props.goal_progress}
+            goal_category={props.goal_category}
+            goal_frequency={props.goal_frequency}
+            goal_start={props.goal_start}
+            goal_finish={props.goal_finish}
           />
         </div>
 
