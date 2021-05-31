@@ -112,8 +112,7 @@ p {
     background-color: white;
     display: flex;
     width: 300px;
-    padding: 0px;
-    margin: 0px;
+    
     
 }
 
@@ -123,20 +122,19 @@ p {
 
 .goalheading{
     padding-bottom: 20px;
-    padding-top: 5px;
+    
     color: #5574F7;
 }
 .content{
-    padding-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
 }
-.goalInfo{
-    padding: 5px;
-    
-}
+
 .remove{
-    background-color: rgb(250, 245, 245);
+    background-color: rgb(214, 210, 210);
     color: rgb(10, 10, 10);
-    width: 20px;
+    width: 30px;
     height: 20px;
     display: flex;
     border-radius: 2px;
@@ -144,7 +142,7 @@ p {
     
 }
 
-.progressBar{
+.containerZK{
     border-radius: 5px;
     border: solid rgb(172, 170, 170) 2px;
     margin-bottom: 3px;
@@ -153,7 +151,6 @@ p {
 .contentRight{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     justify-content: flex-end;
 }
 

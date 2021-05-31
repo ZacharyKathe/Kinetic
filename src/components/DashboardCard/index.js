@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import {ProgressBar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
 function DashboardCard(props) {
     
   const history = useHistory();
@@ -22,24 +21,24 @@ function DashboardCard(props) {
   console.log(pctComplete);
 
   return (
-    <div className='progressBar'>
-    <div className="card">
-      <div className="content">
-      <h3 className='goalheading'>{props.goal_name}</h3>
-          <p className='goalInfo'>
-            <strong>Type</strong>: {props.goal_category}
+    <div className='containerZK'>
+      <div className="card">
+        <div className="content">
+          <h3 className='goalheading'>{props.goal_category}</h3>
+          <span onClick={() => removeThisGoal()} className="remove">
+         ▪▪▪
+        </span>
+        </div>
+      
+        <div className='contentRight'>
+        <p className='goalInfo'>
+            <strong>Type</strong>: {props.goal_name}
           </p>
+          <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p> 
+       </div>
+        
       </div>
-      
-      <div className='contentRight'>
-        <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
-      </div>
-      <span onClick={() => removeThisGoal()} className="remove">
-        ...
-      </span>
-      
-    </div>
-    <ProgressBar now={pctComplete} label={props.value_type === "Event" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+      <ProgressBar now={percent} label={`${percent}% compleated`} />
     </div>
     
   );
