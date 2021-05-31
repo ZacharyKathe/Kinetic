@@ -1,7 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import {confirmable } from 'react-confirm';
 import {ProgressBar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -16,7 +15,11 @@ function DashboardCard(props) {
     } else return;
   }
 
-  const percent = 70
+  const percent = ((props.goal_progress / props.goal_target) * 100)
+  const pctComplete = percent.toFixed(2) 
+  console.log("goal target:", props.goal_target);
+  console.log("current progress:", props.goal_progress);
+  console.log(pctComplete);
 
   return (
     <div className='containerZK'>

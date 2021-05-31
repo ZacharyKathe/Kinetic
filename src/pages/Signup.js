@@ -5,13 +5,13 @@ import Row from "../components/Row";
 // import Jump from 'react-reveal/Jump';
 import { Link, useLocation } from "react-router-dom";
 import Rotate from 'react-reveal/Rotate';
-
 import logo from "../images/kinetic-logo.png";
 
 
 const Signup = (props) => {
   const location = useLocation(); 
-
+  
+  
   return (
     <div className='NewUserScreen'>
       <Rotate>

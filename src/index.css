@@ -4,6 +4,9 @@
     font-family: 'canada-type-gibson';
 }
 
+p {
+    margin-bottom: 0 !important;
+}
 .logInScreen{
     background-color: white;
     height: 100vh;
@@ -79,6 +82,7 @@
     border-color: rgb(248, 246, 246);
     background: content-box;
     width: 200px;
+    padding: 0px 5px;
 }
 
 ::placeholder {
