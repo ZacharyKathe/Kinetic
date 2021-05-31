@@ -20,6 +20,7 @@ function DashboardCard(props) {
       <div className="card">
         <div className="content">
           <h3 className='goalheading'>{props.goal_name}</h3>
+          {/* This opens up a dropdown for editing, completing, and deleting goal */}
           <Dropdown
             goalID={props.id}
             token={props.token}
