@@ -188,12 +188,27 @@ p {
     height: 60px;
     margin: auto;
     margin-top: 10px;
+    margin-bottom:1rem;
     justify-content: space-between;
+}
+
+#success-alert {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    padding: .1rem;
+    height: 1.5rem;
+}
+
+.complete-link {
+    margin-left: auto;
 }
 
 .actual-dates {
     display: flex;
     flex-direction: column;
+    width: 9rem;
+
 }
 
 .placeholder {
