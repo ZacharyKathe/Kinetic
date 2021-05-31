@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-// import API from "../../utils/API";
+import React from "react";
+import API from "../../utils/API";
 // import { useHistory } from "react-router-dom";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
+import Moment from "moment";
 
 function DashboardCard(props) {
 
@@ -16,15 +17,22 @@ function DashboardCard(props) {
       return (
         <Alert key="success" variant="success" id="success-alert">
           Way to go! 
-          <a className="complete-link" onClick={() => alert('this will change the boolean and take it off goal list.')}>MARK COMPLETE</a>
+          <button className="complete-link" onClick={() => {
+            const updatedGoal = {
+              isComplete: true,
+              completedAt: Moment().format("YYYY-MM-DD")
+            }
+            API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => console.log(res))
+          }}>MARK COMPLETE</button>
         </Alert>
       )
     } else return (
       <Alert key="warning" variant="warning" id="success-alert">
         Keep up the good work! 
-    </Alert>
+      </Alert>
     )
   }
+
 
 
 

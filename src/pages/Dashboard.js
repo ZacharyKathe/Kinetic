@@ -41,19 +41,16 @@ function Dashboard(props) {
     // gathers data from props and sets them as local state
     if (allGoals) {
       // TRYING TO GET PAGE TO RENDER NEW GOAL AFTER GOAL CREATION
-      // API.getUser(props.user.id)
-      //   .then((user) => {
-      //     console.log(user.data);
           setUserGoals(props.user.goals)
         // })
-
-
     }
     if (allGroups) {
       setUserGroups(props.user.groups)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  
 
 
 

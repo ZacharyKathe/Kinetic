@@ -25,7 +25,8 @@ const CreateGoal = (props) => {
     goal_target: "",
     value_type: "",
     goal_start: moment().format("YYYY-MM-DD"),
-    goal_finish: moment().format("YYYY-MM-DD")
+    goal_finish: moment().format("YYYY-MM-DD"),
+    lastRefresh: moment().format("YYYY-MM-DD")
   });
   
   const handleSubmit = (e) => {
