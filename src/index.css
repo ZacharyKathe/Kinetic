@@ -75,6 +75,11 @@ p {
     padding-top: 5px;
 }
 
+.login-signin-btn {
+    display: flex;
+    justify-content: center;
+}
+
 .form-group{
   height: 75px;
 }
