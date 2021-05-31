@@ -7,6 +7,9 @@
 p {
     margin-bottom: 0 !important;
 }
+.calendar {
+    padding-top: 4.1rem;
+}
 .logInScreen{
     background-color: white;
     height: 100vh;
@@ -132,10 +135,7 @@ p {
 }
 
 .remove{
-    background-color: rgb(214, 210, 210);
-    color: rgb(10, 10, 10);
-    width: 30px;
-    height: 20px;
+    padding: .5rem;
     display: flex;
     border-radius: 2px;
     justify-content: center;
