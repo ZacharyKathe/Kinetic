@@ -12,3 +12,24 @@
   background: none;
   color: red;
 }
+
+.bigCont {
+  display: flex;
+  align-items: center;
+}
+
+.progCont {
+  width: 97%
+}
+
+@media screen and (max-width: 768px) {
+  .progCont {
+    width: 95% !important
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .progCont {
+    width: 90% !important
+  }
+}
