@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
 import EditGoal from '../EditGoal/index';
+import GoalDetails from '../GoalDetails/index';
 import "./style.css"
 
 
@@ -13,13 +14,6 @@ export default function Dropdown(props) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   
-  // const editGoal = () => {
-  // } 
-  // useEffect(() => {
-  //   if (props.goal_target === props.goal_progress) {
-  //     props.markComplete();
-  //   }
-  // })
 
   const removeThisGoal = () => {
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
@@ -40,6 +34,19 @@ export default function Dropdown(props) {
               {/* <span onClick={() => editGoal()} className="remove">
                 Edit
               </span> */}
+              <GoalDetails 
+                goal_id={props.goalID}
+                token={props.token}
+                goal_name={props.goal_name}
+                goal_category={props.goal_category}
+                goal_description={props.goal_description}
+                goal_frequency={props.goal_frequency}
+                goal_target={props.goal_target}
+                goal_progress={props.goal_progress}
+                value_type={props.value_type}
+                goal_start={props.goal_start}
+                goal_finish={props.goal_finish}
+              />
               <EditGoal 
                 goal_id={props.goalID}
                 token={props.token}

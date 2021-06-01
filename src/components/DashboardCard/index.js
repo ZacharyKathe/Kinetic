@@ -1,30 +1,43 @@
 import React, { useEffect } from "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 // import { useHistory } from "react-router-dom";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
+import SliderModal from "../SliderModal/index";
+import Moment from "moment";
+import "./style.css"
 
 function DashboardCard(props) {
-
   // const history = useHistory();
 
   // useEffect(() =>)
 
-  const markComplete = () => {
+  const checkComplete = () => {
     if (props.goal_target === props.goal_progress) {
       return (
-        <Alert key="success" variant="success" id="success-alert">
+        <Alert key="success" variant="success" className="goal-alert">
           Way to go! 
-          <a className="complete-link" onClick={() => alert('this will change the boolean and take it off goal list.')}>MARK COMPLETE</a>
+          <button className="complete-link" onClick={() => {
+            const updatedGoal = {
+              isComplete: true,
+              completedAt: Moment().format("YYYY-MM-DD")
+            }
+            API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+          }}>CLEAR GOAL</button>
         </Alert>
       )
     } else return (
-      <Alert key="warning" variant="warning" id="success-alert">
+      <Alert key="warning" variant="warning" className="goal-alert">
         Keep up the good work! 
-    </Alert>
+      </Alert>
     )
   }
+
+  const markComplete = () => {
+    API.editGoal(props.id, { goal_progress: props.goal_target }, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+  }
+
 
 
 
@@ -33,6 +46,8 @@ function DashboardCard(props) {
   // console.log("goal target:", props.goal_target);
   // console.log("current progress:", props.goal_progress);
   // console.log(pctComplete);
+
+  // const [show, setShow] = useState(false);
 
   return (
     <div className='containerZK'>
@@ -62,8 +77,16 @@ function DashboardCard(props) {
           <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
         </div>
 
+        <div>
+          <SliderModal
+            goal_target={props.goal_target}
+            goal_progress={props.goal_progress}
+            goalID={props.id}
+            token={props.token}
+          />
+        </div>
       </div>
-      {markComplete()}
+      {checkComplete()}
       <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
 
