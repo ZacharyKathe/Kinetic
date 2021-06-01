@@ -178,7 +178,7 @@ function App() {
       <Route exact path="/creategoal">
         <CreateGoal user={userState.user} token={userState.token} />
       </Route>
-      <Route exact path="/creatGroup">
+      <Route exact path="/createGroup">
         <CreateGroup user={userState.user} token={userState.token} />
       </Route>
       {/* <NavTabs /> */}

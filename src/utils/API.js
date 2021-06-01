@@ -34,6 +34,9 @@ const API = {
   getAllGoals: function () {
     return axios.get(`${URL_PREFIX}/api/goals`);
   },
+  getAllGroups: function () {
+    return axios.get(`${URL_PREFIX}/api/groups`)
+  },
   getOneGoal: function (id) {
     return axios.get(`${URL_PREFIX}/api/goals/${id}`);
   },
