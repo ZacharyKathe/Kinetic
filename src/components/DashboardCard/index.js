@@ -75,9 +75,6 @@ function DashboardCard(props) {
     }
   }
 
-
-
-
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
   // console.log("goal target:", props.goal_target);
@@ -88,7 +85,7 @@ function DashboardCard(props) {
 
   return (
     <div className='containerZK'>
-      <div className="card">
+      <div className="card bt-card">
         <div className="content">
           <h3 className='goalheading'>{props.goal_name}</h3>
           {/* This opens up a dropdown for editing, completing, and deleting goal */}

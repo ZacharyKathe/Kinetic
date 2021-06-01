@@ -93,7 +93,6 @@ const CreateGoal = (props) => {
               >
                 <option value="" disabled defaultValue hidden> </option>
                 <option value="Diet">Diet</option>
-                <option value="Education">Education</option>
                 <option value="Exercise">Exercise</option>
                 <option value="Financial">Financial</option>
                 <option value="Habit">Habit</option>
