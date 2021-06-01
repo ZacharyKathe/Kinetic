@@ -41,7 +41,9 @@ function Dashboard(props) {
     // gathers data from props and sets them as local state
     if (allGoals) {
       // TRYING TO GET PAGE TO RENDER NEW GOAL AFTER GOAL CREATION
-          setUserGoals(props.user.goals)
+      const incompleteGoals = allGoals.filter(goal => !goal.isComplete)
+      console.log(incompleteGoals);
+          setUserGoals(incompleteGoals)
         // })
     }
     if (allGroups) {
@@ -64,7 +66,7 @@ function Dashboard(props) {
           {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
               
-              {allGoals.map(item => (
+              {userGoals.map(item => (
                 <DashboardCard
                   
                   goal_name={item.goal_name}
@@ -88,7 +90,7 @@ function Dashboard(props) {
         return (
           <>
             <div className='groupList'>
-              {allGroups.map(item => (
+              {userGroups.map(item => (
                 <GroupCard
                   name={item.name}
                   users={item.Users}

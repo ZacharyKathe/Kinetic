@@ -200,10 +200,6 @@ p {
     height: 1.5rem;
 }
 
-.complete-link {
-    margin-left: auto;
-}
-
 .actual-dates {
     display: flex;
     flex-direction: column;
