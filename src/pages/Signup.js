@@ -9,6 +9,8 @@ import logo from "../images/kinetic-logo.png";
 
 
 const Signup = (props) => {
+
+
   const location = useLocation(); 
   
   
@@ -36,17 +38,17 @@ const Signup = (props) => {
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder=" Username" name="username" value={props.signupFormState.username} onChange={e=>props.setSignupFormState({...props.signupFormState, username: e.target.value})} />
+              <input className="form-control" required type="text" placeholder=" Username" autoComplete="on" name="username" min="5" value={props.signupFormState.username} onChange={e=>props.setSignupFormState({...props.signupFormState, username: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder=" Email" name="email" value={props.signupFormState.email} onChange={e=>props.setSignupFormState({...props.signupFormState, email: e.target.value})} />
+              <input className="form-control" required type="email" placeholder=" Email" autoComplete="on" name="email" value={props.signupFormState.email} onChange={e=>props.setSignupFormState({...props.signupFormState, email: e.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={props.signupFormState.password} onChange={e=>props.setSignupFormState({...props.signupFormState, password: e.target.value})}
+              <input className="form-control"  required type="password"  placeholder=" Password" autoComplete="on" name="password" min="8" value={props.signupFormState.password} onChange={e=>props.setSignupFormState({...props.signupFormState, password: e.target.value})}
               />
             </Col>
           </Row>
