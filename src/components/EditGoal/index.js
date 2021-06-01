@@ -10,7 +10,7 @@ import Row from '../Row/index';
 // const moment = require("moment");
 
 export default function EditGoal(props) {
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
     const [editGoal, setEditGoal] = useState({
       goal_name: props.goal_name,
       goal_description: props.goal_description,
@@ -27,17 +27,24 @@ export default function EditGoal(props) {
     const history = useHistory();
 
     const handleEditSubmit = (e) => {
+      const token = localStorage.getItem('token');
       e.preventDefault();
-      // console.log(props.token);
-      if (props.token) {
-      API.editGoal(props.goal_id, editGoal, props.token)
+      if (token) {
+      API.editGoal(props.goal_id, editGoal, token)
         .then(res => {
-          // history.push('/dashboard')
-          history.goBack();
-          window.location.reload();
+          API.getIncompleteGoals(token).then(res => {
+            if(res.data) {
+            props.setUserGoals(res.data.Goals)
+            } else {
+              props.setUserGoals()
+            }
+          }).catch(err => {
+            console.log(err);
+          })
+          history.push('/dashboard');
+          props.setShow(false);
         })
         .catch(err => {
-          // console.log(props.token);
           console.log(err);
         })
       }

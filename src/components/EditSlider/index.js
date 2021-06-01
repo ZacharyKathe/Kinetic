@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import API from '../../utils/API';
 import { useHistory } from 'react-router-dom';
-const token = localStorage.getItem('token')
 
 export default function EditSlider(props) {
   const [show, setShow] = useState(false);
@@ -16,6 +15,7 @@ export default function EditSlider(props) {
   }
 
   const changeProg = () => {
+    const token = localStorage.getItem('token')
     console.log(value)
     const progObj = {
       goal_progress: value
@@ -34,6 +34,7 @@ export default function EditSlider(props) {
 
   // Doesnt auto render yet!
   const getDashboard = () => {
+    const token = localStorage.getItem('token')
     API.getIncompleteGoals(token).then(res => {
       props.setUserGoals(res.data.Goals)
     }).catch(err => {

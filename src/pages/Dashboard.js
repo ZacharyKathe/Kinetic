@@ -15,25 +15,25 @@ import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
 import GroupCard from "../components/GroupCard";
 
-const token = localStorage.getItem('token')
 
 
 
 function Dashboard(props) {
-
-
+  
+  
   const history = useHistory();
-
+  
   const [userGoals, setUserGoals] = useState([]);
-
+  
   const [userGroups, setUserGroups] = useState([]);
-
+  
   const [selectedTab, setSelectedTab] = useState('My Goals')
-
+  
   // console.log(props.token);
-
-
+  
+  
   useEffect(() => {
+    const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
     if (!props.user.email) {
       history.push('/')
@@ -63,7 +63,7 @@ function Dashboard(props) {
             {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
 
-              {userGoals.map(item => (
+              {userGoals ? userGoals.map(item => (
                 <DashboardCard
 
                   goal_name={item.goal_name}
@@ -80,7 +80,7 @@ function Dashboard(props) {
                   token={props.token}
                   setUserGoals={setUserGoals}
                 />
-              ))}
+              )) : console.log("no goals right now")}
             </div>
           </>
         )

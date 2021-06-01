@@ -32,6 +32,8 @@ function App() {
     user: {}
   })
 
+  const [formErr, setFormErr] = useState("")
+
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
@@ -90,7 +92,6 @@ function App() {
         })
       })
     }).catch(err => {
-      alert("Email or Password incorrect")
       console.log("error occured")
       console.log(err);
       localStorage.removeItem("token");
@@ -98,6 +99,7 @@ function App() {
         token: "",
         user: {}
       })
+      setFormErr("Incorrect email or password");
     })
     setFormState({
       email: "",
@@ -160,6 +162,7 @@ function App() {
           handleFormSubmit={handleFormSubmit}
           formState={formState}
           setFormState={setFormState}
+          formErr={formErr}
         />
       </Route>
       <Route exact path="/newuser">
@@ -171,7 +174,7 @@ function App() {
         />
       </Route>
       <Route exact path="/dashboard">
-        <Dashboard user={userState.user} token={token} setUserState={setUserState} />
+        <Dashboard user={userState.user} token={token} />
       </Route>
       <Route path="/group/:id">
         <Group user={userState.user} token={userState.token} />

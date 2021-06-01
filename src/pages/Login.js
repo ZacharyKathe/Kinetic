@@ -33,9 +33,10 @@ const Login = (props) => {
         <p className="logo-text">kinetik</p>
       </div>
 
-      <div>
-          <Link id="signup-inactive" to="/newuser" className={location.pathname === "/NewUser" ? "nav-link active" : "nav-link NewUser"}>
-            Sign up
+      <div className="signup-text">
+          New User? 
+          <Link id="signup-inactive" to="/newuser" className={location.pathname === "/NewUser" ? " active" : " NewUser"}>
+          <div className="text-danger"> Sign up</div>
           </Link>
       </div>
 
@@ -47,16 +48,16 @@ const Login = (props) => {
         <Container className="signInForm">
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control" type="text" placeholder=" Email" name="email" value={props.formState.email} onChange={event=>props.setFormState({ ...props.formState, email: event.target.value})} />
+              <input className="form-control" required type="text" placeholder=" Email" autoComplete="on" name="email" value={props.formState.email} onChange={event=>props.setFormState({ ...props.formState, email: event.target.value})} />
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
-              <input className="form-control"  type="password"  placeholder=" Password"  name="password" value={props.formState.password} onChange={event=>props.setFormState({ ...props.formState, password: event.target.value})}
+              <input className="form-control" required  type="password"  placeholder=" Password" autoComplete="on" name="password" value={props.formState.password} onChange={event=>props.setFormState({ ...props.formState, password: event.target.value})}
               />
             </Col>
           </Row>
-          {/* {<Link to="/dashboard"} */}
+          {<div className="form-error text-danger">{props.formErr}</div>}
           <div className="login-signin-btn">
             <button className="btn btn-success" type="submit">
               Log in
