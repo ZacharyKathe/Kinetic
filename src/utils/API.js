@@ -34,6 +34,9 @@ const API = {
   getAllGoals: function () {
     return axios.get(`${URL_PREFIX}/api/goals`);
   },
+  getAllGroups: function () {
+    return axios.get(`${URL_PREFIX}/api/groups`)
+  },
   getOneGoal: function (id) {
     return axios.get(`${URL_PREFIX}/api/goals/${id}`);
   },
@@ -47,6 +50,14 @@ const API = {
       }
     });
   },
+  createGroup: function (newGroupData,token){
+    return axios.post(`${URL_PREFIX}/api/groups`, newGroupData, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+  },
+
   createGoal: function (newGoalData, mytoken) {
     console.log(mytoken);
     return axios.post(`${URL_PREFIX}/api/goals/`, newGoalData, {

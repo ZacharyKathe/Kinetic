@@ -149,6 +149,9 @@ p {
     justify-content: center;
     
 }
+.createGroupForm{
+    padding-top: 7rem;
+}
 
 .containerZK{
     border-radius: 5px;

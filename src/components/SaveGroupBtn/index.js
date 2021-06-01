@@ -4,10 +4,10 @@ import saveBtn from "../../images/save-btn.png";
 
 function SaveGroupBtn(props) {
     return (
-        <div className="save-group-btn">
+        <button type="submit" className="save-goal-btn">
             <img src={saveBtn} alt="save button" />
             <p id="save-group-text"> SAVE GROUP</p>
-        </div>
+        </button>
     )
 }
 
