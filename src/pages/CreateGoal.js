@@ -31,7 +31,6 @@ const CreateGoal = (props) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(props.token);
     if (props.token) {
       console.log(newGoal);
       if (newGoal.goal_target === "") {
@@ -39,9 +38,7 @@ const CreateGoal = (props) => {
       }
     API.createGoal(newGoal, props.token)
       .then(result => {
-        // history.push('/dashboard')
         API.getDashboard(props.token).then(res => {
-          // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
           
           props.setUserState({
             token: props.token,
@@ -66,13 +63,11 @@ const CreateGoal = (props) => {
         })
       })
       .catch(err => {
-        // console.log(props.token);
         console.log(err);
       })
     }
   };
 
-  // const location = useLocation();
 
   return (
     <div className="create-goal">
