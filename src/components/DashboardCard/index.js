@@ -111,8 +111,9 @@ function DashboardCard(props) {
           </p>
           <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
         </div>
-
-        <div>
+      </div>
+      <div className="bigCont">
+        <div className="sliderCont">
           <SliderModal
             goal_target={props.goal_target}
             goal_progress={props.goal_progress}
@@ -120,9 +121,11 @@ function DashboardCard(props) {
             token={props.token}
           />
         </div>
+        <div className="progCont">
+          {checkComplete()}
+          <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+        </div>
       </div>
-      {checkComplete()}
-      <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
 
   );
