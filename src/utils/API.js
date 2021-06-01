@@ -26,6 +26,13 @@ const API = {
       }
     })
   },
+  getIncompleteGoals: function (token) {
+    return axios.get(`${URL_PREFIX}/incomplete-goals`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+  },
   // working on this
   getUser: function (id) {
     return axios.get(`${URL_PREFIX}/api/users/${id}`)

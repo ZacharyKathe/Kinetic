@@ -180,7 +180,7 @@ function App() {
         <CreateGoal user={userState.user} token={userState.token} setUserState={setUserState} />
       </Route>
       <Route exact path="/createGroup">
-        <CreateGroup user={userState.user} token={userState.token} />
+        <CreateGroup user={userState.user} token={userState.token} setUserState={setUserState}/>
       </Route>
       {/* <NavTabs /> */}
     </Router>

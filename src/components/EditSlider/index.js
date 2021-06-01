@@ -34,10 +34,8 @@ export default function EditSlider(props) {
 
   // Doesnt auto render yet!
   const getDashboard = () => {
-    API.getDashboard(token).then(res => {
-      const incompleteGoals = res.data.Goals.filter(goal => !goal.isComplete)
-      console.log(res.data);
-      props.setUserGoals(incompleteGoals)
+    API.getIncompleteGoals(token).then(res => {
+      props.setUserGoals(res.data.Goals)
     }).catch(err => {
       console.log(err);
     })
