@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 //import Goal from "../components/Goal";
-//import API from "../utils/API";
+import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
 import AddGroupBtn from "../components/AddGroupBtn";
@@ -15,12 +15,12 @@ import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
 import GroupCard from "../components/GroupCard";
 
-
+const token = localStorage.getItem('token')
 
 
 
 function Dashboard(props) {
-  
+
 
   const history = useHistory();
 
@@ -32,8 +32,6 @@ function Dashboard(props) {
 
   // console.log(props.token);
 
-  let allGoals = props.user.goals || [];
-  const allGroups = props.user.groups || [];
 
   useEffect(() => {
     // Checks if user is logged in, and sends them to login if not
@@ -41,20 +39,17 @@ function Dashboard(props) {
       history.push('/')
     }
     // gathers data from props and sets them as local state
-    if (allGoals) {
-      // TRYING TO GET PAGE TO RENDER NEW GOAL AFTER GOAL CREATION
-      const incompleteGoals = allGoals.filter(goal => !goal.isComplete)
-      console.log(incompleteGoals);
-          setUserGoals(incompleteGoals)
-        // })
-    }
-    if (allGroups) {
-      setUserGroups(props.user.groups)
-    }
+    API.getIncompleteGoals(token).then(res => {
+      setUserGoals(res.data.Goals)
+      setUserGroups(res.data.Groups)
+    }).catch(err => {
+      console.log(err);
+    })
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
+
 
 
 
@@ -65,12 +60,12 @@ function Dashboard(props) {
       case "My Goals":
         return (
           <>
-          {/* <h1 className='blueBack'>Goals</h1> */}
+            {/* <h1 className='blueBack'>Goals</h1> */}
             <div className='goalCards'>
-              
+
               {userGoals.map(item => (
                 <DashboardCard
-                  
+
                   goal_name={item.goal_name}
                   goal_description={item.goal_description}
                   goal_category={item.goal_category}
@@ -99,6 +94,7 @@ function Dashboard(props) {
                   users={item.Users}
                   key={item.id}
                   id={item.id}
+                  setUserGroups={setUserGroups}
                 />
               ))}
             </div>
@@ -135,7 +131,7 @@ function Dashboard(props) {
       {/* Dashboard renders here based off what tab you are in */}
       {renderSelectedTab()}
       <div className="nav-btm-fixed">
-      {renderSelectedBtn()}
+        {renderSelectedBtn()}
         <NavBottom
           setSelectedTab={setSelectedTab}
           homeBtn={selectedTab === "My Goals" ? homeActive : home}
