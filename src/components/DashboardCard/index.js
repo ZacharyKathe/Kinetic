@@ -119,6 +119,7 @@ function DashboardCard(props) {
             goal_progress={props.goal_progress}
             goalID={props.id}
             token={props.token}
+            setUserState={props.setUserState}
           />
         </div>
         <div className="progCont">

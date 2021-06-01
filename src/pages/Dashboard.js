@@ -83,6 +83,7 @@ function Dashboard(props) {
                   id={item.id}
                   key={item.id}
                   token={props.token}
+                  setUserState={props.setUserState}
                 />
               ))}
             </div>
