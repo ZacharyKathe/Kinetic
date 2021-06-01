@@ -44,7 +44,9 @@ export default function EditSlider(props) {
       />
       <Button
         onClick={() => changeProg()}
-      />
+      >
+        Save Progress
+      </Button>
     </>
   );
  
