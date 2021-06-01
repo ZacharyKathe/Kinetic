@@ -9,6 +9,16 @@ import Moment from "moment";
 import "./style.css"
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
+import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
+import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
+import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
+import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
+import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
+import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
+import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
+import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
+import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
+import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 
 function DashboardCard(props) {
   // const history = useHistory();
@@ -37,6 +47,32 @@ function DashboardCard(props) {
 
   const markComplete = () => {
     API.editGoal(props.id, { goal_progress: props.goal_target }, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+  }
+
+  const renderActivityIcon = () => {
+    switch  (props.goal_category) {
+      case "Diet":
+        return (<RestaurantRoundedIcon />);
+      case "Intellectual":
+        return (<SchoolRoundedIcon />);
+      case "Exercise":
+        return (<DirectionsRunRoundedIcon />);
+      case "Financial":
+        return (<MonetizationOnRoundedIcon />);
+      case "Habit":
+        return (<BallotRoundedIcon />);
+      case "Health":
+        return (<FavoriteRoundedIcon />);
+      case "Relationship":
+        return (<SupervisedUserCircleRoundedIcon />);
+      case "Work":
+        return (<WorkRoundedIcon />);
+      case "Productivity":
+        return (<TrendingUpRoundedIcon />);
+      case "Skill":
+        return (<BuildRoundedIcon />);
+      default: return (<AccessibilityNewRoundedIcon />);
+    }
   }
 
 
@@ -74,7 +110,7 @@ function DashboardCard(props) {
 
         <div className='contentRight'>
           <p className='goalInfo'>
-            <DirectionsRunRoundedIcon></DirectionsRunRoundedIcon> {props.goal_category}
+            {renderActivityIcon()} {props.goal_category}
           </p>
           <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
         </div>

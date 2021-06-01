@@ -98,7 +98,10 @@ const CreateGoal = (props) => {
                 <option value="Financial">Financial</option>
                 <option value="Habit">Habit</option>
                 <option value="Health">Health</option>
+                <option value="Intellectual">Intellectual</option>
+                <option value="Productivity">Productivity</option>
                 <option value="Relationship">Relationship</option>
+                <option value="Skills">Skills</option>
                 <option value="Work">Work</option>
               </select>  
             </Col>
