@@ -20,6 +20,8 @@ import GroupCard from "../components/GroupCard";
 
 
 function Dashboard(props) {
+  
+
   const history = useHistory();
 
   const [userGoals, setUserGoals] = useState([]);

@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap';
 import React, { useState } from 'react';
 import EditSlider from '../EditSlider/index';
-import addBtn from '../../images/add-btn.png';
+// import addBtn from '../../images/add-btn.png';
 import IconButton from '@material-ui/core/IconButton';
 import EditAttributesIcon from '@material-ui/icons/EditAttributes';
 
