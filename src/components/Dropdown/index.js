@@ -13,13 +13,6 @@ export default function Dropdown(props) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   
-  const editGoal = () => {
-  }
-  
-
-  const completeGoal = () => {
-    alert("this will complete the goal by changing its boolean")
-  }
 
   const removeThisGoal = () => {
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
@@ -53,7 +46,7 @@ export default function Dropdown(props) {
                 goal_start={props.goal_start}
                 goal_finish={props.goal_finish}
               />
-              <span onClick={() => completeGoal()} className="remove">
+              <span onClick={() => props.markComplete()} className="remove">
                 Complete
               </span>
               <span onClick={() => removeThisGoal()} className="remove">

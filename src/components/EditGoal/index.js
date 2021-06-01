@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Modal, Button } from 'react-bootstrap';
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
-import SaveGoalBtn from '../SaveGoalBtn';
-import App from '../../App';
+// import SaveGoalBtn from '../SaveGoalBtn';
+// import App from '../../App';
 
-const moment = require("moment");
+// const moment = require("moment");
 
 export default function EditGoal(props) {
     const [show, setShow] = useState(false);
