@@ -12,17 +12,18 @@ import CreateGoal from "./pages/CreateGoal";
 const token = localStorage.getItem('token');
 
 function App() {
-  
+
   // const location = useLocation();
 
   const [formState, setFormState] = useState({
     email: "",
-    password: ""
+    password: "",
   })
+
   const [signupFormState, setSignupFormState] = useState({
     email: "",
     password: "",
-    username: ""
+    username: "",
   })
 
   const [userState, setUserState] = useState({
@@ -35,7 +36,6 @@ function App() {
     if (token) {
       API.getDashboard(token).then(res => {
         // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
-        // console.log(res.data);
         updateGoals(token, res.data.Goals)
         setUserState({
           token: token,
@@ -48,12 +48,13 @@ function App() {
           }
         })
       }).catch(err => {
+        console.log(err);
         console.log("no logged in user")
-        localStorage.removeItem("token");
-        setUserState({
-          token: "",
-          user: {}
-        })
+        // localStorage.removeItem("token");
+        // setUserState({
+        //   token: "",
+        //   user: {}
+        // })
       })
     } else {
       console.log("no token provided")
@@ -65,7 +66,6 @@ function App() {
   const handleFormSubmit = e => {
     e.preventDefault();
     API.login(formState).then(result => {
-      console.log(result.data);
       localStorage.setItem("token", result.data.token)
       API.getDashboard(result.data.token).then(res => {
         console.log(res.data);
@@ -88,6 +88,7 @@ function App() {
         })
       })
     }).catch(err => {
+      alert("Email or Password incorrect")
       console.log("error occured")
       console.log(err);
       localStorage.removeItem("token");
@@ -106,8 +107,10 @@ function App() {
     e.preventDefault();
     console.log(signupFormState);
     API.signup(signupFormState).then(result => {
+      console.log(result);
       localStorage.setItem("token", result.data.token)
       API.getDashboard(result.data.token).then(res => {
+        alert("Signup Successful!")
         console.log(res.data);
         setUserState({
           token: token,
@@ -121,20 +124,20 @@ function App() {
         });
       }).catch(err => {
         console.log(err);
-        localStorage.removeItem("token");
-        setUserState({
-          token: "",
-          user: {}
-        })
+        // localStorage.removeItem("token");
+        // setUserState({
+        //   token: "",
+        //   user: {}
+        // })
       })
     }).catch(err => {
       console.log("error occured")
       console.log(err);
-      localStorage.removeItem("token");
-      setUserState({
-        token: "",
-        user: {}
-      })
+      // localStorage.removeItem("token");
+      // setUserState({
+      //   token: "",
+      //   user: {}
+      // })
     })
     setSignupFormState({
       username: "",
@@ -150,12 +153,12 @@ function App() {
 
       </div>
       <Route exact path="/">
-          <Login
-            user={userState.user}
-            handleFormSubmit={handleFormSubmit}
-            formState={formState}
-            setFormState={setFormState}
-          />
+        <Login
+          user={userState.user}
+          handleFormSubmit={handleFormSubmit}
+          formState={formState}
+          setFormState={setFormState}
+        />
       </Route>
       <Route exact path="/newuser">
         <Signup
@@ -166,10 +169,10 @@ function App() {
         />
       </Route>
       <Route exact path="/dashboard">
-        <Dashboard user={userState.user} token={userState.token} />
+        <Dashboard user={userState.user} token={token} />
       </Route>
       <Route path="/group/:id">
-        <Group user={userState.user} token={userState.token}/>
+        <Group user={userState.user} token={userState.token} />
       </Route>
       <Route exact path="/creategoal">
         <CreateGoal user={userState.user} token={userState.token} />

@@ -11,7 +11,6 @@ import "./style.css"
 function DashboardCard(props) {
   // const history = useHistory();
 
-  // useEffect(() =>)
 
   const checkComplete = () => {
     if (props.goal_target === props.goal_progress) {

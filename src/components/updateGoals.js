@@ -2,7 +2,6 @@ import API from '../utils/API';
 import Moment from "moment";
 
 export default function updateGoals(token, goals) {
-  let goalsToRefresh = [];
   let goalsToEnd = [];
 
   // Check if any goals have reached their end date
@@ -25,9 +24,18 @@ export default function updateGoals(token, goals) {
 
       if (goal.goal_frequency === "Daily") {
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
+        console.log("days since daily refresh:", daysSinceRefresh);
+        
         // Check if today is the day of refresh
         if (daysSinceRefresh > 0) {
-          goalsToRefresh.push(goal)
+          const goalObj = {
+            goal_progress: 0,
+            isComplete: false,
+            lastRefresh: Moment().format("YYYY-MM-DD")
+          }
+          API.editGoal(goal.id, goalObj, token).then(res => console.log('This goal has been refreshed:', goal));
+          
+          
         }
       }
 
@@ -70,9 +78,18 @@ export default function updateGoals(token, goals) {
         // console.log('That means that this goal will refresh on', nextWeekDayToRefresh.format("dddd, MM-DD"));
 
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
+
+        console.log("days since weekly refresh:", daysSinceRefresh);
         // Check if today is the day of refresh
         if (daysSinceRefresh > 7) {
-          goalsToRefresh.push(goal)
+          const goalObj = {
+            goal_progress: 0,
+            isComplete: false,
+            lastRefresh: Moment().format("YYYY-MM-DD")
+          }
+          API.editGoal(goal.id, goalObj, token).then(res => console.log('This goal has been refreshed:', goal));
+          
+          
         }
       }
 
@@ -82,24 +99,37 @@ export default function updateGoals(token, goals) {
         // Get how many days since last refresh
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
 
+        console.log("days since monthly refresh:", daysSinceRefresh);
+
         // if it has been over 30 days since last refresh, refresh it.
         if (daysSinceRefresh > 30) {
-          goalsToRefresh.push(goal);
+          const goalObj = {
+            goal_progress: 0,
+            isComplete: false,
+            lastRefresh: Moment().format("YYYY-MM-DD")
+          }
+          API.editGoal(goal.id, goalObj, token).then(res => console.log('This goal has been refreshed:', goal));
+          
+          
         }
 
       }
     }
   }
 
+  
+
   // Take all the goals needing a refresh, and well, refresh them to the user's goal page
-  for (const goal of goalsToRefresh) {
-    const goalObj = {
-      goal_progress: 0,
-      isComplete: false,
-      lastRefresh: Moment().format("YYYY-MM-DD")
-    }
-    API.editGoal(goal.id, goalObj, token).then(res => console.log('This goal has been refreshed:', res.data));
-  }
+  // for (const goal of goalsToRefresh) {
+  //   console.log(goal);
+    
+  //   const goalObj = {
+  //     goal_progress: 0,
+  //     isComplete: false,
+  //     lastRefresh: Moment().format("YYYY-MM-DD")
+  //   }
+  //   API.editGoal(goal.id, goalObj, token).then(res => console.log('This goal has been refreshed:', res.data));
+  // }
 
   async function updateGoals() {
     await removeExpiredGoals();

@@ -14,10 +14,9 @@ const API = {
   },
   signup: async function (userData) {
     const newUser = await axios.post(`${URL_PREFIX}/signup`, userData);
-    
-      return newUser.then((res) => {
-        window.location.href = '/dashboard';
-      })
+    console.log(newUser);
+    window.location.href = '/dashboard';
+    return newUser;
   },
 
   getDashboard: function (token) {
@@ -31,7 +30,7 @@ const API = {
   getUser: function (id) {
     return axios.get(`${URL_PREFIX}/api/users/${id}`)
   },
-  
+
   getAllGoals: function () {
     return axios.get(`${URL_PREFIX}/api/goals`);
   },
@@ -57,7 +56,7 @@ const API = {
     });
   },
   editGoal: function (id, editGoalData, mytoken) {
-    return axios.put( `${URL_PREFIX}/api/goals/${id}`, editGoalData, {
+    return axios.put(`${URL_PREFIX}/api/goals/${id}`, editGoalData, {
       headers: {
         authorization: `Bearer ${mytoken}`
       }
