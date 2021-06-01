@@ -20,12 +20,12 @@ const CreateGoal = (props) => {
   const [newGoal, setNewGoal] = useState({
     goal_name: "",
     goal_description: "",
-    goal_category: "",
-    goal_frequency: "",
-    goal_target: "",
-    value_type: "",
+    goal_category: "Exercise",
+    goal_frequency: "Daily",
+    goal_target: 3,
+    value_type: "Miles",
     goal_start: moment().format("YYYY-MM-DD"),
-    goal_finish: moment().format("YYYY-MM-DD"),
+    goal_finish: moment().add(1, "weeks").format("YYYY-MM-DD"),
     lastRefresh: moment().format("YYYY-MM-DD")
   });
   
@@ -33,6 +33,10 @@ const CreateGoal = (props) => {
     e.preventDefault();
     // console.log(props.token);
     if (props.token) {
+      console.log(newGoal);
+      if (newGoal.goal_target === "") {
+        newGoal.goal_target = 1
+      }
     API.createGoal(newGoal, props.token)
       .then(res => {
         // history.push('/dashboard')
@@ -60,7 +64,7 @@ const CreateGoal = (props) => {
               <input
                 className="create-goal-input"
                 type="text"
-                placeholder=" Enter a name for your goal..."
+                placeholder="Enter a name for your goal..."
                 name="goal_name"
                 value={newGoal.goal_name}
                 onChange={(e) => setNewGoal({...newGoal, goal_name: e.target.value})}
@@ -73,7 +77,7 @@ const CreateGoal = (props) => {
               <input
                 className="create-goal-input"
                 type="text"
-                placeholder=" Describe your goal..."
+                placeholder="What are you trying to accomplish?"
                 name="goal_description"
                 value={newGoal.goal_description}
                 onChange={(e) => setNewGoal({...newGoal, goal_description: e.target.value})}
@@ -86,7 +90,7 @@ const CreateGoal = (props) => {
               <select
                 className="create-goal-input"
                 type="text"
-                placeholder=" Choose a goal category..."
+                placeholder="Choose a goal category..."
                 name="goal_category"
                 value={newGoal.goal_category}
                 onChange={(e) => setNewGoal({...newGoal, goal_category: e.target.value})}
@@ -111,14 +115,14 @@ const CreateGoal = (props) => {
               <select
                 className="create-goal-input"
                 type="text"
-                placeholder=" Choose a goal frequency..."
+                placeholder="Choose a goal frequency..."
                 name="goal_frequency"
                 value={newGoal.goal_frequency}
                 onChange={(e) => setNewGoal({...newGoal, goal_frequency: e.target.value})}
               >
-                <option value="" disabled defaultValue hidden> </option>
+                <option value="" disabled  hidden> </option>
                 <option value="One Time">One Time</option>
-                <option value="Daily">Daily</option>
+                <option value="Daily" defaultValue>Daily</option>
                 <option value="Weekly">Weekly</option>
                 <option value="Monthly">Monthly</option>
                 <option value="Yearly">Yearly</option>
@@ -127,11 +131,11 @@ const CreateGoal = (props) => {
           </Row>
           <Row className="create-goal-row">
             <Col size="12">
-              <p className="create-goal-label">Goal target</p>
+              <p className="create-goal-label">Goal target (Opt.)</p>
               <input
                 className="create-goal-input"
                 type="number"
-                placeholder=" Choose a target number for your goal..."
+                placeholder="Choose a target number for your goal..."
                 name="goal_target"
                 value={newGoal.goal_target}
                 onChange={(e) => setNewGoal({...newGoal, goal_target: e.target.value})}
@@ -191,14 +195,7 @@ const CreateGoal = (props) => {
           </div>
           
         <div className="nav-btm-fixed">
-          <SaveGoalBtn 
-          // handleSubmit={handleSubmit}
-          />
-          {/* <NavBottom
-              homeBtn={homeActive}
-              groupsBtn={groups}
-              calendarBtn={calendar}
-          /> */}
+          <SaveGoalBtn />
         </div>
         </form>
     </div>

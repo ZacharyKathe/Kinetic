@@ -51,11 +51,11 @@ function App() {
       }).catch(err => {
         console.log(err);
         console.log("no logged in user")
-        // localStorage.removeItem("token");
-        // setUserState({
-        //   token: "",
-        //   user: {}
-        // })
+        localStorage.removeItem("token");
+        setUserState({
+          token: "",
+          user: {}
+        })
       })
     } else {
       console.log("no token provided")
@@ -125,20 +125,20 @@ function App() {
         });
       }).catch(err => {
         console.log(err);
-        // localStorage.removeItem("token");
-        // setUserState({
-        //   token: "",
-        //   user: {}
-        // })
+        localStorage.removeItem("token");
+        setUserState({
+          token: "",
+          user: {}
+        })
       })
     }).catch(err => {
       console.log("error occured")
       console.log(err);
-      // localStorage.removeItem("token");
-      // setUserState({
-      //   token: "",
-      //   user: {}
-      // })
+      localStorage.removeItem("token");
+      setUserState({
+        token: "",
+        user: {}
+      })
     })
     setSignupFormState({
       username: "",
