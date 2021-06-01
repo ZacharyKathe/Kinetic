@@ -1,57 +1,50 @@
 import React, { useState, useRef } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import { OverlayTrigger, Overlay, Popover, Button } from 'react-bootstrap';
+import { Overlay, Popover, Button } from 'react-bootstrap';
 import EditGoal from '../EditGoal/index';
 import GoalDetails from '../GoalDetails/index';
 import "./style.css"
-import { TextureGarbageCollector } from 'pixi.js';
-
+// import { TextureGarbageCollector } from 'pixi.js';
 
 
 
 export default function Dropdown(props) {
-  // target = useRef(null)
+  
   const history = useHistory();
+  
   const [show, setShow] = useState(false);
   const [detailsShow, setDetailsShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
-
+  
   const handleClick = (event) => {
     setShow(!show);
     setTarget(event.target);
   };
-
-
+  
+  
   const removeThisGoal = () => {
-    console.log(props.token)
+    const token = localStorage.getItem('token');
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
       API.deleteGoal(props.goalID, props.token)
-      .then(result =>     
-        API.getDashboard(props.token).then(res => {
-        props.setUserState({
-          token: props.token,
-          user: {
-            email: res.data.email,
-            id: res.data.id,
-            username: res.data.username,
-            goals: res.data.Goals,
-            groups: res.data.Groups,
-          }
-          
+      .then(result => {    
+        API.getIncompleteGoals(token).then(res => {
+          props.setUserGoals(res.data.Goals)
+        }).catch(err => {
+          console.log(err);
         })
         history.push('/dashboard')
       }).catch(err => {
         console.log(err);
-        // console.log("no logged in user")
-        // localStorage.removeItem("token");
-        // props.setUserState({
-        //   token: "",
-        //   user: {}
-        // })
-      }))
+        console.log("no logged in user")
+        localStorage.removeItem("token");
+        props.setUserState({
+          token: "",
+          user: {}
+        })
+      })
     } else return;
   }
 
@@ -79,6 +72,7 @@ export default function Dropdown(props) {
       <EditGoal
         show={editShow}
         setShow={setEditShow}
+        setUserGoals={props.setUserGoals}
         goal_id={props.goalID}
         token={props.token}
         goal_name={props.goal_name}
@@ -94,7 +88,7 @@ export default function Dropdown(props) {
 
 
       <div ref={ref}>
-        <Button onClick={handleClick}><i className="fas fa-ellipsis-v"></i></Button>
+        <Button onClick={handleClick} className="custom-class"><i className="fas fa-ellipsis-v"></i></Button>
 
         <Overlay
           show={show}
@@ -104,7 +98,7 @@ export default function Dropdown(props) {
           containerPadding={20}
         >
           <Popover id="popover-contained">
-            <Popover.Title as="h3" className="text-center">Menu</Popover.Title>
+            <Popover.Title as="h3" className="text-center">Select</Popover.Title>
             <Popover.Content>
 
               <span onClick={() => {
@@ -121,11 +115,17 @@ export default function Dropdown(props) {
                 Edit
               </span>
 
-              <span onClick={() => props.markComplete()} className="remove">
+              <span onClick={() => {
+                setShow(false);
+                props.markComplete()
+              }} className="remove">
                 Complete
               </span>
 
-              <span onClick={() => removeThisGoal()} className="remove">
+              <span onClick={() => {
+                setShow(false);
+                removeThisGoal()
+              }} className="remove">
                 Delete
               </span>
               

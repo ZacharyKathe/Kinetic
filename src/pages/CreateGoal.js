@@ -15,6 +15,7 @@ const moment = require("moment");
 
 // repurposed from login, needs update for create goal
 const CreateGoal = (props) => {
+  const token = localStorage.getItem('token');
   const history = useHistory();
 
   const [newGoal, setNewGoal] = useState({
@@ -31,17 +32,17 @@ const CreateGoal = (props) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (props.token) {
+    if (token) {
       console.log(newGoal);
       if (newGoal.goal_target === "") {
         newGoal.goal_target = 1
       }
-    API.createGoal(newGoal, props.token)
+    API.createGoal(newGoal, token)
       .then(result => {
-        API.getDashboard(props.token).then(res => {
+        API.getDashboard(token).then(res => {
           
           props.setUserState({
-            token: props.token,
+            token: token,
             user: {
               email: res.data.email,
               id: res.data.id,

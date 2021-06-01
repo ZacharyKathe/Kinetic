@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { Modal, ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
 import Moment from "moment";
-import App from '../../App';
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
-import update from '../../images/compass-update.png';
-
-const moment = require("moment");
+// import update from '../../images/compass-update.png';
 
 export default function GoalDetails(props) {
   const [goalDetails] = useState({

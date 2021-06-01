@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import API from "../../utils/API";
-// import { useHistory } from "react-router-dom";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
@@ -20,11 +19,12 @@ import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRoun
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 
+
 function DashboardCard(props) {
-  // const history = useHistory();
 
 
   const checkComplete = () => {
+    const token = localStorage.getItem('token');
     if (props.goal_target === props.goal_progress) {
       return (
         <Alert key="success" variant="success" className="goal-alert">
@@ -34,7 +34,17 @@ function DashboardCard(props) {
               isComplete: true,
               completedDate: Moment().format("YYYY-MM-DD")
             }
-            API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+            API.editGoal(props.id, updatedGoal, token).then(res => {
+              API.getIncompleteGoals(token).then(res => {
+                if(res.data) {
+                props.setUserGoals(res.data.Goals)
+                } else {
+                  props.setUserGoals()
+                }
+              }).catch(err => {
+                console.log(err);
+              })
+            })
           }}>CLEAR GOAL</button>
         </Alert>
       )
@@ -46,7 +56,14 @@ function DashboardCard(props) {
   }
 
   const markComplete = () => {
-    API.editGoal(props.id, { goal_progress: props.goal_target }, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+    const token = localStorage.getItem('token');
+    API.editGoal(props.id, { goal_progress: props.goal_target }, token).then(res => {
+      API.getIncompleteGoals(token).then(res => {
+        props.setUserGoals(res.data.Goals)
+      }).catch(err => {
+        console.log(err);
+      })
+    })
   }
 
   const renderActivityIcon = () => {
@@ -77,11 +94,6 @@ function DashboardCard(props) {
 
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
-  // console.log("goal target:", props.goal_target);
-  // console.log("current progress:", props.goal_progress);
-  // console.log(pctComplete);
-
-  // const [show, setShow] = useState(false);
 
   return (
     <div className='containerZK'>
@@ -101,6 +113,7 @@ function DashboardCard(props) {
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
             value_type={props.value_type}
+            setUserGoals={props.setUserGoals}
             markComplete={markComplete}
           />
         </div>
@@ -119,7 +132,6 @@ function DashboardCard(props) {
             goal_progress={props.goal_progress}
             goalID={props.id}
             token={props.token}
-            setUserState={props.setUserState}
             setUserGoals={props.setUserGoals}
           />
         </div>
