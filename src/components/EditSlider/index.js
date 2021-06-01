@@ -35,18 +35,9 @@ export default function EditSlider(props) {
   // Doesnt auto render yet!
   const getDashboard = () => {
     API.getDashboard(token).then(res => {
-
-      props.setUserState({
-        token: token,
-        user: {
-          email: res.data.email,
-          id: res.data.id,
-          username: res.data.username,
-          goals: res.data.Goals,
-          groups: res.data.Groups,
-        }
-
-      })
+      const incompleteGoals = res.data.Goals.filter(goal => !goal.isComplete)
+      console.log(res.data);
+      props.setUserGoals(incompleteGoals)
     }).catch(err => {
       console.log(err);
     })

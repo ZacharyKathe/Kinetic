@@ -38,7 +38,7 @@ export default function SliderModal(props) {
             goal_id={props.goalID}
             token={props.token}
             modalShow={setShow}
-            setUserState={props.setUserState}
+            setUserGoals={props.setUserGoals}
           />
       </Modal>
     </>

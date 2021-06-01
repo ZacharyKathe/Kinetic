@@ -26,8 +26,32 @@ export default function Dropdown(props) {
 
 
   const removeThisGoal = () => {
+    console.log(props.token)
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
-      API.deleteGoal(props.goalID, props.token).then(res => history.go(0))
+      API.deleteGoal(props.goalID, props.token)
+      .then(result =>     
+        API.getDashboard(props.token).then(res => {
+        props.setUserState({
+          token: props.token,
+          user: {
+            email: res.data.email,
+            id: res.data.id,
+            username: res.data.username,
+            goals: res.data.Goals,
+            groups: res.data.Groups,
+          }
+          
+        })
+        history.push('/dashboard')
+      }).catch(err => {
+        console.log(err);
+        // console.log("no logged in user")
+        // localStorage.removeItem("token");
+        // props.setUserState({
+        //   token: "",
+        //   user: {}
+        // })
+      }))
     } else return;
   }
 
