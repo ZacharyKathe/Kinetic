@@ -57,9 +57,11 @@ const Login = (props) => {
             </Col>
           </Row>
           {/* {<Link to="/dashboard"} */}
-          <button className="btn btn-success" type="submit">
-            Log in
-          </button>
+          <div className="login-signin-btn">
+            <button className="btn btn-success" type="submit">
+              Log in
+            </button>
+          </div>
           {/* </Link> */}
         </Container>
       </form>
