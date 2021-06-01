@@ -8,7 +8,6 @@ import Moment from "moment";
 import "./style.css"
 
 function DashboardCard(props) {
-
   // const history = useHistory();
 
   // useEffect(() =>)

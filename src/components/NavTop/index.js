@@ -9,10 +9,11 @@ function NavTop(props) {
     const history = useHistory();
     
     return (
-        <div className="top-nav" onClick={() => history.goBack()}>
-            <img src={backBtn} alt="back button" />
+        
+        <div className="top-nav" >
+            <img src={backBtn} alt="back button" onClick={() => history.goBack()}/>
             <p className="header-text">{props.header}</p>
-            <img src={exit} alt="log out button" />
+            <img src={exit} alt="log out button" onClick={()=> window.localStorage.clear()+ window.location.reload()}/>
         </div>
     )
 }
