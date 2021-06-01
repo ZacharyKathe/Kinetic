@@ -93,12 +93,14 @@ const CreateGoal = (props) => {
               >
                 <option value="" disabled defaultValue hidden> </option>
                 <option value="Diet">Diet</option>
-                <option value="Education">Education</option>
                 <option value="Exercise">Exercise</option>
                 <option value="Financial">Financial</option>
                 <option value="Habit">Habit</option>
                 <option value="Health">Health</option>
+                <option value="Intellectual">Intellectual</option>
+                <option value="Productivity">Productivity</option>
                 <option value="Relationship">Relationship</option>
+                <option value="Skills">Skills</option>
                 <option value="Work">Work</option>
               </select>  
             </Col>
