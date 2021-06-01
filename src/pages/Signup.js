@@ -52,9 +52,11 @@ const Signup = (props) => {
               />
             </Col>
           </Row>
-          <button className="btn btn-success" type="submit">
-            Sign up
-          </button>
+          <div className="login-signin-btn">
+            <button className="btn btn-success" type="submit">
+              Sign up
+            </button>
+          </div>
         </Container>
       </form>
 
