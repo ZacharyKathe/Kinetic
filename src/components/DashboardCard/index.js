@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
+import SliderModal from "../SliderModal/index";
 import Moment from "moment";
 import "./style.css"
 
@@ -46,6 +47,8 @@ function DashboardCard(props) {
   // console.log("current progress:", props.goal_progress);
   // console.log(pctComplete);
 
+  // const [show, setShow] = useState(false);
+
   return (
     <div className='containerZK'>
       <div className="card">
@@ -74,6 +77,14 @@ function DashboardCard(props) {
           <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
         </div>
 
+        <div>
+          <SliderModal
+            goal_target={props.goal_target}
+            goal_progress={props.goal_progress}
+            goalID={props.id}
+            token={props.token}
+          />
+        </div>
       </div>
       {checkComplete()}
       <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
