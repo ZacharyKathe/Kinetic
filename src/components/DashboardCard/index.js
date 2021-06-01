@@ -7,6 +7,8 @@ import Dropdown from "../Dropdown";
 import SliderModal from "../SliderModal/index";
 import Moment from "moment";
 import "./style.css"
+import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
+import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 
 function DashboardCard(props) {
   // const history = useHistory();
@@ -72,9 +74,9 @@ function DashboardCard(props) {
 
         <div className='contentRight'>
           <p className='goalInfo'>
-            <strong>Type</strong>: {props.goal_category}
+            <DirectionsRunRoundedIcon></DirectionsRunRoundedIcon> {props.goal_category}
           </p>
-          <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
+          <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
         </div>
 
         <div>
