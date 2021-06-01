@@ -38,10 +38,32 @@ const CreateGoal = (props) => {
         newGoal.goal_target = 1
       }
     API.createGoal(newGoal, props.token)
-      .then(res => {
+      .then(result => {
         // history.push('/dashboard')
-        history.goBack();
-        setTimeout(window.location.reload.bind(window.location), 300);
+        API.getDashboard(props.token).then(res => {
+          // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
+          
+          props.setUserState({
+            token: props.token,
+            user: {
+              email: res.data.email,
+              id: res.data.id,
+              username: res.data.username,
+              goals: res.data.Goals,
+              groups: res.data.Groups,
+            }
+            
+          })
+          history.push('/dashboard')
+        }).catch(err => {
+          console.log(err);
+          console.log("no logged in user")
+          localStorage.removeItem("token");
+          props.setUserState({
+            token: "",
+            user: {}
+          })
+        })
       })
       .catch(err => {
         // console.log(props.token);

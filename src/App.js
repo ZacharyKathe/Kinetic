@@ -170,13 +170,13 @@ function App() {
         />
       </Route>
       <Route exact path="/dashboard">
-        <Dashboard user={userState.user} token={token} />
+        <Dashboard user={userState.user} token={token} setUserState={setUserState} />
       </Route>
       <Route path="/group/:id">
         <Group user={userState.user} token={userState.token} />
       </Route>
       <Route exact path="/creategoal">
-        <CreateGoal user={userState.user} token={userState.token} />
+        <CreateGoal user={userState.user} token={userState.token} setUserState={setUserState} />
       </Route>
       <Route exact path="/createGroup">
         <CreateGroup user={userState.user} token={userState.token} />
