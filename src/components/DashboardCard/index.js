@@ -1,9 +1,11 @@
 import React from "react";
 // import API from "../../utils/API";
 // import { useHistory } from "react-router-dom";
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
+import addBtn from '../../images/add-btn.png';
+import SliderModal from '../SliderModal/index';
 
 function DashboardCard(props) {
 
@@ -14,6 +16,8 @@ function DashboardCard(props) {
   console.log("goal target:", props.goal_target);
   console.log("current progress:", props.goal_progress);
   console.log(pctComplete);
+
+  // const [show, setShow] = useState(false);
 
   return (
     <div className='containerZK'>
@@ -42,6 +46,14 @@ function DashboardCard(props) {
           <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
         </div>
 
+        <div>
+          <SliderModal
+            goal_target={props.goal_target}
+            goal_progress={props.goal_progress}
+            goalID={props.id}
+            token={props.token}
+          />
+        </div>
       </div>
       <ProgressBar now={pctComplete} label={props.value_type === "Event" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
