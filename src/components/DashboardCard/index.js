@@ -20,7 +20,7 @@ function DashboardCard(props) {
           <button className="complete-link" onClick={() => {
             const updatedGoal = {
               isComplete: true,
-              completedAt: Moment().format("YYYY-MM-DD")
+              completedDate: Moment().format("YYYY-MM-DD")
             }
             API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
           }}>CLEAR GOAL</button>

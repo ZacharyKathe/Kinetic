@@ -180,6 +180,7 @@ p {
     width: 100%;
     border-radius: 4px;
     border: 1px solid #bcc5d3;
+    padding-left: .4rem;
 }
 
 .create-goal-label {
@@ -195,7 +196,7 @@ p {
     margin: auto;
     margin-top: 10px;
     margin-bottom:1rem;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #success-alert {
