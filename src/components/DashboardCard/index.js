@@ -65,6 +65,7 @@ function DashboardCard(props) {
             goal_frequency={props.goal_frequency}
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
+            value_type={props.value_type}
             markComplete={markComplete}
           />
         </div>

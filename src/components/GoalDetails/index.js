@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import { Modal, ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
 import Moment from "moment";
-import App from '../../App';
+//import App from '../../App';
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
-import update from '../../images/compass-update.png';
+import DashboardCard from '../DashboardCard/index';
 
-const moment = require("moment");
+//const moment = require("moment");
 
 export default function GoalDetails(props) {
     const [show, setShow] = useState(false);
@@ -28,6 +28,7 @@ export default function GoalDetails(props) {
       goal_finish: props.goal_finish
       
     });
+
 
     const checkComplete = () => {
         if (props.goal_target === props.goal_progress) {
@@ -52,6 +53,10 @@ export default function GoalDetails(props) {
 
     const percent = ((props.goal_progress / props.goal_target) * 100)
     const pctComplete = percent.toFixed(2)
+
+    console.log(`===========PROPS=============`);
+    console.log("Goal name: ", props.goal_name);
+    console.log("Goal value type: ", props.value_type);
 
     return (
         <>
@@ -101,7 +106,7 @@ export default function GoalDetails(props) {
             <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-progress">
-                    {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed.
+                    {goalDetails.goal_progress} out of {goalDetails.goal_target} {props.value_type} completed.
                 </p>
               </Col>
             </Row>
