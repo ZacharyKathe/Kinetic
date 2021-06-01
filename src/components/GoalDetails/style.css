@@ -17,3 +17,33 @@
 .goal-details-progress {
     font-size: 16px;
 }
+
+.no-padding {
+    padding: 0;
+    margin: 0;
+}
+
+.padding {
+    padding: 16px;
+}
+
+.bt-div {
+    padding: 16px;
+    display: flex;
+}
+
+.border-top {
+    border-top: 1px solid lightgrey;
+}
+
+.border-bottom {
+    border-bottom: 1px solid lightgrey;
+}
+
+#comment-total {
+    padding-left: 5px;
+}
+
+#cheer-total {
+    padding-left: 5px;
+}

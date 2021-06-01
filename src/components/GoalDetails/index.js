@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, ProgressBar, Alert } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
-import SaveGoalBtn from '../SaveGoalBtn';
+import Moment from "moment";
 import App from '../../App';
 import './style.css';
+import cheer from '../../images/trophy.png';
+import comment from '../../images/comment.png';
+import update from '../../images/compass-update.png';
 
 const moment = require("moment");
 
@@ -25,7 +29,29 @@ export default function GoalDetails(props) {
       
     });
 
-    const history = useHistory();
+    const checkComplete = () => {
+        if (props.goal_target === props.goal_progress) {
+          return (
+            <Alert key="success" variant="success" className="goal-alert">
+              Way to go! 
+              <button className="complete-link" onClick={() => {
+                const updatedGoal = {
+                  isComplete: true,
+                  completedAt: Moment().format("YYYY-MM-DD")
+                }
+                API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
+              }}>CLEAR GOAL</button>
+            </Alert>
+          )
+        } else return (
+          <Alert key="warning" variant="warning" className="goal-alert">
+            Keep up the good work! 
+          </Alert>
+        )
+      }
+
+    const percent = ((props.goal_progress / props.goal_target) * 100)
+    const pctComplete = percent.toFixed(2)
 
     return (
         <>
@@ -39,7 +65,7 @@ export default function GoalDetails(props) {
           aria-labelledby="example-custom-modal-styling-title"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
+            <Modal.Title>
             <Row className="goal-title-row">
               <Col size="12">
                 <h1 className="goal-details-name">
@@ -47,7 +73,11 @@ export default function GoalDetails(props) {
                 </h1>
               </Col>
             </Row>
-            <Row className="goal-details-row">
+            </Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="no-padding">
+          <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-description">
                     {goalDetails.goal_description}
@@ -64,23 +94,46 @@ export default function GoalDetails(props) {
             <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-start">
-                    {goalDetails.goal_start} through {goalDetails.goal_finish}
+                    {goalDetails.goal_start} to {goalDetails.goal_finish}
                 </p>
               </Col>
             </Row>
             <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-progress">
-                    {goalDetails.goal_progress} of {goalDetails.goal_target} {goalDetails.value_type} completed.
+                    {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed.
                 </p>
               </Col>
             </Row>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-
+            <Row className="goal-details-row">
+              <Col size="12">
+                    {checkComplete()}
+                    <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+              </Col>
+            </Row>
+            <Row>
+                <Col size="6">
+                    <div className="bt-div">
+                        <img src={cheer} alt="cheer icon"/><p id="cheer-total">7 cheers</p>
+                    </div>
+                </Col>
+                <Col size="6">
+                    <div className="bt-div">
+                        <img src={comment} alt="comment icon"/><p id="comment-total">5 comments</p>
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col size="12">
+                    <div className="border-top padding">
+                        <p>comments go here</p>
+                    </div>
+                </Col>
+            </Row>
           </Modal.Body>
         </Modal>
       </>
     );
 }
+
+//id="example-custom-modal-styling-title"
