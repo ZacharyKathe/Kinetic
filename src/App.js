@@ -1,3 +1,4 @@
+import updateGoals from "./components/updateGoals"
 import API from "./utils/API";
 import React, { useState, useEffect } from "react";
 // import NavTabs from './components/NavTabs';
@@ -35,6 +36,7 @@ function App() {
       API.getDashboard(token).then(res => {
         // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
         // console.log(res.data);
+        updateGoals(token, res.data.Goals)
         setUserState({
           token: token,
           user: {
@@ -58,6 +60,7 @@ function App() {
     }
 
   }, [])
+
 
   const handleFormSubmit = e => {
     e.preventDefault();

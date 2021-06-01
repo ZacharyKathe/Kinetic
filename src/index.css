@@ -1,7 +1,8 @@
 *{
     padding: 0px;
     margin: 0px;
-    font-family: 'canada-type-gibson';
+    /* font-family: 'canada-type-gibson'; */
+    font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -203,10 +204,6 @@ p {
     margin-bottom: 0;
     padding: .1rem;
     height: 1.5rem;
-}
-
-.complete-link {
-    margin-left: auto;
 }
 
 .actual-dates {
