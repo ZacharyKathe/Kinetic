@@ -66,7 +66,6 @@ function App() {
   const handleFormSubmit = e => {
     e.preventDefault();
     API.login(formState).then(result => {
-      console.log(result.data);
       localStorage.setItem("token", result.data.token)
       API.getDashboard(result.data.token).then(res => {
         console.log(res.data);

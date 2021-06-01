@@ -133,7 +133,7 @@ export default function updateGoals(token, goals) {
 
   async function updateGoals() {
     await removeExpiredGoals();
-    // await refreshGoals();
+    await refreshGoals();
   }
 
   updateGoals();
