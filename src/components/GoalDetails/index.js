@@ -15,7 +15,6 @@ import update from '../../images/compass-update.png';
 const moment = require("moment");
 
 export default function GoalDetails(props) {
-  // const [show, setShow] = useState(false);
   const [goalDetails] = useState({
     goal_name: props.goal_name,
     goal_description: props.goal_description,
@@ -55,13 +54,6 @@ export default function GoalDetails(props) {
 
   return (
     <>
-      {/* <span onClick={() => {
-        props.setDetailsShow(true);
-        props.setShow(false)
-      }
-      } className="remove">
-        Details
-        </span> */}
       <Modal
         show={props.show}
         onHide={() => {props.setShow(false)}}

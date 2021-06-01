@@ -7,6 +7,18 @@ import Dropdown from "../Dropdown";
 import SliderModal from "../SliderModal/index";
 import Moment from "moment";
 import "./style.css"
+import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
+import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
+import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
+import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
+import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
+import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
+import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
+import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
+import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
+import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
+import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
+import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 
 function DashboardCard(props) {
   // const history = useHistory();
@@ -37,8 +49,31 @@ function DashboardCard(props) {
     API.editGoal(props.id, { goal_progress: props.goal_target }, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
   }
 
-
-
+  const renderActivityIcon = () => {
+    switch  (props.goal_category) {
+      case "Diet":
+        return (<RestaurantRoundedIcon />);
+      case "Intellectual":
+        return (<SchoolRoundedIcon />);
+      case "Exercise":
+        return (<DirectionsRunRoundedIcon />);
+      case "Financial":
+        return (<MonetizationOnRoundedIcon />);
+      case "Habit":
+        return (<BallotRoundedIcon />);
+      case "Health":
+        return (<FavoriteRoundedIcon />);
+      case "Relationship":
+        return (<SupervisedUserCircleRoundedIcon />);
+      case "Work":
+        return (<WorkRoundedIcon />);
+      case "Productivity":
+        return (<TrendingUpRoundedIcon />);
+      case "Skill":
+        return (<BuildRoundedIcon />);
+      default: return (<AccessibilityNewRoundedIcon />);
+    }
+  }
 
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
@@ -50,7 +85,7 @@ function DashboardCard(props) {
 
   return (
     <div className='containerZK'>
-      <div className="card">
+      <div className="card bt-card">
         <div className="content">
           <h3 className='goalheading'>{props.goal_name}</h3>
           {/* This opens up a dropdown for editing, completing, and deleting goal */}
@@ -65,18 +100,20 @@ function DashboardCard(props) {
             goal_frequency={props.goal_frequency}
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
+            value_type={props.value_type}
             markComplete={markComplete}
           />
         </div>
 
         <div className='contentRight'>
           <p className='goalInfo'>
-            <strong>Type</strong>: {props.goal_category}
+            {renderActivityIcon()} {props.goal_category}
           </p>
-          <p className='endDate'> <strong>Frequency</strong>: {props.goal_frequency}</p>
+          <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
         </div>
-
-        <div>
+      </div>
+      <div className="bigCont">
+        <div className="sliderCont">
           <SliderModal
             goal_target={props.goal_target}
             goal_progress={props.goal_progress}
@@ -84,9 +121,11 @@ function DashboardCard(props) {
             token={props.token}
           />
         </div>
+        <div className="progCont">
+          {checkComplete()}
+          <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+        </div>
       </div>
-      {checkComplete()}
-      <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
     </div>
 
   );
