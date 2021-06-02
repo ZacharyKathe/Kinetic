@@ -11,9 +11,9 @@ function NavTop(props) {
     return (
         
         <div className="top-nav" >
-            <img src={backBtn} alt="back button" onClick={() => history.goBack()}/>
+            <img className='goBackBtn' src={backBtn} alt="back button" onClick={() => history.goBack()}/>
             <p className="header-text">{props.header}</p>
-            <img src={exit} alt="log out button" onClick={()=> window.localStorage.clear()+ window.location.reload()}/>
+            <img className='logOutBtn' src={exit} alt="log out button" onClick={()=> window.localStorage.clear()+ window.location.reload()}/>
         </div>
     )
 }
