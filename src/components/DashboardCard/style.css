@@ -1,9 +1,12 @@
 .goal-alert {
   padding: .1rem;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.content-left {
-  
+.contentLeft {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .complete-link {
