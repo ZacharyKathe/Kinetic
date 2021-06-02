@@ -246,6 +246,14 @@ p {
     width: auto !important;
 }
 
+.MuiChip-colorSecondary {
+    background-color: green !important
+}
+
+.chipCheck > .MuiChip-label {
+    padding-left: 0 !important
+}
+
 @media screen and (max-width: 992px) {
     .logIn {
         padding-top: 0px;
