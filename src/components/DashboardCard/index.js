@@ -73,31 +73,13 @@ function DashboardCard(props) {
           }}>CLEAR GOAL</button>
         </Alert> */}
         <Chip
-          clickable
-          label="Goal Complete!     SAVE--->"
-          color="secondary"
-          onDelete={() => {
-            const updatedGoal = {
-              isComplete: true,
-              completedDate: Moment().format("YYYY-MM-DD")
-            }
-            API.editGoal(props.id, updatedGoal, token).then(res => {
-              API.getIncompleteGoals(token).then(res => {
-                if (res.data) {
-                  props.setUserGoals(res.data.Goals)
-                } else {
-                  props.setUserGoals()
-                }
-              }).catch(err => {
-                console.log(err);
-              })
-            })
-          }}
-          deleteIcon={<DoneIcon />}
+          label="Goal Complete!"
+          color="primary"
         />
         <Chip
           className="chipCheck"
-          label=""
+          label="Save:"
+          color="secondary"
           clickable
           onDelete={() => {
             const updatedGoal = {
@@ -215,6 +197,7 @@ function DashboardCard(props) {
               goal_id={props.id}
               token={props.token}
               setUserGoals={props.setUserGoals}
+              handleClick={handleClick}
             /> : ""}
           </div>
           <div className="progCont">
