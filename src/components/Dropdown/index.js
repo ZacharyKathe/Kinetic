@@ -143,6 +143,7 @@ export default function Dropdown(props) {
                   }).catch(err => {
                     console.log(err);
                   })
+                  history.push('/dashboard')
                 })
               }}>Mark Incomplete</span>
               : ""}
