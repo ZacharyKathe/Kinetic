@@ -53,6 +53,7 @@ function Dashboard(props) {
 
       <>
             <div className='goals-page' >
+                <LiveGoalsBtn />
               <div className='goalCards'>
 
                 {userGoals ? userGoals.map(item => (
@@ -76,7 +77,6 @@ function Dashboard(props) {
                   />
                 )) : console.log("no goals right now")}
               </div>
-              <LiveGoalsBtn />
             </div>
           </>
 

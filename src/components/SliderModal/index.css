@@ -4,3 +4,7 @@
   display: flex;
   margin: auto;
 }
+
+.addIcon {
+  color: green !important;
+}
