@@ -96,8 +96,8 @@ function DashboardCard(props) {
   const pctComplete = percent.toFixed(2)
 
   return (
-    <div className={!props.is_complete ? 'containerZK' : 'containerZK containerComplete'}>
-      <div className={!props.is_complete ? 'card bt-card' : 'card bt-card containerComplete'}>
+    <div className='containerZK'>
+      <div className="card bt-card">
         <div className="content">
           <h3 className='goalheading'>{props.goal_name}</h3>
           {/* This opens up a dropdown for editing, completing, and deleting goal */}
@@ -113,9 +113,8 @@ function DashboardCard(props) {
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
             value_type={props.value_type}
-            is_complete={props.is_complete}
-            completed_date={props.completed_date}
             setUserGoals={props.setUserGoals}
+            completed_date={props.completed_date}
             markComplete={markComplete}
           />
         </div>
@@ -128,18 +127,18 @@ function DashboardCard(props) {
             <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
           </div>
           <div className='contentLeft'>
-          {!props.is_complete ? checkComplete() : ""}
+            {checkComplete()}
           </div>
         </div>
         <div className="bigCont">
           <div className="sliderCont">
-            {!props.is_complete ? <SliderModal
+            <SliderModal
               goal_target={props.goal_target}
               goal_progress={props.goal_progress}
               goal_id={props.id}
               token={props.token}
               setUserGoals={props.setUserGoals}
-            /> : ""}
+            />
           </div>
           <div className="progCont">
             <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />

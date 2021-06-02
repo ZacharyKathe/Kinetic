@@ -4,11 +4,17 @@
   border: none !important;
 }
 
+.custom-complete {
+  color: #007bff !important;
+  background-color: #ececec !important;
+  border: none !important;
+}
 .custom-class {
   color: #007bff !important;
   background-color: white !important;
   border: none !important;
 }
+
 .custom-class:focus {
 box-shadow: none !important;
 }

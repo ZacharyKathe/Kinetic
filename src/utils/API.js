@@ -30,6 +30,15 @@ const API = {
       }
     })
   },
+
+  getCompleteGoals: function (token) {
+    return axios.get(`${URL_PREFIX}/complete-goals`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+  },
+
   // working on this
   getUser: function (id) {
     return axios.get(`${URL_PREFIX}/api/users/${id}`)
