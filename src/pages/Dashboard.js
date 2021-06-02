@@ -4,16 +4,11 @@ import { useHistory } from "react-router-dom";
 import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
-import AddGroupBtn from "../components/AddGroupBtn";
 import NavBottom from "../components/NavBottom";
 import homeActive from "../images/home-active.png";
-import home from "../images/home.png";
-import groupsActive from "../images/groups-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
-import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
-import GroupCard from "../components/GroupCard";
 import OldGoalsBtn from "../components/OldGoalsBtn";
 
 
@@ -51,16 +46,11 @@ function Dashboard(props) {
   }, []);
 
 
+  return (
+    <div>
+      <NavTop header="My Goals" />
 
-
-
-  // This function checks the selectedTab state and renders the correct component accordingly
-  const renderSelectedTab = () => {
-
-    switch (selectedTab) {
-      case "My Goals":
-        return (
-          <>
+      <>
             <div className='goals-page' >
               <div className='goalCards'>
 
@@ -86,61 +76,13 @@ function Dashboard(props) {
               <OldGoalsBtn />
             </div>
           </>
-        )
-      case "My Groups":
-        return (
-          <>
-            <div className='groupList'>
-              {userGroups.map(item => (
-                <GroupCard
-                  name={item.name}
-                  users={item.Users}
-                  key={item.id}
-                  id={item.id}
-                  setUserGroups={setUserGroups}
-                />
-              ))}
-            </div>
-          </>
-        )
-      case "Calendar":
-        return (
-          <div className='calendar'>
-            <h2>Put calendar component here</h2>
-          </div>
-        )
-      default: return (
-        <h3>We have encountered an error...</h3>
-      )
-    }
-  }
-
-  const renderSelectedBtn = () => {
-    switch (selectedTab) {
-      case "My Goals":
-        return (<AddGoalBtn />);
-      case "My Groups":
-        return (<AddGroupBtn />);
-      case "Calendar":
-        return ("Calendar button here?");
-      default: return ("");
-    }
-  }
-
-  return (
-    <div>
-      <NavTop header={selectedTab} />
-
-      {/* Dashboard renders here based off what tab you are in */}
-      {renderSelectedTab()}
 
       <div className="nav-btm-fixed">
-        {renderSelectedBtn()}
+      <AddGoalBtn />
         <NavBottom
-          setSelectedTab={setSelectedTab}
-          homeBtn={selectedTab === "My Goals" ? homeActive : home}
-          groupsBtn={selectedTab === "My Groups" ? groupsActive : groups}
-          calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
+          homeBtn={homeActive}
+          groupsBtn={groups}
+          calendarBtn={calendar}
         />
       </div>
     </div>
