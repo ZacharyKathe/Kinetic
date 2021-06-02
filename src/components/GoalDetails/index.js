@@ -20,6 +20,8 @@ export default function GoalDetails(props) {
     goal_target: props.goal_target,
     goal_progress: props.goal_progress,
     value_type: props.value_type,
+    is_complete: props.is_complete,
+    completed_date: props.completed_date,
     goal_start: props.goal_start,
     goal_finish: props.goal_finish
 
@@ -30,13 +32,6 @@ export default function GoalDetails(props) {
       return (
         <Alert key="success" variant="success" className="goal-alert">
           Way to go!
-          <button className="complete-link" onClick={() => {
-            const updatedGoal = {
-              isComplete: true,
-              completedAt: Moment().format("YYYY-MM-DD")
-            }
-            API.editGoal(props.id, updatedGoal, localStorage.getItem('token')).then(res => setTimeout(window.location.reload.bind(window.location), 300))
-          }}>CLEAR GOAL</button>
         </Alert>
       )
     } else return (
@@ -53,7 +48,7 @@ export default function GoalDetails(props) {
     <>
       <Modal
         show={props.show}
-        onHide={() => {props.setShow(false)}}
+        onHide={() => { props.setShow(false) }}
         dialogClassName="modal-90w"
         aria-labelledby="example-custom-modal-styling-title"
       >
@@ -87,20 +82,30 @@ export default function GoalDetails(props) {
           <Row className="goal-details-row">
             <Col size="12">
               <p className="goal-details-start">
-                {goalDetails.goal_start} to {goalDetails.goal_finish}
+                {Moment(goalDetails.goal_start).format("MMM D")} to {Moment(goalDetails.goal_finish).format("MMM D, YYYY")}, {goalDetails.goal_frequency}
               </p>
             </Col>
           </Row>
-          <Row className="goal-details-row">
-            <Col size="12">
-              <p className="goal-details-progress">
-                {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed.
+          {props.is_complete ?
+            <Row className="goal-details-row">
+              <Col size="12">
+                <p className="goal-details-progress">
+                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed on {Moment(props.completed_date).format("MMM DD, YYYY")}.
                 </p>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+            :
+            <Row className="goal-details-row">
+              <Col size="12">
+                <p className="goal-details-progress">
+                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed.
+                </p>
+              </Col>
+            </Row>
+          }
           <Row className="goal-details-row">
             <Col size="12">
-              {checkComplete()}
+              {!props.is_complete ? checkComplete() : ""}
               <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
             </Col>
           </Row>
