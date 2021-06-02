@@ -231,6 +231,10 @@ p {
     
 }
 
+.containerComplete {
+    background-color: #ececec;
+}
+
 .contentRight {
     display: flex;
     flex-direction: column;

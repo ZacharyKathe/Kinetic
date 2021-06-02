@@ -1,0 +1,47 @@
+.goal-alert {
+  padding: .1rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.contentLeft {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.complete-link {
+  margin-left: 2rem;
+  border: none;
+  background: none;
+  color: red;
+}
+
+.bigCont {
+  display: flex;
+  align-items: center;
+}
+
+.progCont {
+  width: 97%
+}
+
+.middle-content {
+  display: flex;
+  justify-content: start;
+}
+
+.bt-card {
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .progCont {
+    width: 95% !important
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .progCont {
+    width: 90% !important
+  }
+}
