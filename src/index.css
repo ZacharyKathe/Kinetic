@@ -133,6 +133,7 @@ p {
     padding-left: .5rem;
     padding-right: .5rem;
     margin-bottom: 1rem;
+    transition: .5s ease-in-out
 }
 
 .card {
@@ -178,6 +179,7 @@ p {
     width: 50%;
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: .5s ease-in-out
 }
 .goBackBtn:hover{
     background-color: #5574F7;
@@ -293,6 +295,10 @@ p {
 .MuiSlider-root {
     margin: 0 1rem !important;
     width: auto !important;
+}
+
+.MuiChip-colorSecondary {
+    background-color: green !important
 }
 
 @media screen and (max-width: 992px) {

@@ -38,6 +38,7 @@ export default function SliderModal(props) {
             token={props.token}
             modalShow={setShow}
             setUserGoals={props.setUserGoals}
+            handleClick={props.handleClick}
           />
       </Modal>
     </>
