@@ -1,13 +1,13 @@
 .goal-alert {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
   padding: .1rem;
-  height: 1.5rem;
+}
+
+.content-left {
+  
 }
 
 .complete-link {
-  margin-left: auto;
+  margin-left: 2rem;
   border: none;
   background: none;
   color: red;
@@ -20,6 +20,11 @@
 
 .progCont {
   width: 97%
+}
+
+.middle-content {
+  display: flex;
+  justify-content: start;
 }
 
 .bt-card {
