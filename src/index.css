@@ -235,12 +235,6 @@ p {
     background-color: #ececec;
 }
 
-.contentRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
 .blueBack {
     color: #5574F7;
 }

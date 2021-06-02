@@ -9,6 +9,12 @@
   margin: 0 auto;
 }
 
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .complete-link {
   margin-left: 2rem;
   border: none;
