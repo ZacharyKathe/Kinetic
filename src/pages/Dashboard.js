@@ -50,10 +50,6 @@ function Dashboard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-
-
-
   // This function checks the selectedTab state and renders the correct component accordingly
   const renderSelectedTab = () => {
 

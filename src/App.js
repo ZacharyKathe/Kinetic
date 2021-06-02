@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Signup from './pages/Signup'
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import MyGroups from "./pages/MyGroups";
+import Calendar from "./pages/Calendar";
 import CreateGoal from "./pages/CreateGoal";
 import CreateGroup from "./pages/CreateGroup";
 const token = localStorage.getItem('token');
@@ -176,8 +178,14 @@ function App() {
       <Route exact path="/dashboard">
         <Dashboard user={userState.user} token={token} />
       </Route>
+      <Route path="/dashboard/mygroups">
+        <MyGroups user={userState.user} token={userState.token} />
+      </Route>
       <Route path="/group/:id">
         <Group user={userState.user} token={userState.token} />
+      </Route>
+      <Route path="/dashboard/mycalendar">
+        <Calendar user={userState.user} token={userState.token} />
       </Route>
       <Route exact path="/creategoal">
         <CreateGoal user={userState.user} token={userState.token} setUserState={setUserState} />

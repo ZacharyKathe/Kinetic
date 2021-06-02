@@ -29,7 +29,7 @@ const CreateGroup = (props) => {
                             groups: res.data.Groups,
                         }
                     })
-                    history.push('/')
+                    history.push('/dashboard/mygroups')
 
                 })
                 
