@@ -179,6 +179,61 @@ p {
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.goBackBtn:hover{
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.logOutBtn:hover{
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888; 
+}
+.homeBtn:hover{
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.groupBtn:hover{
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.calenderBtn:hover{
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.add-goal-btn:hover{
+    color: red;
+    background-color: white;
+}
+.save:hover{
+    background-color: red;
+}
+.completed-goals:hover{
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.MuiButtonBase-root:hover{
+    box-shadow: 5px 10px 8px #888888;
+    color: red;
+}
+.createGroupForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+.createGroupInput{
+    margin-top: 50px;
+    
+}
+
+.containerComplete {
+    background-color: #ececec;
+}
 
 .contentRight {
     display: flex;
@@ -272,6 +327,10 @@ p {
     .containerZK {
         width: 100%;
     }
+    .createGroupInput{
+        margin-top: 50px;
+        padding-top: 25px;
+    }
 }
 
 /* Small smartphones - image placeholders change color */
@@ -279,5 +338,9 @@ p {
 @media screen and (max-width: 576px) {
     .logIn {
         padding-top: 0px;
+    }
+    .createGroupInput{
+        margin-top: 50px;
+        padding-top: 25px;
     }
 }
