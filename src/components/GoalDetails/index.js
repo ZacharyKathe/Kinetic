@@ -82,7 +82,7 @@ export default function GoalDetails(props) {
           <Row className="goal-details-row">
             <Col size="12">
               <p className="goal-details-start">
-                {Moment(goalDetails.goal_start).format("MMM D")} to {Moment(goalDetails.goal_finish).format("MMM D, YYYY")}, {goalDetails.goal_frequency}
+                Active  {goalDetails.goal_frequency.toLowerCase()} from {Moment(goalDetails.goal_start).format("MMMM D")} to {Moment(goalDetails.goal_finish).format("MMMM D, YYYY")}.
               </p>
             </Col>
           </Row>
@@ -90,7 +90,7 @@ export default function GoalDetails(props) {
             <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-progress">
-                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed on {Moment(props.completed_date).format("MMM DD, YYYY")}.
+                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed on {Moment(props.completed_date).format("MMMM DD, YYYY")}.
                 </p>
               </Col>
             </Row>
