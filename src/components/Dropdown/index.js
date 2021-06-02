@@ -10,40 +10,40 @@ import "./style.css"
 
 
 export default function Dropdown(props) {
-  
+
   const history = useHistory();
-  
+
   const [show, setShow] = useState(false);
   const [detailsShow, setDetailsShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
-  
+
   const handleClick = (event) => {
     setShow(!show);
     setTarget(event.target);
   };
-  
-  
+
+
   const removeThisGoal = () => {
     const token = localStorage.getItem('token');
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
       API.deleteGoal(props.goal_id, props.token)
-      .then(result => {    
-        API.getIncompleteGoals(token).then(res => {
-          props.setUserGoals(res.data.Goals)
+        .then(result => {
+          API.getIncompleteGoals(token).then(res => {
+            props.setUserGoals(res.data.Goals)
+          }).catch(err => {
+            console.log(err);
+          })
         }).catch(err => {
           console.log(err);
+          console.log("no logged in user")
+          localStorage.removeItem("token");
+          props.setUserState({
+            token: "",
+            user: {}
+          })
         })
-      }).catch(err => {
-        console.log(err);
-        console.log("no logged in user")
-        localStorage.removeItem("token");
-        props.setUserState({
-          token: "",
-          user: {}
-        })
-      })
     } else return;
   }
 
@@ -64,6 +64,8 @@ export default function Dropdown(props) {
         goal_target={props.goal_target}
         goal_progress={props.goal_progress}
         value_type={props.value_type}
+        is_complete={props.is_complete}
+        completed_date={props.completed_date}
         goal_start={props.goal_start}
         goal_finish={props.goal_finish}
       />
@@ -87,7 +89,7 @@ export default function Dropdown(props) {
 
 
       <div ref={ref}>
-        <Button onClick={handleClick} className="custom-class"><i className="fas fa-ellipsis-v"></i></Button>
+        <Button onClick={handleClick} className={!props.is_complete ? "custom-class" : "custom-complete"}><i className="fas fa-ellipsis-v"></i></Button>
 
         <Overlay
           show={show}
@@ -107,19 +109,43 @@ export default function Dropdown(props) {
                 Details
               </span>
 
-              <span onClick={() => {
-                setEditShow(true)
-                setShow(false)
-              }} className="remove">
-                Edit
+              {/* Checks if completed */}
+              {!props.is_complete ?
+                <>
+                  <span onClick={() => {
+                    setEditShow(true)
+                    setShow(false)
+                  }} className="remove">
+                    Edit
               </span>
 
-              <span onClick={() => {
-                setShow(false);
-                props.markComplete()
-              }} className="remove">
-                Complete
+                  <span onClick={() => {
+                    setShow(false);
+                    props.markComplete()
+                  }} className="remove">
+                    Complete
               </span>
+                </> : ""}
+              
+              {props.is_complete ?
+              <span onClick={() => {
+                const token = localStorage.getItem('token');
+                const updatedGoal = {
+                  isComplete: false,
+                }
+                API.editGoal(props.goal_id, updatedGoal, token).then(res => {
+                  API.getCompleteGoals(token).then(res => {
+                    if (res.data) {
+                      props.setUserGoals(res.data.Goals)
+                    } else {
+                      props.setUserGoals()
+                    }
+                  }).catch(err => {
+                    console.log(err);
+                  })
+                })
+              }}>Mark Incomplete</span>
+              : ""}
 
               <span onClick={() => {
                 setShow(false);
@@ -127,7 +153,7 @@ export default function Dropdown(props) {
               }} className="remove">
                 Delete
               </span>
-              
+
             </Popover.Content>
           </Popover>
         </Overlay>

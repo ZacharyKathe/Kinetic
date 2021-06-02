@@ -133,6 +133,7 @@ p {
     padding-left: .5rem;
     padding-right: .5rem;
     margin-bottom: 1rem;
+    transition: .5s ease-in-out
 }
 
 .card {
@@ -178,6 +179,16 @@ p {
     width: 50%;
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: .5s ease-in-out
+}
+.calenderCard{
+    padding-top: 5.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.react-calender{
+    width: 500px;
 }
 .goBackBtn:hover{
     background-color: #5574F7;
@@ -219,6 +230,9 @@ p {
     box-shadow: 5px 10px 8px #888888;
     color: red;
 }
+.custom-class:hover{
+    box-shadow: 5px 10px 8px #888888;
+}
 .createGroupForm{
     display: flex;
     flex-direction: column;
@@ -229,6 +243,10 @@ p {
 .createGroupInput{
     margin-top: 50px;
     
+}
+
+.containerComplete {
+    background-color: #ececec;
 }
 
 .contentRight {
@@ -295,6 +313,10 @@ p {
 .MuiSlider-root {
     margin: 0 1rem !important;
     width: auto !important;
+}
+
+.MuiChip-colorSecondary {
+    background-color: green !important
 }
 
 @media screen and (max-width: 992px) {

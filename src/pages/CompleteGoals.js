@@ -9,8 +9,7 @@ import homeActive from "../images/home-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import DashboardCard from '../components/DashboardCard'
-import OldGoalsBtn from "../components/OldGoalsBtn";
-// import DesktopNav from "../components/DesktopNav";
+import LiveGoalsBtn from "../components/LiveGoalsBtn";
 
 
 
@@ -35,9 +34,11 @@ function Dashboard(props) {
       history.push('/')
     }
     // gathers data from props and sets them as local state
-    API.getIncompleteGoals(token).then(res => {
+    API.getCompleteGoals(token).then(res => {
+      console.log(res.data)
       setUserGoals(res.data.Goals)
       setUserGroups(res.data.Groups)
+      console.log(res.data.Goals[0].completedDate);
     }).catch(err => {
       console.log(err);
     })
@@ -48,13 +49,15 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop header="My Goals" />
+      <NavTop header="Completed Goals" />
+
       <>
             <div className='goals-page' >
               <div className='goalCards'>
 
                 {userGoals ? userGoals.map(item => (
                   <DashboardCard
+
                     goal_name={item.goal_name}
                     goal_description={item.goal_description}
                     goal_category={item.goal_category}
@@ -63,21 +66,21 @@ function Dashboard(props) {
                     goal_progress={item.goal_progress}
                     goal_start={item.goal_start}
                     goal_finish={item.goal_finish}
+                    is_complete={item.isComplete}
+                    completed_date={item.completedDate}
                     value_type={item.value_type}
                     id={item.id}
-                    completed_date={item.completedDate}
                     key={item.id}
                     token={props.token}
                     setUserGoals={setUserGoals}
                   />
                 )) : console.log("no goals right now")}
               </div>
-              <OldGoalsBtn />
+              <LiveGoalsBtn />
             </div>
           </>
 
       <div className="nav-btm-fixed">
-      <AddGoalBtn />
         <NavBottom
           homeBtn={homeActive}
           groupsBtn={groups}

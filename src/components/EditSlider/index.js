@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import API from '../../utils/API';
 import { useHistory } from 'react-router-dom';
 
 export default function EditSlider(props) {
   const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
   const [value, setValue] = useState(props.goal_progress);
 
   const history = useHistory();
@@ -16,6 +20,7 @@ export default function EditSlider(props) {
 
   const changeProg = () => {
     const token = localStorage.getItem('token')
+    props.handleClick()
     console.log(value)
     const progObj = {
       goal_progress: value
@@ -31,6 +36,14 @@ export default function EditSlider(props) {
 
       })
   }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   // Doesnt auto render yet!
   const getDashboard = () => {
