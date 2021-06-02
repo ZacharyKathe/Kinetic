@@ -10,6 +10,7 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import DashboardCard from '../components/DashboardCard'
 import OldGoalsBtn from "../components/OldGoalsBtn";
+// import DesktopNav from "../components/DesktopNav";
 
 
 
@@ -49,7 +50,6 @@ function Dashboard(props) {
   return (
     <div>
       <NavTop header="My Goals" />
-
       <>
             <div className='goals-page' >
               <div className='goalCards'>

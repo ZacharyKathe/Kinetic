@@ -10,12 +10,14 @@ function DesktopNav(props) {
     
     return (
         
-        <div className="top-nav" >
+        <div className="desktop-nav" >
             <img src={backBtn} alt="back button" onClick={() => history.goBack()}/>
-            <p className="header-text">{props.header}</p>
+            <p className="desktop-header-text">{props.header}</p>
             <img src={exit} alt="log out button" onClick={()=> window.localStorage.clear()+ window.location.reload()}/>
         </div>
     )
 }
 
 export default DesktopNav;
+
+//      <DesktopNav header="Desktop View" />
