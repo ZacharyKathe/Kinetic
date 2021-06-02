@@ -86,6 +86,7 @@ const CreateGoal = (props) => {
                 name="goal_name"
                 value={newGoal.goal_name}
                 onChange={(e) => setNewGoal({...newGoal, goal_name: e.target.value})}
+                required
               />
             </Col>
           </Row>
@@ -99,6 +100,7 @@ const CreateGoal = (props) => {
                 name="goal_description"
                 value={newGoal.goal_description}
                 onChange={(e) => setNewGoal({...newGoal, goal_description: e.target.value})}
+                required
               />
             </Col>
           </Row>

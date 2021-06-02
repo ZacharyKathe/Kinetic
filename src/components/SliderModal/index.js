@@ -34,7 +34,7 @@ export default function SliderModal(props) {
           <EditSlider 
             goal_target={props.goal_target}
             goal_progress={props.goal_progress}
-            goal_id={props.goalID}
+            goal_id={props.goal_id}
             token={props.token}
             modalShow={setShow}
             setUserGoals={props.setUserGoals}

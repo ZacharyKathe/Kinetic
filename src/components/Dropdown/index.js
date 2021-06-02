@@ -28,14 +28,13 @@ export default function Dropdown(props) {
   const removeThisGoal = () => {
     const token = localStorage.getItem('token');
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
-      API.deleteGoal(props.goalID, props.token)
+      API.deleteGoal(props.goal_id, props.token)
       .then(result => {    
         API.getIncompleteGoals(token).then(res => {
           props.setUserGoals(res.data.Goals)
         }).catch(err => {
           console.log(err);
         })
-        history.push('/dashboard')
       }).catch(err => {
         console.log(err);
         console.log("no logged in user")

@@ -28,7 +28,7 @@ function DashboardCard(props) {
     if (props.goal_target === props.goal_progress) {
       return (
         <Alert key="success" variant="success" className="goal-alert">
-          Way to go! 
+          Way to go!
           <button className="complete-link" onClick={() => {
             const updatedGoal = {
               isComplete: true,
@@ -36,8 +36,8 @@ function DashboardCard(props) {
             }
             API.editGoal(props.id, updatedGoal, token).then(res => {
               API.getIncompleteGoals(token).then(res => {
-                if(res.data) {
-                props.setUserGoals(res.data.Goals)
+                if (res.data) {
+                  props.setUserGoals(res.data.Goals)
                 } else {
                   props.setUserGoals()
                 }
@@ -50,7 +50,7 @@ function DashboardCard(props) {
       )
     } else return (
       <Alert key="warning" variant="warning" className="goal-alert">
-        Keep up the good work! 
+        Keep up the good work!
       </Alert>
     )
   }
@@ -67,7 +67,7 @@ function DashboardCard(props) {
   }
 
   const renderActivityIcon = () => {
-    switch  (props.goal_category) {
+    switch (props.goal_category) {
       case "Diet":
         return (<RestaurantRoundedIcon />);
       case "Intellectual":
@@ -102,7 +102,7 @@ function DashboardCard(props) {
           <h3 className='goalheading'>{props.goal_name}</h3>
           {/* This opens up a dropdown for editing, completing, and deleting goal */}
           <Dropdown
-            goalID={props.id}
+            goal_id={props.id}
             token={props.token}
             goal_name={props.goal_name}
             goal_description={props.goal_description}
@@ -118,26 +118,30 @@ function DashboardCard(props) {
           />
         </div>
 
-        <div className='contentRight'>
-          <p className='goalInfo'>
-            {renderActivityIcon()} {props.goal_category}
-          </p>
-          <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
+        <div className="middle-content">
+          <div className='contentRight'>
+            <p className='goalInfo'>
+              {renderActivityIcon()} {props.goal_category}
+            </p>
+            <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
+          </div>
+          <div className='contentLeft'>
+            {checkComplete()}
+          </div>
         </div>
-      </div>
-      <div className="bigCont">
-        <div className="sliderCont">
-          <SliderModal
-            goal_target={props.goal_target}
-            goal_progress={props.goal_progress}
-            goalID={props.id}
-            token={props.token}
-            setUserGoals={props.setUserGoals}
-          />
-        </div>
-        <div className="progCont">
-          {checkComplete()}
-          <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+        <div className="bigCont">
+          <div className="sliderCont">
+            <SliderModal
+              goal_target={props.goal_target}
+              goal_progress={props.goal_progress}
+              goal_id={props.id}
+              token={props.token}
+              setUserGoals={props.setUserGoals}
+            />
+          </div>
+          <div className="progCont">
+            <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+          </div>
         </div>
       </div>
     </div>
