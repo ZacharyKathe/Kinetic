@@ -51,61 +51,12 @@ function DashboardCard(props) {
     }
     if (props.goal_target === props.goal_progress) {
       return (
-        <>
-        {/* <Alert key="success" variant="success" className="goal-alert">
-          Way to go!
-          <button className="complete-link" onClick={() => {
-            const updatedGoal = {
-              isComplete: true,
-              completedDate: Moment().format("YYYY-MM-DD")
-            }
-            API.editGoal(props.id, updatedGoal, token).then(res => {
-              API.getIncompleteGoals(token).then(res => {
-                if (res.data) {
-                  props.setUserGoals(res.data.Goals)
-                } else {
-                  props.setUserGoals()
-                }
-              }).catch(err => {
-                console.log(err);
-              })
-            })
-          }}>CLEAR GOAL</button>
-        </Alert> */}
         <Chip
           label="Goal Complete!"
           color="primary"
         />
-        <Chip
-          className="chipCheck"
-          label="Save:"
-          color="secondary"
-          clickable
-          onDelete={() => {
-            const updatedGoal = {
-              isComplete: true,
-              completedDate: Moment().format("YYYY-MM-DD")
-            }
-            API.editGoal(props.id, updatedGoal, token).then(res => {
-              API.getIncompleteGoals(token).then(res => {
-                if (res.data) {
-                  props.setUserGoals(res.data.Goals)
-                } else {
-                  props.setUserGoals()
-                }
-              }).catch(err => {
-                console.log(err);
-              })
-            })
-          }}
-          deleteIcon={<DoneIcon />}
-        />
-        </>
       )
     } else return (
-      // <Alert key="warning" variant="warning" className="goal-alert">
-      //   Keep up the good work!
-      // </Alert>
       <Chip 
         label="Keep up the good work!" 
         color="primary"
@@ -201,10 +152,6 @@ function DashboardCard(props) {
             /> : ""}
           </div>
           <div className="progCont">
-            <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
-          </div>
-        </div>
-      </div>
       <Snackbar
         anchorOrigin={{
           vertical: 'top',
@@ -222,6 +169,10 @@ function DashboardCard(props) {
           </React.Fragment>
         }
       />
+            <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -6,10 +6,16 @@
 
 .contentLeft {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 80%;
   margin: 0 auto;
   transition: .5s ease-in-out
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .complete-link {
@@ -45,10 +51,7 @@
   }
 
   .contentLeft {
-    display: flex;
-    justify-content: space-between;
     width: 75%;
-    margin: 0 auto;
   }
 }
 
@@ -58,9 +61,6 @@
   }
 
   .contentLeft {
-    display: flex;
-    justify-content: space-between;
     width: 70%;
-    margin: 0 auto;
   }
 }
