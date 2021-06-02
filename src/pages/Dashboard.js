@@ -14,24 +14,25 @@ import calendar from "../images/calendar.png";
 import calendarActive from "../images/calendar-active.png";
 import DashboardCard from '../components/DashboardCard'
 import GroupCard from "../components/GroupCard";
+import OldGoalsBtn from "../components/OldGoalsBtn";
 
 
 
 
 function Dashboard(props) {
-  
-  
+
+
   const history = useHistory();
-  
+
   const [userGoals, setUserGoals] = useState([]);
-  
+
   const [userGroups, setUserGroups] = useState([]);
-  
+
   const [selectedTab, setSelectedTab] = useState('My Goals')
-  
+
   // console.log(props.token);
-  
-  
+
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
@@ -45,7 +46,7 @@ function Dashboard(props) {
     }).catch(err => {
       console.log(err);
     })
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -60,27 +61,29 @@ function Dashboard(props) {
       case "My Goals":
         return (
           <>
-            {/* <h1 className='blueBack'>Goals</h1> */}
-            <div className='goalCards'>
+            <div className='goals-page' >
+              <div className='goalCards'>
 
-              {userGoals ? userGoals.map(item => (
-                <DashboardCard
+                {userGoals ? userGoals.map(item => (
+                  <DashboardCard
 
-                  goal_name={item.goal_name}
-                  goal_description={item.goal_description}
-                  goal_category={item.goal_category}
-                  goal_frequency={item.goal_frequency}
-                  goal_target={item.goal_target}
-                  goal_progress={item.goal_progress}
-                  goal_start={item.goal_start}
-                  goal_finish={item.goal_finish}
-                  value_type={item.value_type}
-                  id={item.id}
-                  key={item.id}
-                  token={props.token}
-                  setUserGoals={setUserGoals}
-                />
-              )) : console.log("no goals right now")}
+                    goal_name={item.goal_name}
+                    goal_description={item.goal_description}
+                    goal_category={item.goal_category}
+                    goal_frequency={item.goal_frequency}
+                    goal_target={item.goal_target}
+                    goal_progress={item.goal_progress}
+                    goal_start={item.goal_start}
+                    goal_finish={item.goal_finish}
+                    value_type={item.value_type}
+                    id={item.id}
+                    key={item.id}
+                    token={props.token}
+                    setUserGoals={setUserGoals}
+                  />
+                )) : console.log("no goals right now")}
+              </div>
+              <OldGoalsBtn />
             </div>
           </>
         )
@@ -130,6 +133,7 @@ function Dashboard(props) {
 
       {/* Dashboard renders here based off what tab you are in */}
       {renderSelectedTab()}
+
       <div className="nav-btm-fixed">
         {renderSelectedBtn()}
         <NavBottom

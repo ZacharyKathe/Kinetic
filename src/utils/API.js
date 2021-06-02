@@ -6,12 +6,8 @@ const API = {
 
   login: function (userData) {
     return axios.post(`${URL_PREFIX}/login`, userData)
-    // .then((res) => {
-    //   if(res.data.success) {
-    //     document.window.location.href = '/dashboard'
-    //   }
-    // })
   },
+
   signup: async function (userData) {
     const newUser = await axios.post(`${URL_PREFIX}/signup`, userData);
     console.log(newUser);
@@ -26,6 +22,7 @@ const API = {
       }
     })
   },
+
   getIncompleteGoals: function (token) {
     return axios.get(`${URL_PREFIX}/incomplete-goals`, {
       headers: {
@@ -66,7 +63,6 @@ const API = {
   },
 
   createGoal: function (newGoalData, mytoken) {
-    console.log(mytoken);
     return axios.post(`${URL_PREFIX}/api/goals/`, newGoalData, {
       headers: {
         authorization: `Bearer ${mytoken}`
