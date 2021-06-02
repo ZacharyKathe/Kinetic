@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import API from "../../utils/API";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -6,6 +6,9 @@ import Dropdown from "../Dropdown";
 import SliderModal from "../SliderModal/index";
 import Moment from "moment";
 import "./style.css"
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
@@ -18,16 +21,38 @@ import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
 import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
-
+import Chip from '@material-ui/core/Chip';
+import DoneIcon from '@material-ui/icons/Done';
 
 function DashboardCard(props) {
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
 
   const checkComplete = () => {
     const token = localStorage.getItem('token');
+    if (props.goal_progress === 0) {
+      return (
+        <Chip 
+          label="Let's Get Started!" 
+        />
+      )
+    }
     if (props.goal_target === props.goal_progress) {
       return (
-        <Alert key="success" variant="success" className="goal-alert">
+        <>
+        {/* <Alert key="success" variant="success" className="goal-alert">
           Way to go!
           <button className="complete-link" onClick={() => {
             const updatedGoal = {
@@ -46,12 +71,45 @@ function DashboardCard(props) {
               })
             })
           }}>CLEAR GOAL</button>
-        </Alert>
+        </Alert> */}
+        <Chip
+          label="Goal Complete!"
+          color="primary"
+        />
+        <Chip
+          className="chipCheck"
+          label="Save:"
+          color="secondary"
+          clickable
+          onDelete={() => {
+            const updatedGoal = {
+              isComplete: true,
+              completedDate: Moment().format("YYYY-MM-DD")
+            }
+            API.editGoal(props.id, updatedGoal, token).then(res => {
+              API.getIncompleteGoals(token).then(res => {
+                if (res.data) {
+                  props.setUserGoals(res.data.Goals)
+                } else {
+                  props.setUserGoals()
+                }
+              }).catch(err => {
+                console.log(err);
+              })
+            })
+          }}
+          deleteIcon={<DoneIcon />}
+        />
+        </>
       )
     } else return (
-      <Alert key="warning" variant="warning" className="goal-alert">
-        Keep up the good work!
-      </Alert>
+      // <Alert key="warning" variant="warning" className="goal-alert">
+      //   Keep up the good work!
+      // </Alert>
+      <Chip 
+        label="Keep up the good work!" 
+        color="primary"
+      />
     )
   }
 
@@ -139,6 +197,7 @@ function DashboardCard(props) {
               goal_id={props.id}
               token={props.token}
               setUserGoals={props.setUserGoals}
+              handleClick={handleClick}
             /> : ""}
           </div>
           <div className="progCont">
@@ -146,8 +205,24 @@ function DashboardCard(props) {
           </div>
         </div>
       </div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={1500}
+        onClose={handleClose}
+        message="Progress Saved"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </div>
-
   );
 }
 

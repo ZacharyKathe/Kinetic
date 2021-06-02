@@ -5,8 +5,11 @@
 }
 
 .contentLeft {
-  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
   margin: 0 auto;
+  transition: .5s ease-in-out
 }
 
 .complete-link {
@@ -34,14 +37,30 @@
   border: none;
 }
 
+
+
 @media screen and (max-width: 768px) {
   .progCont {
     width: 95% !important
   }
+
+  .contentLeft {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+  }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
   .progCont {
     width: 90% !important
+  }
+
+  .contentLeft {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
   }
 }
