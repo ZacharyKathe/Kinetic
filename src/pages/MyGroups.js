@@ -45,20 +45,16 @@ export default function MyGroups(props) {
   return (
     <div>
       <NavTop header={selectedTab} />
-
-      {/* Dashboard renders here based off what tab you are in */}
-      <>
             <div className='groupList'>
-              {userGroups.map(item => (
+              {userGroups ? userGroups.map(item => (
                 <GroupCard
                   name={item.name}
                   users={item.Users}
                   key={item.id}
                   id={item.id}
                 />
-              ))}
+              )) : console.log('no groups')}
             </div>
-          </>
       <div className="nav-btm-fixed">
       <AddGroupBtn />
         <NavBottom
