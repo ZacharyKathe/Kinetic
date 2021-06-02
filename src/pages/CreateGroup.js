@@ -45,7 +45,8 @@ const CreateGroup = (props) => {
         <div>
             <NavTop header="Create Group" />
             <form onSubmit={handleSubmit} className='createGroupForm'>
-                <h3>Enter Group name</h3>
+              <div>
+                <h3 className='blueBack'>Enter Group name</h3>
                 <input
                     className="createGroupInput"
                     type="text"
@@ -54,6 +55,7 @@ const CreateGroup = (props) => {
                     value={newGroup.name}
                     onChange={(e) => setNewGroup({ newGroup, name: e.target.value })}
                 />
+              </div>
                 <SaveGroupBtn />
 
             </form>
