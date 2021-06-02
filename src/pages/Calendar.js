@@ -7,6 +7,7 @@ import groupsActive from "../images/groups-active.png";
 import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import calendarActive from "../images/calendar-active.png";
+import CalenderCard from "../components/CalenderCard";
 
 export default function Calendar() {
 
@@ -20,8 +21,10 @@ export default function Calendar() {
     <div>
     <NavTop header="Calendar" />
 
-    <> 
+    <>
+    
     </>
+    <CalenderCard/>
     <div className="nav-btm-fixed">
       <NavBottom
         homeBtn={selectedTab === "My Goals" ? homeActive : home}
