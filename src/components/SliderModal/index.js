@@ -6,6 +6,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import Moment from "moment";
 import API from "../../utils/API";
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default function SliderModal(props) {
   const [show, setShow] = useState(false);
@@ -32,6 +33,7 @@ export default function SliderModal(props) {
         />
       </IconButton>
       :
+      <Tooltip title="Save Goal">
       <IconButton 
       className="saveIcon"
       onClick={() => {
@@ -64,6 +66,7 @@ export default function SliderModal(props) {
         }}
       />
     </IconButton>
+    </Tooltip>
       }
       <Modal
         {...props}
