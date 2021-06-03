@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import backBtn from "../../images/back.png";
-import exit from "../../images/exit.png";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
-import { Menu, MenuItem, MenuList, Fade, Button, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
+import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
 
 function NavTop(props) {
 
@@ -45,7 +44,7 @@ function NavTop(props) {
 
 
     return (
-
+        <>
         <div className="top-nav" >
             <img className='goBackBtn' src={backBtn} alt="back button" onClick={() => history.goBack()} />
             <p className="header-text">{props.header}</p>
@@ -76,6 +75,14 @@ function NavTop(props) {
                                         history.push('/profile/settings')
                                     }}>Settings</MenuItem>
 
+                                    {props.group_id ?
+                                    <MenuItem onClick={() => {
+                                        setOpen(false);
+                                        props.setInviteOpen(true);
+                                        // history.push('/profile/settings')
+                                    }}>Invite User</MenuItem>
+                                    : "" }
+
                                     <MenuItem onClick={
                                         () => window.localStorage.clear() + window.location.reload()
                                     }>Logout</MenuItem>
@@ -86,7 +93,7 @@ function NavTop(props) {
                 )}
             </Popper>
         </div>
-        // </div>
+        </>
     )
 }
 

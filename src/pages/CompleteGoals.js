@@ -20,7 +20,7 @@ function Dashboard(props) {
 
   const [userGoals, setUserGoals] = useState([]);
 
-  const [userGroups, setUserGroups] = useState([]);
+  // const [userGroups, setUserGroups] = useState([]);
 
 
   // console.log(props.token);
@@ -34,10 +34,8 @@ function Dashboard(props) {
     }
     // gathers data from props and sets them as local state
     API.getCompleteGoals(token).then(res => {
-      console.log(res.data)
       setUserGoals(res.data.Goals)
-      setUserGroups(res.data.Groups)
-      console.log(res.data.Goals[0].completedDate);
+      // setUserGroups(res.data.Groups)
     }).catch(err => {
       console.log(err);
     })
