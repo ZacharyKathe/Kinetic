@@ -17,7 +17,7 @@ export default function InviteUser(props) {
     e.preventDefault();
     props.setShow(false);
     const inviteObj = {
-      groupUrl: `localhost:3000/group/${props.group_id}`,
+      groupUrl: `localhost:3000/group/invitation/${props.group_id}`,
       groupName: props.group_name,
       invitedUser: invitedUser
     }
@@ -40,7 +40,7 @@ export default function InviteUser(props) {
             <Row className="goal-title-row">
               <Col size="12">
                 <h1 className="goal-details-name invite-header">
-                  Invite to your group!
+                  Invite to {props.group_name}!
                </h1>
               </Col>
             </Row>
@@ -51,10 +51,10 @@ export default function InviteUser(props) {
           <form onSubmit={handleEmailSend}>
             <div className="signInForm">
               <div className="col-12">
-                <input className="form-control" required type="text" placeholder=" Email" autoComplete="on" name="email" value={invitedUser} onChange={event => setInvitedUser(event.target.value)} />
+                <input className="form-control invite-email" required type="text" placeholder=" Email" autoComplete="on" name="email" value={invitedUser} onChange={event => setInvitedUser(event.target.value)} />
               </div>
               <button className="btn btn-outline-primary btn-block btn-lg" type="submit">
-                Invite User
+                Send Email
             </button>
             </div>
           </form>
