@@ -16,3 +16,7 @@
     font-weight: 600;
     padding-top: 5px;
 }
+
+.goBackBtn {
+    cursor: pointer !important;
+}

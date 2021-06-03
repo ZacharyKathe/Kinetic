@@ -325,6 +325,10 @@ a {
     /* transition: .5s ease-in-out !important; */
 }
 
+.MuiSvgIcon-fontSizeLarge {
+    cursor: pointer !important;
+}
+
 .btn-outline-primary {
     color: #a0c4ff;
     border-color: #a0c4ff;
