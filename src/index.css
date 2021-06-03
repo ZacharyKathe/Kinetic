@@ -28,7 +28,9 @@ a {
     border: 1px solid #bdb2ff !important;
     font-family: 'Jost', sans-serif;
     border-radius: 1%;
-    box-shadow: 0px 5px 10px #888
+    box-shadow: 0px 5px 10px #888;
+    width: 70vw !important;
+    height: 70vh !important;
   }
 
 .react-calendar__navigation__arrow {
@@ -45,6 +47,7 @@ a {
 
 .react-calendar__month-view__days__day {
     color: #bdb2ff;
+    height: 10vh !important;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
