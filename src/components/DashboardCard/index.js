@@ -3,9 +3,8 @@ import API from "../../utils/API";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
-// import Draggable from 'react-draggable';
 import SliderModal from "../SliderModal/index";
-// import Moment from "moment";
+import Moment from "moment";
 import "./style.css"
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -145,7 +144,7 @@ function DashboardCard(props) {
             <p className='goalInfo'>
               {renderActivityIcon()} {props.goal_category}
             </p>
-            <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
+            <p className='endDate'> <UpdateRoundedIcon /> {props.goal_target} {props.value_type !== "Other" ? (props.goal_target === 1 ? props.value_type.toLowerCase().substring(0, props.value_type.length - 1) : props.value_type.toLowerCase()) : (props.goal_type === 1 ? "time" : "times")} {props.goal_frequency.toLowerCase()} until {Moment(props.goal_finish).format("MMMM Do")}</p>
           </div>
           <div className='contentLeft'>
           {!props.is_complete ? checkComplete() : ""}

@@ -173,8 +173,8 @@ const CreateGoal = (props) => {
                 value={newGoal.value_type}
                 onChange={(e) => setNewGoal({...newGoal, value_type: e.target.value})}
               >
-                <option value="Other" defaultValue hidden>Other</option>
-                <option value="Event">Event</option>
+                <option value="Other">Other</option>
+                <option value="Events">Events</option>
                 <option value="Hours">Hours</option>
                 <option value="Kilograms">Kilograms</option>
                 <option value="Liters">Liters</option>

@@ -134,7 +134,6 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
     padding-left: .5rem;
     padding-right: .5rem;
     margin-bottom: 1rem;
@@ -187,68 +186,81 @@ p {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: .5s ease-in-out
 }
-.calenderCard{
+
+.calenderCard {
     padding-top: 5.1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.react-calender{
+
+.react-calender {
     width: 500px;
 }
-.goBackBtn:hover{
+
+.goBackBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.logOutBtn:hover{
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888; 
-}
-.homeBtn:hover{
+
+.logOutBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.groupBtn:hover{
+
+.homeBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.calenderBtn:hover{
+
+.groupBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.add-goal-btn:hover{
+
+.calenderBtn:hover {
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.add-goal-btn:hover {
     color: red;
     background-color: white;
 }
-.save:hover{
+
+.save:hover {
     background-color: red;
 }
-.completed-goals:hover{
+
+.completed-goals:hover {
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.MuiButtonBase-root:hover{
+
+.MuiButtonBase-root:hover {
     box-shadow: 5px 10px 8px #888888;
     color: red;
 }
-.custom-class:hover{
+
+.custom-class:hover {
     box-shadow: 5px 10px 8px #888888;
 }
-.createGroupForm{
+
+.createGroupForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
 }
-.createGroupInput{
+
+.createGroupInput {
     margin-top: 50px;
-    
 }
 
 .containerComplete {
@@ -312,7 +324,9 @@ p {
 
 .MuiSlider-root {
     margin: 0 1rem !important;
+    padding: 3.5rem 0 !important;
     width: auto !important;
+    /* transition: .5s ease-in-out !important; */
 }
 
 .MuiChip-colorSecondary {
@@ -337,7 +351,7 @@ p {
     .containerZK {
         width: 100%;
     }
-    .createGroupInput{
+    .createGroupInput {
         margin-top: 50px;
         padding-top: 25px;
     }
@@ -349,7 +363,7 @@ p {
     .logIn {
         padding-top: 0px;
     }
-    .createGroupInput{
+    .createGroupInput {
         margin-top: 50px;
         padding-top: 25px;
     }
