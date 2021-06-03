@@ -8,6 +8,7 @@ import { Menu, MenuItem, MenuList, Fade, Button, ClickAwayListener, Grow, Paper,
 import kinetikLogo from "../../images/kinetik-active.png";
 import desktopGroups from "../../images/desktop-groups.png";
 import desktopCalendar from "../../images/desktop-calendar.png";
+import DesktopAddGoalBtn from "../DesktopAddGoalBtn";
 
 function DesktopNav(props) {
 
@@ -47,11 +48,19 @@ function DesktopNav(props) {
         
         <div className="desktop-nav" >
 
-            <div className='kinetik-homeBtn' onClick={() => history.push('/dashboard')}><img src={kinetikLogo} alt="kinetik logo" /><p>kinetik</p></div>
+            <div className="primary-navigation">
+                <div className='kinetik-homeBtn' onClick={() => history.push('/dashboard')}><img src={kinetikLogo} alt="kinetik logo" /><p>kinetik</p></div>
 
-            <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={desktopGroups} alt="groups button" /><p>Groups</p></div>
+                <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={desktopGroups} alt="groups button" /><p>Groups</p></div>
 
-            <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={desktopCalendar} alt="calendar button" /><p>Calendar</p></div>
+                <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={desktopCalendar} alt="calendar button" /><p>Calendar</p></div>
+            </div>
+
+            <div className="desktop-add-goal-div">
+                <DesktopAddGoalBtn />
+            </div>
+
+            
 
             
             <MenuIcon

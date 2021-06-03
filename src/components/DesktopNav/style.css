@@ -10,6 +10,11 @@
     z-index: 2;
 }
 
+.primary-navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
 .desktop-header-text {
     color: #5887f9;
     font-size: 25px;
