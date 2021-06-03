@@ -12,6 +12,7 @@ export default function CalenderCard() {
     return(
         <div className='calenderCard'>
         <Calender className='react-calender'
+        minDetail="year"
         value={dateState}
         onChange={changeDate}
         />

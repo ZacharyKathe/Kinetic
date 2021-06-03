@@ -56,7 +56,7 @@ function DashboardCard(props) {
         <Chip
           label="Goal Complete!"
           style={{
-            backgroundColor: "#caffbf",
+            backgroundColor: "#b8ffa9",
             color: "black"
           }}
         />
