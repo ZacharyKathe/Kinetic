@@ -71,9 +71,29 @@ function DashboardCard(props) {
     )
   }
 
+  // Just sets the progress to target goal
+  const setComplete = () => {
+    const token = localStorage.getItem('token');
+    API.editGoal(props.id, {goal_progress: props.goal_target}, token).then(res => {
+      API.getIncompleteGoals(token).then(res => {
+        props.setUserGoals(res.data.Goals)
+      }).catch(err => {
+        console.log(err);
+      })
+    })
+
+  }
+
+  // This will actually complete the goal, and send it to the completed page, saving its completion date
   const markComplete = () => {
     const token = localStorage.getItem('token');
-    API.editGoal(props.id, { goal_progress: props.goal_target }, token).then(res => {
+    const completedGoal = {
+      goal_progress: props.goal_target,
+      isComplete: true,
+      completedDate: Moment().format("YYYY-MM-DD")
+    }
+    console.log(completedGoal);
+    API.editGoal(props.id, completedGoal, token).then(res => {
       API.getIncompleteGoals(token).then(res => {
         props.setUserGoals(res.data.Goals)
       }).catch(err => {
@@ -81,6 +101,8 @@ function DashboardCard(props) {
       })
     })
   }
+
+
 
   const renderActivityIcon = () => {
     switch (props.goal_category) {
@@ -146,6 +168,7 @@ function DashboardCard(props) {
             completed_date={props.completed_date}
             setUserGoals={props.setUserGoals}
             markComplete={markComplete}
+            setComplete={setComplete}
           />
         </div>
 
