@@ -59,7 +59,7 @@ const Login = (props) => {
           </Row>
           {<div className="form-error text-danger">{props.formErr}</div>}
           <div className="login-signin-btn">
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-outline-primary btn-block btn-lg" type="submit">
               Log in
             </button>
           </div>

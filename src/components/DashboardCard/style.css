@@ -12,13 +12,15 @@
 .contentLeft {
   display: flex;
   justify-content: flex-end;
-  transition: .5s ease-in-out
+  transition: .5s ease-in-out;
+  width: 40vw;
 }
 
 .contentRight {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  width: 60vw;
 }
 
 .complete-link {

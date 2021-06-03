@@ -27,7 +27,7 @@ export default function SliderModal(props) {
           className="addIcon"
           fontSize="large"
           style={{
-            color: "black"
+            color: "#3d3d3d"
           }}
         />
       </IconButton>
