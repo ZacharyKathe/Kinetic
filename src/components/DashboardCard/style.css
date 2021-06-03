@@ -54,11 +54,13 @@
 }
 
 .MuiSvgIcon-fontSizeLarge {
-  border-radius: 50%
+  border-radius: 50%;
+  transition: .3s ease-in-out;
 }
 
 .MuiSvgIcon-fontSizeLarge:hover {
-  scale: 1.05
+  scale: 1.05;
+  transition: .3s ease-in-out;
 }
 
 .MuiIconButton-root:hover {
