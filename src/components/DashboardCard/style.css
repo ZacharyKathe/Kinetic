@@ -12,8 +12,6 @@
 .contentLeft {
   display: flex;
   justify-content: flex-end;
-  width: 80%;
-  margin: 0 auto;
   transition: .5s ease-in-out
 }
 
@@ -41,7 +39,7 @@
 
 .middle-content {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .bt-card {

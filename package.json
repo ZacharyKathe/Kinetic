@@ -21,6 +21,7 @@
     "morgan": "^1.9.1",
     "pixi.js": "^6.0.4",
     "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^1.6.0",
     "react-bootstrap-range-slider": "^2.0.2",
     "react-calendar": "^3.4.0",

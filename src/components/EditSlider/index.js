@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+// import Snackbar from '@material-ui/core/Snackbar';
+// import IconButton from '@material-ui/core/IconButton';
+// import CloseIcon from '@material-ui/icons/Close';
 import API from '../../utils/API';
-import { useHistory } from 'react-router-dom';
+import "./style.css"
+
 
 export default function EditSlider(props) {
   const [show, setShow] = useState(false);
@@ -57,6 +59,7 @@ export default function EditSlider(props) {
 
   return (
     <>
+    <p className="text-center pt-2">Where are you at today?</p>
       <Slider
         show={show}
         onHide={() => setShow(false)}

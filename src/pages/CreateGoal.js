@@ -22,7 +22,7 @@ const CreateGoal = (props) => {
     goal_name: "",
     goal_description: "",
     goal_category: "Exercise",
-    goal_frequency: "Daily",
+    goal_frequency: "",
     goal_target: 3,
     value_type: "Miles",
     goal_start: moment().format("YYYY-MM-DD"),
@@ -140,7 +140,7 @@ const CreateGoal = (props) => {
                 value={newGoal.goal_frequency}
                 onChange={(e) => setNewGoal({...newGoal, goal_frequency: e.target.value})}
               >
-                <option value="" disabled  hidden> </option>
+                <option value="" disabled  hidden> How often will this goal refresh? </option>
                 <option value="One Time">One Time</option>
                 <option value="Daily" defaultValue>Daily</option>
                 <option value="Weekly">Weekly</option>
@@ -173,8 +173,8 @@ const CreateGoal = (props) => {
                 value={newGoal.value_type}
                 onChange={(e) => setNewGoal({...newGoal, value_type: e.target.value})}
               >
-                <option value="Other" defaultValue hidden>Other</option>
-                <option value="Event">Event</option>
+                <option value="Other">Other</option>
+                <option value="Events">Events</option>
                 <option value="Hours">Hours</option>
                 <option value="Kilograms">Kilograms</option>
                 <option value="Liters">Liters</option>

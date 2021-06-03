@@ -3,4 +3,5 @@
 .modal {
   display: flex;
   margin: auto;
+  height: 5rem;
 }

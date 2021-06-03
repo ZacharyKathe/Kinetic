@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\Kinetik-Api"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#44ca61",
+			"activityBar.activeBorder": "#6c51ce",
+			"activityBar.background": "#44ca61",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#6c51ce",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"statusBar.background": "#30ab4b",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#44ca61",
+			"titleBar.activeBackground": "#30ab4b",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#30ab4b99",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"peacock.color": "#30ab4b"
+	}
+}

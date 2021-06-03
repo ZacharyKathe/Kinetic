@@ -22,7 +22,7 @@ import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRoun
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 import Chip from '@material-ui/core/Chip';
-import DoneIcon from '@material-ui/icons/Done';
+// import DoneIcon from '@material-ui/icons/Done';
 
 function DashboardCard(props) {
 
@@ -112,6 +112,16 @@ function DashboardCard(props) {
   const pctComplete = percent.toFixed(2)
 
   return (
+    // <Draggable
+    // axis="x"
+    // handle=".handle"
+    // defaultPosition={{x: 0, y: 0}}
+    // position={null}
+    // grid={[25, 25]}
+    // scale={1}
+    // onStart={this.handleStart}
+    // onDrag={this.handleDrag}
+    // onStop={this.handleStop}>
     <div className={!props.is_complete ? 'containerZK' : 'containerZK containerComplete'}>
       <div className={!props.is_complete ? 'card bt-card' : 'card bt-card containerComplete'}>
         <div className="content">
@@ -144,7 +154,7 @@ function DashboardCard(props) {
             <p className='goalInfo'>
               {renderActivityIcon()} {props.goal_category}
             </p>
-            <p className='endDate'> <UpdateRoundedIcon></UpdateRoundedIcon> {props.goal_frequency}</p>
+            <p className='endDate'> <UpdateRoundedIcon /> {props.goal_target} {props.value_type !== "Other" ? (props.goal_target === 1 ? props.value_type.toLowerCase().substring(0, props.value_type.length - 1) : props.value_type.toLowerCase()) : (props.goal_type === 1 ? "time" : "times")} {props.goal_frequency.toLowerCase()} until {Moment(props.goal_finish).format("MMMM Do")}</p>
           </div>
           <div className='contentLeft'>
           {!props.is_complete ? checkComplete() : ""}
@@ -184,6 +194,7 @@ function DashboardCard(props) {
         </div>
       </div>
     </div>
+    // </Draggable>
   );
 }
 
