@@ -12,6 +12,9 @@ import calendar from "../images/calendar.png";
 import DashboardCard from '../components/DashboardCard'
 import OldGoalsBtn from "../components/OldGoalsBtn";
 import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-active.png";
+import desktopGroup from "../images/desktop-group-inactive.png";
+import desktopCalendar from "../images/desktop-calendar-inactive.png";
 
 
 
@@ -58,7 +61,11 @@ function Dashboard(props) {
 
   return (
     <div>
-      <DesktopNav header="Desktop"/>
+      <DesktopNav header="Desktop"
+        homeBtn={desktopHome}
+        groupBtn={desktopGroup}
+        calendarBtn={desktopCalendar}
+      />
       <NavTop
         header="My Goals"
         username={props.user.username} />

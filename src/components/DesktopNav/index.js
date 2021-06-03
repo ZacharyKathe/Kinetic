@@ -3,9 +3,8 @@ import "./style.css";
 import { useHistory } from "react-router-dom";
 // import MenuIcon from '@material-ui/icons/Menu';
 import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
-import kinetikLogo from "../../images/kinetik-active.png";
-import desktopGroups from "../../images/desktop-groups.png";
-import desktopCalendar from "../../images/desktop-calendar.png";
+
+
 import DesktopAddGoalBtn from "../DesktopAddGoalBtn";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -48,11 +47,11 @@ function DesktopNav(props) {
         <div className="desktop-nav" >
 
             <div className="primary-navigation-left">
-                <div className='kinetik-homeBtn' onClick={() => history.push('/dashboard')}><img src={kinetikLogo} alt="kinetik logo" /><p>kinetik</p></div>
+                <div className='kinetik-homeBtn' onClick={() => history.push('/dashboard')}><img src={props.homeBtn} alt="kinetik logo" /></div>
 
-                <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={desktopGroups} alt="groups button" /><p>Groups</p></div>
+                <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={props.groupBtn} alt="groups button" /></div>
 
-                <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={desktopCalendar} alt="calendar button" /><p>Calendar</p></div>
+                <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={props.calendarBtn} alt="calendar button" /></div>
             </div>
 
             <div className="desktop-add-goal-center">
@@ -97,7 +96,7 @@ function DesktopNav(props) {
                         </Grow>
                     )}
                 </Popper>
-                <p>Account</p>
+                <p>▾</p>
             </div>
             
 
