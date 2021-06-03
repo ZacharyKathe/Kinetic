@@ -126,7 +126,7 @@ export default function Dropdown(props) {
 
                     <span onClick={() => {
                       setShow(false);
-                      props.markComplete()
+                      props.setComplete()
                     }} className="remove">
                       Complete
                 </span>
