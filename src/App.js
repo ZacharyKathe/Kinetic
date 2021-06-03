@@ -15,6 +15,7 @@ import Settings from "./pages/Settings";
 import CreateGoal from "./pages/CreateGoal";
 import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
+import AcceptInv from "./pages/AcceptInv";
 const token = localStorage.getItem('token');
 
 function App() {
@@ -187,8 +188,11 @@ function App() {
       <Route path="/dashboard/completed-goals">
         <CompleteGoals user={userState.user} token={userState.token} />
       </Route>
-      <Route path="/group/:id">
+      <Route exact path="/group/:id">
         <Group user={userState.user} token={userState.token} />
+      </Route>
+      <Route exact path="/group/invitation/:id">
+        <AcceptInv user={userState.user} token={userState.token} />
       </Route>
       <Route path="/dashboard/mycalendar">
         <Calendar user={userState.user} token={userState.token} />

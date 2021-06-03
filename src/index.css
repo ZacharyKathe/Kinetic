@@ -70,6 +70,10 @@ a {
     margin-bottom: 50px;
 }
 
+.feed-page-header {
+    padding-top: 4.1rem;
+}
+
 .NewUser {
     text-decoration: none;
 }
@@ -160,6 +164,45 @@ a {
     background-color: white;
     display: flex;
     width: 100%;
+}
+
+.accept-inv-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #a0c4ff;
+    height: 50px;
+    color: white;
+    font-weight: 500;
+    transition: .3s ease-in-out;
+    border: none !important;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.accept-inv-btn:hover {
+    opacity: .6;
+    color: rgb(255, 255, 255);
+}
+
+.inv-header {
+    width: 30%;
+    margin-bottom: 2rem;
+}
+
+.group-name {
+    color: #5887f9;
+    margin-bottom: 1rem;
+}
+
+.invite-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-goal-form {
