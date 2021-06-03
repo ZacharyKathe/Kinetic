@@ -8,6 +8,7 @@ import { Menu, MenuItem, MenuList, Fade, Button, ClickAwayListener, Grow, Paper,
 import kinetikLogo from "../../images/kinetik-active.png";
 import desktopGroups from "../../images/desktop-groups.png";
 import desktopCalendar from "../../images/desktop-calendar.png";
+import desktopAccount from "../../images/desktop-account.png";
 import DesktopAddGoalBtn from "../DesktopAddGoalBtn";
 
 function DesktopNav(props) {
@@ -48,7 +49,7 @@ function DesktopNav(props) {
         
         <div className="desktop-nav" >
 
-            <div className="primary-navigation">
+            <div className="primary-navigation-left">
                 <div className='kinetik-homeBtn' onClick={() => history.push('/dashboard')}><img src={kinetikLogo} alt="kinetik logo" /><p>kinetik</p></div>
 
                 <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={desktopGroups} alt="groups button" /><p>Groups</p></div>
@@ -56,49 +57,51 @@ function DesktopNav(props) {
                 <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={desktopCalendar} alt="calendar button" /><p>Calendar</p></div>
             </div>
 
-            <div className="desktop-add-goal-div">
+            <div className="desktop-add-goal-center">
                 <DesktopAddGoalBtn />
             </div>
 
             
 
+            <div className="account-menu-right">
+                <MenuIcon
+                    ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    color="disabled"
+                    fontSize="large"
+                    onClick={handleToggle}
+                />
+                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                    {({ TransitionProps, placement }) => (
+                        <Grow
+                            {...TransitionProps}
+                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                        >
+                            <Paper>
+                                <ClickAwayListener onClickAway={handleClose}>
+                                    <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                        <MenuItem onClick={() => {
+                                            setOpen(false);
+                                            history.push(`/profile/${props.username}`)
+                                        }}>Profile</MenuItem>
+
+                                        <MenuItem onClick={() => {
+                                            setOpen(false);
+                                            history.push('/profile/settings')
+                                        }}>Settings</MenuItem>
+
+                                        <MenuItem onClick={
+                                            () => window.localStorage.clear() + window.location.reload()
+                                        }>Logout</MenuItem>
+                                    </MenuList>
+                                </ClickAwayListener>
+                            </Paper>
+                        </Grow>
+                    )}
+                </Popper>
+            </div>
             
-            <MenuIcon
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-                color="disabled"
-                fontSize="large"
-                onClick={handleToggle}
-            />
-            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                        {...TransitionProps}
-                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                    >
-                        <Paper>
-                            <ClickAwayListener onClickAway={handleClose}>
-                                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                    <MenuItem onClick={() => {
-                                        setOpen(false);
-                                        history.push(`/profile/${props.username}`)
-                                    }}>Profile</MenuItem>
-
-                                    <MenuItem onClick={() => {
-                                        setOpen(false);
-                                        history.push('/profile/settings')
-                                    }}>Settings</MenuItem>
-
-                                    <MenuItem onClick={
-                                        () => window.localStorage.clear() + window.location.reload()
-                                    }>Logout</MenuItem>
-                                </MenuList>
-                            </ClickAwayListener>
-                        </Paper>
-                    </Grow>
-                )}
-            </Popper>
 
         </div>
     )

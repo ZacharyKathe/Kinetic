@@ -10,16 +10,23 @@
     z-index: 2;
 }
 
-.primary-navigation {
+.primary-navigation-left {
     display: flex;
     justify-content: space-between;
+    width: 30%;
 }
 
-.desktop-header-text {
-    color: #5887f9;
-    font-size: 25px;
-    font-weight: 600;
-    padding-top: 5px;
+.desktop-add-goal-center {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-menu-right {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .kinetik-homeBtn {
@@ -41,6 +48,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 2px;
+    margin-left: 10px;
 }
 
 .desktop-groupBtn p {
@@ -54,6 +62,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 2px;
+    margin-left: 10px;
 }
 
 .desktop-calendarBtn p {
@@ -61,3 +70,14 @@
     margin-left: 5px;
     color: #bcc5d3;
 }
+
+
+
+/*
+.desktop-header-text {
+    color: #5887f9;
+    font-size: 25px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+*/
