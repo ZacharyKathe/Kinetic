@@ -64,7 +64,7 @@ const API = {
       }
     });
   },
-  createGroup: function (newGroupData,token){
+  createGroup: function (newGroupData, token) {
     return axios.post(`${URL_PREFIX}/api/groups`, newGroupData, {
       headers: {
         authorization: `Bearer ${token}`
@@ -90,6 +90,14 @@ const API = {
 
   inviteUser: function (inviteObj, mytoken) {
     return axios.post(`${URL_PREFIX}/invite`, inviteObj, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
+  },
+
+  addUserToGroup: function (id, mytoken) {
+    return axios.put(`${URL_PREFIX}/api/groups/${id})`, {
       headers: {
         authorization: `Bearer ${mytoken}`
       }

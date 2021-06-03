@@ -1,4 +1,11 @@
 .invite-header {
   font-size: 1.5rem;
   height: 6rem;
+  margin: 0 auto;
+}
+
+.invite-email {
+  margin: 1rem auto;
+  border-color: rgb(202 202 202);
+
 }
