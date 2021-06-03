@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import EditSlider from '../EditSlider/index';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Moment from "moment";
 import API from "../../utils/API";
 import Tooltip from '@material-ui/core/Tooltip';
@@ -58,11 +58,11 @@ export default function SliderModal(props) {
       color=""
       style={{padding: "0"}}
     >
-      <CheckCircleOutlineIcon
+      <CheckCircleIcon
         className="addIcon"
         fontSize="large"
         style={{ 
-          color: "#caffbf"
+          color: "#3d3d3d"
         }}
       />
     </IconButton>
