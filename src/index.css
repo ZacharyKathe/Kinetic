@@ -1,8 +1,19 @@
+:root {
+    --clr-teal: hsl(184, 11%, 49%);
+    --clr-blue4: #bcd4e6;
+    --clr-grey: hsl(105, 9%, 82%);
+    --clr-yellow: hsl(51, 53%, 79%);
+    --clr-yellow2: hsl(43, 74%, 66%);
+    --clr-white: hsl(42, 29%, 93%);
+    --clr-grn: #9aff86;
+}
+
 * {
     padding: 0px;
     margin: 0px;
     /* font-family: 'canada-type-gibson'; */
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Jost', sans-serif;
 }
 
 p {
@@ -146,11 +157,6 @@ p {
     padding-top: 4.1rem;
 }
 
-.goalheading {
-    padding-bottom: 20px;
-    color: #5574F7;
-}
-
 .content {
     display: flex;
     justify-content: space-between;
@@ -190,7 +196,7 @@ p {
 .react-calender{
     width: 500px;
 }
-.goBackBtn:hover{
+/* .goBackBtn:hover{
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
@@ -214,25 +220,12 @@ p {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
-}
-.add-goal-btn:hover{
-    color: red;
-    background-color: white;
-}
-.save:hover{
+} */
+
+/* .save:hover{
     background-color: red;
-}
-.completed-goals:hover{
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-.MuiButtonBase-root:hover{
-    box-shadow: 5px 10px 8px #888888;
-    color: red;
-}
-.custom-class:hover{
-    box-shadow: 5px 10px 8px #888888;
-}
+} */
+
 .createGroupForm{
     display: flex;
     flex-direction: column;
@@ -271,7 +264,7 @@ p {
 }
 
 .create-goal-label {
-    color: #5574f7;
+    color: #a0c4ff;
     font-size: 18px;
 }
 
@@ -309,8 +302,14 @@ p {
     width: auto !important;
 }
 
-.MuiChip-colorSecondary {
-    background-color: green !important
+.btn-outline-primary {
+    color: #a0c4ff;
+    border-color: #a0c4ff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #a0c4ff;
+    border-color: #a0c4ff;
 }
 
 @media screen and (max-width: 992px) {

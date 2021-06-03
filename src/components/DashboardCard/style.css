@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.goalheading {
+  padding-bottom: 20px;
+  color: #a0c4ff;
+}
+
 .contentLeft {
   display: flex;
   justify-content: flex-end;
@@ -43,7 +48,22 @@
   border: none;
 }
 
+.progress-bar {
+  background-color: #a0c4ff !important;
+  color: black;
+}
 
+.MuiSvgIcon-fontSizeLarge {
+  border-radius: 50%
+}
+
+.MuiSvgIcon-fontSizeLarge:hover {
+  scale: 1.05
+}
+
+.MuiIconButton-root:hover {
+  background-color: none !important;
+}
 
 @media screen and (max-width: 768px) {
   .progCont {
