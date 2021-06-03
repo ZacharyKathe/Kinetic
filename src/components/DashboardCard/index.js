@@ -3,8 +3,9 @@ import API from "../../utils/API";
 import { ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
+// import Draggable from 'react-draggable';
 import SliderModal from "../SliderModal/index";
-import Moment from "moment";
+// import Moment from "moment";
 import "./style.css"
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -22,7 +23,7 @@ import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRoun
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 import Chip from '@material-ui/core/Chip';
-import DoneIcon from '@material-ui/icons/Done';
+// import DoneIcon from '@material-ui/icons/Done';
 
 function DashboardCard(props) {
 
@@ -105,6 +106,16 @@ function DashboardCard(props) {
   const pctComplete = percent.toFixed(2)
 
   return (
+    // <Draggable
+    // axis="x"
+    // handle=".handle"
+    // defaultPosition={{x: 0, y: 0}}
+    // position={null}
+    // grid={[25, 25]}
+    // scale={1}
+    // onStart={this.handleStart}
+    // onDrag={this.handleDrag}
+    // onStop={this.handleStop}>
     <div className={!props.is_complete ? 'containerZK' : 'containerZK containerComplete'}>
       <div className={!props.is_complete ? 'card bt-card' : 'card bt-card containerComplete'}>
         <div className="content">
@@ -174,6 +185,7 @@ function DashboardCard(props) {
         </div>
       </div>
     </div>
+    // </Draggable>
   );
 }
 
