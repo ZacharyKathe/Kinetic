@@ -68,12 +68,12 @@ function NavTop(props) {
                                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                                     <MenuItem onClick={() => {
                                         setOpen(false);
-                                        alert("PUT PROFILE HERE!")
+                                        history.push(`/profile/${props.username}`)
                                     }}>Profile</MenuItem>
 
                                     <MenuItem onClick={() => {
                                         setOpen(false);
-                                        alert("PUT SETTINGS HERE!")
+                                        history.push('/profile/settings')
                                     }}>Settings</MenuItem>
 
                                     <MenuItem onClick={

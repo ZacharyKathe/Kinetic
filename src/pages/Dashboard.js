@@ -24,7 +24,7 @@ function Dashboard(props) {
 
   const [userGroups, setUserGroups] = useState([]);
 
-
+  const myUser = props.user.username;
   // console.log(props.token);
 
 
@@ -57,7 +57,9 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop header="My Goals" />
+      <NavTop 
+      header="My Goals"
+      username={props.user.username} />
 
       <>
         <div className='goals-page' >

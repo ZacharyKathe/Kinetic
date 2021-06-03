@@ -23,7 +23,7 @@ p {
 .dash-card {
     width: 100%;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .calendar {
@@ -149,6 +149,7 @@ p {
     padding-left: .5rem;
     padding-right: .5rem;
     margin-bottom: 1rem;
+    margin-top: 10px;
     transition: .5s ease-in-out
 }
 

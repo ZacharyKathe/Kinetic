@@ -10,6 +10,8 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import MyGroups from "./pages/MyGroups";
 import Calendar from "./pages/Calendar";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 import CreateGoal from "./pages/CreateGoal";
 import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
@@ -190,6 +192,12 @@ function App() {
       </Route>
       <Route path="/dashboard/mycalendar">
         <Calendar user={userState.user} token={userState.token} />
+      </Route>
+      <Route path={`/profile/${userState.user.username}`}>
+        <Profile user={userState.user} token={userState.token} />
+      </Route>
+      <Route exact path="/profile/settings">
+        <Settings user={userState.user} token={userState.token} />
       </Route>
       <Route exact path="/creategoal">
         <CreateGoal user={userState.user} token={userState.token} setUserState={setUserState} />
