@@ -33,7 +33,10 @@ export default function SliderModal(props) {
         />
       </IconButton>
       :
-      <Tooltip title="Save Goal">
+      <Tooltip 
+        title="Save Goal"
+        placement="left"
+      >
       <IconButton 
       className="saveIcon"
       onClick={() => {
