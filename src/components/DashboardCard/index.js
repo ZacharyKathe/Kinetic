@@ -27,6 +27,7 @@ import Chip from '@material-ui/core/Chip';
 function DashboardCard(props) {
 
   const [open, setOpen] = useState(false);
+  const [clickOpen, setClickOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -53,13 +54,19 @@ function DashboardCard(props) {
       return (
         <Chip
           label="Goal Complete!"
-          color="primary"
+          style={{
+            backgroundColor: "#caffbf",
+            color: "black"
+          }}
         />
       )
     } else return (
       <Chip 
         label="Keep up the good work!" 
-        color="primary"
+        style={{
+          backgroundColor: "#fff3cd",
+          color: "black"
+        }}
       />
     )
   }
@@ -121,6 +128,9 @@ function DashboardCard(props) {
           <h3 className='goalheading'>{props.goal_name}</h3>
           {/* This opens up a dropdown for editing, completing, and deleting goal */}
           <Dropdown
+            style={{
+              color: "#a0c4ff"
+            }}
             goal_id={props.id}
             token={props.token}
             goal_name={props.goal_name}

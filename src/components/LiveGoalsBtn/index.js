@@ -7,7 +7,7 @@ export default function OldGoalsBtn() {
   return (
     <div className="text-center completed-goals">
       <Link to="/dashboard/" className="completed-goals">
-        <Button className="completed-goals" color="primary">Back to Current Goals</Button>
+        <Button className="completed-goals completed-goals-btn" color="primary">Back to Current Goals</Button>
       </Link>
     </div>
   )
