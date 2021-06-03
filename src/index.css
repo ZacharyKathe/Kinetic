@@ -31,7 +31,7 @@ a {
     box-shadow: 0px 5px 10px #888;
     width: 70vw !important;
     height: 70vh !important;
-  }
+}
 
 .react-calendar__navigation__arrow {
     color: #bdb2ff;
@@ -42,12 +42,13 @@ a {
 }
 
 .react-calendar__month-view__weekdays__weekday {
-    color: #968ec4;
+    color: #3d3d3d;
 }
 
 .react-calendar__month-view__days__day {
     color: #bdb2ff;
     height: 10vh !important;
+    transition: .3s ease-in-out;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -464,8 +465,23 @@ a {
     .logIn {
         padding-top: 0px;
     }
+
     .createGroupInput {
         margin-top: 50px;
         padding-top: 25px;
+    }
+
+    .react-calendar {
+        border: 1px solid #bdb2ff !important;
+        font-family: 'Jost', sans-serif;
+        border-radius: 1%;
+        box-shadow: 0px 5px 10px #888;
+        width: 98vw !important;
+        height: 50vh !important;
+    }
+
+    .react-calendar__month-view__days__day {
+        color: #bdb2ff;
+        height: 7vh !important;
     }
 }
