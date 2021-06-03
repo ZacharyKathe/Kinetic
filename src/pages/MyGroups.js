@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import NavTop from "../components/NavTop";
-import AddGoalBtn from "../components/AddGoalBtn";
 import AddGroupBtn from "../components/AddGroupBtn";
 import NavBottom from "../components/NavBottom";
-import homeActive from "../images/home-active.png";
 import home from "../images/home.png";
 import groupsActive from "../images/groups-active.png";
-import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
-import calendarActive from "../images/calendar-active.png";
 import GroupCard from "../components/GroupCard";
+import API from "../utils/API"
 import { useHistory } from "react-router-dom";
 
 
@@ -21,23 +18,22 @@ export default function MyGroups(props) {
 
   const [userGroups, setUserGroups] = useState([]);
 
-  const [selectedTab, setSelectedTab] = useState('My Groups')
-
-  let allGoals = props.user.goals || [];
-  const allGroups = props.user.groups || [];
 
   useEffect(() => {
-    console.log(props.user)
+    const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
-    if (!props.user.email) {
+    if (!token) {
       history.push('/')
     }
-      // gathers data from props and sets them as local state
-      if (allGroups) {
-        setUserGroups(props.user.groups)
-      }
-      console.log(props.user)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // gathers data from props and sets them as local state
+    API.getIncompleteGoals(token).then(res => {
+      setUserGoals(res.data.Goals)
+      setUserGroups(res.data.Groups)
+    }).catch(err => {
+      console.log(err);
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // This function checks the selectedTab state and renders the correct component accordingly

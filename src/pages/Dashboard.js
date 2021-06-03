@@ -57,9 +57,9 @@ function Dashboard(props) {
 
   return (
     <div>
-      <NavTop 
-      header="My Goals"
-      username={props.user.username} />
+      <NavTop
+        header="My Goals"
+        username={props.user.username} />
 
       <>
         <div className='goals-page' >
@@ -91,6 +91,7 @@ function Dashboard(props) {
                               value_type={item.value_type}
                               id={item.id}
                               completed_date={item.completedDate}
+                              last_refresh={item.lastRefresh}
                               key={item.id}
                               token={props.token}
                               setUserGoals={setUserGoals}
@@ -101,6 +102,7 @@ function Dashboard(props) {
                     )
                   })
                     : console.log("no goals right now")}
+                  {provided.placeholder}
                 </div>
               )
               }

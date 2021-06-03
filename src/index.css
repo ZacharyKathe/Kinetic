@@ -20,6 +20,10 @@ p {
     margin-bottom: 0 !important;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .dash-card {
     width: 100%;
     margin: 0 auto;
