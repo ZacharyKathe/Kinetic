@@ -9,6 +9,7 @@ import Moment from "moment";
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
+import Chip from '@material-ui/core/Chip';
 // import update from '../../images/compass-update.png';
 
 export default function GoalDetails(props) {
@@ -28,13 +29,20 @@ export default function GoalDetails(props) {
   });
 
   const checkComplete = () => {
-    if (props.goal_target === props.goal_progress) {
+    if (props.goal_progress === 0) {
+      return (
+      <Alert key="secondary" variant="secondary" className="goal-alert">
+        Let's Get Started!
+      </Alert>
+      )
+    }if (props.goal_target === props.goal_progress) {
       return (
         <Alert key="success" variant="success" className="goal-alert">
           Way to go!
         </Alert>
       )
-    } else return (
+    } 
+    else return (
       <Alert key="warning" variant="warning" className="goal-alert">
         Keep up the good work!
       </Alert>
