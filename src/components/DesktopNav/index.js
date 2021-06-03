@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import backBtn from "../../images/back.png";
-import exit from "../../images/exit.png";
 import "./style.css";
 import { useHistory } from "react-router-dom";
-import MenuIcon from '@material-ui/icons/Menu';
-import { Menu, MenuItem, MenuList, Fade, Button, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
+// import MenuIcon from '@material-ui/icons/Menu';
+import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
 import kinetikLogo from "../../images/kinetik-active.png";
 import desktopGroups from "../../images/desktop-groups.png";
 import desktopCalendar from "../../images/desktop-calendar.png";
-import desktopAccount from "../../images/desktop-account.png";
 import DesktopAddGoalBtn from "../DesktopAddGoalBtn";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 function DesktopNav(props) {
 
@@ -63,14 +61,13 @@ function DesktopNav(props) {
 
             
 
-            <div className="account-menu-right">
-                <MenuIcon
+            <div className="account-menu-right" onClick={handleToggle}>
+                <AccountCircleIcon
                     ref={anchorRef}
                     aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
                     color="disabled"
                     fontSize="large"
-                    onClick={handleToggle}
                 />
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                     {({ TransitionProps, placement }) => (
@@ -100,6 +97,7 @@ function DesktopNav(props) {
                         </Grow>
                     )}
                 </Popper>
+                <p>Account</p>
             </div>
             
 

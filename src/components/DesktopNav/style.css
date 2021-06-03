@@ -37,6 +37,11 @@
     padding-bottom: 2px;
 }
 
+.kinetik-homeBtn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 .kinetik-homeBtn p {
     font-size: 25px;
     margin-left: 5px;
@@ -48,7 +53,14 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 2px;
-    margin-left: 10px;
+    margin-left: 16px;
+}
+
+.desktop-groupBtn:hover {
+    border-bottom: 2px solid #5887f9;
+    padding-bottom: 2px;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .desktop-groupBtn p {
@@ -62,7 +74,14 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 2px;
-    margin-left: 10px;
+    margin-left: 16px;
+}
+
+.desktop-calendarBtn:hover {
+    border-bottom: 2px solid #5887f9;
+    padding-bottom: 2px;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .desktop-calendarBtn p {
@@ -71,6 +90,22 @@
     color: #bcc5d3;
 }
 
+.account-menu-right p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
+}
+
+.account-menu-right p:hover {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 968px) {
+   .desktop-nav {
+       display: none;
+   }
+}
 
 
 /*
