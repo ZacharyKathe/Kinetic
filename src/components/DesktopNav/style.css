@@ -43,3 +43,16 @@
     margin-left: 5px;
     color: #bcc5d3;
 }
+
+.desktop-calendarBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.desktop-calendarBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
+}

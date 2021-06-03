@@ -7,6 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Menu, MenuItem, MenuList, Fade, Button, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
 import kinetikLogo from "../../images/kinetik-active.png";
 import desktopGroups from "../../images/desktop-groups.png";
+import desktopCalendar from "../../images/desktop-calendar.png";
 
 function DesktopNav(props) {
 
@@ -50,7 +51,9 @@ function DesktopNav(props) {
 
             <div className='desktop-groupBtn' onClick={() => history.push('/dashboard/mygroups')}><img src={desktopGroups} alt="groups button" /><p>Groups</p></div>
 
-            <p className="desktop-header-text">{props.header}</p>
+            <div className='desktop-calendarBtn' onClick={() => history.push('/dashboard/mycalendar')}><img src={desktopCalendar} alt="calendar button" /><p>Calendar</p></div>
+
+            
             <MenuIcon
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -95,3 +98,4 @@ function DesktopNav(props) {
 export default DesktopNav;
 
 //      <DesktopNav header="Desktop View" />
+//<p className="desktop-header-text">{props.header}</p>
