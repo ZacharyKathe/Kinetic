@@ -79,8 +79,17 @@ const API = {
       }
     });
   },
+
   editGoal: function (id, editGoalData, mytoken) {
     return axios.put(`${URL_PREFIX}/api/goals/${id}`, editGoalData, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
+  },
+
+  inviteUser: function (inviteObj, mytoken) {
+    return axios.post(`${URL_PREFIX}/invite`, inviteObj, {
       headers: {
         authorization: `Bearer ${mytoken}`
       }

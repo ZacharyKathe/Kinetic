@@ -27,7 +27,6 @@ a {
 .dash-card {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 10px;
 }
 
 .calendar {
@@ -196,7 +195,8 @@ a {
     width: 50%;
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: .5s ease-in-out
+    transition: .5s ease-in-out;
+    margin-top: 10px;
 }
 
 .calenderCard {
@@ -296,6 +296,10 @@ a {
     justify-content: space-around;
 }
 
+.alert-warning {
+    color: black !important;
+}
+
 #success-alert {
     display: flex;
     justify-content: space-between;
@@ -319,6 +323,10 @@ a {
     padding: 3.5rem 0 !important;
     width: auto !important;
     /* transition: .5s ease-in-out !important; */
+}
+
+.MuiSvgIcon-fontSizeLarge {
+    cursor: pointer !important;
 }
 
 .btn-outline-primary {

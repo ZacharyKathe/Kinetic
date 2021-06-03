@@ -6,7 +6,7 @@ export default function LiveGoalsBtn() {
   return (
     <div className="text-center completed-goals">
       <Link to="/dashboard/" className="completed-goals">
-      <a href="#" class="btny btn-5">Back to Current Goals</a>
+      <button class="btny btn-5">Back to Current Goals</button>
       </Link>
     </div>
   )
