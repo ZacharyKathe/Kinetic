@@ -28,6 +28,7 @@ export default function Calendar(props) {
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
+        actionBtn={<p className="desktop-header-text">Calendar</p>}
       />
     
     <NavTop 

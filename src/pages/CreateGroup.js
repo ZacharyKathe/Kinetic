@@ -3,6 +3,10 @@ import { useHistory, useParams, Redirect } from "react-router-dom";
 import NavTop from "../components/NavTop";
 import API from "../utils/API";
 import SaveGroupBtn from "../components/SaveGroupBtn"
+import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-active.png";
+import desktopGroup from "../images/desktop-group-inactive.png";
+import desktopCalendar from "../images/desktop-calendar-inactive.png";
 
 
 const CreateGroup = (props) => {
@@ -45,6 +49,12 @@ const CreateGroup = (props) => {
 
     return (
         <div>
+            <DesktopNav header="Desktop"
+            homeBtn={desktopHome}
+            groupBtn={desktopGroup}
+            calendarBtn={desktopCalendar}
+            actionBtn={<p className="desktop-header-text">Create Group</p>}
+            />
             <NavTop header="Create Group" />
             <form onSubmit={handleSubmit} className='createGroupForm'>
                 <div>
