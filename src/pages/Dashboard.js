@@ -11,7 +11,7 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import DashboardCard from '../components/DashboardCard'
 import OldGoalsBtn from "../components/OldGoalsBtn";
-// import DesktopNav from "../components/DesktopNav";
+import DesktopNav from "../components/DesktopNav";
 
 
 
@@ -58,6 +58,7 @@ function Dashboard(props) {
 
   return (
     <div>
+      <DesktopNav header="Desktop"/>
       <NavTop
         header="My Goals"
         username={props.user.username} />

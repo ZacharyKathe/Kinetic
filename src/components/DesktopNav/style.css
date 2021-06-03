@@ -7,7 +7,7 @@
     height: 64px;
     border-bottom: 2px solid #e2e8ed;
     background-color: white;
-    z-index: 1;
+    z-index: 2;
 }
 
 .desktop-header-text {
@@ -15,4 +15,31 @@
     font-size: 25px;
     font-weight: 600;
     padding-top: 5px;
+}
+
+.kinetik-homeBtn {
+    border-bottom: 2px solid #5887f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.kinetik-homeBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #5887f9;
+}
+
+.desktop-groupBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.desktop-groupBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
 }
