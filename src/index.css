@@ -9,6 +9,11 @@ p {
     margin-bottom: 0 !important;
 }
 
+.dash-card {
+    width: 100%;
+    margin: 0 auto;
+}
+
 .calendar {
     padding-top: 4.1rem;
 }
@@ -176,6 +181,7 @@ p {
     border-radius: 5px;
     border: solid 1px #bcc5d3;
     margin-bottom: .8rem;
+    margin: 0 auto;
     width: 50%;
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

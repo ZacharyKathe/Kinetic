@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 //import Goal from "../components/Goal";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import API from "../utils/API";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
@@ -44,40 +45,70 @@ function Dashboard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+    const items = Array.from(userGoals);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setUserGoals(items);
+  }
+
 
   return (
     <div>
       <NavTop header="My Goals" />
 
       <>
-            <div className='goals-page' >
-            <OldGoalsBtn />
-              <div className='goalCards'>
+        <div className='goals-page' >
+          <OldGoalsBtn />
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <Droppable droppableId="goalCards">
+              {(provided) => (
+                <div className='goalCards' {...provided.droppableProps} ref={provided.innerRef}>
 
-                {userGoals ? userGoals.map(item => (
-                  <DashboardCard
-                    goal_name={item.goal_name}
-                    goal_description={item.goal_description}
-                    goal_category={item.goal_category}
-                    goal_frequency={item.goal_frequency}
-                    goal_target={item.goal_target}
-                    goal_progress={item.goal_progress}
-                    goal_start={item.goal_start}
-                    goal_finish={item.goal_finish}
-                    value_type={item.value_type}
-                    id={item.id}
-                    completed_date={item.completedDate}
-                    key={item.id}
-                    token={props.token}
-                    setUserGoals={setUserGoals}
-                  />
-                )) : console.log("no goals right now")}
-              </div>
-            </div>
-          </>
+                  {userGoals ? userGoals.map((item, index) => {
+                    return (
+                      <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+                        {(provided) => (
+                          <div
+                            className='dash-card'
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <DashboardCard
+                              goal_name={item.goal_name}
+                              goal_description={item.goal_description}
+                              goal_category={item.goal_category}
+                              goal_frequency={item.goal_frequency}
+                              goal_target={item.goal_target}
+                              goal_progress={item.goal_progress}
+                              goal_start={item.goal_start}
+                              goal_finish={item.goal_finish}
+                              value_type={item.value_type}
+                              id={item.id}
+                              completed_date={item.completedDate}
+                              key={item.id}
+                              token={props.token}
+                              setUserGoals={setUserGoals}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    )
+                  })
+                    : console.log("no goals right now")}
+                </div>
+              )
+              }
+            </Droppable>
+          </DragDropContext>
+        </div>
+      </>
 
       <div className="nav-btm-fixed">
-      <AddGoalBtn />
+        <AddGoalBtn />
         <NavBottom
           homeBtn={homeActive}
           groupsBtn={groups}
