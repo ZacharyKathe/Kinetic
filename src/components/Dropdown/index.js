@@ -137,8 +137,10 @@ export default function Dropdown(props) {
                   const token = localStorage.getItem('token');
                   const updatedGoal = {
                     isComplete: false,
+                    completedDate: props.last_refresh
                   }
                   API.editGoal(props.goal_id, updatedGoal, token).then(res => {
+                    console.log(res.data);
                     API.getCompleteGoals(token).then(res => {
                       if (res.data) {
                         props.setUserGoals(res.data.Goals)
