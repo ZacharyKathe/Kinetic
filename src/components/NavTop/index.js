@@ -73,7 +73,7 @@ function NavTop(props) {
 
                                     <MenuItem onClick={() => {
                                         setOpen(false);
-                                        alert("PUT SETTINGS HERE!")
+                                        history.push('/profile/settings')
                                     }}>Settings</MenuItem>
 
                                     <MenuItem onClick={

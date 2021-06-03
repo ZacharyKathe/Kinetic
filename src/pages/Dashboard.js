@@ -24,7 +24,7 @@ function Dashboard(props) {
 
   const [userGroups, setUserGroups] = useState([]);
 
-
+  const myUser = props.user.username;
   // console.log(props.token);
 
 

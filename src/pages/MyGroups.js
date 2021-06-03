@@ -44,7 +44,10 @@ export default function MyGroups(props) {
 
   return (
     <div>
-      <NavTop header={selectedTab} />
+      <NavTop 
+        header="My Groups"
+        username={props.user.username}
+      />
             <div className='groupList'>
               {userGroups ? userGroups.map(item => (
                 <GroupCard
@@ -58,9 +61,9 @@ export default function MyGroups(props) {
       <div className="nav-btm-fixed">
       <AddGroupBtn />
         <NavBottom
-          homeBtn={selectedTab === "My Goals" ? homeActive : home}
-          groupsBtn={selectedTab === "My Groups" ? groupsActive : groups}
-          calendarBtn={selectedTab === "Calendar" ? calendarActive : calendar}
+          homeBtn={home}
+          groupsBtn={groupsActive}
+          calendarBtn={calendar}
         />
       </div>
     </div>
