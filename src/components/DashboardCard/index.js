@@ -23,6 +23,7 @@ import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 
 import Chip from '@material-ui/core/Chip';
+import Tooltip from '@material-ui/core/Tooltip';
 // import DoneIcon from '@material-ui/icons/Done';
 
 function DashboardCard(props) {
@@ -46,13 +47,22 @@ function DashboardCard(props) {
     const token = localStorage.getItem('token');
     if (props.goal_progress === 0) {
       return (
+        <Tooltip 
+          title="Start Them Gains Doge. Click + Btn to Add Progress!"
+          placement="right-start"
+        >
         <Chip
           label="Let's Get Started!"
         />
+        </Tooltip>
       )
     }
     if (props.goal_target === props.goal_progress) {
       return (
+        <Tooltip 
+          title="Click Check Btn to Save!"
+          placement="right-start"
+        >
         <Chip
           label="Goal Complete!"
           style={{
@@ -60,8 +70,13 @@ function DashboardCard(props) {
             color: "black"
           }}
         />
+        </Tooltip>
       )
     } else return (
+      <Tooltip 
+        title="Oh Yeah! Nice! Click + Btn to Add Progress!"
+        placement="right-start"
+        >
       <Chip
         label="Keep up the good work!"
         style={{
@@ -69,6 +84,7 @@ function DashboardCard(props) {
           color: "black"
         }}
       />
+      </Tooltip>
     )
   }
 
