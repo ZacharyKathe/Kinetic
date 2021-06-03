@@ -55,7 +55,7 @@ function DesktopNav(props) {
             </div>
 
             <div className="desktop-add-goal-center">
-                <DesktopAddGoalBtn />
+                {props.actionBtn}
             </div>
 
             

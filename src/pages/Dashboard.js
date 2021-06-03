@@ -15,6 +15,7 @@ import DesktopNav from "../components/DesktopNav";
 import desktopHome from "../images/desktop-home-active.png";
 import desktopGroup from "../images/desktop-group-inactive.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
+import DesktopAddGoalBtn from "../components/DesktopAddGoalBtn";
 
 
 
@@ -65,6 +66,7 @@ function Dashboard(props) {
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
+        actionBtn={<DesktopAddGoalBtn />}
       />
       <NavTop
         header="My Goals"
