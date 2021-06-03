@@ -1,13 +1,12 @@
 import React from 'react';
-import "./style.css";
+import "./style.scss"
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 
-export default function OldGoalsBtn() {
+export default function LiveGoalsBtn() {
   return (
     <div className="text-center completed-goals">
       <Link to="/dashboard/" className="completed-goals">
-        <Button className="completed-goals" color="primary">Back to Current Goals</Button>
+      <a href="#" class="btny btn-5">Back to Current Goals</a>
       </Link>
     </div>
   )

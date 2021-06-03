@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function AddGoalBtn(props) {
     return (
-          <div>
+          <div className="btnCont">
               <Link  to="/creategoal">
               <div className="add-goal-btn">
                     <img className='save' src={addBtn} alt="add button" />

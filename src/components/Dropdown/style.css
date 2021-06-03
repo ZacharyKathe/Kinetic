@@ -5,16 +5,22 @@
 }
 
 .custom-complete {
-  color: #007bff !important;
+  color: #3d3d3d !important;
   background-color: #ececec !important;
   border: none !important;
 }
 .custom-class {
-  color: #007bff !important;
+  color: #3d3d3d !important;
   background-color: white !important;
   border: none !important;
+  transition: .2s
+}
+
+.custom-class:hover{
+  scale: 1.2;
 }
 
 .custom-class:focus {
-box-shadow: none !important;
+  box-shadow: none !important;
+  scale: 1.2;
 }

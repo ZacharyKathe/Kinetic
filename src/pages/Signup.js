@@ -53,7 +53,7 @@ const Signup = (props) => {
             </Col>
           </Row>
           <div className="login-signin-btn">
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-outline-primary btn-block btn-lg" type="submit">
               Sign up
             </button>
           </div>

@@ -9,7 +9,7 @@ import calendar from "../images/calendar.png";
 import calendarActive from "../images/calendar-active.png";
 import CalenderCard from "../components/CalenderCard";
 
-export default function Calendar() {
+export default function Calendar(props) {
 
   const [userGoals, setUserGoals] = useState([]);
 
@@ -19,7 +19,10 @@ export default function Calendar() {
 
   return (
     <div>
-    <NavTop header="Calendar" />
+    <NavTop 
+      header="Calendar" 
+      username={props.user.username}
+    />
 
     <>
     

@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import EditSlider from '../EditSlider/index';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import Moment from "moment";
 import API from "../../utils/API";
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default function SliderModal(props) {
   const [show, setShow] = useState(false);
@@ -24,12 +25,17 @@ export default function SliderModal(props) {
         style={{padding: "0"}}
       >
         <AddCircleIcon
+          className="addIcon"
           fontSize="large"
+          style={{
+            color: "#3d3d3d"
+          }}
         />
       </IconButton>
       :
+      <Tooltip title="Save Goal">
       <IconButton 
-      className="addIcon"
+      className="saveIcon"
       onClick={() => {
         const token = localStorage.getItem('token');
         setShow(false);
@@ -52,12 +58,15 @@ export default function SliderModal(props) {
       color=""
       style={{padding: "0"}}
     >
-      <CheckCircleIcon
+      <CheckCircleOutlineIcon
         className="addIcon"
         fontSize="large"
-        style={{ color: "green"}}
+        style={{ 
+          color: "#caffbf"
+        }}
       />
     </IconButton>
+    </Tooltip>
       }
       <Modal
         {...props}

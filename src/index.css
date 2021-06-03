@@ -1,12 +1,33 @@
+:root {
+    --clr-teal: hsl(184, 11%, 49%);
+    --clr-blue4: #bcd4e6;
+    --clr-grey: hsl(105, 9%, 82%);
+    --clr-yellow: hsl(51, 53%, 79%);
+    --clr-yellow2: hsl(43, 74%, 66%);
+    --clr-white: hsl(42, 29%, 93%);
+    --clr-grn: #9aff86;
+}
+
 * {
     padding: 0px;
     margin: 0px;
     /* font-family: 'canada-type-gibson'; */
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Jost', sans-serif;
 }
 
 p {
     margin-bottom: 0 !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.dash-card {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 .calendar {
@@ -129,10 +150,10 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
     padding-left: .5rem;
     padding-right: .5rem;
     margin-bottom: 1rem;
+    margin-top: 10px;
     transition: .5s ease-in-out
 }
 
@@ -144,11 +165,6 @@ p {
 
 .create-goal-form {
     padding-top: 4.1rem;
-}
-
-.goalheading {
-    padding-bottom: 20px;
-    color: #5574F7;
 }
 
 .content {
@@ -176,63 +192,57 @@ p {
     border-radius: 5px;
     border: solid 1px #bcc5d3;
     margin-bottom: .8rem;
+    margin: 0 auto;
     width: 50%;
     padding: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: .5s ease-in-out
 }
-.calenderCard{
+
+.calenderCard {
     padding-top: 5.1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.react-calender{
+
+.react-calender {
     width: 500px;
 }
-.goBackBtn:hover{
+/* .goBackBtn:hover{
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.logOutBtn:hover{
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888; 
-}
-.homeBtn:hover{
+
+.logOutBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.groupBtn:hover{
+
+.homeBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.calenderBtn:hover{
+
+.groupBtn:hover {
     background-color: #5574F7;
     border-radius: 3px;
     box-shadow: 5px 10px 8px #888888;
 }
-.add-goal-btn:hover{
-    color: red;
-    background-color: white;
-}
-.save:hover{
+
+.calenderBtn:hover {
+    background-color: #5574F7;
+    border-radius: 3px;
+    box-shadow: 5px 10px 8px #888888;
+} */
+
+/* .save:hover{
     background-color: red;
-}
-.completed-goals:hover{
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-.MuiButtonBase-root:hover{
-    box-shadow: 5px 10px 8px #888888;
-    color: red;
-}
-.custom-class:hover{
-    box-shadow: 5px 10px 8px #888888;
-}
+} */
+
 .createGroupForm{
     display: flex;
     flex-direction: column;
@@ -240,9 +250,9 @@ p {
     justify-content: space-between;
     height: 100vh;
 }
-.createGroupInput{
+
+.createGroupInput {
     margin-top: 50px;
-    
 }
 
 .containerComplete {
@@ -271,7 +281,7 @@ p {
 }
 
 .create-goal-label {
-    color: #5574f7;
+    color: #a0c4ff;
     font-size: 18px;
 }
 
@@ -306,11 +316,19 @@ p {
 
 .MuiSlider-root {
     margin: 0 1rem !important;
+    padding: 3.5rem 0 !important;
     width: auto !important;
+    /* transition: .5s ease-in-out !important; */
 }
 
-.MuiChip-colorSecondary {
-    background-color: green !important
+.btn-outline-primary {
+    color: #a0c4ff;
+    border-color: #a0c4ff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #a0c4ff;
+    border-color: #a0c4ff;
 }
 
 @media screen and (max-width: 992px) {
@@ -331,7 +349,7 @@ p {
     .containerZK {
         width: 100%;
     }
-    .createGroupInput{
+    .createGroupInput {
         margin-top: 50px;
         padding-top: 25px;
     }
@@ -343,7 +361,7 @@ p {
     .logIn {
         padding-top: 0px;
     }
-    .createGroupInput{
+    .createGroupInput {
         margin-top: 50px;
         padding-top: 25px;
     }

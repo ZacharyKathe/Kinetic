@@ -211,6 +211,7 @@ export default function EditGoal(props) {
               </div>
             </div>
             <Button 
+              className="saveEditBtn"
               variant="outline-primary"
               size="lg" 
               block

@@ -6,6 +6,7 @@ import EditGoal from '../EditGoal/index';
 import GoalDetails from '../GoalDetails/index';
 import "./style.css"
 // import { TextureGarbageCollector } from 'pixi.js';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 
@@ -24,6 +25,9 @@ export default function Dropdown(props) {
     setTarget(event.target);
   };
 
+  const handleClickAway = () => {
+    setShow(false);
+  };
 
   const removeThisGoal = () => {
     const token = localStorage.getItem('token');
@@ -88,77 +92,82 @@ export default function Dropdown(props) {
       />
 
 
+      <ClickAwayListener onClickAway={handleClickAway}>
       <div ref={ref}>
         <Button onClick={handleClick} className={!props.is_complete ? "custom-class" : "custom-complete"}><i className="fas fa-ellipsis-v"></i></Button>
+          {show ? (
+          <Overlay
+            show={show}
+            target={target}
+            placement="left"
+            container={ref.current}
+            containerPadding={20}
+          >
+            <Popover id="popover-contained">
+              <Popover.Title as="h3" className="text-center">Select</Popover.Title>
+              <Popover.Content>
 
-        <Overlay
-          show={show}
-          target={target}
-          placement="left"
-          container={ref.current}
-          containerPadding={20}
-        >
-          <Popover id="popover-contained">
-            <Popover.Title as="h3" className="text-center">Select</Popover.Title>
-            <Popover.Content>
+                <span onClick={() => {
+                  setDetailsShow(true);
+                  setShow(false)
+                }} className="remove">
+                  Details
+                </span>
 
-              <span onClick={() => {
-                setDetailsShow(true);
-                setShow(false)
-              }} className="remove">
-                Details
-              </span>
+                {/* Checks if completed */}
+                {!props.is_complete ?
+                  <>
+                    <span onClick={() => {
+                      setEditShow(true)
+                      setShow(false)
+                    }} className="remove">
+                      Edit
+                </span>
 
-              {/* Checks if completed */}
-              {!props.is_complete ?
-                <>
-                  <span onClick={() => {
-                    setEditShow(true)
-                    setShow(false)
-                  }} className="remove">
-                    Edit
-              </span>
-
-                  <span onClick={() => {
-                    setShow(false);
-                    props.markComplete()
-                  }} className="remove">
-                    Complete
-              </span>
-                </> : ""}
-              
-              {props.is_complete ?
-              <span onClick={() => {
-                const token = localStorage.getItem('token');
-                const updatedGoal = {
-                  isComplete: false,
-                }
-                API.editGoal(props.goal_id, updatedGoal, token).then(res => {
-                  API.getCompleteGoals(token).then(res => {
-                    if (res.data) {
-                      props.setUserGoals(res.data.Goals)
-                    } else {
-                      props.setUserGoals()
-                    }
-                  }).catch(err => {
-                    console.log(err);
+                    <span onClick={() => {
+                      setShow(false);
+                      props.setComplete()
+                    }} className="remove">
+                      Complete
+                </span>
+                  </> : ""}
+                
+                {props.is_complete ?
+                <span onClick={() => {
+                  const token = localStorage.getItem('token');
+                  const updatedGoal = {
+                    isComplete: false,
+                    completedDate: props.last_refresh
+                  }
+                  API.editGoal(props.goal_id, updatedGoal, token).then(res => {
+                    console.log(res.data);
+                    API.getCompleteGoals(token).then(res => {
+                      if (res.data) {
+                        props.setUserGoals(res.data.Goals)
+                      } else {
+                        props.setUserGoals()
+                      }
+                    }).catch(err => {
+                      console.log(err);
+                    })
+                    history.push('/dashboard')
                   })
-                  history.push('/dashboard')
-                })
-              }}>Mark Incomplete</span>
-              : ""}
+                }}>Mark Incomplete</span>
+                : ""}
 
-              <span onClick={() => {
-                setShow(false);
-                removeThisGoal()
-              }} className="remove">
-                Delete
-              </span>
+                <span onClick={() => {
+                  setShow(false);
+                  removeThisGoal()
+                }} className="remove">
+                  Delete
+                </span>
 
-            </Popover.Content>
-          </Popover>
-        </Overlay>
+              </Popover.Content>
+            </Popover>
+          </Overlay>
+        ) : null }
       </div>
+      </ClickAwayListener>
     </>
   )
 }

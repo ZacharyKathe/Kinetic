@@ -3,8 +3,5 @@
 .modal {
   display: flex;
   margin: auto;
-}
-
-.addIcon {
-  color: green !important;
+  height: 5rem;
 }
