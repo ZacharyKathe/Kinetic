@@ -220,6 +220,10 @@ a {
     width: 100%;
 }
 
+.feed-page-header {
+    text-decoration: underline var(--clr-blue)
+}
+
 .accept-inv-btn {
     display: flex;
     flex-direction: row;
