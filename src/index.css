@@ -1,6 +1,7 @@
 :root {
     --clr-teal: hsl(184, 11%, 49%);
-    --clr-blue: #a0c4ff;
+    --clr-blue: hsl(217, 100%, 81%);
+    --clr-blue2: hsl(217, 21%, 55%);
     --clr-grey: hsl(105, 9%, 82%);
     --clr-yellow: hsl(51, 53%, 79%);
     --clr-yellow2: hsl(43, 74%, 66%);
@@ -301,43 +302,6 @@ a {
     flex-direction: column;
     align-items: center;
 }
-
-.react-calender {
-    width: 500px;
-}
-/* .goBackBtn:hover{
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-
-.logOutBtn:hover {
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-
-.homeBtn:hover {
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-
-.groupBtn:hover {
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-}
-
-.calenderBtn:hover {
-    background-color: #5574F7;
-    border-radius: 3px;
-    box-shadow: 5px 10px 8px #888888;
-} */
-
-/* .save:hover{
-    background-color: red;
-} */
 
 .createGroupForm{
     display: flex;
