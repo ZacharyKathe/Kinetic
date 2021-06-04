@@ -6,3 +6,10 @@
     border-top: 2px solid #e2e8ed;
     background-color: white;
 }
+
+
+@media screen and (min-width: 968px) {
+    .bottom-nav {
+        display: none;
+    }
+}
