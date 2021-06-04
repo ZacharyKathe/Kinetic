@@ -218,6 +218,7 @@ a {
     background-color: white;
     display: flex;
     width: 100%;
+    margin-top: 1rem;
 }
 
 .accept-inv-btn {
@@ -314,6 +315,8 @@ a {
 .createGroupInput {
     margin-top: 20px;
     width: 100%;
+    border: 1px solid #bcc5d3;
+    border-radius: 4px;
 }
 
 .containerComplete {
