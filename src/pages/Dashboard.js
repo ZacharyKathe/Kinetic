@@ -67,6 +67,7 @@ function Dashboard(props) {
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
         actionBtn={<DesktopAddGoalBtn />}
+        username={props.user.username}
       />
       <NavTop
         header="My Goals"
