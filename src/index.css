@@ -221,6 +221,10 @@ a {
     margin-top: 1rem;
 }
 
+.feed-page-header {
+    text-decoration: underline var(--clr-blue)
+}
+
 .accept-inv-btn {
     display: flex;
     flex-direction: row;
