@@ -1,4 +1,4 @@
-.save-group-btn {
+.desktop-save-group-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -9,9 +9,14 @@
     font-weight: 600;
     width: 100%;
     border: none;
+    margin-top: 30px;
+    width: 220px;
     border-radius: 4px;
-    position: fixed;
-    bottom: 0;
+}
+
+.desktop-save-group-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
 }
 
 #save-group-text {
@@ -19,8 +24,8 @@
     padding-top: 2px;
 }
 
-@media screen and (min-width: 968px) {
-    .save-group-btn {
+@media screen and (max-width: 968px) {
+    .desktop-save-group-btn {
         display: none;
     }
   }

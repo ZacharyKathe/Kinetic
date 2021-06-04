@@ -284,10 +284,6 @@ a {
     margin: auto;
 }
 
-.createGroupForm {
-    padding-top: 7rem;
-}
-
 .containerZK {
     border-radius: 5px;
     border: solid 1px #bcc5d3;
@@ -308,15 +304,16 @@ a {
 }
 
 .createGroupForm{
+    padding-top: 7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
 }
 
 .createGroupInput {
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .containerComplete {
@@ -325,6 +322,10 @@ a {
 
 .blueBack {
     color: #5574F7;
+}
+
+.blueish {
+    color: var(--clr-blue);
 }
 
 .create-goal-row {
@@ -439,10 +440,7 @@ a {
     .containerZK {
         width: 100%;
     }
-    .createGroupInput {
-        margin-top: 50px;
-        padding-top: 25px;
-    }
+
 }
 
 /* Small smartphones - image placeholders change color */
@@ -450,11 +448,6 @@ a {
 @media screen and (max-width: 576px) {
     .logIn {
         padding-top: 0px;
-    }
-
-    .createGroupInput {
-        margin-top: 50px;
-        padding-top: 25px;
     }
 
     .react-calendar {

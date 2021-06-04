@@ -5,6 +5,7 @@ import Row from "../components/Row";
 import NavTop from "../components/NavTop";
 // import NavBottom from "../components/NavBottom";
 import SaveGoalBtn from "../components/SaveGoalBtn";
+import DesktopSaveGoalBtn from "../components/DesktopSaveGoalBtn";
 // import homeActive from "../images/home-active.png";
 // import groups from "../images/groups.png";
 // import calendar from "../images/calendar.png";
@@ -229,13 +230,11 @@ const CreateGoal = (props) => {
           <Row className="create-goal-row">
             <Col size="12">
             <div className="desktop-save-btn">
-               <SaveGoalBtn />
+               <DesktopSaveGoalBtn />
             </div>
             </Col>
           </Row>
-          <div className="save-goal-btn">
-              <SaveGoalBtn />
-          </div>
+          <SaveGoalBtn />
         
         </form>
         

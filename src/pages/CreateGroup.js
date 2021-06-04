@@ -3,6 +3,7 @@ import { useHistory, useParams, Redirect } from "react-router-dom";
 import NavTop from "../components/NavTop";
 import API from "../utils/API";
 import SaveGroupBtn from "../components/SaveGroupBtn"
+import DesktopSaveGroupBtn from "../components/DesktopSaveGroupBtn";
 import DesktopNav from "../components/DesktopNav";
 import desktopHome from "../images/desktop-home-active.png";
 import desktopGroup from "../images/desktop-group-inactive.png";
@@ -58,7 +59,7 @@ const CreateGroup = (props) => {
             <NavTop header="Create Group" />
             <form onSubmit={handleSubmit} className='createGroupForm'>
                 <div>
-                    <h3 className='blueBack'>Enter Group name</h3>
+                    <h3 className='blueish'>Enter Group name</h3>
                     <input
                         className="createGroupInput"
                         type="text"
@@ -68,8 +69,8 @@ const CreateGroup = (props) => {
                         onChange={(e) => setNewGroup({ newGroup, name: e.target.value })}
                     />
                 </div>
-                <SaveGroupBtn />
-
+                    <DesktopSaveGroupBtn />
+                    <SaveGroupBtn />
             </form>
         </div>
     )
