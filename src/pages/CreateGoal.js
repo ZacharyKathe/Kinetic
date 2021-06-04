@@ -233,7 +233,7 @@ const CreateGoal = (props) => {
             </div>
             </Col>
           </Row>
-          <div className="nav-btm-fixed">
+          <div className="save-goal-btn">
               <SaveGoalBtn />
           </div>
         

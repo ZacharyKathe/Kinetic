@@ -280,6 +280,8 @@ a {
 
 .goals-page {
     margin-bottom: 7.5rem;
+    max-width: 968px;
+    margin: auto;
 }
 
 .createGroupForm {
