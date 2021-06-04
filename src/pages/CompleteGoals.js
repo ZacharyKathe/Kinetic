@@ -27,9 +27,6 @@ function Dashboard(props) {
   // const [userGroups, setUserGroups] = useState([]);
 
 
-  // console.log(props.token);
-
-
   useEffect(() => {
     const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
@@ -38,8 +35,12 @@ function Dashboard(props) {
     }
     // gathers data from props and sets them as local state
     API.getCompleteGoals(token).then(res => {
-      if (res.data.Goals) {
-      setUserGoals(res.data.Goals)
+      console.log(res.data);
+      
+      if (!res.data) {
+        console.log('no complete goals');
+      } else {
+        setUserGoals(res.data.Goals)
       }
       // setUserGroups(res.data.Groups)
     }).catch(err => {
