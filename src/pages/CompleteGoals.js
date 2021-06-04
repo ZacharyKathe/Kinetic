@@ -38,7 +38,9 @@ function Dashboard(props) {
     }
     // gathers data from props and sets them as local state
     API.getCompleteGoals(token).then(res => {
+      if (res.data.Goals) {
       setUserGoals(res.data.Goals)
+      }
       // setUserGroups(res.data.Groups)
     }).catch(err => {
       console.log(err);
