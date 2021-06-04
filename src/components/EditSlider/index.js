@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 // import Snackbar from '@material-ui/core/Snackbar';
 // import IconButton from '@material-ui/core/IconButton';
 // import CloseIcon from '@material-ui/icons/Close';
+import Moment from "moment";
 import API from '../../utils/API';
 import "./style.css"
 
@@ -25,7 +26,8 @@ export default function EditSlider(props) {
     props.handleClick()
     console.log(value)
     const progObj = {
-      goal_progress: value
+      goal_progress: value,
+      lastUpdate: Moment()
     }
     API.editGoal(props.goal_id, progObj, token)
       .then(result => {

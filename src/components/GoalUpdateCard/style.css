@@ -1,10 +1,17 @@
-.goal-update-card {
-  margin: 0 auto;
-  width: 70%;
+.update-prog {
+  font-size: .8rem;
 }
 
-@media (max-width: 768px) {
+.update-descr {
+ font-style: italic;
+}
+
+.update-freq {
+ font-size: .9rem;
+}
+
+/* @media (max-width: 768px) {
   .goal-update-card {
     width: 100%;
   }
-}
+} */
