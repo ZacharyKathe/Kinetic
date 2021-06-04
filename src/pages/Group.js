@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import NavTop from "../components/NavTop";
 import InviteUser from "../components/InviteUser";
 import API from "../utils/API";
+import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-inactive.png";
+import desktopGroup from "../images/desktop-group-active.png";
+import desktopCalendar from "../images/desktop-calendar-inactive.png";
 
 
 
@@ -35,6 +39,13 @@ function Group(props) {
       group_name={groupName}
       show={inviteOpen}
       setShow={setInviteOpen} />
+
+      <DesktopNav header="Desktop"
+        homeBtn={desktopHome}
+        groupBtn={desktopGroup}
+        calendarBtn={desktopCalendar}
+      />
+
       <NavTop group_id={id} setInviteOpen={setInviteOpen} />
       <h1 className="feed-page-header">{groupName}</h1>
       <div className="group-updates">

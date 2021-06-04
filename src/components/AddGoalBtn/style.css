@@ -34,3 +34,9 @@ a {
     padding-left: 5px;
     padding-top: 2px;
 }
+
+@media screen and (min-width: 968px) {
+    .add-goal-btn {
+        display: none;
+    }
+}

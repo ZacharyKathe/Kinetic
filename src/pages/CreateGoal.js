@@ -10,6 +10,10 @@ import SaveGoalBtn from "../components/SaveGoalBtn";
 // import calendar from "../images/calendar.png";
 import API from "../utils/API"
 import "../index.css";
+import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-active.png";
+import desktopGroup from "../images/desktop-group-inactive.png";
+import desktopCalendar from "../images/desktop-calendar-inactive.png";
 
 const moment = require("moment");
 
@@ -72,6 +76,12 @@ const CreateGoal = (props) => {
 
   return (
     <div className="create-goal">
+      <DesktopNav header="Desktop"
+        homeBtn={desktopHome}
+        groupBtn={desktopGroup}
+        calendarBtn={desktopCalendar}
+        actionBtn={<p className="desktop-header-text">Create Goal</p>}
+      />
       <NavTop header="Create Goal" />
 
 

@@ -9,6 +9,11 @@ import calendar from "../images/calendar.png";
 import GroupCard from "../components/GroupCard";
 import API from "../utils/API"
 import { useHistory } from "react-router-dom";
+import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-inactive.png";
+import desktopGroup from "../images/desktop-group-active.png";
+import desktopCalendar from "../images/desktop-calendar-inactive.png";
+import DesktopAddGroupBtn from "../components/DesktopAddGroupBtn";
 
 
 export default function MyGroups(props) {
@@ -40,6 +45,13 @@ export default function MyGroups(props) {
 
   return (
     <div>
+      <DesktopNav header="Desktop"
+        homeBtn={desktopHome}
+        groupBtn={desktopGroup}
+        calendarBtn={desktopCalendar}
+        actionBtn={<DesktopAddGroupBtn />}
+      />
+
       <NavTop 
         header="My Groups"
         username={props.user.username}

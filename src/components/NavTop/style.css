@@ -20,3 +20,9 @@
 .goBackBtn {
     cursor: pointer !important;
 }
+
+@media screen and (min-width: 968px) {
+    .bottom-nav {
+        display: none;
+    }
+}

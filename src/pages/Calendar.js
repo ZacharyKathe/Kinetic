@@ -8,6 +8,10 @@ import groups from "../images/groups.png";
 import calendar from "../images/calendar.png";
 import calendarActive from "../images/calendar-active.png";
 import CalenderCard from "../components/CalenderCard";
+import DesktopNav from "../components/DesktopNav";
+import desktopHome from "../images/desktop-home-inactive.png";
+import desktopGroup from "../images/desktop-group-inactive.png";
+import desktopCalendar from "../images/desktop-calendar-active.png";
 
 
 export default function Calendar(props) {
@@ -20,6 +24,13 @@ export default function Calendar(props) {
 
   return (
     <div>
+      <DesktopNav header="Desktop"
+        homeBtn={desktopHome}
+        groupBtn={desktopGroup}
+        calendarBtn={desktopCalendar}
+        actionBtn={<p className="desktop-header-text">Calendar</p>}
+      />
+    
     <NavTop 
       header="Calendar" 
       username={props.user.username}

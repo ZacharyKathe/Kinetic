@@ -1,5 +1,14 @@
+a {
+    text-decoration: none;
+}
 
-.add-group-btn {
+.btnCont {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.desktop-add-goal-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -9,23 +18,19 @@
     height: 50px;
     color: white;
     font-weight: 500;
+    width: 150px;
     transition: .3s ease-in-out;
 }
 
-.add-group-btn:hover{
+
+.desktop-add-goal-btn:hover{
     background-color: #a0c4ff;
-    scale: 1.05;
+    transform: scale(1.05);
     border-radius: 15px;
     box-shadow: 0px 0px 10px #bdb2ff
 }
 
-#add-group-text {
+#add-goal-text {
     padding-left: 5px;
     padding-top: 2px;
-}
-
-@media screen and (min-width: 968px) {
-    .add-group-btn {
-        display: none;
-    }
 }

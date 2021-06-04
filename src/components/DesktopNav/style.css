@@ -1,0 +1,106 @@
+.desktop-nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 64px;
+    border-bottom: 2px solid #e2e8ed;
+    background-color: white;
+    z-index: 2;
+}
+
+.primary-navigation-left {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.desktop-add-goal-center {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-menu-right {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kinetik-homeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kinetik-homeBtn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    border-bottom: 2px solid #5887f9;
+}
+
+.kinetik-homeBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #5887f9;
+}
+
+.desktop-groupBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+    margin-left: 16px;
+}
+
+.desktop-groupBtn:hover {
+    border-bottom: 2px solid #5887f9;
+    padding-bottom: 2px;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.desktop-groupBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
+}
+
+.desktop-calendarBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+    margin-left: 16px;
+}
+
+.desktop-calendarBtn:hover {
+    border-bottom: 2px solid #5887f9;
+    padding-bottom: 2px;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.desktop-calendarBtn p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
+}
+
+.account-menu-right p {
+    font-size: 25px;
+    margin-left: 5px;
+    color: #bcc5d3;
+}
+
+.account-menu-right p:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 968px) {
+   .desktop-nav {
+       display: none;
+   }
+}
