@@ -30,7 +30,7 @@ function Dashboard(props) {
   const [userGroups, setUserGroups] = useState([]);
 
   const myUser = props.user.username;
-  // console.log(props.token);
+  console.log("user coming in from app.js:", myUser);
 
 
   useEffect(() => {

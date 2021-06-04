@@ -20,43 +20,26 @@ function Group(props) {
 
   // Grabs url group id
   const { id } = useParams();
+  let userGoalsArr = [];
+  const goalArray = [];
 
   useEffect(() => {
     // Fetches the group based off the url id, then sets state as group
+    const goals = [];
     API.getOneGroup(id)
       .then(res => {
-        const groupUserGoalArrays = []
-        const groupUserGoals = []
         console.log(res.data);
-
-        // Set the specific group
         setMyGroup(res.data)
-
-        // Set all the group users
         setGroupUsers(res.data.Users)
-
-        // Iterate through each user and push their goal arrays into an empty array
-        for (const user of groupUsers) {
-            groupUserGoalArrays.push(user.Goals)
-        }
-
-        // Iterate through THAT array, and push each individual goal into another array
-        for (const array of groupUserGoalArrays) {
-          for (let i = 0; i < array.length; i++) {
-            const goal = array[i];
-            groupUserGoals.push(goal)
-            
-          }
-        }
-        // Finally, set all the goals in this group
-        setUserGoals(groupUserGoals);
-
-
+        res.data.Users.map(user => goalArray.push(user.Goals))
+        goalArray.map(goalArr => goalArr.map(goal => userGoalsArr.push(goal)))
+        setUserGoals(userGoalsArr)
       })
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+      .catch(err => {console.log(err);
+      })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    
   const groupName = (myGroup ? myGroup.name : "My Group")
 
   return (
