@@ -77,7 +77,6 @@ function App() {
             groups: res.data.Groups,
           }
         })
-        console.log(userState);
       }).catch(err => {
         console.log(err);
         console.log("no logged in user")

@@ -6,7 +6,7 @@
 
 .goalheading {
   padding-bottom: 20px;
-  color: #a0c4ff;
+  color: #6f95d5;
 }
 
 .contentLeft {
@@ -21,6 +21,7 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 60vw;
+  color: hsl(216, 17%, 44%);
 }
 
 .complete-link {
@@ -55,7 +56,7 @@
 }
 
 .progress-bar {
-  background-color: #a0c4ff !important;
+  background-color: #c8dcff !important;
   color: black;
 }
 

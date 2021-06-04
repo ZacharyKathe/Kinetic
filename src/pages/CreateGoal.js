@@ -5,6 +5,7 @@ import Row from "../components/Row";
 import NavTop from "../components/NavTop";
 // import NavBottom from "../components/NavBottom";
 import SaveGoalBtn from "../components/SaveGoalBtn";
+import DesktopSaveGoalBtn from "../components/DesktopSaveGoalBtn";
 // import homeActive from "../images/home-active.png";
 // import groups from "../images/groups.png";
 // import calendar from "../images/calendar.png";
@@ -76,7 +77,7 @@ const CreateGoal = (props) => {
 
   return (
     <div className="create-goal">
-      <DesktopNav header="Desktop"
+      <DesktopNav
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
@@ -84,8 +85,7 @@ const CreateGoal = (props) => {
       />
       <NavTop header="Create Goal" />
 
-
-        <form onSubmit={handleSubmit} className="create-goal-form">
+      <form onSubmit={handleSubmit} className="create-goal-form">
           <Row className="create-goal-row">
             <Col size="12">
               <p className="create-goal-label">Goal name</p>
@@ -196,7 +196,59 @@ const CreateGoal = (props) => {
               </select>
             </Col>
           </Row>
-          <div className="goal-dates">
+          <Row className="create-goal-dates">
+            <Col size="6">
+              <div className="actual-start-date">
+                <p className="create-goal-label">
+                  Start date
+                </p>
+                <input
+                  className="create-goal-input"
+                  type="date"
+                  name="goal_start"
+                  value={newGoal.goal_start}
+                  onChange={(e) => setNewGoal({...newGoal, goal_start: e.target.value})}
+                />
+              </div>
+            </Col>
+            <Col size="6">
+              <div className="actual-end-date">
+              <p className="create-goal-label">
+                  End date
+                </p>
+                <input
+                  className="create-goal-input"
+                  type="date"
+                  placeholder=" mm/dd/yyyy"
+                  name="goal_finish"
+                  value={newGoal.goal_finish}
+                  onChange={(e) => setNewGoal({...newGoal, goal_finish: e.target.value})}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row className="create-goal-row">
+            <Col size="12">
+            <div className="desktop-save-btn">
+               <DesktopSaveGoalBtn />
+            </div>
+            </Col>
+          </Row>
+          <SaveGoalBtn />
+        
+        </form>
+        
+    </div>
+  );
+};
+
+export default CreateGoal;
+
+/* <Link to="/Dashboard" className={location.pathname === "/Dashboard" ? "nav-link active" : "nav-link NewUser"}>
+  Dashboard
+</Link> */
+
+/*<div className="goal-dates">
             <div className="actual-dates">
               <p className="create-goal-label">
                 Start date
@@ -222,18 +274,4 @@ const CreateGoal = (props) => {
                 onChange={(e) => setNewGoal({...newGoal, goal_finish: e.target.value})}
               />
             </div>
-          </div>
-          
-        <div className="nav-btm-fixed">
-          <SaveGoalBtn />
-        </div>
-        </form>
-    </div>
-  );
-};
-
-export default CreateGoal;
-
-/* <Link to="/Dashboard" className={location.pathname === "/Dashboard" ? "nav-link active" : "nav-link NewUser"}>
-  Dashboard
-</Link> */
+          </div>*/
