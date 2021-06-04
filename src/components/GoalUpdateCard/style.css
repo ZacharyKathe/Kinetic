@@ -1,0 +1,10 @@
+.goal-update-card {
+  margin: 0 auto;
+  width: 70%;
+}
+
+@media (max-width: 768px) {
+  .goal-update-card {
+    width: 100%;
+  }
+}
