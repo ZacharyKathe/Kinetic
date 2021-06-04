@@ -27,6 +27,12 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  margin: auto;
+  max-width: 480px;
+}
+
+.desktop-save-btn {
+  margin-top: 20px;
 }
 
 @keyframes App-logo-spin {
@@ -35,5 +41,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .nav-btm-fixed {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .desktop-save-btn {
+      display: none;
   }
 }

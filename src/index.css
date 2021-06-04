@@ -261,6 +261,8 @@ a {
 
 .create-goal-form {
     padding-top: 4.1rem;
+    max-width: 480px;
+    margin: auto;
 }
 
 .content {
@@ -332,6 +334,17 @@ a {
     margin-top: 10px;
 }
 
+.create-goal-dates {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
 .create-goal-input {
     height: 35px;
     width: 100%;
@@ -353,7 +366,7 @@ a {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 1rem;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .alert-warning {
