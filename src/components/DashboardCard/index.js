@@ -42,6 +42,17 @@ function DashboardCard(props) {
     setOpen(false);
   };
 
+  const renderFrequency = () => {
+    switch (props.goal_frequency) {
+      case "Daily":
+        return "today";
+      case "Weekly":
+        return "this week";
+      case "Monthly":
+        return "this month";
+      default: return "so far"
+    }
+  }
 
   const checkComplete = () => {
     const token = localStorage.getItem('token');
@@ -78,7 +89,7 @@ function DashboardCard(props) {
         placement="right-start"
         >
       <Chip
-        label="Keep up the good work!"
+        label="Keep it up!"
         style={{
           backgroundColor: "#fff3cd",
           color: "black"
@@ -201,6 +212,8 @@ function DashboardCard(props) {
             {!props.is_complete ? checkComplete() : ""}
           </div>
         </div>
+        {/* This is where the label would go for above */}
+        {/* <div className="progress-label">{props.is_complete ? props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!` : props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed ${renderFrequency()}!`}</div> */}
         <div className="bigCont">
           <div className="sliderCont">
             {!props.is_complete ? <SliderModal
@@ -231,8 +244,8 @@ function DashboardCard(props) {
               }
             />
             {props.is_complete ?
-              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!`} />
-              : <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />}
+              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!`} />
+              : <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed ${renderFrequency()}!`} />}
           </div>
         </div>
       </div>

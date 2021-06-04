@@ -23,11 +23,12 @@ export default function updateGoals(token, goals) {
     for (const goal of goals) {
 
       if (goal.goal_frequency === "Daily") {
-        const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
+        const daysSinceRefresh = Moment().diff(Moment(goal.lastRefresh), 'days')
+        console.log(Moment().format("MMMM Do") + 'is now and the goal refreshed' + Moment(goal.lastRefresh).format("MMMM Do"));
         console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
         
         // Check if today is the day of refresh
-        if (daysSinceRefresh > 0) {
+        if (daysSinceRefresh > 1) {
           const goalObj = {
             goal_progress: 0,
             isComplete: false,
@@ -102,7 +103,7 @@ export default function updateGoals(token, goals) {
         console.log(`days since monthly refresh for ${goal.goal_name}:`, daysSinceRefresh);
 
         // if it has been over 30 days since last refresh, refresh it.
-        if (daysSinceRefresh > 30) {
+        if (daysSinceRefresh > 31) {
           const goalObj = {
             goal_progress: 0,
             isComplete: false,

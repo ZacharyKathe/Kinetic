@@ -48,6 +48,12 @@
   border: none;
 }
 
+.progress-label {
+  text-align: center;
+  font-size: 1rem;
+  height: .7rem;
+}
+
 .progress-bar {
   background-color: #a0c4ff !important;
   color: black;
@@ -73,9 +79,16 @@
   }
 
   .contentLeft {
-    width: 75%;
+    width: 30%;
   }
+
+  .contentRight {
+    width: 70%;
+  }
+
+
 }
+
 
 @media screen and (max-width: 400px) {
   .progCont {
@@ -83,6 +96,14 @@
   }
 
   .contentLeft {
+    width: 30%;
+  }
+
+  .contentRight {
     width: 70%;
+  }
+
+  .progress-label {
+    font-size: .8rem;
   }
 }

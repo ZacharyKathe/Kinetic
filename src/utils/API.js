@@ -96,8 +96,8 @@ const API = {
     })
   },
 
-  addUserToGroup: function (id, mytoken) {
-    return axios.put(`${URL_PREFIX}/api/groups/${id})`, {
+  addUserToGroup: function (id, emptyObj, mytoken) {
+    return axios.put(`${URL_PREFIX}/api/groups/${id}`, emptyObj, {
       headers: {
         authorization: `Bearer ${mytoken}`
       }

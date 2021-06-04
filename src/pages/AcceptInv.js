@@ -21,7 +21,11 @@ export default function AcceptInv() {
   const acceptInv = () => {
     const token = localStorage.getItem('token');
 
-    API.addUserToGroup(id, token)
+    const emptyObj = {
+      obj: ""
+    }
+
+    API.addUserToGroup(id, emptyObj, token)
       .then(res => history.push('/dashboard/mygroups'))
       .catch(err => console.log(err))
   }
