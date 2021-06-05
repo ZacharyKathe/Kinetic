@@ -133,6 +133,7 @@ a {
 
 .feed-page-header {
     padding-top: 4.1rem;
+    color: hsl(217deg 54% 70%)
 }
 
 .NewUser {
@@ -475,6 +476,14 @@ a {
 
     .smart-goals {
         margin-top: 2rem
+    }
+    .group-updates {
+        margin-bottom: 8rem;
+    }
+    
+    .goalCards {        
+        margin-bottom: 8rem;
+
     }
 }
 

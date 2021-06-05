@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Moment from "moment";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 // import MenuIcon from '@material-ui/icons/Menu';
@@ -13,6 +14,7 @@ function DesktopNav(props) {
     const history = useHistory();
 
     const [open, setOpen] = useState(false)
+    const [currentTime, setCurrentTime] = useState("")
     const anchorRef = React.useRef(null);
 
     const handleToggle = () => {
@@ -38,7 +40,7 @@ function DesktopNav(props) {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
         }
-
+        setCurrentTime(Moment().format("MMMM Do hh:mma"))
         prevOpen.current = open;
     }, [open]);
     
@@ -61,6 +63,7 @@ function DesktopNav(props) {
             
 
             <div className="account-menu-right" onClick={handleToggle}>
+                <p className="pr-3 text-secondary">{currentTime}</p>
                 <AccountCircleIcon
                     ref={anchorRef}
                     aria-controls={open ? 'menu-list-grow' : undefined}

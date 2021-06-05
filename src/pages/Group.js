@@ -150,7 +150,9 @@ function Group(props) {
         group_id={id}
         group_name={groupName}
         show={inviteOpen}
-        setShow={setInviteOpen} />
+        myName={myUser}
+        setShow={setInviteOpen}
+        className="invite-modal" />
         </>
 
         : "" }
@@ -168,7 +170,7 @@ function Group(props) {
         header={<MobileInviteBtn setShow={setInviteOpen} />}
         />
       <GroupDesktopNav />
-      <h1 className="feed-page-header text-center text-primary pb-4">{groupName} Feed</h1>
+      <h1 className="feed-page-header text-center pb-4">{groupName} Feed</h1>
       {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : "" }
       <div className="group-updates">
         {groupGoals ? groupGoals.map((item) => 

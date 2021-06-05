@@ -19,7 +19,9 @@ export default function InviteUser(props) {
     const inviteObj = {
       groupUrl: `localhost:3000/group/invitation/${props.group_id}`,
       groupName: props.group_name,
-      invitedUser: invitedUser
+      invitedUser: invitedUser,
+      myName: props.myName
+
     }
     API.inviteUser(inviteObj, token)
       .then(res => console.log(res))
@@ -32,7 +34,7 @@ export default function InviteUser(props) {
       <Modal
         show={props.show}
         onHide={() => { props.setShow(false) }}
-        dialogClassName="modal-90w"
+        dialogClassName="modal-90w invite-modal"
         aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header closeButton className="invite-header">
