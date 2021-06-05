@@ -7,12 +7,12 @@ function GroupBottomNav(props) {
     return (
           <div className="btnCont">
               <Link  to={`/group/${props.id}`}>
-              <div className="group-nav-btn-active">
+              <div className={props.feedStatus}>
                     <p id="feed-btn-text"> FEED</p> 
                 </div>
               </Link>
-              <Link  to={`/group/${props.id}`}>
-              <div className="group-nav-btn-inactive">
+              <Link  to={`/group/${props.id}/members`}>
+              <div className={props.memberStatus}>
                     <p id="members-btn-text"> MEMBERS</p> 
                 </div>
               </Link>

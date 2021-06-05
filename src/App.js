@@ -16,6 +16,8 @@ import CreateGoal from "./pages/CreateGoal";
 import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
 import AcceptInv from "./pages/AcceptInv";
+import Members from "./pages/Members";
+// import {initDB} from 'react-indexed-db'
 import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 
@@ -244,6 +246,9 @@ function App() {
       </Route>
       <Route exact path="/group/:id">
         <Group user={userState.user} token={userState.token} />
+      </Route>
+      <Route exact path="/group/:id/members">
+        <Members user={userState.user} token={userState.token} />
       </Route>
       <Route exact path="/group/invitation/:id">
         <AcceptInv user={userState.user} token={userState.token} />
