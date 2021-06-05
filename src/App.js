@@ -16,7 +16,7 @@ import CreateGoal from "./pages/CreateGoal";
 import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
 import AcceptInv from "./pages/AcceptInv";
-import {initDB} from 'react-indexed-db'
+// import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 
 
@@ -49,6 +49,27 @@ function App() {
       API.getDashboard(token).then(res => {
         // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
         updateGoals(token, res.data.Goals)
+<<<<<<< HEAD
+=======
+        const request = window.indexedDB.open('kinetik-token',1)  //creating the indexDB
+        request.onupgradeneeded = event => {
+          // const db = event.target.result
+          console.log('indexedDB-in progress')
+          const tokenStore = request.result.createObjectStore("token", {
+            keyPath: "token",
+            autoIncrement: true
+          })
+          tokenStore.createIndex("userToken", "token")
+        }
+        request.onsuccess = () => {
+          const db = request.result;
+          const transaction = db.transaction(["token"], "readwrite");
+          const tokenStore = transaction.objectStore("token")
+          // const userToken = tokenStore.index("userToken")
+          
+          tokenStore.add({userToken: token})
+        }
+>>>>>>> Develop
         setUserState({
           token: token,
           user: {

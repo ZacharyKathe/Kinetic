@@ -25,6 +25,10 @@ const Signup = (props) => {
         <p className="logo-text">kinetik</p>
       </div>
 
+      <div className="motto-text">
+        "Staying in motion, together."
+      </div>
+
       <div>
         <Link id="login-inactive" to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link NewUser"}>
           Log in

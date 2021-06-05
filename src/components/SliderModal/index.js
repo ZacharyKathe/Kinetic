@@ -58,7 +58,6 @@ export default function SliderModal(props) {
           })
         })
       }}
-      color=""
       style={{padding: "0"}}
     >
       <CheckCircleIcon
