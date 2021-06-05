@@ -10,8 +10,8 @@ function GroupCard(props) {
 
   return (
     // Trying to find best way to route to that group page
-    <Link to={`/group/${props.id}`} className="link-text">
-      <div className="card groupcard">
+    <Link to={`/group/${props.id}`} className="group-link-text">
+      <div className="groupcard">
         <h3 className='groupheading'>{props.name}</h3>
         <p className='endDate'><strong>Members:</strong> {memberNum}</p>
       </div>
