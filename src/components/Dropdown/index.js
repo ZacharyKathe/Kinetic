@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { Overlay, Popover, Button } from 'react-bootstrap';
+import Moment from 'moment';
 import EditGoal from '../EditGoal/index';
 import GoalDetails from '../GoalDetails/index';
 import "./style.css"
@@ -136,22 +137,20 @@ export default function Dropdown(props) {
                 <span onClick={() => {
                   const token = localStorage.getItem('token');
                   const updatedGoal = {
-                    isComplete: false,
-                    completedDate: props.last_refresh
+                    isComplete: false
                   }
                   API.editGoal(props.goal_id, updatedGoal, token).then(res => {
-                    console.log(res.data);
-                    API.getCompleteGoals(token).then(res => {
-                      if (res.data) {
-                        props.setUserGoals(res.data.Goals)
-                      } else {
-                        props.setUserGoals()
-                      }
+                      API.getCompleteGoals(token).then(res => {
+                        if (res.data) {
+                          props.setUserGoals(res.data.Goals)
+                        } else {
+                          props.setUserGoals()
+                        }
+                      })
                     }).catch(err => {
                       console.log(err);
                     })
                     history.push('/dashboard')
-                  })
                 }}>Mark Incomplete</span>
                 : ""}
 

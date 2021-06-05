@@ -116,9 +116,9 @@ function DashboardCard(props) {
   const markComplete = () => {
     const token = localStorage.getItem('token');
     const completedGoal = {
-      lastCompletedDate: Moment().format("YYYY-MM-DD"),
       goal_progress: props.goal_target,
       isComplete: true,
+      lastCompletedDate: Moment().format("YYYY-MM-DD"),
     }
 
     console.log("CompletedGoal", completedGoal);
