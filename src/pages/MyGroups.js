@@ -19,7 +19,7 @@ import DesktopAddGroupBtn from "../components/DesktopAddGroupBtn";
 export default function MyGroups(props) {
   const history = useHistory();
 
-  const [userGoals, setUserGoals] = useState([]);
+  // const [userGoals, setUserGoals] = useState([]);
 
   const [userGroups, setUserGroups] = useState([]);
 
@@ -31,8 +31,8 @@ export default function MyGroups(props) {
       history.push('/')
     }
     // gathers data from props and sets them as local state
-    API.getIncompleteGoals(token).then(res => {
-      setUserGoals(res.data.Goals)
+    API.getDashboard(token).then(res => {
+      // setUserGoals(res.data.Goals)
       setUserGroups(res.data.Groups)
     }).catch(err => {
       console.log(err);

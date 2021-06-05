@@ -28,8 +28,8 @@ export default function AddGoalToGroup(props) {
     console.log(goalObj);
     API.addGoalToGroup(props.group_id, goalObj, token)
       .then(res => {
-        console.log(res);
-        history.push(`/group/${props.group_id}`);
+        
+        props.updateGoals();
         props.setModalShow(false);
       })
       .catch(err => {
