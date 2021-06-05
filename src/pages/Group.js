@@ -10,6 +10,7 @@ import AddGoalToGroup from "../components/AddGoalToGroup"
 import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-active.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
+import "./group.scss"
 
 
 
@@ -17,6 +18,7 @@ import desktopCalendar from "../images/desktop-calendar-inactive.png";
 
 function Group(props) {
 
+  const [myUser, setMyUser] = useState()
   const [myGoals, setMyGoals] = useState()
   const [myGroup, setMyGroup] = useState()
   const [groupUsers, setGroupUsers] = useState([])
@@ -37,52 +39,69 @@ function Group(props) {
       history.push('/')
     }
 
-    API.getIncompleteGoals(token)
+    API.getDashboard(token)
       .then(res => {
-      setMyGoals(res.data.Goals)
-    }).catch(err => {
-      console.log(err);
-    })
+        setMyUser(res.data.username)
+        setMyGoals(res.data.Goals)
+      }).catch(err => {
+        console.log(err);
+      })
 
     API.getOneGroup(id)
       .then(res => {
 
-        console.log(res.data.Goals);
-        
         // Set the group
         setMyGroup(res.data)
-
-
 
         // Set the group users
         setGroupUsers(res.data.Users)
 
-        goalArray = res.data.Goals;
+        updateGoals(res.data.Goals)
 
-        // Sort the array by which goal was most recently updated
-        goalArray.sort(function (a, b) {
-          var keyA = new Date(a.lastUpdate),
-            keyB = new Date(b.lastUpdate);
-          // Compare the 2 dates
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
-          return 0;
-        });
-        
-        // Set the sorted user goals!
-        setGroupGoals(goalArray)
-        
       })
       .catch(err => {
         console.log(err);
       })
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    
-  if (groupGoals) {
-  console.log(groupGoals);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const updateGoals = (goals) => {
+    if (!goals) {
+      API.getOneGroup(id)
+        .then(res => {
+          goalArray = res.data.Goals;
+
+          // Sort the array by which goal was most recently updated
+          goalArray.sort(function (a, b) {
+            var keyA = new Date(a.lastUpdate),
+              keyB = new Date(b.lastUpdate);
+            // Compare the 2 dates
+            if (keyA > keyB) return -1;
+            if (keyA < keyB) return 1;
+            return 0;
+          });
+
+          // Set the sorted user goals!
+          setGroupGoals(goalArray)
+        })
+        .catch(err => console.log(err))
+    } else {
+      goalArray = goals;
+
+      // Sort the array by which goal was most recently updated
+      goalArray.sort(function (a, b) {
+        var keyA = new Date(a.lastUpdate),
+          keyB = new Date(b.lastUpdate);
+        // Compare the 2 dates
+        if (keyA > keyB) return -1;
+        if (keyA < keyB) return 1;
+        return 0;
+      });
+
+      // Set the sorted user goals!
+      setGroupGoals(goalArray)
+    }
   }
-  
 
   const assignUsername = (userID) => {
     for (const user of groupUsers) {
@@ -101,7 +120,8 @@ function Group(props) {
         group_id={id}
         show={modalShow}
         setModalShow={setModalShow}
-        useEffect={useEffect} />
+        useEffect={useEffect}
+        updateGoals={updateGoals} />
 
       <InviteUser
         group_id={id}
@@ -117,9 +137,16 @@ function Group(props) {
 
       <NavTop group_id={id} setInviteOpen={setInviteOpen} />
       <h1 className="feed-page-header text-center text-primary pb-4">{groupName} Feed</h1>
-      <h4 className="add-goal-to-group text-center" onClick={() => setModalShow(true)}>Add a goal to this group!</h4>
+      <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4>
       <div className="group-updates">
-        {groupGoals ? groupGoals.map((item) => <GoalUpdateCard goal={item} user={assignUsername(item.user_id)} />) : console.log('no goals to share!')}
+        {groupGoals ? groupGoals.map((item) => 
+          <GoalUpdateCard 
+            goal={item} 
+            group_id={id} 
+            user={assignUsername(item.user_id)} 
+            current_user={myUser} 
+            updateGoals={updateGoals}
+            />) : console.log('no goals to share!')}
       </div>
     </div>
   );

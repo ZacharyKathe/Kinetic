@@ -10,6 +10,15 @@
  font-size: .9rem;
 }
 
+.update-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hide-button {
+  color: #bd2c38;
+  cursor: pointer;
+}
 /* @media (max-width: 768px) {
   .goal-update-card {
     width: 100%;
