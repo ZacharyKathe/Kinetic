@@ -19,6 +19,12 @@
   color: #bd2c38;
   cursor: pointer;
 }
+
+.goal-name-hide {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
 /* @media (max-width: 768px) {
   .goal-update-card {
     width: 100%;

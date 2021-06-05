@@ -92,6 +92,13 @@ a {
     margin-left: 0 !important;
 }
 
+.motto-text {
+    color:#60c3ff;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'canada-type-gibson';
+}
+
 .logInScreen {
     background-color: white;
     height: 100vh;
@@ -145,7 +152,7 @@ a {
     font-size: 25px;
     font-weight: 600;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
     color: #4c5264;
 }
 
@@ -176,7 +183,7 @@ a {
 }
 
 .form-group {
-    height: 75px;
+    height: 4rem;
 }
 
 .form-control {

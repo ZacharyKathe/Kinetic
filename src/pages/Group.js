@@ -7,6 +7,7 @@ import Moment from "moment";
 import DesktopNav from "../components/DesktopNav";
 import GoalUpdateCard from "../components/GoalUpdateCard";
 import AddGoalToGroup from "../components/AddGoalToGroup"
+import DesktopInviteBtn from "../components/DesktopInviteBtn"
 import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-active.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
@@ -133,6 +134,8 @@ function Group(props) {
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
+        actionBtn={<DesktopInviteBtn setShow={setInviteOpen}/>}
+
       />
 
       <NavTop group_id={id} setInviteOpen={setInviteOpen} />

@@ -92,16 +92,16 @@ export default function GoalUpdateCard({ goal: goal, user: user, group_id: group
         {goal.isComplete ?
           <div className="text-success">Completed!</div>
           : ""}
-        {user === current_user ?
-          <div className="hide-button" onClick={() => removeFromGroup(goal.id)}>Hide</div>
-          : ""}
       </div>
 
       <Row className="goal-details-row">
-        <Col size="12">
+        <Col size="12" className="goal-name-hide">
           <p className="goal-details-description text-primary">
             {user}
           </p>
+        {user === current_user ?
+          <div className="hide-button" onClick={() => removeFromGroup(goal.id)}>(hide)</div>
+          : ""}
         </Col>
       </Row>
 
