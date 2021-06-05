@@ -23,7 +23,7 @@ import MobileInviteBtn from "../components/MobileInviteBtn";
 
 
 
-function Group(props) {
+function Members(props) {
 
   const [myUser, setMyUser] = useState()
   const [myGoals, setMyGoals] = useState()
@@ -136,45 +136,22 @@ function Group(props) {
 
   return (
     <div>
-      {inGroup ? 
-      <>
-      <AddGoalToGroup
-        goals={myGoals ? myGoals : ""}
-        group_id={id}
-        show={modalShow}
-        setModalShow={setModalShow}
-        useEffect={useEffect}
-        updateGoals={updateGoals} />
-
-      <InviteUser
-        group_id={id}
-        group_name={groupName}
-        show={inviteOpen}
-        myName={myUser}
-        setShow={setInviteOpen}
-        className="invite-modal" />
-        </>
-
-        : "" }
 
       <DesktopNav header="Desktop"
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
-        actionBtn={inGroup ? <DesktopInviteBtn setShow={setInviteOpen}/> : "" }
       />
 
       <NavTop 
         group_id={id}
         setInviteOpen={setInviteOpen}
-        header={<MobileInviteBtn setShow={setInviteOpen} />}
         />
       <GroupDesktopNav 
-        feedStatus="group-desktop-btn-active"
-        memberStatus="group-desktop-btn-inactive"
+        feedStatus="group-desktop-btn-inactive"
+        memberStatus="group-desktop-btn-active"
       />
-      <h1 className="feed-page-header text-center pb-4">{groupName} Feed</h1>
-      {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : "" }
+      <h1 className="feed-page-header text-center pb-4">{groupName} Members</h1>
       <div className="group-updates">
         {groupGoals ? groupGoals.map((item) => 
           <GoalUpdateCard 
@@ -187,7 +164,10 @@ function Group(props) {
             />) : console.log('no goals to share!')}
       </div>
       <div className="nav-btm-fixed">
-        <GroupBottomNav />
+        <GroupBottomNav 
+          feedStatus="group-nav-btn-inactive"
+          memberStatus="group-nav-btn-active"
+        />
         <NavBottom 
           homeBtn={home}
           groupsBtn={groupsActive}
@@ -198,4 +178,4 @@ function Group(props) {
   );
 }
 
-export default Group;
+export default Members;

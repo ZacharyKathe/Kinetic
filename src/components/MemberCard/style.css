@@ -1,0 +1,38 @@
+.groupcard {
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #bcc5d3;
+  margin: auto;
+  max-width: 480px;
+  padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 4px;
+  transition: .3s;
+}
+
+.groupcard:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.groupheading {
+  color: white;
+  background-color: var(--clr-blue2);
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+.group-link-text {
+  text-decoration: none;
+  color: var(--clr-blue2);
+}
+
+.groupList{
+  padding-top: 4.1rem;
+}
