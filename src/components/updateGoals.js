@@ -24,8 +24,8 @@ export default function updateGoals(token, goals) {
 
       if (goal.goal_frequency === "Daily") {
         const daysSinceRefresh = Moment().diff(Moment(goal.lastRefresh), 'days')
-        console.log(Moment().format("MMMM Do") + ' is now and the goal refreshed ' + Moment(goal.lastRefresh).format("MMMM Do"));
-        console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
+        // console.log(Moment().format("MMMM Do") + ' is now and the goal refreshed ' + Moment(goal.lastRefresh).format("MMMM Do"));
+        // console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
         
         // Check if today is the day of refresh
         if (daysSinceRefresh > 0) {

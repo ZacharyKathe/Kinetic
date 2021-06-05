@@ -47,7 +47,7 @@ function NavTop(props) {
         <>
         <div className="top-nav" >
             <img className='goBackBtn' src={backBtn} alt="back button" onClick={() => history.goBack()} />
-            <p className="header-text">{props.header}</p>
+            <div className="header-text">{props.header}</div>
             <MenuIcon
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}

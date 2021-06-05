@@ -9,18 +9,8 @@ import "./style.css"
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
-import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
-import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
-import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
-import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
-import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
-import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
-import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
-import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
-import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
-import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
+import renderActivityIcon from "../renderCategoryIcon"
 import CheckIcon from '@material-ui/icons/Check';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -131,47 +121,11 @@ function DashboardCard(props) {
   }
 
 
-
-  const renderActivityIcon = () => {
-    switch (props.goal_category) {
-      case "Diet":
-        return (<RestaurantRoundedIcon />);
-      case "Intellectual":
-        return (<SchoolRoundedIcon />);
-      case "Exercise":
-        return (<DirectionsRunRoundedIcon />);
-      case "Financial":
-        return (<MonetizationOnRoundedIcon />);
-      case "Habit":
-        return (<BallotRoundedIcon />);
-      case "Health":
-        return (<FavoriteRoundedIcon />);
-      case "Relationship":
-        return (<SupervisedUserCircleRoundedIcon />);
-      case "Work":
-        return (<WorkRoundedIcon />);
-      case "Productivity":
-        return (<TrendingUpRoundedIcon />);
-      case "Skill":
-        return (<BuildRoundedIcon />);
-      default: return (<AccessibilityNewRoundedIcon />);
-    }
-  }
-
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
 
   return (
-    // <Draggable
-    // axis="x"
-    // handle=".handle"
-    // defaultPosition={{x: 0, y: 0}}
-    // position={null}
-    // grid={[25, 25]}
-    // scale={1}
-    // onStart={this.handleStart}
-    // onDrag={this.handleDrag}
-    // onStop={this.handleStop}>
+
     <div className={!props.is_complete ? 'containerZK' : 'containerZK containerComplete'}>
       <div className={!props.is_complete ? 'card bt-card' : 'card bt-card containerComplete'}>
         <div className="content">
@@ -204,7 +158,7 @@ function DashboardCard(props) {
         <div className="middle-content">
           <div className='contentRight'>
             <p className='goalInfo'>
-              {renderActivityIcon()} {props.goal_category}
+              {renderActivityIcon(props.goal_category)} {props.goal_category}
             </p>
             <p className='endDate'> <UpdateRoundedIcon /> {props.goal_target} {props.value_type !== "Other" ? (props.goal_target === 1 ? props.value_type.toLowerCase().substring(0, props.value_type.length - 1) : props.value_type.toLowerCase()) : (props.goal_type === 1 ? "time" : "times")} {props.goal_frequency.toLowerCase()} until {Moment(props.goal_finish).format("MMMM Do")}</p>
           </div>
