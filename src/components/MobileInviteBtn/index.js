@@ -7,7 +7,7 @@ function MobileInviteBtn(props) {
         <div className="mobile-invite-content">
             <div className="mobile-invite-btn" onClick={() => props.setShow(true)}>
                 <img className='save' src={addBtn} alt="invite button" />
-                <p id="mobile-invite-text"> Invite Someone! </p>
+                <div id="mobile-invite-text"> Invite Someone! </div>
             </div>
         </div>
 

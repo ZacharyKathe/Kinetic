@@ -140,6 +140,13 @@ a {
     text-decoration: none;
 }
 
+.modal {
+    padding-left: 0 !important;
+}
+.modal-open {
+    padding-right: 0 !important;
+}
+
 #signup-inactive {
     color: #bcc5d3;
 }
