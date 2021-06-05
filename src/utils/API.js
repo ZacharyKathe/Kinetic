@@ -102,6 +102,14 @@ const API = {
         authorization: `Bearer ${mytoken}`
       }
     })
+  },
+
+  addGoalToGroup: function (id, newGoalObj, mytoken) {
+    return axios.put(`${URL_PREFIX}/api/groups/addgoal/${id}`, newGoalObj, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
   }
 
 }
