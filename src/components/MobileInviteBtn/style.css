@@ -1,0 +1,35 @@
+a {
+    text-decoration: none;
+}
+
+.mobile-invite-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mobile-invite-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #a0c4ff;
+    height: 50px;
+    color: white;
+    font-weight: 500;
+    width: 150px;
+    transition: .3s ease-in-out;
+    border-radius: 4px;
+}
+
+#mobile-invite-text {
+    padding-left: 5px;
+    padding-top: 2px;
+    font-size: 16px;
+}
+
+@media screen and (min-width: 968px) {
+    .mobile-invite-content {
+        display: none;
+    }
+ }

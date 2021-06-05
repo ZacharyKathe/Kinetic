@@ -1,0 +1,60 @@
+a {
+    text-decoration: none;
+}
+
+.desktop-group-btns {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:63px;
+    margin:auto;
+}
+
+.group-desktop-btn-active {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #a0c4ff;
+    height: 50px;
+    color: white;
+    font-weight: 500;
+    width: 300px;
+    transition: .3s ease-in-out;
+}
+
+.group-desktop-btn-inactive {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+    color: #a0c4ff;
+    border: 1px solid #a0c4ff;
+    font-weight: 500;
+    width: 300px;
+    transition: .3s ease-in-out;
+}
+
+
+.group-nav-btn:hover{
+    background-color: #a0c4ff;
+    scale: 1.05;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #bdb2ff
+}
+
+#desktop-feed-btn-text {
+    padding-top: 2px;
+}
+
+#desktop-members-btn-text {
+    padding-top: 2px;
+}
+
+@media screen and (max-width: 968px) {
+    .desktop-group-btns {
+        display: none;
+    }
+}
