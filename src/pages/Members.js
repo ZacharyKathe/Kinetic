@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import NavTop from "../components/NavTop";
-import InviteUser from "../components/InviteUser";
 import API from "../utils/API";
 import DesktopNav from "../components/DesktopNav";
-import GoalUpdateCard from "../components/GoalUpdateCard";
-import AddGoalToGroup from "../components/AddGoalToGroup"
-import DesktopInviteBtn from "../components/DesktopInviteBtn"
 import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-active.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
@@ -17,7 +13,7 @@ import groupsActive from "../images/groups-active.png";
 import calendar from "../images/calendar.png";
 import GroupBottomNav from "../components/GroupBottomNav";
 import GroupDesktopNav from "../components/GroupDesktopNav";
-import MobileInviteBtn from "../components/MobileInviteBtn";
+import MemberCard from "../components/MemberCard";
 
 
 
@@ -26,19 +22,17 @@ import MobileInviteBtn from "../components/MobileInviteBtn";
 function Members(props) {
 
   const [myUser, setMyUser] = useState()
-  const [myGoals, setMyGoals] = useState()
   const [thisGroup, setThisGroup] = useState()
   const [inGroup, setInGroup] = useState(false)
   const [groupUsers, setGroupUsers] = useState([])
-  const [groupGoals, setGroupGoals] = useState([])
-  const [inviteOpen, setInviteOpen] = useState(false)
   const [modalShow, setModalShow] = useState(false);
+  const [userGroups, setUserGroups] = useState([]);
 
   const history = useHistory();
 
   // Grabs url group id
   const { id } = useParams();
-  let goalArray = [];
+  let memberArray = [];
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -50,7 +44,6 @@ function Members(props) {
     API.getDashboard(token)
     .then(res => {
       setMyUser(res.data.username)
-      setMyGoals(res.data.Goals)
     }).catch(err => {
       console.log(err);
     })
@@ -68,7 +61,6 @@ function Members(props) {
       if (checkIfInGroup()) {
         setInGroup(true);
       }
-      updateGoals(res.data.Goals)
       
     })
     .catch(err => {
@@ -86,52 +78,6 @@ function Members(props) {
     } else return false;
   }
 
-  const updateGoals = (goals) => {
-    if (!goals) {
-      API.getOneGroup(id)
-        .then(res => {
-          goalArray = res.data.Goals;
-
-          // Sort the array by which goal was most recently updated
-          goalArray.sort(function (a, b) {
-            var keyA = new Date(a.lastUpdate),
-              keyB = new Date(b.lastUpdate);
-            // Compare the 2 dates
-            if (keyA > keyB) return -1;
-            if (keyA < keyB) return 1;
-            return 0;
-          });
-
-          // Set the sorted user goals!
-          setGroupGoals(goalArray)
-        })
-        .catch(err => console.log(err))
-    } else {
-      goalArray = goals;
-
-      // Sort the array by which goal was most recently updated
-      goalArray.sort(function (a, b) {
-        var keyA = new Date(a.lastUpdate),
-          keyB = new Date(b.lastUpdate);
-        // Compare the 2 dates
-        if (keyA > keyB) return -1;
-        if (keyA < keyB) return 1;
-        return 0;
-      });
-
-      // Set the sorted user goals!
-      setGroupGoals(goalArray)
-    }
-  }
-
-  const assignUsername = (userID) => {
-    for (const user of groupUsers) {
-      if (user.id === userID) {
-        return user.username;
-      }
-    }
-  }
-
   const groupName = (thisGroup ? thisGroup.name : "My Group")
 
   return (
@@ -145,28 +91,25 @@ function Members(props) {
 
       <NavTop 
         group_id={id}
-        setInviteOpen={setInviteOpen}
         />
       <GroupDesktopNav 
         feedStatus="group-desktop-btn-inactive"
         memberStatus="group-desktop-btn-active"
+        id={id}
       />
       <h1 className="feed-page-header text-center pb-4">{groupName} Members</h1>
-      <div className="group-updates">
-        {groupGoals ? groupGoals.map((item) => 
-          <GoalUpdateCard 
-            goal={item} 
-            group_id={id} 
-            key={item.id}
-            user={assignUsername(item.user_id)} 
-            current_user={myUser} 
-            updateGoals={updateGoals}
-            />) : console.log('no goals to share!')}
+      <div className='groupList'>
+        {groupUsers ? groupUsers.map(item => (
+          <MemberCard
+            name={item.name}
+          />
+        )) : console.log('no members')}
       </div>
       <div className="nav-btm-fixed">
         <GroupBottomNav 
           feedStatus="group-nav-btn-inactive"
           memberStatus="group-nav-btn-active"
+          id={id}
         />
         <NavBottom 
           homeBtn={home}

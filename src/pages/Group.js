@@ -172,6 +172,7 @@ function Group(props) {
       <GroupDesktopNav 
         feedStatus="group-desktop-btn-active"
         memberStatus="group-desktop-btn-inactive"
+        id={id}
       />
       <h1 className="feed-page-header text-center pb-4">{groupName} Feed</h1>
       {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : "" }
@@ -187,7 +188,11 @@ function Group(props) {
             />) : console.log('no goals to share!')}
       </div>
       <div className="nav-btm-fixed">
-        <GroupBottomNav />
+        <GroupBottomNav
+          feedStatus="group-nav-btn-active"
+          memberStatus="group-nav-btn-inactive"
+          id={id}
+        />
         <NavBottom 
           homeBtn={home}
           groupsBtn={groupsActive}
