@@ -9,3 +9,10 @@
   border-color: rgb(202 202 202);
 
 }
+
+.invite-modal {
+  padding: 0 !important;
+  margin: .5rem auto;
+  display: flex;
+  justify-content: center;
+}
