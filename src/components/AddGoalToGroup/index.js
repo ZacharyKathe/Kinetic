@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { Modal, Button } from 'react-bootstrap';
 import API from '../../utils/API';
@@ -6,76 +6,67 @@ import Col from '../Col/index';
 import Row from '../Row/index';
 
 export default function AddGoalToGroup(props) {
-    // const [show, setShow] = useState(false);
-    // const [editGoal, setEditGoal] = useState({
-    //   goal_name: props.goal_name,
-    //   goal_description: props.goal_description,
-    //   goal_category: props.goal_category,
-    //   goal_frequency: props.goal_frequency,
-    //   goal_target: props.goal_target,
-    //   goal_progress: props.goal_progress,
-    //   value_type: props.value_type,
-    //   goal_start: props.goal_start,
-    //   goal_finish: props.goal_finish
-      
-    // });
 
-    const history = useHistory();
+  // const [myGoals, setMyGoals] = useState([]);
 
-    const handleSubmit = (e) => {
-      const token = localStorage.getItem('token');
-      e.preventDefault();
-      if (token) {
-      API.editGoal(props.goal_id, editGoal, token)
-        .then(res => {
-          API.getIncompleteGoals(token).then(res => {
-            if(res.data) {
-            props.setUserGoals(res.data.Goals)
-            } else {
-              props.setUserGoals()
-            }
-          }).catch(err => {
-            console.log(err);
-          })
-          history.push('/dashboard');
-          props.setShow(false);
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      }
-    };
+  // useEffect(() => {
+  //   if (props.goals) {
+  //     setMyGoals(props.goals)
+  //   }
+  // }, [])
 
-    return (
-      <>
-        <Modal
-          show={props.show}
-          onHide={() => props.setShow(false)}
-          dialogClassName="modal-90w"
-          aria-labelledby="example-custom-modal-styling-title"
-        >
-            <form onSubmit={handleEditSubmit} className="create-goal-form">
-          <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-            <Row className="create-goal-row">
-              <Col size="12">
-                <input
-                  className="create-goal-input"
-                  type="text"
-                  placeholder=" Enter a name for your goal..."
-                  name="goal_name"
-                  value={editGoal.goal_name}
-                  onChange={(e) => setEditGoal({...editGoal, goal_name: e.target.value})}
-                />
-              </Col>
-            </Row>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div>sup</div>
-          </Modal.Body>
-          </form>
-        </Modal>
-      </>
-    );
+  // console.log(myGoals);
+
+
+  const history = useHistory();
+
+  const handleGoalAdd = (goalID) => {
+    const token = localStorage.getItem('token');
+    const goalObj = {
+      goal_id: goalID
+    }
+    console.log(goalObj);
+    API.addGoalToGroup(props.group_id, goalObj, token)
+      .then(res => {
+        console.log(res);
+        history.push(`/group/${props.group_id}`);
+        props.setModalShow(false);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+  };
+
+  return (
+    <>
+      <Modal
+        show={props.show}
+        onHide={() => props.setModalShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="goals-to-choose"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="goals-to-choose">
+            <h1>Share which goal?</h1>
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          {props.goals ? props.goals.map((goal => {
+            return (
+              <Row className="create-goal-row" key={goal.id}>
+                <Col size="12">
+                  <button onClick={() => handleGoalAdd(goal.id)}>{goal.goal_name}</button>
+                </Col>
+              </Row>
+            )
+          })) :
+            console.log('no goals')
+          }
+        </Modal.Body>
+
+      </Modal>
+    </>
+  );
 }

@@ -67,6 +67,7 @@ export default function GoalUpdateCard({ goal: goal, user: user }) {
     }
   }
 
+
   return (
     <div className="goal-update-card containerZK">
       <h3 className="text-center">{goal.goal_name}</h3>
