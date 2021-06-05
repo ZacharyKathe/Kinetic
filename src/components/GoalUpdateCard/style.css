@@ -26,11 +26,15 @@
   margin: 0 1rem;
 }
 
+.goal-update-card {
+  margin: 1rem auto !important;
+}
+
 .is-complete {
   font-size: 1.2rem;
 }
-/* @media (max-width: 768px) {
-  .goal-update-card {
-    width: 100%;
+@media (max-width: 768px) {
+  .nav-bottom-fixed {
+    margin-top: 8rem !important;
   }
-} */
+}
