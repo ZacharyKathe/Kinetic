@@ -19,8 +19,6 @@ import AcceptInv from "./pages/AcceptInv";
 import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 
-
-
 function App() {
 
   // const location = useLocation();
