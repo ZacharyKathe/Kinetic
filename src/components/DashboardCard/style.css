@@ -16,6 +16,13 @@
   width: 40vw;
 }
 
+.hint-label {
+  font-size: .7rem;
+  font-style: italic;
+  text-align: center;
+  height: 0.4rem;
+}
+
 .contentRight {
   display: flex;
   flex-direction: column;

@@ -3,7 +3,6 @@ import { useParams, useHistory } from "react-router-dom";
 import NavTop from "../components/NavTop";
 import InviteUser from "../components/InviteUser";
 import API from "../utils/API";
-import Moment from "moment";
 import DesktopNav from "../components/DesktopNav";
 import GoalUpdateCard from "../components/GoalUpdateCard";
 import AddGoalToGroup from "../components/AddGoalToGroup"
@@ -28,7 +27,8 @@ function Group(props) {
 
   const [myUser, setMyUser] = useState()
   const [myGoals, setMyGoals] = useState()
-  const [myGroup, setMyGroup] = useState()
+  const [thisGroup, setThisGroup] = useState()
+  const [inGroup, setInGroup] = useState(false)
   const [groupUsers, setGroupUsers] = useState([])
   const [groupGoals, setGroupGoals] = useState([])
   const [inviteOpen, setInviteOpen] = useState(false)
@@ -48,30 +48,43 @@ function Group(props) {
     }
 
     API.getDashboard(token)
-      .then(res => {
-        setMyUser(res.data.username)
-        setMyGoals(res.data.Goals)
-      }).catch(err => {
-        console.log(err);
-      })
-
+    .then(res => {
+      setMyUser(res.data.username)
+      setMyGoals(res.data.Goals)
+    }).catch(err => {
+      console.log(err);
+    })
+    
     API.getOneGroup(id)
-      .then(res => {
-
-        // Set the group
-        setMyGroup(res.data)
-
-        // Set the group users
-        setGroupUsers(res.data.Users)
-
-        updateGoals(res.data.Goals)
-
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    .then(res => {
+      
+      // Set the group
+      setThisGroup(res.data)
+      // checkIfInGroup();    
+      
+      // Set the group users
+      setGroupUsers(res.data.Users)
+      
+      if (checkIfInGroup()) {
+        setInGroup(true);
+      }
+      updateGoals(res.data.Goals)
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Sees if current user is in group
+  const checkIfInGroup = () => {
+    if (groupUsers) {
+    const amInGroup = groupUsers.filter(user => user.username === myUser);
+    // console.log(amInGroup);
+    return amInGroup;
+    } else return false;
+  }
 
   const updateGoals = (goals) => {
     if (!goals) {
@@ -119,10 +132,12 @@ function Group(props) {
     }
   }
 
-  const groupName = (myGroup ? myGroup.name : "My Group")
+  const groupName = (thisGroup ? thisGroup.name : "My Group")
 
   return (
     <div>
+      {inGroup ? 
+      <>
       <AddGoalToGroup
         goals={myGoals ? myGoals : ""}
         group_id={id}
@@ -136,13 +151,15 @@ function Group(props) {
         group_name={groupName}
         show={inviteOpen}
         setShow={setInviteOpen} />
+        </>
+
+        : "" }
 
       <DesktopNav header="Desktop"
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}
-        actionBtn={<DesktopInviteBtn setShow={setInviteOpen}/>}
-
+        actionBtn={inGroup ? <DesktopInviteBtn setShow={setInviteOpen}/> : "" }
       />
 
       <NavTop 
@@ -152,12 +169,13 @@ function Group(props) {
         />
       <GroupDesktopNav />
       <h1 className="feed-page-header text-center text-primary pb-4">{groupName} Feed</h1>
-      <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4>
+      {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : "" }
       <div className="group-updates">
         {groupGoals ? groupGoals.map((item) => 
           <GoalUpdateCard 
             goal={item} 
             group_id={id} 
+            key={item.id}
             user={assignUsername(item.user_id)} 
             current_user={myUser} 
             updateGoals={updateGoals}

@@ -7,7 +7,7 @@ export default function updateGoals(token, goals) {
   // Check if any goals have reached their end date
   const removeExpiredGoals = () => {
     for (const goal of goals) {
-      if (Moment(goal.goal_finish).format("YYYY-MM-DD") === Moment().format("YYYY-MM-DD")) {
+      if (Moment(goal.goal_finish).isBefore(Moment())) {
         goalsToEnd.push(goal)
       }
     }
@@ -24,7 +24,7 @@ export default function updateGoals(token, goals) {
 
       if (goal.goal_frequency === "Daily") {
         const daysSinceRefresh = Moment().diff(Moment(goal.lastRefresh), 'days')
-        console.log(Moment().format("MMMM Do") + 'is now and the goal refreshed' + Moment(goal.lastRefresh).format("MMMM Do"));
+        console.log(Moment().format("MMMM Do") + ' is now and the goal refreshed ' + Moment(goal.lastRefresh).format("MMMM Do"));
         console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
         
         // Check if today is the day of refresh
@@ -41,42 +41,7 @@ export default function updateGoals(token, goals) {
       }
 
       if (goal.goal_frequency === "Weekly") {
-        // ARE LINES 34 TO 67 A WASTE OF MY TIME? PROBABLY
-
-        // // Day when goal was completed:
-        // const completedDate = Moment(goal.completeDate)
-
-        // // How many days since it was completed:
-        // const daysSinceCompleted = Moment().diff(completedDate, 'days')
-
-        // // Find the day-of-week when the goal was started:
-        // const startDayOfWeek = Moment(goal.goal_start).format("d");
-
-        // // Get current day-of-week
-        // const currDayOfWeek = Moment().isoWeekday();
-
-        // // This will be the next day-of-week when the goal refreshes:
-        // let nextWeekDayToRefresh;
-
-        // // If the starting day-of-week is still in the same week as current day-of-week:
-        // if (currDayOfWeek <= startDayOfWeek) {
-        //   console.log(startDayOfWeek);
-        //   const daysUntil = (startDayOfWeek - currDayOfWeek);
-
-        //   nextWeekDayToRefresh = Moment().add(daysUntil, 'days');
-        //   console.log(nextWeekDayToRefresh);
-
-        //   // Else if the starting day-of-week is in the following week:
-        // } else {
-        //   const daysUntil = (currDayOfWeek - startDayOfWeek)
-        //   nextWeekDayToRefresh = Moment().add(1, 'weeks').subtract(daysUntil, "days");
-        // }
-
-
-        // console.log("it has been", daysSinceCompleted, "days since goal was completed");
-        // console.log('This goal was created on a', Moment(goal.goal_start).format('dddd'));
-        // console.log('Today is a', Moment().format('dddd'));
-        // console.log('That means that this goal will refresh on', nextWeekDayToRefresh.format("dddd, MM-DD"));
+      
 
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
 

@@ -8,7 +8,7 @@ import DesktopNav from "../components/DesktopNav";
 import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-inactive.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 export default function Settings(props) {
   return (

@@ -4,18 +4,14 @@ import { useParams, useHistory } from "react-router-dom";
 
 export default function AcceptInv() {
 
-
   const [groupName, setGroupName] = useState("");
-
+  
+  const history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
     API.getOneGroup(id).then(res => setGroupName(res.data.name))
   }, [])
-
-
-  const history = useHistory();
-  const { id } = useParams();
-
 
 
   const acceptInv = () => {
@@ -29,6 +25,7 @@ export default function AcceptInv() {
       .then(res => history.push('/dashboard/mygroups'))
       .catch(err => console.log(err))
   }
+
 
   return (
     <div className="invite-page">
