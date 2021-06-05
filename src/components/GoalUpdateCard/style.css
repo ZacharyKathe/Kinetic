@@ -1,0 +1,32 @@
+.update-prog {
+  font-size: .8rem;
+}
+
+.update-descr {
+ font-style: italic;
+}
+
+.update-freq {
+ font-size: .9rem;
+}
+
+.update-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hide-button {
+  color: #bd2c38;
+  cursor: pointer;
+}
+
+.goal-name-hide {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+/* @media (max-width: 768px) {
+  .goal-update-card {
+    width: 100%;
+  }
+} */

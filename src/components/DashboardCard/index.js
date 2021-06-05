@@ -103,7 +103,7 @@ function DashboardCard(props) {
   // Just sets the progress to target goal
   const setComplete = () => {
     const token = localStorage.getItem('token');
-    API.editGoal(props.id, { goal_progress: props.goal_target }, token).then(res => {
+    API.editGoal(props.id, { goal_progress: props.goal_target, lastUpdate: Moment() }, token).then(res => {
       API.getIncompleteGoals(token).then(res => {
         props.setUserGoals(res.data.Goals)
       }).catch(err => {

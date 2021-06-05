@@ -28,7 +28,7 @@ export default function updateGoals(token, goals) {
         console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
         
         // Check if today is the day of refresh
-        if (daysSinceRefresh > 1) {
+        if (daysSinceRefresh > 0) {
           const goalObj = {
             goal_progress: 0,
             isComplete: false,

@@ -11,6 +11,7 @@
     font-weight: 500;
     width: 175px;
     transition: .3s ease-in-out;
+    border-radius: 4px;
 }
 
 .desktop-add-group-btn:hover{

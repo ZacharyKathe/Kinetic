@@ -33,6 +33,10 @@ const Login = (props) => {
         <p className="logo-text">kinetik</p>
       </div>
 
+      <div className="motto-text">
+        "Staying in motion, together."
+      </div>
+
       <div className="signup-text">
           New User? 
           <Link id="signup-inactive" to="/newuser" className={location.pathname === "/NewUser" ? " active" : " NewUser"}>

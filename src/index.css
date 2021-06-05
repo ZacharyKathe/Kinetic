@@ -101,6 +101,13 @@ a {
     margin-left: 0 !important;
 }
 
+.motto-text {
+    color:#60c3ff;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'canada-type-gibson';
+}
+
 .logInScreen {
     background-color: white;
     height: 100vh;
@@ -154,7 +161,7 @@ a {
     font-size: 25px;
     font-weight: 600;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
     color: #4c5264;
 }
 
@@ -185,7 +192,7 @@ a {
 }
 
 .form-group {
-    height: 75px;
+    height: 4rem;
 }
 
 .form-control {
@@ -227,6 +234,11 @@ a {
     background-color: white;
     display: flex;
     width: 100%;
+    margin-top: 1rem;
+}
+
+.feed-page-header {
+    text-decoration: underline var(--clr-blue)
 }
 
 .accept-inv-btn {
@@ -270,6 +282,8 @@ a {
 
 .create-goal-form {
     padding-top: 4.1rem;
+    max-width: 480px;
+    margin: auto;
 }
 
 .content {
@@ -287,10 +301,8 @@ a {
 
 .goals-page {
     margin-bottom: 7.5rem;
-}
-
-.createGroupForm {
-    padding-top: 7rem;
+    max-width: 968px;
+    margin: auto;
 }
 
 .containerZK {
@@ -313,15 +325,18 @@ a {
 }
 
 .createGroupForm{
+    padding-top: 7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
 }
 
 .createGroupInput {
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid #bcc5d3;
+    border-radius: 4px;
 }
 
 .containerComplete {
@@ -332,6 +347,10 @@ a {
     color: #5574F7;
 }
 
+.blueish {
+    color: var(--clr-blue);
+}
+
 .create-goal-row {
     height: 60px;
     display: flex;
@@ -339,6 +358,17 @@ a {
     width: 90%;
     margin: auto;
     margin-top: 10px;
+}
+
+.create-goal-dates {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 .create-goal-input {
@@ -362,7 +392,7 @@ a {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 1rem;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .alert-warning {
@@ -433,10 +463,7 @@ a {
     .containerZK {
         width: 100%;
     }
-    .createGroupInput {
-        margin-top: 50px;
-        padding-top: 25px;
-    }
+
 }
 
 /* Small smartphones - image placeholders change color */
@@ -444,11 +471,6 @@ a {
 @media screen and (max-width: 576px) {
     .logIn {
         padding-top: 0px;
-    }
-
-    .createGroupInput {
-        margin-top: 50px;
-        padding-top: 25px;
     }
 
     .react-calendar {
