@@ -12,6 +12,11 @@ import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-active.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
 import "./group.scss"
+import NavBottom from "../components/NavBottom";
+import home from "../images/home.png";
+import groupsActive from "../images/groups-active.png";
+import calendar from "../images/calendar.png";
+import GroupBottomNav from "../components/GroupBottomNav";
 
 
 
@@ -150,6 +155,14 @@ function Group(props) {
             current_user={myUser} 
             updateGoals={updateGoals}
             />) : console.log('no goals to share!')}
+      </div>
+      <div className="nav-btm-fixed">
+        <GroupBottomNav />
+        <NavBottom 
+          homeBtn={home}
+          groupsBtn={groupsActive}
+          calendarBtn={calendar}
+        />
       </div>
     </div>
   );
