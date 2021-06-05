@@ -88,6 +88,11 @@ const API = {
     })
   },
 
+  completeGoal: async function (completedDate) {
+    const goalComp = await axios.post(`${URL_PREFIX}/api/completed`, completedDate)
+    console.log("goalComp", goalComp)
+  },
+
   inviteUser: function (inviteObj, mytoken) {
     return axios.post(`${URL_PREFIX}/invite`, inviteObj, {
       headers: {

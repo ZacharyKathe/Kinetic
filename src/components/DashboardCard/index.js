@@ -31,6 +31,7 @@ function DashboardCard(props) {
   const [open, setOpen] = useState(false);
   const [clickOpen, setClickOpen] = useState(false);
 
+
   const handleClick = () => {
     setOpen(true);
   };
@@ -111,16 +112,16 @@ function DashboardCard(props) {
     })
 
   }
-
   // This will actually complete the goal, and send it to the completed page, saving its completion date
   const markComplete = () => {
     const token = localStorage.getItem('token');
     const completedGoal = {
+      lastCompletedDate: Moment().format("YYYY-MM-DD"),
       goal_progress: props.goal_target,
       isComplete: true,
-      completedDate: Moment().format("YYYY-MM-DD")
     }
-    console.log(completedGoal);
+
+    console.log("CompletedGoal", completedGoal);
     API.editGoal(props.id, completedGoal, token).then(res => {
       API.getIncompleteGoals(token).then(res => {
         props.setUserGoals(res.data.Goals)
@@ -128,6 +129,8 @@ function DashboardCard(props) {
         console.log(err);
       })
     })
+
+    
   }
 
 
@@ -157,6 +160,8 @@ function DashboardCard(props) {
       default: return (<AccessibilityNewRoundedIcon />);
     }
   }
+
+  console.log("Moment", Moment().format("YYYY-MM-DD"))
 
   const percent = ((props.goal_progress / props.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
