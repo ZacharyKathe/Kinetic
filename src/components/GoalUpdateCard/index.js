@@ -21,7 +21,7 @@ import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRoun
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
 
-export default function GoalUpdateCard({ goal: goal, user: user, group_id: group_id, current_user: current_user, updateGoals: updateGoals }) {
+export default function GoalUpdateCard({ goal, user, group_id, current_user, updateGoals }) {
 
   // console.log(goal);
   const percent = ((goal.goal_progress / goal.goal_target) * 100)
@@ -89,9 +89,6 @@ export default function GoalUpdateCard({ goal: goal, user: user, group_id: group
     <div className="goal-update-card containerZK">
       <div className="update-header">
         <h3 className="text-center">{goal.goal_name}</h3>
-        {goal.isComplete ?
-          <div className="text-success">Completed!</div>
-          : ""}
       </div>
 
       <Row className="goal-details-row">
@@ -99,6 +96,9 @@ export default function GoalUpdateCard({ goal: goal, user: user, group_id: group
           <p className="goal-details-description text-primary">
             {user}
           </p>
+        {goal.isComplete ?
+          <div className="text-success is-complete">COMPLETED {renderFrequency().toUpperCase()}!</div>
+          : ""}
         {user === current_user ?
           <div className="hide-button" onClick={() => removeFromGroup(goal.id)}>(hide)</div>
           : ""}
@@ -127,7 +127,7 @@ export default function GoalUpdateCard({ goal: goal, user: user, group_id: group
             (Active  {goal.goal_frequency.toLowerCase()} from {Moment(goal.goal_start).format("MMMM D")} to {Moment(goal.goal_finish).format("MMMM D, YYYY")}.)
               </p>
           {goal.lastUpdate ?
-            <p className="last-updated">Last updated <span className="text-warning">{Moment(goal.lastUpdate).format("MMMM Do h:mm a")}</span></p>
+            <p className="last-updated">{goal.isComplete ? "Completed" : "Last updated"} <span className="text-warning">{Moment(goal.lastUpdate).format("MMMM Do h:mm a")}</span></p>
             : ""}
         </Col>
       </Row>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import { ProgressBar, Alert } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dropdown from "../Dropdown";
 import SliderModal from "../SliderModal/index";
@@ -21,7 +21,7 @@ import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
 import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
-
+import CheckIcon from '@material-ui/icons/Check';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 // import DoneIcon from '@material-ui/icons/Done';
@@ -29,7 +29,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 function DashboardCard(props) {
 
   const [open, setOpen] = useState(false);
-  const [clickOpen, setClickOpen] = useState(false);
+  // const [clickOpen, setClickOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -55,7 +55,7 @@ function DashboardCard(props) {
   }
 
   const checkComplete = () => {
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     if (props.goal_progress === 0) {
       return (
         <Tooltip 
@@ -214,6 +214,7 @@ function DashboardCard(props) {
         </div>
         {/* This is where the label would go for above */}
         {/* <div className="progress-label">{props.is_complete ? props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!` : props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed ${renderFrequency()}!`}</div> */}
+        <div className="hint-label">{props.goal_target === props.goal_progress && !props.isComplete ? <><span>Click</span> <CheckIcon fontSize="small"/><span>to save!</span></> : ""}</div>
         <div className="bigCont">
           <div className="sliderCont">
             {!props.is_complete ? <SliderModal

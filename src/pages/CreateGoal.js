@@ -28,7 +28,7 @@ const CreateGoal = (props) => {
     goal_name: "",
     goal_description: "",
     goal_category: "Exercise",
-    goal_frequency: "",
+    goal_frequency: "Daily",
     goal_target: 3,
     value_type: "Miles",
     goal_start: moment().format("YYYY-MM-DD"),
@@ -205,7 +205,7 @@ const CreateGoal = (props) => {
           <Col size="6">
             <div className="actual-start-date">
               <p className="create-goal-label">
-                Start date
+                Start tracking...
                 </p>
               <input
                 className="create-goal-input"
@@ -219,7 +219,7 @@ const CreateGoal = (props) => {
           <Col size="6">
             <div className="actual-end-date">
               <p className="create-goal-label">
-                End date
+                End tracking...
                 </p>
               <input
                 className="create-goal-input"
@@ -239,7 +239,7 @@ const CreateGoal = (props) => {
             </div>
           </Col>
         </Row>
-          <img className="smart-goals" src={smartgoals} />
+          <img className="smart-goals" alt="smart goals" src={smartgoals} />
         <SaveGoalBtn />
 
       </form>

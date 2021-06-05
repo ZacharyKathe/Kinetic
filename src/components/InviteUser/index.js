@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import Container from "../Container";
 import Col from "../Col";
 import Row from '../Row/index';

@@ -16,11 +16,11 @@ export default function EditSlider(props) {
   const [value, setValue] = useState(props.goal_progress);
 
   const history = useHistory();
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
-
+  
   const changeProg = () => {
     const token = localStorage.getItem('token')
     props.handleClick()
@@ -30,25 +30,27 @@ export default function EditSlider(props) {
       lastUpdate: Moment()
     }
     API.editGoal(props.goal_id, progObj, token)
-      .then(result => {
-
-        props.modalShow(false);
-        getDashboard();
-        history.push('/dashboard')
-      }).catch(err => {
-        console.log(err);
-
-      })
+    .then(result => {
+      
+      props.modalShow(false);
+      getDashboard();
+      history.push('/dashboard')
+    }).catch(err => {
+      console.log(err);
+      console.log(open, setOpen);
+      
+    })
   }
+  
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
+  // const handleClose = (event, reason) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+    
+  //   setOpen(false);
+  // };
+  
   // Doesnt auto render yet!
   const getDashboard = () => {
     const token = localStorage.getItem('token')

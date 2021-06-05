@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-// import { useHistory } from "react-router-dom";
 import { Modal, ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
 import Moment from "moment";
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
-import Chip from '@material-ui/core/Chip';
+// import API from '../../utils/API';
+// import Chip from '@material-ui/core/Chip';
 // import update from '../../images/compass-update.png';
 
 export default function GoalDetails(props) {

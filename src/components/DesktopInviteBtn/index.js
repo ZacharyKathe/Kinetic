@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import addBtn from "../../images/add-btn.png";
-import { Link } from "react-router-dom";
 
 function DesktopAddGoalBtn(props) {
     return (

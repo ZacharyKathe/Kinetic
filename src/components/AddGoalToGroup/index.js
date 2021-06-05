@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
-import { Modal, Button } from 'react-bootstrap';
+import React from 'react';
+// import { useHistory } from "react-router-dom";
+import { Modal } from 'react-bootstrap';
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
 
 export default function AddGoalToGroup(props) {
 
-  // const [myGoals, setMyGoals] = useState([]);
-
-  // useEffect(() => {
-  //   if (props.goals) {
-  //     setMyGoals(props.goals)
-  //   }
-  // }, [])
-
-  // console.log(myGoals);
-
-
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleGoalAdd = (goalID) => {
     const token = localStorage.getItem('token');

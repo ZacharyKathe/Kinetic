@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 //import Goal from "../components/Goal";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import API from "../utils/API";
+import Moment from "moment";
 import NavTop from "../components/NavTop";
 import AddGoalBtn from "../components/AddGoalBtn";
 import NavBottom from "../components/NavBottom";
@@ -27,13 +28,13 @@ function Dashboard(props) {
 
   const [userGoals, setUserGoals] = useState([]);
 
-  const [userGroups, setUserGroups] = useState([]);
+  // const [userGroups, setUserGroups] = useState([]);
 
-  const myUser = props.user.username;
-  console.log("user coming in from app.js:", myUser);
-
-
+  // const myUser = props.user.username;
+  
+  
   useEffect(() => {
+    let currentGoalsArr;
     const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
     if (!token) {
@@ -41,14 +42,24 @@ function Dashboard(props) {
     }
     // gathers data from props and sets them as local state
     API.getIncompleteGoals(token).then(res => {
-      setUserGoals(res.data.Goals)
-      setUserGroups(res.data.Groups)
+
+      if (res.data) {
+        currentGoalsArr = res.data.Goals.filter(checkIfStarted);
+      }
+      // console.log(currentGoalsArr);
+
+      setUserGoals(currentGoalsArr)
+      // setUserGroups(res.data.Groups)
     }).catch(err => {
       console.log(err);
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const checkIfStarted = (goal) => {
+    return Moment(goal.goal_start).format("YYYY-MM-DD") === Moment().format("YYYY-MM-DD") || Moment(goal.goal_start).isBefore(Moment())
+  }
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -102,6 +113,7 @@ function Dashboard(props) {
                               goal_finish={item.goal_finish}
                               value_type={item.value_type}
                               id={item.id}
+                              isComplete={item.isComplete}
                               completed_date={item.completedDate}
                               last_refresh={item.lastRefresh}
                               key={item.id}
