@@ -44,15 +44,22 @@ export default function SliderModal(props) {
         setShow(false);
         const updatedGoal = {
           isComplete: true,
+          lastCompletedDate: Moment().format("YYYY-MM-DD")
+        }
+        const completedDate = {
+          goal_id: props.goal_id,
           completedDate: Moment().format("YYYY-MM-DD")
         }
         API.editGoal(props.goal_id, updatedGoal, token).then(res => {
-          API.getIncompleteGoals(token).then(res => {
-            if (res.data) {
-              props.setUserGoals(res.data.Goals)
-            } else {
-              props.setUserGoals()
-            }
+          API.completeGoal(completedDate).then(res => {
+
+            API.getIncompleteGoals(token).then(res => {
+              if (res.data) {
+                props.setUserGoals(res.data.Goals)
+              } else {
+                props.setUserGoals()
+              }
+            })
           }).catch(err => {
             console.log(err);
           })

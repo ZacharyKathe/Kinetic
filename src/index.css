@@ -25,6 +25,16 @@ a {
     text-decoration: none !important;
 }
 
+.MuiBadge-colorSecondary {
+    color: #fff;
+    background-color: #ff70a6 !important;
+}
+
+.MuiBadge-colorPrimary {
+    color: #fff;
+    background-color: #70bfff !important;
+}
+
 .react-calendar {
     border: 1px solid #bdb2ff !important;
     font-family: 'Jost', sans-serif;
@@ -42,18 +52,22 @@ a {
     color: #718bb4;
 }
 
+
 .react-calendar__month-view__weekdays__weekday {
     color: #3d3d3d;
 }
 
 .react-calendar__month-view__days__day {
-    color: #bdb2ff;
+    color: #718bb4;
     height: 10vh !important;
     transition: .3s ease-in-out;
 }
 
+.react-calendar__month-view__days__day--weekend {
+    color: #ffadad;
+}
 .react-calendar__month-view__days__day--neighboringMonth {
-    color: #718bb4;
+    color: #d7d0fd;
 }
 
 .react-calendar__tile--now {
@@ -322,7 +336,7 @@ a {
     margin-top: 10px;
 }
 
-.calenderCard {
+.calendarCard {
     padding-top: 5.1rem;
     display: flex;
     flex-direction: column;
@@ -473,7 +487,7 @@ a {
 }
 
 .desktop-header-text {
-    color: black;
+    color: #718bb4;
     font-size: 24px;
     font-weight: 600;
     padding-top: 5px;
