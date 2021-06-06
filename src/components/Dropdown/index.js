@@ -11,7 +11,8 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 export default function Dropdown(props) {
-
+  
+  const token = localStorage.getItem('token');
   const history = useHistory();
 
   const [show, setShow] = useState(false);
@@ -30,12 +31,13 @@ export default function Dropdown(props) {
   };
 
   const removeThisGoal = () => {
-    const token = localStorage.getItem('token');
     if (window.confirm("Are you sure you want to delete this goal? It cannot be undone.")) {
-      API.deleteGoal(props.goal_id, props.token)
+      API.deleteGoal(props.goal_id, token)
         .then(result => {
           API.getIncompleteGoals(token).then(res => {
+            if (res.data) {
             props.setUserGoals(res.data.Goals)
+            } else {props.setUserGoals("")}
           }).catch(err => {
             console.log(err);
           })
@@ -43,10 +45,6 @@ export default function Dropdown(props) {
           console.log(err);
           console.log("no logged in user")
           localStorage.removeItem("token");
-          props.setUserState({
-            token: "",
-            user: {}
-          })
         })
     } else return;
   }
@@ -60,7 +58,7 @@ export default function Dropdown(props) {
         show={detailsShow}
         setShow={setDetailsShow}
         goal_id={props.goalID}
-        token={props.token}
+        token={token}
         goal_name={props.goal_name}
         goal_category={props.goal_category}
         goal_description={props.goal_description}
@@ -79,7 +77,7 @@ export default function Dropdown(props) {
         setShow={setEditShow}
         setUserGoals={props.setUserGoals}
         goal_id={props.goal_id}
-        token={props.token}
+        token={token}
         goal_name={props.goal_name}
         goal_category={props.goal_category}
         goal_description={props.goal_description}

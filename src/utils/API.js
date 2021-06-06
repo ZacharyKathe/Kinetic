@@ -11,12 +11,13 @@ const API = {
 
   signup: async function (userData) {
     const newUser = await axios.post(`${URL_PREFIX}/signup`, userData);
-    console.log(newUser);
+    // console.log(newUser);
     window.location.href = '/dashboard';
     return newUser;
   },
 
   getDashboard: function (token) {
+    // console.log(token);
     return axios.get(`${URL_PREFIX}/dashboard`, {
       headers: {
         authorization: `Bearer ${token}`
@@ -118,7 +119,16 @@ const API = {
         authorization: `Bearer ${mytoken}`
       }
     })
-  }
+  },
+
+  createComment: function (newCommentData, token) {
+    return axios.post(`${URL_PREFIX}/api/comments`, newCommentData, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+  },
+
 }
 
 export default API;

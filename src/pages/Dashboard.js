@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-//import Goal from "../components/Goal";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import API from "../utils/API";
 import Moment from "moment";
