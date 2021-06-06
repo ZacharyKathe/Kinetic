@@ -6,12 +6,12 @@ function GroupDesktopNav(props) {
     return (
           <div className="desktop-group-btns">
               <Link  to={`/group/${props.id}`}>
-              <div className="group-desktop-btn-active">
+              <div className={props.feedStatus}>
                     <p id="desktop-feed-btn-text"> FEED</p> 
                 </div>
               </Link>
-              <Link  to={`/group/${props.id}`}>
-              <div className="group-desktop-btn-inactive">
+              <Link  to={`/group/${props.id}/members`}>
+              <div className={props.memberStatus}>
                     <p id="desktop-members-btn-text"> MEMBERS</p> 
                 </div>
               </Link>

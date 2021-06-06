@@ -187,8 +187,12 @@ function Group(props) {
         group_id={id}
         setInviteOpen={setInviteOpen}
         header={<MobileInviteBtn setShow={setInviteOpen} />}
+        />
+      <GroupDesktopNav 
+        feedStatus="group-desktop-btn-active"
+        memberStatus="group-desktop-btn-inactive"
+        id={id}
       />
-      <GroupDesktopNav />
       <h1 className="feed-page-header text-center pb-4">{groupName} Feed</h1>
       {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : ""}
       <div className="group-updates">
@@ -203,8 +207,12 @@ function Group(props) {
           />) : console.log('no goals to share!')}
       </div>
       <div className="nav-btm-fixed">
-        <GroupBottomNav />
-        <NavBottom
+        <GroupBottomNav
+          feedStatus="group-nav-btn-active"
+          memberStatus="group-nav-btn-inactive"
+          id={id}
+        />
+        <NavBottom 
           homeBtn={home}
           groupsBtn={groupsActive}
           calendarBtn={calendar}
