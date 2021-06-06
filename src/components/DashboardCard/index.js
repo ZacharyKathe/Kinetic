@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import renderActivityIcon from "../renderCategoryIcon"
-import CheckIcon from '@material-ui/icons/Check';
+// import CheckIcon from '@material-ui/icons/Check';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 // import DoneIcon from '@material-ui/icons/Done';
@@ -42,6 +42,16 @@ function DashboardCard(props) {
       case "Monthly":
         return "this month";
       default: return "so far"
+    }
+  }
+
+  const renderValueType = () => {
+    switch (props.value_type) {
+      case "Other":
+        return "";
+      case "Events":
+        return "events";
+      default: return (props.value_type.toLowerCase())
     }
   }
 
@@ -125,7 +135,7 @@ function DashboardCard(props) {
 
 
   const percent = ((props.goal_progress / props.goal_target) * 100)
-  const pctComplete = percent.toFixed(2)
+  const pctComplete = percent.toFixed(0)
 
   return (
 
@@ -170,8 +180,7 @@ function DashboardCard(props) {
           </div>
         </div>
         {/* This is where the label would go for above */}
-        {/* <div className="progress-label">{props.is_complete ? props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!` : props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed ${renderFrequency()}!`}</div> */}
-        <div className="hint-label">{props.goal_target === props.goal_progress && !props.isComplete ? <><span>Click</span> <CheckIcon fontSize="small"/><span>to save!</span></> : ""}</div>
+        <p className="progress-label">{!props.is_complete ? `${props.goal_progress} out of ${props.goal_target} ${renderValueType()} completed ${renderFrequency()}!` : ``}</p>
         <div className="bigCont">
           <div className="sliderCont">
             {!props.is_complete ? <SliderModal
@@ -201,9 +210,7 @@ function DashboardCard(props) {
                 </React.Fragment>
               }
             />
-            {props.is_complete ?
-              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed on ${Moment(props.completed_date).format("MMMM Do, YYYY")}!`} />
-              : <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed ${renderFrequency()}!`} />}
+              <ProgressBar now={pctComplete} label={`${pctComplete}%`} />
           </div>
         </div>
       </div>

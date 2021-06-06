@@ -1,7 +1,62 @@
 
 
-.modal {
+/* .modal {
   display: flex;
   margin: auto;
   height: 5rem;
+} */
+
+.blob-add {
+  /* background: black; */
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  /* margin: 10px;
+  height: 20px;
+  width: 20px; */
+  transform: scale(1);
+  animation: pulse-black 1.5s infinite;
+}
+
+.blob-save {
+  /* background: black; */
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgb(160, 196, 255);
+  /* margin: 10px;
+  height: 20px;
+  width: 20px; */
+  transform: scale(1);
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-black {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(160, 196, 255);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(160, 196, 255, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(160, 196, 255, 0);
+  }
 }

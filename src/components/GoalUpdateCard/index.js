@@ -154,7 +154,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         <Row>
           <Col size="6">
             <div className="bt-div one">
-              <img src={cheer} alt="cheer icon" /><p id="cheer-total">7 cheers</p>
+              <img src={cheer} alt="cheer icon" /><p id="cheer-total">0 cheers</p>
             </div>
           </Col>
 

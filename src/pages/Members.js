@@ -69,7 +69,7 @@ function Members(props) {
         id={id}
       />
       <h1 className="feed-page-header text-center pb-4">{groupName} Members</h1>
-      <div className='groupList'>
+      <div className='memberList'>
         {groupUsers ? groupUsers.map(item => (
           <MemberCard
             name={item.username}
