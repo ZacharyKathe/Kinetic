@@ -92,6 +92,12 @@ a {
     margin-left: 0 !important;
 }
 
+.memberList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .motto-text {
     color:#60c3ff;
     font-size: 1.2rem;

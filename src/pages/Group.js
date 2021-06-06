@@ -194,7 +194,7 @@ function Group(props) {
         id={id}
       />
       <h1 className="feed-page-header text-center pb-4">{groupName} Feed</h1>
-      {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Add your goal!</h4> : ""}
+      {inGroup ? <h4 className="btny btn-5 text-center add-goal" onClick={() => setModalShow(true)}>Share your goal!</h4> : ""}
       <div className="group-updates">
         {groupGoals ? groupGoals.map((item) =>
           <GoalUpdateCard
