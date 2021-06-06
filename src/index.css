@@ -28,7 +28,12 @@ a {
 .MuiBadge-colorSecondary {
     color: #fff;
     background-color: #ff70a6 !important;
-  }
+}
+
+.MuiBadge-colorPrimary {
+    color: #fff;
+    background-color: #70bfff !important;
+}
 
 .react-calendar {
     border: 1px solid #bdb2ff !important;

@@ -32,7 +32,6 @@ const CreateGoal = (props) => {
     value_type: "Miles",
     goal_start: moment().format("YYYY-MM-DD"),
     goal_finish: moment().add(1, "weeks").format("YYYY-MM-DD"),
-    lastCompletedDate: "",
     lastRefresh: moment().format("YYYY-MM-DD")
   });
   

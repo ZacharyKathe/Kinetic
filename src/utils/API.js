@@ -93,6 +93,10 @@ const API = {
     console.log("goalComp", goalComp)
   },
 
+  getAllDates: function () {
+    axios.get(`${URL_PREFIX}/api/completed`)
+  },
+
   inviteUser: function (inviteObj, mytoken) {
     return axios.post(`${URL_PREFIX}/invite`, inviteObj, {
       headers: {

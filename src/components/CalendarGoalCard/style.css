@@ -1,0 +1,110 @@
+.goal-alert {
+  padding: .1rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.goalheading {
+  padding-bottom: 20px;
+  color: #6f95d5;
+}
+
+.contentLeft {
+  display: flex;
+  justify-content: flex-end;
+  transition: .5s ease-in-out;
+  width: 40vw;
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 60vw;
+  color: hsl(216, 17%, 44%);
+}
+
+.complete-link {
+  margin-left: 2rem;
+  border: none;
+  background: none;
+  color: red;
+}
+
+.bigCont {
+  display: flex;
+  align-items: center;
+}
+
+.progCont {
+  width: 97%
+}
+
+.middle-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bt-card {
+  border: none;
+}
+
+.progress-label {
+  text-align: center;
+  font-size: 1rem;
+  height: .7rem;
+}
+
+.progress-bar {
+  background-color: #c8dcff !important;
+  color: black;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  border-radius: 50%;
+  transition: .3s ease-in-out;
+}
+
+.MuiSvgIcon-fontSizeLarge:hover {
+  scale: 1.05;
+  transition: .3s ease-in-out;
+}
+
+.MuiIconButton-root:hover {
+  background-color: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .progCont {
+    width: 95% !important
+  }
+
+  .contentLeft {
+    width: 30%;
+  }
+
+  .contentRight {
+    width: 70%;
+  }
+
+
+}
+
+
+@media screen and (max-width: 400px) {
+  .progCont {
+    width: 90% !important
+  }
+
+  .contentLeft {
+    width: 30%;
+  }
+
+  .contentRight {
+    width: 70%;
+  }
+
+  .progress-label {
+    font-size: .8rem;
+  }
+}

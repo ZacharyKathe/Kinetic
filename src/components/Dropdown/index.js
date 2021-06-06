@@ -44,10 +44,7 @@ export default function Dropdown(props) {
           console.log(err);
           console.log("no logged in user")
           localStorage.removeItem("token");
-          props.setUserState({
-            token: "",
-            user: {}
-          })
+
         })
     } else return;
   }
@@ -133,24 +130,26 @@ export default function Dropdown(props) {
                 </span>
                   </> : ""}
                 
-                {props.is_complete ?
+                  {props.is_complete ?
                 <span onClick={() => {
                   const token = localStorage.getItem('token');
                   const updatedGoal = {
-                    isComplete: false
+                    isComplete: false,
+                    lastCompletedDate: props.last_refresh
                   }
                   API.editGoal(props.goal_id, updatedGoal, token).then(res => {
-                      API.getCompleteGoals(token).then(res => {
-                        if (res.data) {
-                          props.setUserGoals(res.data.Goals)
-                        } else {
-                          props.setUserGoals()
-                        }
-                      })
+                    console.log(res.data);
+                    API.getCompleteGoals(token).then(res => {
+                      if (res.data) {
+                        props.setUserGoals(res.data.Goals)
+                      } else {
+                        props.setUserGoals()
+                      }
                     }).catch(err => {
                       console.log(err);
                     })
                     history.push('/dashboard')
+                  })
                 }}>Mark Incomplete</span>
                 : ""}
 
