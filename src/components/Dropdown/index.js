@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { Overlay, Popover, Button } from 'react-bootstrap';
+import Moment from 'moment';
 import EditGoal from '../EditGoal/index';
 import GoalDetails from '../GoalDetails/index';
 import "./style.css"
@@ -45,6 +46,10 @@ export default function Dropdown(props) {
           console.log(err);
           console.log("no logged in user")
           localStorage.removeItem("token");
+<<<<<<< HEAD
+=======
+
+>>>>>>> hr-stylingtouches
         })
     } else return;
   }
@@ -130,12 +135,12 @@ export default function Dropdown(props) {
                 </span>
                   </> : ""}
                 
-                {props.is_complete ?
+                  {props.is_complete ?
                 <span onClick={() => {
                   const token = localStorage.getItem('token');
                   const updatedGoal = {
                     isComplete: false,
-                    completedDate: props.last_refresh
+                    lastCompletedDate: props.last_refresh
                   }
                   API.editGoal(props.goal_id, updatedGoal, token).then(res => {
                     console.log(res.data);
