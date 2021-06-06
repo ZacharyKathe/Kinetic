@@ -1,5 +1,6 @@
 .goal-details-name {
     color: #a0c4ff;
+    font-size: 30px;
 }
 
 .goal-details-row {
@@ -46,4 +47,9 @@
 
 #cheer-total {
     padding-left: 5px;
+}
+
+#chip-row {
+    margin-bottom: 10px;
+    margin-top: 5px;
 }

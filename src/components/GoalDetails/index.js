@@ -14,6 +14,8 @@ import renderActivityIcon from '../renderCategoryIcon'
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
+import Chip from '@material-ui/core/Chip';
+import Tooltip from '@material-ui/core/Tooltip';
 // import API from '../../utils/API';
 // import Chip from '@material-ui/core/Chip';
 // import update from '../../images/compass-update.png';
@@ -46,23 +48,47 @@ export default function GoalDetails(props) {
   }, [])
 
   const checkComplete = () => {
+    // const token = localStorage.getItem('token');
     if (props.goal_progress === 0) {
       return (
-      <Alert key="secondary" variant="secondary" className="goal-alert">
-        Let's Get Started!
-      </Alert>
+        <Tooltip 
+          title="Start Them Gains Doge. Click + Btn to Add Progress!"
+          placement="right-start"
+        >
+        <Chip
+          label="Let's Get Started!"
+        />
+        </Tooltip>
       )
-    }if (props.goal_target === props.goal_progress) {
+    }
+    if (props.goal_target === props.goal_progress) {
       return (
-        <Alert key="success" variant="success" className="goal-alert">
-          Way to go!
-        </Alert>
+        <Tooltip 
+          title="Click Check Btn to Save!"
+          placement="right-start"
+        >
+        <Chip
+          label="Goal Complete!"
+          style={{
+            backgroundColor: "#b8ffa9",
+            color: "black"
+          }}
+        />
+        </Tooltip>
       )
-    } 
-    else return (
-      <Alert key="warning" variant="warning" className="goal-alert">
-        Keep up the good work!
-      </Alert>
+    } else return (
+      <Tooltip 
+        title="Oh Yeah! Nice! Click + Btn to Add Progress!"
+        placement="right-start"
+        >
+      <Chip
+        label="Keep it up!"
+        style={{
+          backgroundColor: "#fff3cd",
+          color: "black"
+        }}
+      />
+      </Tooltip>
     )
   }
 
@@ -130,7 +156,9 @@ export default function GoalDetails(props) {
           }
           <Row className="goal-details-row">
             <Col size="12">
-              {!props.is_complete ? checkComplete() : ""}
+              <div id="chip-row">
+                {!props.is_complete ? checkComplete() : ""}
+              </div>
               <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
             </Col>
           </Row>
