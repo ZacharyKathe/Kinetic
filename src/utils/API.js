@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const URL_PREFIX = 'http://localhost:3002';
-// const URL_PREFIX = 'https://api-kinetik.herokuapp.com';
+// const URL_PREFIX = 'http://localhost:3002';
+const URL_PREFIX = 'https://api-kinetikapp.herokuapp.com';
 
 const API = {
 
