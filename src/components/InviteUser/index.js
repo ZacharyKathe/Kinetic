@@ -17,7 +17,7 @@ export default function InviteUser(props) {
     e.preventDefault();
     props.setShow(false);
     const inviteObj = {
-      groupUrl: `localhost:3000/group/invitation/${props.group_id}`,
+      groupUrl: `kinetikapp.herokuapp.com/group/invitation/${props.group_id}`,
       groupName: props.group_name,
       invitedUser: invitedUser,
       myName: props.myName
