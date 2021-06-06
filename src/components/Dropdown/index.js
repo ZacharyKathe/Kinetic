@@ -46,10 +46,6 @@ export default function Dropdown(props) {
           console.log(err);
           console.log("no logged in user")
           localStorage.removeItem("token");
-<<<<<<< HEAD
-=======
-
->>>>>>> hr-stylingtouches
         })
     } else return;
   }
