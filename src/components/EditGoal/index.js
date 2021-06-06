@@ -4,6 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 import API from '../../utils/API';
 import Col from '../Col/index';
 import Row from '../Row/index';
+import './style.css';
 // import SaveGoalBtn from '../SaveGoalBtn';
 // import App from '../../App';
 
@@ -63,7 +64,9 @@ export default function EditGoal(props) {
             <Modal.Title id="example-custom-modal-styling-title">
             <Row className="create-goal-row">
               <Col size="12">
+              <p className="create-goal-label">Goal Name</p>
                 <input
+                  id="edit-modal-title"
                   className="create-goal-input"
                   type="text"
                   placeholder=" Enter a name for your goal..."
@@ -183,7 +186,7 @@ export default function EditGoal(props) {
                 </select>
               </Col>
             </Row>
-            <div className="goal-dates">
+            <div id="goal-dates-row" className="goal-dates">
               <div className="actual-dates">
                 <p className="create-goal-label">
                   Start date
@@ -211,6 +214,7 @@ export default function EditGoal(props) {
               </div>
             </div>
             <Button 
+              id="edit-save-btn"
               className="saveEditBtn"
               variant="outline-primary"
               size="lg" 
