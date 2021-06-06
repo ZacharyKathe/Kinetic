@@ -40,7 +40,7 @@ function DesktopNav(props) {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
         }
-        setCurrentTime(Moment().format("MMMM Do hh:mma"))
+        setCurrentTime(Moment().format("MMMM Do h:mma"))
         prevOpen.current = open;
     }, [open]);
     

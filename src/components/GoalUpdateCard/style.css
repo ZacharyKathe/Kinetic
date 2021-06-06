@@ -35,6 +35,9 @@
 .two {
   cursor: pointer;
 }
+.two:hover {
+  box-shadow: 1px 1px solid black
+}
 
 .goal-name-hide {
   display: flex;

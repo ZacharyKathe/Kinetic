@@ -124,7 +124,7 @@ function Dashboard(props) {
                       </Draggable>
                     )
                   })
-                    : console.log("no goals right now")}
+                    : <div className="no-goals">(Hey, hit the "Add Goal" button above to start tracking a new goal!)</div>}
                   {provided.placeholder}
                 </div>
               )

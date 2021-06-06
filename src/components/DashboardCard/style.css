@@ -7,6 +7,7 @@
 .goalheading {
   padding-bottom: 20px;
   color: #6f95d5;
+  margin-left: .4rem;
 }
 
 .contentLeft {
@@ -58,8 +59,10 @@
 
 .progress-label {
   text-align: center;
-  font-size: 1rem;
+  font-size: .9rem;
   height: .7rem;
+  font-style: italic;
+  color: hsl(216, 17%, 44%);
 }
 
 .progress-bar {

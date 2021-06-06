@@ -149,7 +149,7 @@ export default function GoalDetails(props) {
             <Row className="goal-details-row">
               <Col size="12">
                 <p className="goal-details-progress">
-                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type} completed.
+                  {goalDetails.goal_progress} out of {goalDetails.goal_target} {goalDetails.value_type.toLowerCase()} completed.
                 </p>
               </Col>
             </Row>
@@ -159,13 +159,13 @@ export default function GoalDetails(props) {
               <div id="chip-row">
                 {!props.is_complete ? checkComplete() : ""}
               </div>
-              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type} completed!`} />
+              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target.toLowerCase()} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed!`} />
             </Col>
           </Row>
           <Row>
             <Col size="6">
               <div className="bt-div">
-                <img src={cheer} alt="cheer icon" /><p id="cheer-total">7 cheers</p>
+                <img src={cheer} alt="cheer icon" /><p id="cheer-total">0 cheers</p>
               </div>
             </Col>
             <Col size="6">
