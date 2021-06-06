@@ -1,7 +1,6 @@
 import updateGoals from "./components/updateGoals"
 import API from "./utils/API";
 import React, { useState, useEffect } from "react";
-// import NavTabs from './components/NavTabs';
 import Group from './pages/Group';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from "./pages/Login";
@@ -18,7 +17,6 @@ import CompleteGoals from "./pages/CompleteGoals";
 import AcceptInv from "./pages/AcceptInv";
 import Members from "./pages/Members";
 // import {initDB} from 'react-indexed-db'
-import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 
 function App() {
@@ -154,7 +152,7 @@ function App() {
 
   const handleSignupFormSubmit = e => {
     e.preventDefault();
-    console.log(signupFormState);
+    // console.log(signupFormState);
     API.signup(signupFormState).then(result => {
       // console.log(result);
       localStorage.setItem("token", result.data.token)
@@ -177,7 +175,7 @@ function App() {
       //   tokenStore.add({userToken: result.data.token})
       // }
       API.getDashboard(result.data.token).then(res => {
-        alert("Signup Successful!")
+        // alert("Signup Successful!")
         // console.log(res.data);
         setUserState({
           token: token,

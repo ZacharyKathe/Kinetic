@@ -39,7 +39,7 @@ const CreateGoal = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (token) {
-      console.log(newGoal);
+      // console.log(newGoal);
       if (newGoal.goal_target === "") {
         newGoal.goal_target = 1
       }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, ProgressBar, Alert } from 'react-bootstrap';
+import { Modal, ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import API from "../../utils/API";
 import Col from '../Col/index';

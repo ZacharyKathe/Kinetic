@@ -15,6 +15,7 @@ export default function CalendarCard(props) {
     const [userCompleteGoals, setUserCompleteGoals] = useState([]);
     const [completedDates, setCompletedDates] = useState([]);
     const history = useHistory();
+    
     let completed = [];
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -25,15 +26,15 @@ export default function CalendarCard(props) {
         // gathers data from props and sets them as local state
         API.getIncompleteGoals(token).then(res => {
           setUserIncompleteGoals(res.data.Goals)
-          console.log(userIncompleteGoals)
+          // console.log(userIncompleteGoals)
         }).catch(err => {
           console.log(err);
         })
     
         API.getCompleteGoals(token).then(res => {
             setUserCompleteGoals(res.data.Goals)
-            console.log(userCompleteGoals)
-            console.log(userIncompleteGoals)
+            // console.log(userCompleteGoals)
+            // console.log(userIncompleteGoals)
           }).catch(err => {
             console.log(err);
           })
@@ -43,23 +44,23 @@ export default function CalendarCard(props) {
       }, []);
 
     const userAllGoals = userIncompleteGoals.concat(userCompleteGoals)
-    console.log("All Goals", userAllGoals)
+    // console.log("All Goals", userAllGoals)
     const incDive = userIncompleteGoals.map(goals1 => goals1.CompletedDates);
     const superInc = incDive.map(goals => goals.map(goals2 => goals2.completedDate))
     const flatIncomplete = superInc.flat()
-    console.log("Incomplete Goals", flatIncomplete)
+    // console.log("Incomplete Goals", flatIncomplete)
 
     const comDive = userCompleteGoals.map(goals => goals.CompletedDates);
     const superCom = comDive.map(goals => goals.map(goals2 => goals2.completedDate))
     const flatComplete = superCom.flat();
-    console.log("Complete Goals", flatComplete)
+    // console.log("Complete Goals", flatComplete)
 
     completed = flatComplete.concat(flatIncomplete);
-    console.log("Every Date", completed)
+    // console.log("Every Date", completed)
     const changeDate = (e) => {
         setDateState(e)
-        console.log(e)
-        console.log(moment(e).format('YYYY-MM-DD'))
+        // console.log(e)
+        // console.log(moment(e).format('YYYY-MM-DD'))
     }
 
     const currentDate = moment(Date()).format('YYYY-MM-DD');
