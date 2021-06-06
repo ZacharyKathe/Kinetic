@@ -11,6 +11,10 @@
     font-size: 16px;
 }
 
+#goal-details-description {
+    margin-top: 10px;
+}
+
 .goal-details-start {
     font-size: 16px;
 }

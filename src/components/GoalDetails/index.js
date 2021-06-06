@@ -118,7 +118,7 @@ export default function GoalDetails(props) {
         <Modal.Body className="no-padding">
           <Row className="goal-details-row italic">
             <Col size="12">
-              <p className="goal-details-description">
+              <p id="goal-details-description" className="goal-details-description">
                 {goalDetails.goal_description}
               </p>
             </Col>
