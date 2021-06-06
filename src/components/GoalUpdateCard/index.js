@@ -15,7 +15,7 @@ import { TextField, Button } from '@material-ui/core';
 
 export default function GoalUpdateCard({ goal, user, group_id, current_user, updateGoals }) {
 
-  const [comment, setComment] = useState("Nice Work!");
+  const [comment, setComment] = useState("");
   const [goalComments, setGoalComments] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
@@ -70,10 +70,10 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         console.log(res.data);
         console.log('submitted:', commentObj);
         API.getOneGoal(goal.id)
-        .then(res => {
-          setGoalComments(res.data.Comments)
-        })
-        .catch(err => console.log(err))
+          .then(res => {
+            setGoalComments(res.data.Comments)
+          })
+          .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
   }
@@ -84,6 +84,9 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         comments={goalComments}
         show={modalShow}
         setModalShow={setModalShow}
+        username={current_user}
+        goalID={goal.id}
+        setGoalComments={setGoalComments}
 
       />
       <div className="goal-update-card containerZK">
@@ -93,7 +96,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
 
         <Row className="goal-details-row">
           <Col size="12" className="goal-name-hide">
-            <p className="goal-details-description text-primary">
+            <p className="goal-details-description user-name text-primary">
               {user}
             </p>
             {goal.isComplete ?
@@ -150,14 +153,14 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
 
         <Row>
           <Col size="6">
-            <div className="bt-div">
+            <div className="bt-div one">
               <img src={cheer} alt="cheer icon" /><p id="cheer-total">7 cheers</p>
             </div>
           </Col>
 
           <Col size="6">
-            <div className="bt-div" onClick={() => setModalShow(true)}>
-              <img src={commentIcon} alt="comment icon" /><p id="comment-total">5 comments</p>
+            <div className="bt-div two" onClick={() => setModalShow(true)}>
+              <img src={commentIcon} alt="comment icon" /><p id="comment-total">{goalComments.length === 1 ? `${goalComments.length} comment` :  `${goalComments.length} comments`}</p>
             </div>
           </Col>
         </Row>
@@ -165,20 +168,22 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         <Row>
           <Col size="12">
             <div className="border-top padding">
-
-              <form onSubmit={() => submitComment()}>
-                <TextField
-                  id="outlined-multiline-static"
-                  label="Comment"
-                  multiline
-                  rows={2}
-                  onChange={e => setComment(e.target.value)}
-                  value={comment}
-                  variant="outlined"
-                />
-                <Button type="submit">Submit Comment</Button>
-              </form>
-
+              <div className="form-box">
+                <form onSubmit={() => submitComment()}>
+                  <TextField
+                    // id=""
+                    label="Comment"
+                    placeholder="Cheer them on!"
+                    multiline
+                    rows={2}
+                    onChange={e => setComment(e.target.value)}
+                    value={comment}
+                    fullWidth
+                    variant="outlined"
+                  />
+                  <Button type="submit">Submit Comment</Button>
+                </form>
+              </div>
             </div>
             <div className="border-top">
             </div>

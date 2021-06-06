@@ -15,6 +15,10 @@
   transition: .3s;
 }
 
+.member-card {
+  padding: 0 4rem;
+}
+
 .groupcard:hover {
   transform: scale(1.05);
   opacity: 0.9;

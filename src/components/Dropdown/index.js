@@ -57,7 +57,7 @@ export default function Dropdown(props) {
       <GoalDetails
         show={detailsShow}
         setShow={setDetailsShow}
-        goal_id={props.goalID}
+        goal_id={props.goal_id}
         token={token}
         goal_name={props.goal_name}
         goal_category={props.goal_category}

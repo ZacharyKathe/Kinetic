@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import API from '../../utils/API';
 import Moment from "moment";
@@ -7,48 +7,48 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import CommentModel from "../CommentModal"
+// import CommentModel from "../CommentModal"
 
 export default function AddGoalToGroup(props) {
 
-  const [goalsInGroup, setGoalsInGroup] = useState([])
+  // const [goalsInGroup, setGoalsInGroup] = useState([])
 
   // const history = useHistory();
   // let tempGoalsArr = [];
 
   // const goalArr = []
-  useEffect(() => {
-    // setGoalsInGroup([])
-    console.log(props.group_id);
-    if (props.goals) {
-      props.goals.map(goal => {
-        console.log(goal);
-        goal.Groups.map(group => {
-          console.log(group.id);
-          if (Number(props.group_id) === group.id) {
-            console.log(goal);
-            setGoalsInGroup(goalsInGroup => [...goalsInGroup, goal])
-          }
-        })
-      });
-    }
+  // useEffect(() => {
+  //   // setGoalsInGroup([])
+  //   console.log(props.group_id);
+  //   if (props.goals) {
+  //     props.goals.map(goal => {
+  //       console.log(goal);
+  //       goal.Groups.map(group => {
+  //         console.log(group.id);
+  //         if (Number(props.group_id) === group.id) {
+  //           console.log(goal);
+  //           setGoalsInGroup(goalsInGroup => [...goalsInGroup, goal])
+  //         }
+  //       })
+  //     });
+  //   }
 
-  }, [])
+  // }, [])
 
 
-  const renderGroupName = (goal) => {
-    if (goalsInGroup) {
-      for (const groupGoal of goalsInGroup) {
-        console.log(goal.id);
-        console.log(groupGoal.id);
-        console.log(groupGoal);
-        if (goal.id === groupGoal.id) {
-          console.log(props.thisGroup);
-          return props.thisGroup.name;
-        } else return false;
-      }
-    }
-  }
+  // const renderGroupName = (goal) => {
+  //   if (goalsInGroup) {
+  //     for (const groupGoal of goalsInGroup) {
+  //       // console.log(goal.id);
+  //       // console.log(groupGoal.id);
+  //       // console.log(groupGoal);
+  //       if (goal.id === groupGoal.id) {
+  //         // console.log(props.thisGroup);
+  //         return props.thisGroup.name;
+  //       } else return false;
+  //     }
+  //   }
+  // }
 
   const handleGoalAdd = (goalID) => {
     const token = localStorage.getItem('token');
@@ -85,20 +85,20 @@ export default function AddGoalToGroup(props) {
           <List>
             {props.goals ? props.goals.map((goal => {
               return (
-                <div key={goal.id}>
-                  <div className="border-top" />
-                  <a href="#" onClick={() => handleGoalAdd(goal.id)}>
+                <div key={goal.id} className="border-top">
+                  <div onClick={() => handleGoalAdd(goal.id)}>
                     <ListItem>
                       <ListItemIcon>
                         {renderActivityIcon(goal.goal_category)}
                       </ListItemIcon>
                       <ListItemText
-                        primary={`${goal.goal_name} ${renderGroupName(goal) ? `(already a part of ${renderGroupName(goal)})` : ""}`}
+                        primary={<h4 className="text-primary">{goal.goal_name}</h4>}
+                        // ${renderGroupName(goal) ? `(already a part of ${renderGroupName(goal)})` : ""}`}
                         secondary={goal.lastUpdate ? `Last Updated: ${Moment(goal.lastUpdate).format("MMMM Do hh:mma")}` : ""}
-                        // secondary={renderGroupName(goal) ? `already a part of ${renderGroupName(goal)}` : ""}
+                      // secondary={renderGroupName(goal) ? `already a part of ${renderGroupName(goal)}` : ""}
                       />
                     </ListItem>
-                  </a>
+                  </div>
                 </div>
               )
             })) :

@@ -15,8 +15,24 @@
   justify-content: space-around;
 }
 
+.user-name {
+  font-size: 1.4rem;
+}
+
+.form-box {
+  margin: 0 8rem;
+}
+
 .hide-button {
   color: #bd2c38;
+  cursor: pointer;
+}
+
+#outlined-multiline-static {
+  width: 80% !important;
+}
+
+.two {
   cursor: pointer;
 }
 
@@ -36,5 +52,8 @@
 @media (max-width: 768px) {
   .nav-bottom-fixed {
     margin-top: 8rem !important;
+  }
+  .form-box {
+    margin: 0 auto;
   }
 }

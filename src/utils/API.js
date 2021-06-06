@@ -128,7 +128,14 @@ const API = {
       }
     })
   },
-
+  
+  deleteComment: function (id, token) {
+    return axios.delete(`${URL_PREFIX}/api/comments/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+  },
 }
 
 export default API;
