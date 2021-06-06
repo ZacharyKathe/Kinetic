@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, ProgressBar, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import API from "../../utils/API";
 import Col from '../Col/index';
 import Row from '../Row/index';
 import Moment from "moment";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import commentIcon from '../../images/comment.png';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import renderActivityIcon from '../renderCategoryIcon'
 import './style.css';
 import cheer from '../../images/trophy.png';
 import comment from '../../images/comment.png';
@@ -12,6 +19,9 @@ import comment from '../../images/comment.png';
 // import update from '../../images/compass-update.png';
 
 export default function GoalDetails(props) {
+
+
+  const [goalComments, setGoalComments] = useState([]);
   const [goalDetails] = useState({
     goal_name: props.goal_name,
     goal_description: props.goal_description,
@@ -26,6 +36,14 @@ export default function GoalDetails(props) {
     goal_finish: props.goal_finish
 
   });
+
+  useEffect(() => {
+    API.getOneGoal(props.goal_id)
+      .then(res => {
+        setGoalComments(res.data.Comments)
+      })
+      .catch(err => console.log(err, "f"))
+  }, [])
 
   const checkComplete = () => {
     if (props.goal_progress === 0) {
@@ -72,7 +90,7 @@ export default function GoalDetails(props) {
         </Modal.Header>
 
         <Modal.Body className="no-padding">
-          <Row className="goal-details-row">
+          <Row className="goal-details-row italic">
             <Col size="12">
               <p className="goal-details-description">
                 {goalDetails.goal_description}
@@ -82,7 +100,7 @@ export default function GoalDetails(props) {
           <Row className="goal-details-row">
             <Col size="12">
               <p className="goal-details-description">
-                {goalDetails.goal_category}
+                {renderActivityIcon(goalDetails.goal_category)} {goalDetails.goal_category}
               </p>
             </Col>
           </Row>
@@ -124,14 +142,34 @@ export default function GoalDetails(props) {
             </Col>
             <Col size="6">
               <div className="bt-div">
-                <img src={comment} alt="comment icon" /><p id="comment-total">5 comments</p>
+                <img src={comment} alt="comment icon" /><p id="comment-total">{goalComments.length === 1 ? `${goalComments.length} comment` :  `${goalComments.length} comments`}</p>
               </div>
             </Col>
           </Row>
           <Row>
             <Col size="12">
               <div className="border-top padding">
-                <p>comments go here</p>
+              <List>
+            {goalComments ? goalComments.map((comment => {
+              return (
+                <div key={comment.id}>
+
+                  <ListItem>
+                    <ListItemIcon>
+                      <img src={commentIcon} alt="comment icon"/>
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={comment.comment_content}
+                      secondary={<p>Posted by <span className="username text-primary">{comment.User.username}</span>, {Moment(comment.updatedAt).format("M/D/YY hh:mma")}</p>}
+                    />
+                  </ListItem>
+
+                </div>
+              )
+            })) :
+              console.log('no goals')
+            }
+          </List>
               </div>
             </Col>
           </Row>

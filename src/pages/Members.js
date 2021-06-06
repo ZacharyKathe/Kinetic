@@ -21,18 +21,14 @@ import MemberCard from "../components/MemberCard";
 
 function Members(props) {
 
-  const [myUser, setMyUser] = useState()
+  // const [myUser, setMyUser] = useState()
   const [thisGroup, setThisGroup] = useState()
-  const [inGroup, setInGroup] = useState(false)
   const [groupUsers, setGroupUsers] = useState([])
-  const [modalShow, setModalShow] = useState(false);
-  const [userGroups, setUserGroups] = useState([]);
 
   const history = useHistory();
 
   // Grabs url group id
   const { id } = useParams();
-  let memberArray = [];
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -41,27 +37,10 @@ function Members(props) {
       history.push('/')
     }
 
-    API.getDashboard(token)
-    .then(res => {
-      setMyUser(res.data.username)
-    }).catch(err => {
-      console.log(err);
-    })
-    
     API.getOneGroup(id)
-    .then(res => {
-      
-      // Set the group
+    .then(res => {  
       setThisGroup(res.data)
-      // checkIfInGroup();    
-      
-      // Set the group users
       setGroupUsers(res.data.Users)
-      
-      if (checkIfInGroup()) {
-        setInGroup(true);
-      }
-      
     })
     .catch(err => {
       console.log(err);
@@ -69,14 +48,6 @@ function Members(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sees if current user is in group
-  const checkIfInGroup = () => {
-    if (groupUsers) {
-    const amInGroup = groupUsers.filter(user => user.username === myUser);
-    // console.log(amInGroup);
-    return amInGroup;
-    } else return false;
-  }
 
   const groupName = (thisGroup ? thisGroup.name : "My Group")
 
@@ -101,7 +72,7 @@ function Members(props) {
       <div className='groupList'>
         {groupUsers ? groupUsers.map(item => (
           <MemberCard
-            name={item.name}
+            name={item.username}
           />
         )) : console.log('no members')}
       </div>

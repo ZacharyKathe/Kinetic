@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useHistory } from "react-router-dom";
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -8,27 +8,28 @@ import Row from '../Row/index';
 import Moment from "moment";
 import './style.css';
 import cheer from '../../images/trophy.png';
-import comment from '../../images/comment.png';
-import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
-import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
-import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
-import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
-import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
-import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
-import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
-import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
-import AccessibilityNewRoundedIcon from '@material-ui/icons/AccessibilityNewRounded';
-import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
-import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
+import commentIcon from '../../images/comment.png';
+import CommentModal from "../CommentModal"
+import renderActivityIcon from "../renderCategoryIcon"
+import { TextField, Button } from '@material-ui/core';
 
 export default function GoalUpdateCard({ goal, user, group_id, current_user, updateGoals }) {
 
-  // console.log(goal);
+  const [comment, setComment] = useState("");
+  const [goalComments, setGoalComments] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+
+  const token = localStorage.getItem('token')
   const percent = ((goal.goal_progress / goal.goal_target) * 100)
   const pctComplete = percent.toFixed(2)
-  // console.log(current_user);
-  // console.log(group_id);
-  // console.log(goal.id);
+
+  useEffect(() => {
+    API.getOneGoal(goal.id)
+      .then(res => {
+        setGoalComments(res.data.Comments)
+      })
+      .catch(err => console.log(err))
+  }, [])
 
 
   const renderFrequency = () => {
@@ -43,31 +44,6 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
     }
   }
 
-  const renderActivityIcon = () => {
-    switch (goal.goal_category) {
-      case "Diet":
-        return (<RestaurantRoundedIcon />);
-      case "Intellectual":
-        return (<SchoolRoundedIcon />);
-      case "Exercise":
-        return (<DirectionsRunRoundedIcon />);
-      case "Financial":
-        return (<MonetizationOnRoundedIcon />);
-      case "Habit":
-        return (<BallotRoundedIcon />);
-      case "Health":
-        return (<FavoriteRoundedIcon />);
-      case "Relationship":
-        return (<SupervisedUserCircleRoundedIcon />);
-      case "Work":
-        return (<WorkRoundedIcon />);
-      case "Productivity":
-        return (<TrendingUpRoundedIcon />);
-      case "Skill":
-        return (<BuildRoundedIcon />);
-      default: return (<AccessibilityNewRoundedIcon />);
-    }
-  }
 
   const removeFromGroup = (id) => {
     const token = localStorage.getItem('token');
@@ -84,93 +60,136 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
 
   }
 
+  const submitComment = () => {
+    const commentObj = {
+      comment_content: comment,
+      goal: goal.id
+    }
+    API.createComment(commentObj, token)
+      .then(res => {
+        console.log(res.data);
+        console.log('submitted:', commentObj);
+        API.getOneGoal(goal.id)
+          .then(res => {
+            setGoalComments(res.data.Comments)
+          })
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
+    <>
+      <CommentModal
+        comments={goalComments}
+        show={modalShow}
+        setModalShow={setModalShow}
+        username={current_user}
+        goalID={goal.id}
+        setGoalComments={setGoalComments}
 
-    <div className="goal-update-card containerZK">
-      <div className="update-header">
-        <h3 className="text-center">{goal.goal_name}</h3>
-      </div>
+      />
+      <div className="goal-update-card containerZK">
+        <div className="update-header">
+          <h3 className="text-center">{goal.goal_name}</h3>
+        </div>
 
-      <Row className="goal-details-row">
-        <Col size="12" className="goal-name-hide">
-          <p className="goal-details-description text-primary">
-            {user}
-          </p>
-        {goal.isComplete ?
-          <div className="text-success is-complete">COMPLETED {renderFrequency().toUpperCase()}!</div>
-          : ""}
-        {user === current_user ?
-          <div className="hide-button" onClick={() => removeFromGroup(goal.id)}>(hide)</div>
-          : ""}
-        </Col>
-      </Row>
+        <Row className="goal-details-row">
+          <Col size="12" className="goal-name-hide">
+            <p className="goal-details-description user-name text-primary">
+              {user}
+            </p>
+            {goal.isComplete ?
+              <div className="text-success is-complete">COMPLETED {renderFrequency().toUpperCase()}!</div>
+              : ""}
+            {user === current_user ?
+              <div className="hide-button" onClick={() => removeFromGroup(goal.id)}>(hide)</div>
+              : ""}
+          </Col>
+        </Row>
 
-      <Row className="goal-details-row">
-        <Col size="12">
-          <p className="update-descr">
-            {goal.goal_description}
-          </p>
-        </Col>
+        <Row className="goal-details-row">
+          <Col size="12">
+            <p className="update-descr">
+              {goal.goal_description}
+            </p>
+          </Col>
 
-      </Row>
-      <Row className="goal-details-row">
-        <Col size="12">
-          <p className="goal-details-description">
-            {renderActivityIcon()} {goal.goal_category}
-          </p>
-        </Col>
-      </Row>
+        </Row>
+        <Row className="goal-details-row">
+          <Col size="12">
+            <p className="goal-details-description">
+              {renderActivityIcon(goal.goal_category)} {goal.goal_category}
+            </p>
+          </Col>
+        </Row>
 
-      <Row className="goal-details-row">
-        <Col size="12">
-          <p className="update-freq">
-            (Active  {goal.goal_frequency.toLowerCase()} from {Moment(goal.goal_start).format("MMMM D")} to {Moment(goal.goal_finish).format("MMMM D, YYYY")}.)
+        <Row className="goal-details-row">
+          <Col size="12">
+            <p className="update-freq">
+              (Active  {goal.goal_frequency.toLowerCase()} from {Moment(goal.goal_start).format("MMMM D")} to {Moment(goal.goal_finish).format("MMMM D, YYYY")}.)
               </p>
-          {goal.lastUpdate ?
-            <p className="last-updated">{goal.isComplete ? "Completed" : "Last updated"} <span className="text-warning">{Moment(goal.lastUpdate).format("MMMM Do h:mm a")}</span></p>
-            : ""}
-        </Col>
-      </Row>
+            {goal.lastUpdate ?
+              <p className="last-updated">{goal.isComplete ? "Completed" : "Last updated"} <span className="text-warning">{Moment(goal.lastUpdate).format("MMMM Do h:mm a")}</span></p>
+              : ""}
+          </Col>
+        </Row>
 
-      <Row className="goal-details-row">
-        <Col size="12">
-          <ProgressBar now={pctComplete} />
-        </Col>
-      </Row>
+        <Row className="goal-details-row">
+          <Col size="12">
+            <ProgressBar now={pctComplete} />
+          </Col>
+        </Row>
 
-      <Row className="goal-details-row">
-        <Col size="12">
-          <p className="text-center update-prog">
-            {goal.is_complete ?
-              goal.value_type === "Event" || goal.value_type === "Other" || !goal.value_type ? `${goal.goal_progress} out of ${goal.goal_target} completed!` : `${goal.goal_progress} out of ${goal.goal_target} ${goal.value_type.toLowerCase()} completed on ${Moment(goal.completed_date).format("MMMM Do, YYYY")}!`
-              : goal.value_type === "Event" || goal.value_type === "Other" || !goal.value_type ? `${goal.goal_progress} out of ${goal.goal_target} completed!` : `${goal.goal_progress} out of ${goal.goal_target} ${goal.value_type.toLowerCase()} completed ${renderFrequency()}!`}
-          </p>
-        </Col>
-      </Row>
+        <Row className="goal-details-row">
+          <Col size="12">
+            <p className="text-center update-prog">
+              {goal.is_complete ?
+                goal.value_type === "Event" || goal.value_type === "Other" || !goal.value_type ? `${goal.goal_progress} out of ${goal.goal_target} completed!` : `${goal.goal_progress} out of ${goal.goal_target} ${goal.value_type.toLowerCase()} completed on ${Moment(goal.completed_date).format("MMMM Do, YYYY")}!`
+                : goal.value_type === "Event" || goal.value_type === "Other" || !goal.value_type ? `${goal.goal_progress} out of ${goal.goal_target} completed!` : `${goal.goal_progress} out of ${goal.goal_target} ${goal.value_type.toLowerCase()} completed ${renderFrequency()}!`}
+            </p>
+          </Col>
+        </Row>
 
-      <Row>
-        <Col size="6">
-          <div className="bt-div">
-            <img src={cheer} alt="cheer icon" /><p id="cheer-total">7 cheers</p>
-          </div>
-        </Col>
+        <Row>
+          <Col size="6">
+            <div className="bt-div one">
+              <img src={cheer} alt="cheer icon" /><p id="cheer-total">7 cheers</p>
+            </div>
+          </Col>
 
-        <Col size="6">
-          <div className="bt-div">
-            <img src={comment} alt="comment icon" /><p id="comment-total">5 comments</p>
-          </div>
-        </Col>
-      </Row>
+          <Col size="6">
+            <div className="bt-div two" onClick={() => setModalShow(true)}>
+              <img src={commentIcon} alt="comment icon" /><p id="comment-total">{goalComments.length === 1 ? `${goalComments.length} comment` :  `${goalComments.length} comments`}</p>
+            </div>
+          </Col>
+        </Row>
 
-      <Row>
-        <Col size="12">
-          <div className="border-top padding">
-            <p>comments go here</p>
-          </div>
-          <div className="border-top">
-          </div>
-        </Col>
-      </Row>
-    </div>
+        <Row>
+          <Col size="12">
+            <div className="border-top padding">
+              <div className="form-box">
+                <form onSubmit={() => submitComment()}>
+                  <TextField
+                    // id=""
+                    label="Comment"
+                    placeholder="Cheer them on!"
+                    multiline
+                    rows={2}
+                    onChange={e => setComment(e.target.value)}
+                    value={comment}
+                    fullWidth
+                    variant="outlined"
+                  />
+                  <Button type="submit">Submit Comment</Button>
+                </form>
+              </div>
+            </div>
+            <div className="border-top">
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </>
   )
 }
