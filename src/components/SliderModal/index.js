@@ -48,12 +48,12 @@ export default function SliderModal(props) {
                 isComplete: true,
                 lastCompletedDate: Moment().format("YYYY-MM-DD")
               }
-              // const completedDate = {
-              //   goal_id: props.goal_id,
-              //   completedDate: Moment().format("YYYY-MM-DD")
-              // }
+              const completedDate = {
+                goal_id: props.goal_id,
+                completedDate: Moment().format("YYYY-MM-DD")
+              }
               API.editGoal(props.goal_id, updatedGoal, token).then(res => {
-                // API.completeGoal(completedDate).then(res => {
+                API.completeGoal(completedDate).then(res => {
 
                   API.getIncompleteGoals(token).then(res => {
                     if (res.data) {
@@ -65,7 +65,7 @@ export default function SliderModal(props) {
                 }).catch(err => {
                   console.log(err);
                 })
-              // })
+              })
             }}
             style={{ padding: "0" }}
           >
@@ -94,7 +94,7 @@ export default function SliderModal(props) {
           token={props.token}
           modalShow={setShow}
           setUserGoals={props.setUserGoals}
-          handleClick={props.handleClick}
+          handleclick={props.handleClick}
         />
       </Modal>
     </>

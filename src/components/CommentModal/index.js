@@ -16,7 +16,7 @@ export default function CommentModal(props) {
     const token = localStorage.getItem('token');
     API.deleteComment(id, token)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         API.getOneGoal(props.goalID)
           .then(res => {
             props.setGoalComments(res.data.Comments)

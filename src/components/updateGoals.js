@@ -45,7 +45,7 @@ export default function updateGoals(token, goals) {
 
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
 
-        console.log(`days since weekly refresh for ${goal.goal_name}:`, daysSinceRefresh);
+        // console.log(`days since weekly refresh for ${goal.goal_name}:`, daysSinceRefresh);
         // Check if today is the day of refresh
         if (daysSinceRefresh > 7) {
           const goalObj = {
@@ -65,7 +65,7 @@ export default function updateGoals(token, goals) {
         // Get how many days since last refresh
         const daysSinceRefresh = (Moment().diff((Moment(goal.lastRefresh)), 'days'))
 
-        console.log(`days since monthly refresh for ${goal.goal_name}:`, daysSinceRefresh);
+        // console.log(`days since monthly refresh for ${goal.goal_name}:`, daysSinceRefresh);
 
         // if it has been over 30 days since last refresh, refresh it.
         if (daysSinceRefresh > 31) {

@@ -52,7 +52,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
     }
     API.removeGoalFromGroup(group_id, goalObj, token)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         updateGoals();
 
       })
@@ -67,8 +67,8 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
     }
     API.createComment(commentObj, token)
       .then(res => {
-        console.log(res.data);
-        console.log('submitted:', commentObj);
+        // console.log(res.data);
+        // console.log('submitted:', commentObj);
         API.getOneGoal(goal.id)
           .then(res => {
             setGoalComments(res.data.Comments)

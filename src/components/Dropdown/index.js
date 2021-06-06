@@ -2,12 +2,12 @@ import React, { useState, useRef } from 'react'
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { Overlay, Popover, Button } from 'react-bootstrap';
-import Moment from 'moment';
 import EditGoal from '../EditGoal/index';
 import GoalDetails from '../GoalDetails/index';
 import "./style.css"
-// import { TextureGarbageCollector } from 'pixi.js';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+// import { TextureGarbageCollector } from 'pixi.js';
+// import Moment from 'moment';
 
 
 

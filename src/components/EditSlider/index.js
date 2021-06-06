@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
-// import Snackbar from '@material-ui/core/Snackbar';
-// import IconButton from '@material-ui/core/IconButton';
-// import CloseIcon from '@material-ui/icons/Close';
 import Moment from "moment";
 import API from '../../utils/API';
 import "./style.css"
+// import Snackbar from '@material-ui/core/Snackbar';
+// import IconButton from '@material-ui/core/IconButton';
+// import CloseIcon from '@material-ui/icons/Close';
 
 
 export default function EditSlider(props) {
@@ -23,8 +23,8 @@ export default function EditSlider(props) {
   
   const changeProg = () => {
     const token = localStorage.getItem('token')
-    props.handleClick()
-    console.log(value)
+    props.handleclick()
+    // console.log(value)
     const progObj = {
       goal_progress: value,
       lastUpdate: Moment()
@@ -37,7 +37,7 @@ export default function EditSlider(props) {
       history.push('/dashboard')
     }).catch(err => {
       console.log(err);
-      console.log(open, setOpen);
+      // console.log(open, setOpen);
       
     })
   }
