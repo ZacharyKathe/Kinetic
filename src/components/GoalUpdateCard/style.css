@@ -45,6 +45,11 @@
   margin: 0 1rem;
 }
 
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .goal-update-card {
   margin: 1rem auto !important;
 }
