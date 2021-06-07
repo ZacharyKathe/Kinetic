@@ -16,6 +16,7 @@ import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
 import AcceptInv from "./pages/AcceptInv";
 import Members from "./pages/Members";
+
 // import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 

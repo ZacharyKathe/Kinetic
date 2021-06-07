@@ -37,7 +37,7 @@ function Group(props) {
   const [groupGoals, setGroupGoals] = useState([])
   const [inviteOpen, setInviteOpen] = useState(false)
   const [modalShow, setModalShow] = useState(false);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const history = useHistory();
 
