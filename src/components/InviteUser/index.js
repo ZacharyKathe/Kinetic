@@ -13,6 +13,7 @@ export default function InviteUser(props) {
 
 
   const handleEmailSend = (e) => {
+    props.setOpen(true)
     const token = localStorage.getItem('token');
     e.preventDefault();
     props.setShow(false);
@@ -27,6 +28,7 @@ export default function InviteUser(props) {
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }
+
 
 
   return (
