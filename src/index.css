@@ -484,8 +484,8 @@ a {
     cursor: pointer !important;
 }
 
-.card-title {
-    color: #a0c4ff !important;
+.card-title > .text-primary{
+    color: hsl(217deg 54% 70%) !important;
 }
 
 .btn-outline-primary {
