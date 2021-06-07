@@ -11,6 +11,9 @@ import desktopHome from "../images/desktop-home-inactive.png";
 import desktopGroup from "../images/desktop-group-active.png";
 import desktopCalendar from "../images/desktop-calendar-inactive.png";
 import "./group.scss"
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import NavBottom from "../components/NavBottom";
 import home from "../images/home.png";
 import groupsActive from "../images/groups-active.png";
@@ -34,6 +37,7 @@ function Group(props) {
   const [groupGoals, setGroupGoals] = useState([])
   const [inviteOpen, setInviteOpen] = useState(false)
   const [modalShow, setModalShow] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const history = useHistory();
 
@@ -90,19 +94,12 @@ function Group(props) {
     } else return false;
   }
 
-  // const checkIfGoalInGroup = (goal) => {
-  //   console.log(goal);
-  //   API.getOneGroup(id)
-  //     .then(res => {
-  //       for (const groupGoal of res.data.Goals) {
-  //         console.log(groupGoal);
-  //         if (goal.id !== groupGoal.id) {
-  //           return true;
-  //         } else return false;
-  //       }
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   const updateGoals = (goals) => {
     if (!goals) {
@@ -154,6 +151,23 @@ function Group(props) {
 
   return (
     <div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={1500}
+        onClose={handleClose}
+        message="Email Sent"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       {inGroup ?
         <>
           <AddGoalToGroup
@@ -171,6 +185,7 @@ function Group(props) {
             show={inviteOpen}
             myName={myUser}
             setShow={setInviteOpen}
+            setOpen={setOpen}
             className="invite-modal" />
         </>
 
@@ -187,8 +202,8 @@ function Group(props) {
         group_id={id}
         setInviteOpen={setInviteOpen}
         header={<MobileInviteBtn setShow={setInviteOpen} />}
-        />
-      <GroupDesktopNav 
+      />
+      <GroupDesktopNav
         feedStatus="group-desktop-btn-active"
         memberStatus="group-desktop-btn-inactive"
         id={id}
@@ -212,7 +227,7 @@ function Group(props) {
           memberStatus="group-nav-btn-inactive"
           id={id}
         />
-        <NavBottom 
+        <NavBottom
           homeBtn={home}
           groupsBtn={groupsActive}
           calendarBtn={calendar}
