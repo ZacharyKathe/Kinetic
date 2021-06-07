@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import updateGoals from "./components/updateGoals"
 import API from "./utils/API";
-import React, { useState, useEffect } from "react";
 import Group from './pages/Group';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from "./pages/Login";
