@@ -107,14 +107,18 @@
   }
 
   .contentLeft {
-    width: 30%;
+    width: 25%;
   }
 
   .contentRight {
-    width: 70%;
+    width: 75%;
   }
 
   .progress-label {
+    font-size: .8rem;
+  }
+
+  .endDate {
     font-size: .8rem;
   }
 }

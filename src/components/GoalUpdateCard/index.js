@@ -158,7 +158,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
             </div>
           </Col>
 
-          <Col size="6">
+          <Col size="6" className="goal-details-row">
             <div className="bt-div two" onClick={() => setModalShow(true)}>
               <img src={commentIcon} alt="comment icon" /><p id="comment-total">{goalComments.length === 1 ? `${goalComments.length} comment` :  `${goalComments.length} comments`}</p>
             </div>

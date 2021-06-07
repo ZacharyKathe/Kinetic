@@ -159,7 +159,7 @@ export default function GoalDetails(props) {
               <div id="chip-row">
                 {!props.is_complete ? checkComplete() : ""}
               </div>
-              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target.toLowerCase()} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed!`} />
+              <ProgressBar now={pctComplete} label={props.value_type === "Event" || props.value_type === "Other" || !props.value_type ? `${props.goal_progress} out of ${props.goal_target} completed!` : `${props.goal_progress} out of ${props.goal_target} ${props.value_type.toLowerCase()} completed!`} />
             </Col>
           </Row>
           <Row>
