@@ -6,6 +6,7 @@
 
 We looked at the pool of goal-tracking apps out there, and found that there were not any that had their focus on a small group goal-achieving effort. We took all of the great things about a personal goal-tracking experience and layered the social element on top of it, believing that communal encouragement is a crucial part of staying motivated. 
 
+<img src="./public/kinetik-copy.PNG" alt="kinetik screenshot" />
 
 ## Usage
 
