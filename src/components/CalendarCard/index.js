@@ -14,7 +14,7 @@ export default function CalendarCard(props) {
   const [dateState, setDateState] = useState(new Date());
   const [userIncompleteGoals, setUserIncompleteGoals] = useState([]);
   const [userCompleteGoals, setUserCompleteGoals] = useState([]);
-  const [completedDates, setCompletedDates] = useState([]);
+  // const [completedDates, setCompletedDates] = useState([]);
   const history = useHistory();
 
   let completed = [];
@@ -65,7 +65,7 @@ export default function CalendarCard(props) {
   }
 
   const currentDate = moment(Date()).format('YYYY-MM-DD');
-  const yesterday = moment(Date()).subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
+  // const yesterday = moment(Date()).subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
   const selectedDate = moment(dateState).format('YYYY-MM-DD');
 
   for (let i = 0; i < userAllGoals.length; i++) {
@@ -75,7 +75,7 @@ export default function CalendarCard(props) {
   }
 
 
-  const userIncGoals = userIncompleteGoals.map(goals => goals.goal_start)
+  // const userIncGoals = userIncompleteGoals.map(goals => goals.goal_start)
 
   function tileContent({ date, view }) {
     // Add class to tiles in month view only

@@ -44,9 +44,6 @@ const CreateGroup = (props) => {
 
     }
 
-    const id = props.user.id
-    console.log(id)
-
 
     return (
         <div>

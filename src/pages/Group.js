@@ -192,6 +192,7 @@ function Group(props) {
         : ""}
 
       <DesktopNav header="Desktop"
+        group_id={id}
         homeBtn={desktopHome}
         groupBtn={desktopGroup}
         calendarBtn={desktopCalendar}

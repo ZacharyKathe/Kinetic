@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import API from "../../utils/API";
-import { ProgressBar, Alert } from 'react-bootstrap';
+import React from "react";
+// import API from "../../utils/API";
+import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Dropdown from "../Dropdown";
-import SliderModal from "../SliderModal/index";
+// import Dropdown from "../Dropdown";
+// import SliderModal from "../SliderModal/index";
 import Moment from "moment";
 import "./style.css"
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+// import Snackbar from '@material-ui/core/Snackbar';
+// import IconButton from '@material-ui/core/IconButton';
+// import CloseIcon from '@material-ui/icons/Close';
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
@@ -27,20 +27,20 @@ import Tooltip from '@material-ui/core/Tooltip';
 // import DoneIcon from '@material-ui/icons/Done';
 export default function CalendarGoalCard(props) {
  
-    const [open, setOpen] = useState(false);
-    const [clickOpen, setClickOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
+    // const [clickOpen, setClickOpen] = useState(false);
   
   
-    const handleClick = () => {
-      setOpen(true);
-    };
+    // const handleClick = () => {
+    //   setOpen(true);
+    // };
   
-    const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-      setOpen(false);
-    };
+    // const handleClose = (event, reason) => {
+    //   if (reason === 'clickaway') {
+    //     return;
+    //   }
+    //   setOpen(false);
+    // };
   
     const renderFrequency = () => {
       switch (props.goal_frequency) {
@@ -55,7 +55,7 @@ export default function CalendarGoalCard(props) {
     }
   
     const checkComplete = () => {
-      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('token');
       if (props.goal_progress === 0) {
         return (
           <Tooltip 
@@ -100,37 +100,37 @@ export default function CalendarGoalCard(props) {
     }
   
     // Just sets the progress to target goal
-    const setComplete = () => {
-      const token = localStorage.getItem('token');
-      API.editGoal(props.id, { goal_progress: props.goal_target, lastUpdate: Moment() }, token).then(res => {
-        API.getIncompleteGoals(token).then(res => {
-          props.setUserGoals(res.data.Goals)
-        }).catch(err => {
-          console.log(err);
-        })
-      })
+    // const setComplete = () => {
+    //   const token = localStorage.getItem('token');
+    //   API.editGoal(props.id, { goal_progress: props.goal_target, lastUpdate: Moment() }, token).then(res => {
+    //     API.getIncompleteGoals(token).then(res => {
+    //       props.setUserGoals(res.data.Goals)
+    //     }).catch(err => {
+    //       console.log(err);
+    //     })
+    //   })
   
-    }
+    // }
     // This will actually complete the goal, and send it to the completed page, saving its completion date
-    const markComplete = () => {
-      const token = localStorage.getItem('token');
-      const completedGoal = {
-        goal_progress: props.goal_target,
-        isComplete: true,
-        lastCompletedDate: Moment().format("YYYY-MM-DD"),
-      }
+    // const markComplete = () => {
+    //   const token = localStorage.getItem('token');
+    //   const completedGoal = {
+    //     goal_progress: props.goal_target,
+    //     isComplete: true,
+    //     lastCompletedDate: Moment().format("YYYY-MM-DD"),
+    //   }
   
-      console.log("CompletedGoal", completedGoal);
-      API.editGoal(props.id, completedGoal, token).then(res => {
-        API.getIncompleteGoals(token).then(res => {
-          props.setUserGoals(res.data.Goals)
-        }).catch(err => {
-          console.log(err);
-        })
-      })
+    //   console.log("CompletedGoal", completedGoal);
+    //   API.editGoal(props.id, completedGoal, token).then(res => {
+    //     API.getIncompleteGoals(token).then(res => {
+    //       props.setUserGoals(res.data.Goals)
+    //     }).catch(err => {
+    //       console.log(err);
+    //     })
+    //   })
   
       
-    }
+    // }
   
   
   

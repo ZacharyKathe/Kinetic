@@ -13,9 +13,9 @@ import desktopCalendar from "../images/desktop-calendar-active.png";
 
 export default function Calendar(props) {
 
-  const [userGoals, setUserGoals] = useState([]);
+  // const [userGoals, setUserGoals] = useState([]);
 
-  const [userGroups, setUserGroups] = useState([]);
+  // const [userGroups, setUserGroups] = useState([]);
 
   return (
     <div>
