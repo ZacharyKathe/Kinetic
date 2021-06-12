@@ -35,7 +35,7 @@ function NavTop(props) {
     const removeFromGroup = () => {
         API.leaveGroup(props.group_id, { obj: "" }, token)
             .then(res => {
-                console.log(res);
+                // console.log(res);
             if (res.data.Users.length === 1) {
                 API.deleteGroup(props.group_id, token)
                 .then(res => console.log(res.data))

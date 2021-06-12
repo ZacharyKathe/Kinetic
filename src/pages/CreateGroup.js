@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NavTop from "../components/NavTop";
 import API from "../utils/API";
@@ -18,6 +18,14 @@ const CreateGroup = (props) => {
 
     })
 
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        // Checks if user is logged in, and sends them to login if not
+        if (!token) {
+            history.push('/')
+        }
+    }, [history])
+
     const handleSubmit = (e) => {
         const token = localStorage.getItem('token');
         e.preventDefault();
@@ -36,7 +44,7 @@ const CreateGroup = (props) => {
                 //             groups: res.data.Groups,
                 //         }
                 //     })
-                    history.push('/dashboard/mygroups')
+                history.push('/dashboard/mygroups')
 
                 // })
 
@@ -48,10 +56,10 @@ const CreateGroup = (props) => {
     return (
         <div>
             <DesktopNav header="Desktop"
-            homeBtn={desktopHome}
-            groupBtn={desktopGroup}
-            calendarBtn={desktopCalendar}
-            actionBtn={<p className="desktop-header-text">Create Group</p>}
+                homeBtn={desktopHome}
+                groupBtn={desktopGroup}
+                calendarBtn={desktopCalendar}
+                actionBtn={<p className="desktop-header-text">Create Group</p>}
             />
             <NavTop header="Create Group" />
             <form onSubmit={handleSubmit} className='createGroupForm'>
@@ -66,8 +74,8 @@ const CreateGroup = (props) => {
                         onChange={(e) => setNewGroup({ newGroup, name: e.target.value })}
                     />
                 </div>
-                    <DesktopSaveGroupBtn />
-                    <SaveGroupBtn />
+                <DesktopSaveGroupBtn />
+                <SaveGroupBtn />
             </form>
         </div>
     )

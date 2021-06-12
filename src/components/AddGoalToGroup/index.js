@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import './style.css'
 // import CommentModel from "../CommentModal"
 
 export default function AddGoalToGroup(props) {
@@ -82,7 +83,7 @@ export default function AddGoalToGroup(props) {
         </Modal.Header>
 
         <Modal.Body>
-          <List>
+          <List className="pt-0">
             {props.goals ? props.goals.map((goal => {
               return (
                 <div key={goal.id} className="border-top">
@@ -102,7 +103,7 @@ export default function AddGoalToGroup(props) {
                 </div>
               )
             })) :
-              console.log('no goals')
+              console.log('no goals yet')
             }
           </List>
         </Modal.Body>

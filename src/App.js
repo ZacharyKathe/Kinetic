@@ -1,4 +1,4 @@
-import updateGoals from "./components/updateGoals"
+import refreshGoals from "./components/refreshGoals"
 import API from "./utils/API";
 import React, { useState, useEffect } from "react";
 import Group from './pages/Group';
@@ -46,7 +46,7 @@ function App() {
     if (token) {
       API.getDashboard(token).then(res => {
         // FUNCTION TO CHECK FREQUENCY/IF COMPLETE, THEN DISPLAY ACCORDINGLY
-        updateGoals(token, res.data.Goals)
+        refreshGoals(token, res.data.Goals)
         // const request = window.indexedDB.open('kinetik-token',2)  //creating the indexDB
         // request.onupgradeneeded = event => {
         //   const db = event.target.result

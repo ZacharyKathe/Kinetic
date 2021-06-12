@@ -45,7 +45,7 @@ export default function GoalDetails(props) {
         setGoalComments(res.data.Comments)
       })
       .catch(err => console.log(err, "f"))
-  }, [])
+  }, [props.goal_id])
 
   const checkComplete = () => {
     // const token = localStorage.getItem('token');

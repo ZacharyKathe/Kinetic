@@ -29,7 +29,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         setGoalComments(res.data.Comments)
       })
       .catch(err => console.log(err))
-  }, [])
+  }, [goal.id])
 
 
   const renderFrequency = () => {

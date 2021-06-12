@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NavTop from "../components/NavTop";
 import NavBottom from "../components/NavBottom";
 import home from "../images/home.png";

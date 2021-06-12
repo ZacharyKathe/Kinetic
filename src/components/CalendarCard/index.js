@@ -17,7 +17,7 @@ export default function CalendarCard(props) {
   // const [completedDates, setCompletedDates] = useState([]);
   const history = useHistory();
 
-  let completed = [];
+  // let completed = [];
   useEffect(() => {
     const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
@@ -46,17 +46,17 @@ export default function CalendarCard(props) {
 
   const userAllGoals = userIncompleteGoals.concat(userCompleteGoals)
   // console.log("All Goals", userAllGoals)
-  const incDive = userIncompleteGoals.map(goals1 => goals1.CompletedDates);
-  const superInc = incDive.map(goals => goals.map(goals2 => goals2.completedDate))
-  const flatIncomplete = superInc.flat()
+  // const incDive = userIncompleteGoals.map(goals1 => goals1.CompletedDates);
+  // const superInc = incDive.map(goals => goals.map(goals2 => goals2.completedDate))
+  // const flatIncomplete = superInc.flat()
   // console.log("Incomplete Goals", flatIncomplete)
 
-  const comDive = userCompleteGoals.map(goals => goals.CompletedDates);
-  const superCom = comDive.map(goals => goals.map(goals2 => goals2.completedDate))
-  const flatComplete = superCom.flat();
+  // const comDive = userCompleteGoals.map(goals => goals.CompletedDates);
+  // const superCom = comDive.map(goals => goals.map(goals2 => goals2.completedDate))
+  // const flatComplete = superCom.flat();
   // console.log("Complete Goals", flatComplete)
 
-  completed = flatComplete.concat(flatIncomplete);
+  // completed = flatComplete.concat(flatIncomplete);
   // console.log("Every Date", completed)
   const changeDate = (e) => {
     setDateState(e)
