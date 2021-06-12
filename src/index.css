@@ -25,6 +25,10 @@ a {
     text-decoration: none !important;
 }
 
+.MuiBadge-colorError {
+    background-color: #888 !important;
+}
+
 .MuiBadge-colorSecondary {
     color: #fff;
     background-color: #ff70a6 !important;
