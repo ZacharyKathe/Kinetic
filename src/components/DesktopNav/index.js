@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Moment from "moment";
 import "./style.css";
+import API from '../../utils/API'
 import { useHistory } from "react-router-dom";
 // import MenuIcon from '@material-ui/icons/Menu';
 import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@material-ui/core';
@@ -12,6 +13,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 function DesktopNav(props) {
 
     const history = useHistory();
+    const token = localStorage.getItem('token')
 
     const [open, setOpen] = useState(false)
     const [currentTime, setCurrentTime] = useState("")
@@ -43,9 +45,9 @@ function DesktopNav(props) {
         setCurrentTime(Moment().format("MMMM Do h:mma"))
         prevOpen.current = open;
     }, [open]);
-    
+
     return (
-        
+
         <div className="desktop-nav" >
 
             <div className="primary-navigation-left">
@@ -60,7 +62,7 @@ function DesktopNav(props) {
                 {props.actionBtn}
             </div>
 
-            
+
 
             <div className="account-menu-right" onClick={handleToggle}>
                 <p className="pr-3 text-secondary">{currentTime}</p>
@@ -90,6 +92,14 @@ function DesktopNav(props) {
                                             history.push('/profile/settings')
                                         }}>Settings</MenuItem>
 
+                                        {props.group_id ?
+                                            <MenuItem onClick={() => {
+                                                API.leaveGroup(props.group_id, { obj: "" }, token)
+                                                    .then(res => history.push('/dashboard/mygroups'))
+                                                    .catch(err => console.log(err))
+                                            }}>Leave Group</MenuItem>
+                                            : ""}
+
                                         <MenuItem onClick={
                                             () => window.localStorage.clear() + window.location.reload()
                                         }>Logout</MenuItem>
@@ -101,7 +111,7 @@ function DesktopNav(props) {
                 </Popper>
                 <p>▾</p>
             </div>
-            
+
 
         </div>
     )

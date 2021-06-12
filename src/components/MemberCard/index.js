@@ -8,7 +8,7 @@ import profPic from '../../images/prof-pic.jpg'
 function MemberCard(props) {
 
   return (
-    <div className="member-card">
+    <div className="member-card" key={props.key}>
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={profPic} />
         <Card.Body>

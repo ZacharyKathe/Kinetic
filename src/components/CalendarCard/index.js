@@ -14,10 +14,10 @@ export default function CalendarCard(props) {
   const [dateState, setDateState] = useState(new Date());
   const [userIncompleteGoals, setUserIncompleteGoals] = useState([]);
   const [userCompleteGoals, setUserCompleteGoals] = useState([]);
-  const [completedDates, setCompletedDates] = useState([]);
+  // const [completedDates, setCompletedDates] = useState([]);
   const history = useHistory();
 
-  let completed = [];
+  // let completed = [];
   useEffect(() => {
     const token = localStorage.getItem('token')
     // Checks if user is logged in, and sends them to login if not
@@ -46,17 +46,17 @@ export default function CalendarCard(props) {
 
   const userAllGoals = userIncompleteGoals.concat(userCompleteGoals)
   // console.log("All Goals", userAllGoals)
-  const incDive = userIncompleteGoals.map(goals1 => goals1.CompletedDates);
-  const superInc = incDive.map(goals => goals.map(goals2 => goals2.completedDate))
-  const flatIncomplete = superInc.flat()
+  // const incDive = userIncompleteGoals.map(goals1 => goals1.CompletedDates);
+  // const superInc = incDive.map(goals => goals.map(goals2 => goals2.completedDate))
+  // const flatIncomplete = superInc.flat()
   // console.log("Incomplete Goals", flatIncomplete)
 
-  const comDive = userCompleteGoals.map(goals => goals.CompletedDates);
-  const superCom = comDive.map(goals => goals.map(goals2 => goals2.completedDate))
-  const flatComplete = superCom.flat();
+  // const comDive = userCompleteGoals.map(goals => goals.CompletedDates);
+  // const superCom = comDive.map(goals => goals.map(goals2 => goals2.completedDate))
+  // const flatComplete = superCom.flat();
   // console.log("Complete Goals", flatComplete)
 
-  completed = flatComplete.concat(flatIncomplete);
+  // completed = flatComplete.concat(flatIncomplete);
   // console.log("Every Date", completed)
   const changeDate = (e) => {
     setDateState(e)
@@ -65,7 +65,7 @@ export default function CalendarCard(props) {
   }
 
   const currentDate = moment(Date()).format('YYYY-MM-DD');
-  const yesterday = moment(Date()).subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
+  // const yesterday = moment(Date()).subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
   const selectedDate = moment(dateState).format('YYYY-MM-DD');
 
   for (let i = 0; i < userAllGoals.length; i++) {
@@ -75,7 +75,7 @@ export default function CalendarCard(props) {
   }
 
 
-  const userIncGoals = userIncompleteGoals.map(goals => goals.goal_start)
+  // const userIncGoals = userIncompleteGoals.map(goals => goals.goal_start)
 
   function tileContent({ date, view }) {
     // Add class to tiles in month view only

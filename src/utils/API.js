@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-// const URL_PREFIX = 'http://localhost:3002';
-const URL_PREFIX = 'https://api-kinetikapp.herokuapp.com';
+const URL_PREFIX = 'http://localhost:3002';
+// const URL_PREFIX = 'https://api-kinetikapp.herokuapp.com';
 
 const API = {
 
@@ -108,6 +108,22 @@ const API = {
 
   addUserToGroup: function (id, emptyObj, mytoken) {
     return axios.put(`${URL_PREFIX}/api/groups/${id}`, emptyObj, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
+  },
+
+  leaveGroup: function (goal_id, emptyObj, mytoken) {
+    return axios.put(`${URL_PREFIX}/api/groups/removeuser/${goal_id}`, emptyObj, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
+  },
+
+  deleteGroup: function (goal_id, mytoken) {
+    return axios.delete(`${URL_PREFIX}/api/groups/${goal_id}`, {
       headers: {
         authorization: `Bearer ${mytoken}`
       }

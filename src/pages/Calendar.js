@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NavTop from "../components/NavTop";
 import NavBottom from "../components/NavBottom";
 import home from "../images/home.png";
@@ -13,9 +13,9 @@ import desktopCalendar from "../images/desktop-calendar-active.png";
 
 export default function Calendar(props) {
 
-  const [userGoals, setUserGoals] = useState([]);
+  // const [userGoals, setUserGoals] = useState([]);
 
-  const [userGroups, setUserGroups] = useState([]);
+  // const [userGroups, setUserGroups] = useState([]);
 
   return (
     <div>

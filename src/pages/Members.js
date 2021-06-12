@@ -73,6 +73,7 @@ function Members(props) {
         {groupUsers ? groupUsers.map(item => (
           <MemberCard
             name={item.username}
+            key={item.id}
           />
         )) : console.log('no members')}
       </div>

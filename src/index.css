@@ -56,7 +56,6 @@ a {
     color: #718bb4;
 }
 
-
 .react-calendar__month-view__weekdays__weekday {
     color: #3d3d3d;
 }
@@ -70,6 +69,7 @@ a {
 .react-calendar__month-view__days__day--weekend {
     color: #ffadad;
 }
+
 .react-calendar__month-view__days__day--neighboringMonth {
     color: #d7d0fd;
 }
@@ -125,7 +125,7 @@ a {
 }
 
 .motto-text {
-    color:#60c3ff;
+    color: #60c3ff;
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     font-family: 'canada-type-gibson';
@@ -175,6 +175,7 @@ a {
 .modal {
     padding-left: 0 !important;
 }
+
 .modal-open {
     padding-right: 0 !important;
 }
@@ -355,7 +356,7 @@ a {
     align-items: center;
 }
 
-.createGroupForm{
+.createGroupForm {
     padding-top: 7rem;
     display: flex;
     flex-direction: column;
@@ -393,6 +394,7 @@ a {
 .pl-2 {
     padding-left: 15px !important;
 }
+
 .pr-2 {
     padding-right: 15px !important;
 }
@@ -526,17 +528,17 @@ a {
     .containerZK {
         width: 70%;
     }
-
     .smart-goals {
         margin-top: 2rem
     }
     .group-updates {
         margin-bottom: 8rem;
     }
-    
-    .goalCards {        
+    .goalCards {
         margin-bottom: 8rem;
-
+    }
+    .inv-header {
+        width: 60%;
     }
 }
 
@@ -552,7 +554,9 @@ a {
     .smart-goals {
         margin-top: 1rem
     }
-
+    .inv-header {
+        width: 75%;
+    }
 }
 
 /* Small smartphones - image placeholders change color */
@@ -561,7 +565,6 @@ a {
     .logIn {
         padding-top: 0px;
     }
-
     .react-calendar {
         border: 1px solid #bdb2ff !important;
         font-family: 'Jost', sans-serif;
@@ -570,13 +573,14 @@ a {
         width: 98vw !important;
         height: 50vh !important;
     }
-
     .react-calendar__month-view__days__day {
         color: #bdb2ff;
         height: 7vh !important;
     }
-
     .smart-goals {
         margin-top: 0
+    }
+    .inv-header {
+        width: 80%;
     }
 }

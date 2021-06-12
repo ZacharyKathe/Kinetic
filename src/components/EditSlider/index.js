@@ -12,7 +12,7 @@ import "./style.css"
 
 export default function EditSlider(props) {
   const [show, setShow] = useState(false);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [value, setValue] = useState(props.goal_progress);
 
   const history = useHistory();
@@ -42,14 +42,6 @@ export default function EditSlider(props) {
     })
   }
   
-
-  // const handleClose = (event, reason) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-    
-  //   setOpen(false);
-  // };
   
   // Doesnt auto render yet!
   const getDashboard = () => {
