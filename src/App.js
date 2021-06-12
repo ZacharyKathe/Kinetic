@@ -1,6 +1,10 @@
-import refreshGoals from "./components/refreshGoals"
-import API from "./utils/API";
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+import updateGoals from "./components/updateGoals"
+=======
+import refreshGoals from "./components/refreshGoals"
+>>>>>>> 5c85231bfc0d398ff796707ace1a7c63a295bd5c
+import API from "./utils/API";
 import Group from './pages/Group';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from "./pages/Login";
@@ -16,6 +20,7 @@ import CreateGroup from "./pages/CreateGroup";
 import CompleteGoals from "./pages/CompleteGoals";
 import AcceptInv from "./pages/AcceptInv";
 import Members from "./pages/Members";
+
 // import {initDB} from 'react-indexed-db'
 const token = localStorage.getItem('token');
 
@@ -156,24 +161,24 @@ function App() {
     API.signup(signupFormState).then(result => {
       // console.log(result);
       localStorage.setItem("token", result.data.token)
-      // const request = window.indexedDB.open('kinetik-token',5)  //creating the indexDB
-      // request.onupgradeneeded = event => {
-      //   const db = event.target.result
-      //   console.log('indexedDB-in progress')
-      //   const tokenStore = request.result.createObjectStore("token", {
-      //     keyPath: "token",
-      //     autoIncrement: true
-      //   })
-      //   tokenStore.createIndex("userToken", "token")
-      // }
-      // request.onsuccess = () => {
-      //   const db = request.result;
-      //   const transaction = db.transaction(["token"], "readwrite");
-      //   const tokenStore = transaction.objectStore("token")
-      //   const userToken = tokenStore.index("userToken")
+      const request = window.indexedDB.open('kinetik-token',5)  //creating the indexDB
+      request.onupgradeneeded = event => {
+        const db = event.target.result
+        console.log('indexedDB-in progress')
+        const tokenStore = request.result.createObjectStore("token", {
+          keyPath: "token",
+          autoIncrement: true
+        })
+        tokenStore.createIndex("userToken", "token")
+      }
+      request.onsuccess = () => {
+        const db = request.result;
+        const transaction = db.transaction(["token"], "readwrite");
+        const tokenStore = transaction.objectStore("token")
+        const userToken = tokenStore.index("userToken")
         
-      //   tokenStore.add({userToken: result.data.token})
-      // }
+        tokenStore.add({userToken: result.data.token})
+      }
       API.getDashboard(result.data.token).then(res => {
         // alert("Signup Successful!")
         // console.log(res.data);

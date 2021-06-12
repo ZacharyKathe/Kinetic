@@ -25,6 +25,10 @@ a {
     text-decoration: none !important;
 }
 
+.MuiBadge-colorError {
+    background-color: #888 !important;
+}
+
 .MuiBadge-colorSecondary {
     color: #fff;
     background-color: #ff70a6 !important;
@@ -486,9 +490,23 @@ a {
     cursor: pointer !important;
 }
 
+.card-title > .text-primary{
+    color: hsl(217deg 54% 70%) !important;
+}
+
 .btn-outline-primary {
     color: #a0c4ff;
     border-color: #a0c4ff;
+}
+
+.btn-primary {
+    background-color: #a0c4ff;
+    border-color: #a0c4ff;
+}
+
+.btn-primary:hover {
+    background-color: rgb(110, 162, 247);
+    border-color: rgb(110, 162, 247);
 }
 
 .btn-outline-primary:hover {
