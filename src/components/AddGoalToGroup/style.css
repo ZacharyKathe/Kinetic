@@ -1,8 +1,8 @@
-.border-top {
+.border-topper {
   cursor: pointer;
 }
 
-.border-top:hover {
+.border-topper:hover {
   background-color: lightgrey;
   transition: .2s ease-in-out;
 }

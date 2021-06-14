@@ -23,7 +23,7 @@ export default function EditSlider(props) {
   
   const changeProg = () => {
     const token = localStorage.getItem('token')
-    props.handleclick()
+    props.handleClick()
     // console.log(value)
     const progObj = {
       goal_progress: value,

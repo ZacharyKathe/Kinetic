@@ -51,6 +51,7 @@ export default function AddGoalToGroup(props) {
   //   }
   // }
 
+
   const handleGoalAdd = (goalID) => {
     const token = localStorage.getItem('token');
     const goalObj = {
@@ -86,7 +87,7 @@ export default function AddGoalToGroup(props) {
           <List className="pt-0">
             {props.goals ? props.goals.map((goal => {
               return (
-                <div key={goal.id} className="border-top">
+                <div key={goal.id} className="border-topper">
                   <div onClick={() => handleGoalAdd(goal.id)}>
                     <ListItem>
                       <ListItemIcon>
