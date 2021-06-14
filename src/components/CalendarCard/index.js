@@ -131,7 +131,22 @@ export default function CalendarCard(props) {
             }
           }
         }
+
+        if (moment(date).isBetween(moment(), userAllGoals[i].goal_finish, 'days', '(]')) {
+          return (
+            <Badge
+                  color='error'
+                  variant='dot'
+                  style={{
+                    marginLeft: 5,
+                    marginBottom: 10
+                  }}
+                >
+                </Badge>
+          )
+        }
       }
+
     }
   }
 
