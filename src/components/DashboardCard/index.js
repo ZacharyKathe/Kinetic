@@ -159,6 +159,7 @@ function DashboardCard(props) {
             goal_start={props.goal_start}
             goal_finish={props.goal_finish}
             value_type={props.value_type}
+            cheers={props.cheers}
             is_complete={props.is_complete}
             completed_date={props.completed_date}
             last_refresh={props.last_refresh}
@@ -183,14 +184,14 @@ function DashboardCard(props) {
         <p className="progress-label">{!props.is_complete ? `${props.goal_progress} out of ${props.goal_target} ${renderValueType()} completed ${renderFrequency()}!` : ``}</p>
         <div className="bigCont">
           <div className="sliderCont">
-            {!props.is_complete ? <SliderModal
+            {!props.is_complete ? <><SliderModal
               goal_target={props.goal_target}
               goal_progress={props.goal_progress}
               goal_id={props.id}
               token={props.token}
               setUserGoals={props.setUserGoals}
               handleClick={handleClick}
-            /> : ""}
+            /></> : ""}
           </div>
           <div className="progCont">
             <Snackbar

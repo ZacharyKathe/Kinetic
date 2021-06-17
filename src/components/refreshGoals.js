@@ -1,6 +1,7 @@
 import API from '../utils/API';
 import Moment from "moment";
 
+
 export default function refreshGoals(token, goals) {
 
   // Check if any goals have reached their end date
@@ -26,7 +27,7 @@ const renewGoals = () => {
       // console.log(`days since daily refresh for ${goal.goal_name}:`, daysSinceRefresh);
 
       // Check if today is the day of refresh
-      if (daysSinceRefresh > 0) {
+      if (daysSinceRefresh > 1) {
         const goalObj = {
           goal_progress: 0,
           isComplete: false,

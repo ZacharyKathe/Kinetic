@@ -66,6 +66,7 @@ export default function Dropdown(props) {
         goal_frequency={props.goal_frequency}
         goal_target={props.goal_target}
         goal_progress={props.goal_progress}
+        cheers={props.cheers}
         value_type={props.value_type}
         is_complete={props.is_complete}
         completed_date={props.completed_date}

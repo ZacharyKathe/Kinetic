@@ -7,17 +7,21 @@ import Col from '../Col/index';
 import Row from '../Row/index';
 import Moment from "moment";
 import './style.css';
-import cheer from '../../images/trophy.png';
+import trophyAct from '../../images/trophy-active.png';
+import trophyInact from '../../images/trophy-inactive.png';
 import commentIcon from '../../images/comment.png';
 import CommentModal from "../CommentModal"
 import renderActivityIcon from "../renderCategoryIcon"
 import { TextField, Button } from '@material-ui/core';
 
-export default function GoalUpdateCard({ goal, user, group_id, current_user, updateGoals }) {
+export default function GoalUpdateCard({ goal, user, group_id, current_user, updateGoals, cheers }) {
 
   const [comment, setComment] = useState("");
+  const [isCheered, setIsCheered] = useState(false)
+  const [cheerAmnt, setCheerAmnt] = useState()
   const [goalComments, setGoalComments] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+
 
   const token = localStorage.getItem('token')
   const percent = ((goal.goal_progress / goal.goal_target) * 100)
@@ -27,6 +31,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
     API.getOneGoal(goal.id)
       .then(res => {
         setGoalComments(res.data.Comments)
+        setCheerAmnt(res.data.cheers)
       })
       .catch(err => console.log(err))
   }, [goal.id])
@@ -46,18 +51,32 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
 
 
   const removeFromGroup = (id) => {
-    const token = localStorage.getItem('token');
     const goalObj = {
       goal_id: id
     }
     API.removeGoalFromGroup(group_id, goalObj, token)
       .then(res => {
-        // console.log(res.data)
         updateGoals();
 
       })
       .catch(err => console.log(err))
 
+  }
+
+  const giveCheers = () => {
+    
+    let cheerObj = {
+      addCheers: (isCheered ? false : true)
+    }
+
+    API.editCheer(goal.id, cheerObj, token)
+      .then(res => {
+        API.getOneGoal(goal.id)
+        .then(res => setCheerAmnt(res.data.cheers))
+        .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+    setIsCheered(!isCheered)
   }
 
   const submitComment = () => {
@@ -67,8 +86,6 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
     }
     API.createComment(commentObj, token)
       .then(res => {
-        // console.log(res.data);
-        // console.log('submitted:', commentObj);
         API.getOneGoal(goal.id)
           .then(res => {
             setGoalComments(res.data.Comments)
@@ -154,7 +171,7 @@ export default function GoalUpdateCard({ goal, user, group_id, current_user, upd
         <Row>
           <Col size="6">
             <div className="bt-div one">
-              <img src={cheer} alt="cheer icon" /><p id="cheer-total">0 cheers</p>
+              <img className="trophy" alt="trophy-icon" src={isCheered ? trophyAct : trophyInact} onClick={() => giveCheers()}/><p id="cheer-total">{cheerAmnt} {cheerAmnt === 1 ? 'cheer' : 'cheers'}</p>
             </div>
           </Col>
 

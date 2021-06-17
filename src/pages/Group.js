@@ -216,6 +216,7 @@ function Group(props) {
           <GoalUpdateCard
             goal={item}
             group_id={id}
+            cheers={item.cheers}
             key={item.id}
             user={assignUsername(item.user_id)}
             current_user={myUser}

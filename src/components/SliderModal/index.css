@@ -17,6 +17,14 @@
   animation: pulse-black 1.5s 5;
 }
 
+.blob-add:hover {
+  transform: scale(1.2)
+}
+
+.blob-save:hover {
+  transform: scale(1.2)
+}
+
 .blob-save {
   /* background: black; */
   border-radius: 50%;

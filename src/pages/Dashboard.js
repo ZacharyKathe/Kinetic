@@ -115,6 +115,7 @@ function Dashboard(props) {
                               isComplete={item.isComplete}
                               completed_date={item.completedDate}
                               last_refresh={item.lastRefresh}
+                              cheers={item.cheers}
                               key={item.id}
                               token={props.token}
                               setUserGoals={setUserGoals}

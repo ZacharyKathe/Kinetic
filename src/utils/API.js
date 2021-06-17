@@ -89,6 +89,14 @@ const API = {
     })
   },
 
+  editCheer: function (id, editGoalData, mytoken) {
+    return axios.put(`${URL_PREFIX}/api/goals/${id}/cheer`, editGoalData, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    })
+  },
+
   completeGoal: async function (completedDate) {
     const goalComp = await axios.post(`${URL_PREFIX}/api/completed`, completedDate)
     console.log("goalComp", goalComp)

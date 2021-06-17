@@ -34,6 +34,7 @@ export default function GoalDetails(props) {
     value_type: props.value_type,
     is_complete: props.is_complete,
     completed_date: props.completed_date,
+    cheers: props.cheers,
     goal_start: props.goal_start,
     goal_finish: props.goal_finish
 
@@ -165,7 +166,7 @@ export default function GoalDetails(props) {
           <Row>
             <Col size="6">
               <div className="bt-div">
-                <img src={cheer} alt="cheer icon" /><p id="cheer-total">0 cheers</p>
+                <img src={cheer} alt="cheer icon" /><p id="cheer-total">{goalDetails.cheers} {goalDetails.cheers === 1 ? 'cheer' : 'cheers'}</p>
               </div>
             </Col>
             <Col size="6">
