@@ -29,6 +29,11 @@
 
 }
 
+.goal-interactivity {
+  display: flex;
+  justify-content: space-between !important;
+}
+
 .hide-button {
   color: #bd2c38;
   cursor: pointer;

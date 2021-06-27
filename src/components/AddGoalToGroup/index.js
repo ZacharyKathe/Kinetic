@@ -1,17 +1,16 @@
-import React from 'react';
-import { Modal } from 'react-bootstrap';
-import API from '../../utils/API';
+import React from "react";
+import { Modal } from "react-bootstrap";
+import API from "../../utils/API";
 import Moment from "moment";
-import renderActivityIcon from '../renderCategoryIcon'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import './style.css'
+import renderActivityIcon from "../renderCategoryIcon";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import "./style.css";
 // import CommentModel from "../CommentModal"
 
 export default function AddGoalToGroup(props) {
-
   // const [goalsInGroup, setGoalsInGroup] = useState([])
 
   // const history = useHistory();
@@ -36,7 +35,6 @@ export default function AddGoalToGroup(props) {
 
   // }, [])
 
-
   // const renderGroupName = (goal) => {
   //   if (goalsInGroup) {
   //     for (const groupGoal of goalsInGroup) {
@@ -51,22 +49,20 @@ export default function AddGoalToGroup(props) {
   //   }
   // }
 
-
   const handleGoalAdd = (goalID) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const goalObj = {
-      goal_id: goalID
-    }
+      goal_id: goalID,
+    };
     console.log(goalObj);
     API.addGoalToGroup(props.group_id, goalObj, token)
-      .then(res => {
+      .then((res) => {
         props.updateGoals();
         props.setModalShow(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
-
+      });
   };
 
   return (
@@ -84,31 +80,38 @@ export default function AddGoalToGroup(props) {
         </Modal.Header>
 
         <Modal.Body>
-          <List className="pt-0">
-            {props.goals ? props.goals.map((goal => {
-              return (
-                <div key={goal.id} className="border-topper">
-                  <div onClick={() => handleGoalAdd(goal.id)}>
-                    <ListItem>
-                      <ListItemIcon>
-                        {renderActivityIcon(goal.goal_category)}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={<h4 className="text-primary">{goal.goal_name}</h4>}
-                        // ${renderGroupName(goal) ? `(already a part of ${renderGroupName(goal)})` : ""}`}
-                        secondary={goal.lastUpdate ? `Last Updated: ${Moment(goal.lastUpdate).format("MMMM Do hh:mma")}` : ""}
-                      // secondary={renderGroupName(goal) ? `already a part of ${renderGroupName(goal)}` : ""}
-                      />
-                    </ListItem>
-                  </div>
-                </div>
-              )
-            })) :
-              console.log('no goals yet')
-            }
-          </List>
+          {props.goals
+            ? props.goals.map((goal) => {
+                return (
+                  <List className="pt-0">
+                    <div key={goal.id} className="border-topper">
+                      <div onClick={() => handleGoalAdd(goal.id)}>
+                        <ListItem>
+                          <ListItemIcon>
+                            {renderActivityIcon(goal.goal_category)}
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={
+                              <h4 className="text-primary">{goal.goal_name}</h4>
+                            }
+                            // ${renderGroupName(goal) ? `(already a part of ${renderGroupName(goal)})` : ""}`}
+                            secondary={
+                              goal.lastUpdate
+                                ? `Last Updated: ${Moment(
+                                    goal.lastUpdate
+                                  ).format("MMMM Do hh:mma")}`
+                                : ""
+                            }
+                            // secondary={renderGroupName(goal) ? `already a part of ${renderGroupName(goal)}` : ""}
+                          />
+                        </ListItem>
+                      </div>
+                    </div>
+                  </List>
+                );
+              })
+            : console.log("no goals")}
         </Modal.Body>
-
       </Modal>
     </>
   );
