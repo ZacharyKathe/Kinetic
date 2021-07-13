@@ -74,6 +74,7 @@ function Members(props) {
           <MemberCard
             name={item.username}
             key={item.id}
+            profURL={item.ProfilePics[item.ProfilePics.length - 1].profilePicture}
           />
         )) : console.log('no members')}
       </div>

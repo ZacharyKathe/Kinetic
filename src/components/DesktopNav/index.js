@@ -12,7 +12,6 @@ import {
   Paper,
   Popper,
 } from "@material-ui/core";
-
 // import DesktopAddGoalBtn from "../DesktopAddGoalBtn";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
@@ -22,6 +21,7 @@ function DesktopNav(props) {
     Moment().format("MMMM Do h:mma")
   );
   const [profPic, setProfPic] = useState("")
+  const [currUser, setCurrUser] = useState("")
 
 
   const history = useHistory();
@@ -33,9 +33,12 @@ function DesktopNav(props) {
 
   useEffect(() => {
     API.getDashboard(token)
-      .then(res => res.data)
-      .then(data => {
-        setProfPic(`${baseURL}${data.ProfilePics[data.ProfilePics.length-1].profilePicture}`)
+      .then(res => {
+        console.log(res.data)
+        setCurrUser(res.data.username)
+        if (res.data.ProfilePics) {
+        setProfPic(`${baseURL}${res.data.ProfilePics[res.data.ProfilePics.length-1].profilePicture}`)
+        }
       })
       .catch(err => console.log(err))
   }, [])
@@ -105,13 +108,22 @@ function DesktopNav(props) {
 
       <div className="account-menu-right" onClick={handleToggle}>
         <p className="pr-3 text-secondary">{currentTime}</p>
+        {profPic ?
         <img
-          ref={anchorRef}
-          aria-controls={open ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          src={profPic}
-          className="desktop-profile-pic"
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        src={profPic}
+        alt="desktop profile pic"
+        className="desktop-profile-pic"
         />
+      :         
+      <AccountCircleIcon
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
+        color="disabled"
+        fontSize="large"
+      />}
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -137,7 +149,7 @@ function DesktopNav(props) {
                     <MenuItem
                       onClick={() => {
                         setOpen(false);
-                        history.push(`/profile/${props.username}`);
+                        history.push(`/profile/${currUser}`);
                       }}
                     >
                       Profile
@@ -189,3 +201,4 @@ export default DesktopNav;
 
 //      <DesktopNav header="Desktop View" />
 //<p className="desktop-header-text">{props.header}</p>
+

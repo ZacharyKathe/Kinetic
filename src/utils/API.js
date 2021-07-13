@@ -107,6 +107,10 @@ const API = {
     });
   },
 
+  // grabUserProfPic: function (id) {
+  //   return axios.get(`${URL_PREFIX}/api/profile-pics/${id}`)
+  // },
+
   completeGoal: async function (completedDate) {
     const goalComp = await axios.post(`${URL_PREFIX}/api/completed`, completedDate)
     console.log("goalComp", goalComp)

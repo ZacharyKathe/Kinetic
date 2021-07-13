@@ -2,15 +2,18 @@ import React from "react";
 import "./style.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import profPic from '../../images/prof-pic.jpg'
 
 
 function MemberCard(props) {
 
+
+  const baseURL = "http://res.cloudinary.com/dsknrjo2r/image/upload/v1626207523/";
+  const imgURL = `${baseURL}${props.profURL}`
+
   return (
-    <div className="member-card" key={props.key}>
+    <div className="member-card">
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={profPic} />
+        <Card.Img variant="top" src={imgURL} />
         <Card.Body>
           <Card.Title><span className="text-center text-primary">{props.name}</span></Card.Title>
           <Card.Text>
