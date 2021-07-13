@@ -41,7 +41,7 @@ function DesktopNav(props) {
         }
       })
       .catch(err => console.log(err))
-  }, [])
+  }, [token])
 
 
   const anchorRef = React.useRef(null);

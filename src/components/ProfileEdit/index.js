@@ -5,7 +5,6 @@ import "./style.css";
 
 export default function ProfileEdit(props) {
   const [currentProfPic, setCurrentProfPic] = useState("");
-  // const [profilePic, setProfilePic] = useState({ profilePicture: "" });
   const [previewSource, setPreviewSource] = useState();
 
   const token = localStorage.getItem("token");
@@ -14,7 +13,7 @@ export default function ProfileEdit(props) {
   const profPicURL = props.user.profilePictures;
 
   useEffect(() => {
-    if (profPicURL.length > 0) {
+    if (profPicURL && profPicURL.length > 0) {
     setCurrentProfPic(
       `${baseURL}${profPicURL ? profPicURL[profPicURL.length - 1].profilePicture : ""}`
     );
@@ -26,7 +25,6 @@ export default function ProfileEdit(props) {
     const file = event.target.files[0];
     previewFile(file);
 
-    // setProfilePic({ profilePicture: file.name });
   };
 
   const previewFile = (file) => {
@@ -47,7 +45,7 @@ export default function ProfileEdit(props) {
     API.uploadProfilePic(picBody, token)
       .then((res) => {
         console.log(res);
-        // setPreviewSource("")
+        alert("Profile Picture Updated!")
       })
       .catch((err) => console.log(err));
   };
