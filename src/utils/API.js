@@ -97,6 +97,16 @@ const API = {
     })
   },
 
+  uploadProfilePic: function (profilePicData, mytoken) {
+    return axios.post(`${URL_PREFIX}/api/profile-pics/`, profilePicData, {
+      headers: {
+        authorization: `Bearer ${mytoken}`
+      }
+    }, {
+      onUploadProgress: progressEvent => console.log('Upload Progress: ' + Math.round((progressEvent.loaded / progressEvent.total) * 100))
+    });
+  },
+
   completeGoal: async function (completedDate) {
     const goalComp = await axios.post(`${URL_PREFIX}/api/completed`, completedDate)
     console.log("goalComp", goalComp)
