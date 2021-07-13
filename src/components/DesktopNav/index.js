@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Moment from "moment";
 import "./style.css";
 import API from "../../utils/API";
@@ -17,13 +17,30 @@ import {
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 function DesktopNav(props) {
-  const history = useHistory();
-  const token = localStorage.getItem("token");
-
   const [open, setOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(
     Moment().format("MMMM Do h:mma")
   );
+  const [profPic, setProfPic] = useState("")
+
+
+  const history = useHistory();
+  const token = localStorage.getItem("token");
+  const baseURL =
+  "http://res.cloudinary.com/dsknrjo2r/image/upload/v1626207523/";
+  
+
+
+  useEffect(() => {
+    API.getDashboard(token)
+      .then(res => res.data)
+      .then(data => {
+        setProfPic(`${baseURL}${data.ProfilePics[data.ProfilePics.length-1].profilePicture}`)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -88,12 +105,12 @@ function DesktopNav(props) {
 
       <div className="account-menu-right" onClick={handleToggle}>
         <p className="pr-3 text-secondary">{currentTime}</p>
-        <AccountCircleIcon
+        <img
           ref={anchorRef}
           aria-controls={open ? "menu-list-grow" : undefined}
           aria-haspopup="true"
-          color="disabled"
-          fontSize="large"
+          src={profPic}
+          className="desktop-profile-pic"
         />
         <Popper
           open={open}

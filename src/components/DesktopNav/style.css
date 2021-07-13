@@ -89,6 +89,13 @@
     color: #bcc5d3;
 }
 
+.desktop-profile-pic {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    /* margin: 0 auto; */
+}
+
 .account-menu-right p {
     font-size: 25px;
     margin-left: 5px;

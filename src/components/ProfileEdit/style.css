@@ -1,3 +1,34 @@
 .profile-edit {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 5rem;
+}
+
+.main-prof-pic {
+  /* display: flex;
+  justify-content: center; */
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-pic {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: auto;
+  /* border-radius: 50%; */
+  /* margin: 0 auto; */
+}
+
+.user-info {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 100%;
 }

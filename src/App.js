@@ -75,6 +75,7 @@ function App() {
             username: res.data.username,
             goals: res.data.Goals,
             groups: res.data.Groups,
+            profilePictures: res.data.ProfilePics
           }
         })
       }).catch(err => {
