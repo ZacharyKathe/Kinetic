@@ -7,8 +7,7 @@ import Card from 'react-bootstrap/Card';
 function MemberCard(props) {
 
 
-  const baseURL = "http://res.cloudinary.com/dsknrjo2r/image/upload/v1626207523/";
-  const imgURL = `${baseURL}${props.profURL}`
+  const imgURL = `${props.profURL}`
 
   return (
     <div className="member-card">
