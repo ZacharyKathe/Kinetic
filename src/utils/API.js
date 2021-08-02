@@ -107,9 +107,13 @@ const API = {
     });
   },
 
-  // grabUserProfPic: function (id) {
-  //   return axios.get(`${URL_PREFIX}/api/profile-pics/${id}`)
-  // },
+  deleteProfilePic: function (id, token) {
+    return axios.delete(`${URL_PREFIX}/api/profile-pics/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+  },
 
   completeGoal: async function (completedDate) {
     const goalComp = await axios.post(`${URL_PREFIX}/api/completed`, completedDate)

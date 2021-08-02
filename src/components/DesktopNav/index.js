@@ -26,18 +26,14 @@ function DesktopNav(props) {
 
   const history = useHistory();
   const token = localStorage.getItem("token");
-  const baseURL =
-  "http://res.cloudinary.com/dsknrjo2r/image/upload/v1626207523/";
-  
 
 
   useEffect(() => {
     API.getDashboard(token)
       .then(res => {
-        console.log(res.data)
         setCurrUser(res.data.username)
         if (res.data.ProfilePics) {
-        setProfPic(`${baseURL}${res.data.ProfilePics[res.data.ProfilePics.length-1].profilePicture}`)
+        setProfPic(`${res.data.ProfilePics[res.data.ProfilePics.length - 1].profilePicture}`)
         }
       })
       .catch(err => console.log(err))
