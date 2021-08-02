@@ -8,14 +8,12 @@ export default function ProfileEdit(props) {
   const [previewSource, setPreviewSource] = useState();
 
   const token = localStorage.getItem("token");
-  const baseURL =
-    "http://res.cloudinary.com/dsknrjo2r/image/upload/v1626207523/";
   const profPicURL = props.user.profilePictures;
 
   useEffect(() => {
     if (profPicURL && profPicURL.length > 0) {
     setCurrentProfPic(
-      `${baseURL}${profPicURL ? profPicURL[profPicURL.length - 1].profilePicture : ""}`
+      `${profPicURL ? profPicURL[profPicURL.length - 1].profilePicture : ""}`
     );
     }
   }, [profPicURL]);
@@ -50,6 +48,18 @@ export default function ProfileEdit(props) {
       .catch((err) => console.log(err));
   };
 
+  const deleteProfilePic = () => {
+    if (!currentProfPic) return;
+    const picId = profPicURL[profPicURL.length - 1].id
+
+    API.deleteProfilePic(picId, token)
+      .then((res) => {
+        console.log(res);
+        alert("Profile picture deleted!")
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div className="profile-edit">
       <div className="main-prof-pic">
@@ -71,13 +81,15 @@ export default function ProfileEdit(props) {
         <input
           type="file"
           name="image"
-          // value={profilePic.profilePicture}
-          // className="file-upload"
           onChange={setFile}
         />
 
         <button className="btn-primary" onClick={uploadProfilePic}>
           {currentProfPic ? "Change" : "Upload"}
+        </button>
+        <div className="p-2"/>
+        <button className="btn-primary" onClick={deleteProfilePic}>
+          Delete
         </button>
       </div>
     </div>
